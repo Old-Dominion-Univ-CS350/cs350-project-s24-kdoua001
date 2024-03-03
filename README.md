@@ -9,7 +9,7 @@ The actual source code for the project should be placed within the `project`
   likely want to open the `project/` directory rather than this one.
 
 #Names
-Iizalaarab Elhaimeur
+Iizalaarab Elhaimeur - Back from the Dead
 Khamnulin Douangdara
 Matthew Haydon
 Ralph Mpanu
