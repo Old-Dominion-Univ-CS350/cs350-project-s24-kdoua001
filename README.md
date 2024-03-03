@@ -12,4 +12,5 @@ The actual source code for the project should be placed within the `project`
 Iizalaarab Elhaimeur
 Khamnulin Douangdara
 Matthew Haydon
+Peter Spadaro
 Corey Brady
