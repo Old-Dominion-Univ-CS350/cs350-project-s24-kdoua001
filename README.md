@@ -10,6 +10,6 @@ The actual source code for the project should be placed within the `project`
 
 #Names
 Iizalaarab Elhaimeur - Back from the Dead
-Khamnulin Douangdara
+Khamnulin Douangdara 
 Matthew Haydon
 Ralph Mpanu
