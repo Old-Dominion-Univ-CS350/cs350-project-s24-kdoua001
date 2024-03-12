@@ -8,13 +8,20 @@ public class TextBlock {
     }
     
     public:
-        void setTextBlock(String AssignedBlock) {}
+        void setTextBlock(String AssignedBlock) {
+            this.TextBlock = String AssignedBlock;
+        }
 
-        String getTextBlock() {}
+        String getTextBlock() {
+            return this.TextBlock;
+        }
 
-        void setTokens(List<Tokens> AssignedTokens) {}
+        void setTokens(List<Tokens> AssignedTokens) {
+            this.Tokens = List<Tokens> AssignedTokens;
+        }
 
-        List<Tokens> getTokens() {}
+        List<Tokens> getTokens() {
+        }
 
     
 }
