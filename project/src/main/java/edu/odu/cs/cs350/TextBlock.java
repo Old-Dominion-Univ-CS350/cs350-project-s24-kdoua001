@@ -7,30 +7,14 @@ public class TextBlock {
 
     }
     
-    String getTextBlock() {}
-    void setTextBlock(String AssignedBlock) {}
-
-    List<Tokens> getTokens() {}
-    void setTokens(List<Tokens> AssignedTokens)
-
     public:
-        void setTextBlock(String theTextBlock)
-        {
-        }
+        void setTextBlock(String AssignedBlock) {}
 
-        String getTextBlock()
-        {
-            return this.TextBlock;
-        }
+        String getTextBlock() {}
 
-        void setWords(TextBlock)
-        {
-        }
+        void setTokens(List<Tokens> AssignedTokens) {}
 
-        Token getWords()
-        {
-            return this.words;
-        }
+        List<Tokens> getTokens() {}
 
     
 }
