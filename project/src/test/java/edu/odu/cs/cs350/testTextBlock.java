@@ -1,4 +1,4 @@
-package edu.odu.cs.cs350
+package edu.odu.cs.cs350;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,9 +7,30 @@ import static org.hamcrest.Matchers.*;
 public class testTextBlock {
     
 
-    @test
+    @Test
     public void testTextBlockConstructor()
     {
-        TextBlock  inputTxt = new TextBlock(); 
+        String inputTest = "<NER> Ralph, Izzy, Peter </NER>";
+        TextBlock  inputTxt = new TextBlock(inputTest);
+        
+        assertEquals("Hello World", inputTxt.getTextBlock());
+
     }
+
+
+    @Test
+    public void testSetTextBlock()
+    {
+       
+
+    }
+
+    @Test
+    public void testSetTokens()
+    {
+       
+
+    }
+
+
 }
