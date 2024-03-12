@@ -21,6 +21,7 @@ public class TextBlock {
         }
 
         List<Tokens> getTokens() {
+            return this.Tokens;
         }
 
     
