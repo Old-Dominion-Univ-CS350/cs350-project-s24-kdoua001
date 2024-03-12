@@ -3,6 +3,7 @@ public class TextBlock {
     private:
         String TextBlock;
         List<Tokens> Tokens;
+        
     TextBlock(String BlockText){
         this.TextBlock = String BlockText;
     }
