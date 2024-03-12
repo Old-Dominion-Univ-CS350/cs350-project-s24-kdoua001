@@ -9,15 +9,7 @@ public class Token {
     private boolean honorific;
     private boolean killWord;
     
-    Token(String AssignedString){
-        this.TokenString = String AssignedString;
-        this.inDictionary = false;
-        this.isLocation = false;
-        this.commonFirst = false;
-        this.commonLast = false;
-        this.honorific = false;
-        this.killWord = false;
-    }
+
 
     String getToken()
     {
