@@ -3,4 +3,12 @@ public class Token {
 
     private String theToken;
     private List<Boolean> features;  
+    
+
+
+
+
+
+    Token(String TokenString){
+    }
 }

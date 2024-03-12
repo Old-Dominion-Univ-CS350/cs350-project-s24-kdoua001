@@ -4,7 +4,7 @@ public class TextBlock {
         String TextBlock;
         List<Tokens> Tokens;
     TextBlock(String BlockText){
-
+        this.TextBlock = String BlockText;
     }
     
     public:
@@ -23,6 +23,8 @@ public class TextBlock {
         List<Tokens> getTokens() {
             return this.Tokens;
         }
+
+        List<Tokens> createTokens(String BlockText) {}
 
     
 }
