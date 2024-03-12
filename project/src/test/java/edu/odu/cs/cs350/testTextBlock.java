@@ -7,8 +7,8 @@ import static org.hamcrest.Matchers.*;
 public class testTextBlock {
     
 
-    @Test
-    public void testTextBlockConstructor()
+@Test
+public void testTextBlockConstructor()
     {
         String inputTest = "<NER> Ralph, Izzy, Peter </NER>";
         TextBlock  inputTxt = new TextBlock(inputTest);
