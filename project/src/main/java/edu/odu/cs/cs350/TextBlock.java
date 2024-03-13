@@ -32,7 +32,7 @@ public class TextBlock {
         //Returns True if Word or Puncuation is Found
         List<Token> tokens = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
-        Matcher matcher = pattern.matcher(String BlockText); 
+        Matcher matcher = pattern.matcher(BlockText); 
 
         //Set isPuncuation to True if Punc is Found in First Char, False if Not
         while (matcher.find()) {
