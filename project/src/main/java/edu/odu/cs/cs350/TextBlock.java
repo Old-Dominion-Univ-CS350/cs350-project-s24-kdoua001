@@ -33,6 +33,14 @@ public class TextBlock {
         List<Token> tokens = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
         Matcher matcher = pattern.matcher(String BlockText); 
+
+        //Set isPuncuation to True if Punc is Found in First Char, False if Not
+        while (matcher.find()) {
+            String tokenString = matcher.group();
+            Token AddMe = new Token(tokenString);
+            TokenType type = Character.isLetterOrDigit(tokenString.charAt(0)) ? AddMe.setPunctuation(false): AddMe.setPunctuation(true);
+            tokens.add(AddMe);
+        }
        }
 
     
