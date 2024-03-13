@@ -6,31 +6,34 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 public class testTextBlock {
     
+public class testTextBlock{
 
-@Test
-public void testTextBlockConstructor()
+    @Test
+    public void testTextBlockConstructor()
     {
         String inputTest = "<NER> Ralph, Izzy, Peter </NER>";
         TextBlock  inputTxt = new TextBlock(inputTest);
         
         assertEquals("Hello World", inputTxt.getTextBlock());
-
+        
     }
-
-
+    
+    
     @Test
     public void testSetTextBlock()
     {
-       
-
+        
+        
     }
-
+    
     @Test
     public void testSetTokens()
     {
-       
-
+        
+        
     }
-
+    
+    
+}
 
 }
