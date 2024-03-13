@@ -38,7 +38,7 @@ public class TextBlock {
         while (matcher.find()) {
             String tokenString = matcher.group();
             Token AddMe = new Token(tokenString);
-            TokenType type = Character.isLetterOrDigit(tokenString.charAt(0)) ? AddMe.setPunctuation(false): AddMe.setPunctuation(true);
+            Character.isLetterOrDigit(tokenString.charAt(0)) ? AddMe.setPunctuation(false): AddMe.setPunctuation(true);
             tokens.add(AddMe);
         }
 
