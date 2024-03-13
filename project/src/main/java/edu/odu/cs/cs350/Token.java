@@ -24,6 +24,7 @@ public class Token {
         this.commonLast = false;
         this.honorific = false;
         this.killWord = false;
+        this.isPunctuation = false;
     }
 
     String getToken()
