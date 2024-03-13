@@ -10,7 +10,7 @@ public class Token {
     private boolean killWord;
     
     Token(String AssignedString){
-        this.TokenString = String AssignedString;
+        this.TokenString =  AssignedString;
         this.inDictionary = false;
         this.isLocation = false;
         this.commonFirst = false;
@@ -61,7 +61,7 @@ public class Token {
 
     void setInDictonary(boolean bool)
     {
-        this.inDictonary = bool;
+        this.inDictionary = bool;
     }
 
     void setIsLocation(boolean bool)
