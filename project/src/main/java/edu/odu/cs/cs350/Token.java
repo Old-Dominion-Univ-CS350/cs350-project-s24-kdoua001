@@ -8,7 +8,14 @@ public class Token {
     private boolean commonLast;
     private boolean honorific;
     private boolean killWord;
+    private boolean isPunctuation;
     
+    
+
+    public boolean isPunctuation() {
+        return isPunctuation;
+    }
+
     Token(String AssignedString){
         this.TokenString =  AssignedString;
         this.inDictionary = false;
@@ -87,6 +94,10 @@ public class Token {
     void setKillWord(boolean bool)
     {
         this.killWord = bool;
+    }
+
+    void setPunctuation(boolean isPunctuation) {
+        this.isPunctuation = isPunctuation;
     }
 
 }
