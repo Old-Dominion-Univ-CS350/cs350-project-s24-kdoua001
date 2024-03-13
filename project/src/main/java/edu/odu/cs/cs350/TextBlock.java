@@ -41,6 +41,8 @@ public class TextBlock {
             TokenType type = Character.isLetterOrDigit(tokenString.charAt(0)) ? AddMe.setPunctuation(false): AddMe.setPunctuation(true);
             tokens.add(AddMe);
         }
+
+        return tokens;
        }
 
     
