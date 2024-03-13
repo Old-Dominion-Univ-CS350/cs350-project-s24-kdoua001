@@ -14,8 +14,8 @@ public class testTextBlock{
         String inputTest = "<NER> Ralph, Izzy, Peter </NER>";
         TextBlock  inputTxt = new TextBlock(inputTest);
         
-        assertEquals("Hello World", inputTxt.getTextBlock());
-        
+        assertEquals("<NER> Ralph, Izzy, Peter </NER>", inputTxt.getTextBlock());
+
     }
     
     
