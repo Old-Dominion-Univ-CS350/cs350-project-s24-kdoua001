@@ -29,7 +29,10 @@ public class TextBlock {
         }
 
        public List<Token> createTokens(String BlockText) {
-        return null;
+        //Returns True if Word or Puncuation is Found
+        List<Token> tokens = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
+        Matcher matcher = pattern.matcher(String BlockText); 
        }
 
     
