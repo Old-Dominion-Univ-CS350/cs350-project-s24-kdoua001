@@ -38,7 +38,8 @@ public class TextBlock {
         while (matcher.find()) {
             String tokenString = matcher.group();
             Token AddMe = new Token(tokenString);
-            Character.isLetterOrDigit(tokenString.charAt(0)) ? AddMe.setPunctuation(false): AddMe.setPunctuation(true);
+            bool isPunc = Character.isLetterOrDigit(tokenString.charAt(0));
+            AddMe.setPunctuation(isPunc);
             tokens.add(AddMe);
         }
 
