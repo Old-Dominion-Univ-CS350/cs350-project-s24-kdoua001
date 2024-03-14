@@ -10,6 +10,7 @@ public class TextBlock {
         
     TextBlock(String BlockText){
         this.TextBlock =  BlockText;
+        this.Tokens = createTokens(BlockText);
     }
     
     
