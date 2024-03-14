@@ -22,8 +22,15 @@ public class testTextBlock{
     @Test
     public void testSetTextBlock()
     {
+        TextBlock firstBlock = new TextBlock("default string");
+
+        //create another block of words
+        String blockOfWords = "This is a block of words";
+
+        //use setter for textblock class
+        firstBlock.setTextBlock(blockOfWords);
         
-        
+        assertEquals(blockOfWords, firstBlock.getTextBlock());
     }
     
     @Test
