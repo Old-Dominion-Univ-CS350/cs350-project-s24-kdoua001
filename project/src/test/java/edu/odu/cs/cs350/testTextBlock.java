@@ -59,6 +59,26 @@ public class testTextBlock{
         assertThat(block.getTextBlock(), is ("<NER> My name is <PER> John Doe </PER> </NER>"));
 
     }
+
+
+    @Test
+   public void testSetTokens() {
+        String originalText = "This is to test set tokens function";
+        TextBlock aBlockOfText = new TextBlock(originalText);
+
+        List<Token> originalTokens = aBlockOfText.createTokens(originalText);
+        aBlockOfText.setTokens(originalTokens);
+
+       List<Token> newTokens = aBlockOfText.createTokens("new tokens for test");
+       aBlockOfText.setTokens(newTokens);
+        assertEquals("new", aBlockOfText.getTokens().get(0).getToken());
+
+
+   }
+
+ 
+
+    
     
     
 }
