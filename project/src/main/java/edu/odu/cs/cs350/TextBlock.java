@@ -57,20 +57,14 @@ public class TextBlock {
      */
     public String makeString(){
         StringBuilder theString = new StringBuilder();
-
         theString.append("<NER> ");
-    
         for(Token token : tokensList){
             theString.append(token.getToken());
             theString.append(" ");
         }
-
         theString.append("</NER>");
-
         return theString.toString();
-
     }
-
 
     /**
      * Adds PER tags
