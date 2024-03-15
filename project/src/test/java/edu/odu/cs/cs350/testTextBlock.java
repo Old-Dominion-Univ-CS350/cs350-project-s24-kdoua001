@@ -47,8 +47,17 @@ public class testTextBlock{
         secondBlockOfText.createTokens(blockOfWords);
         String subStringOfBlock = "This";
 
-        assertEquals(subStringOfBlock, secondBlockOfText.getTokens().get(0).getToken());
+        assertEquals(subStringOfBlock, secondBlockOfText.getTokensList().get(0).getToken());
         
+    }
+
+    @Test
+    public void testAddPersonTag(){
+        String string = "<NER> My name is John Doe </NER>";
+        TextBlock block = new TextBlock(string);
+        block.addPersonTag(4, 2);
+        assertThat(block.getTextBlock(), is ("<NER> My name is <PER> John Doe </PER> </NER>"));
+
     }
     
     
