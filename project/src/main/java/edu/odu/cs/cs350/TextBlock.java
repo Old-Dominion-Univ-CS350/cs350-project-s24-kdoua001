@@ -72,11 +72,17 @@ public class TextBlock {
      * @param numberOfTokensInName The number of tokens that make up the name
      */
     public void addPersonTag(int startNameIndex, int numberOfTokensInName){
+       if (startNameIndex < 0 || startNameIndex >= (tokensList.size() + 2)){
+            return;//error
+        }
+       if(startNameIndex + numberOfTokensInName > (tokensList.size() + 2)){
+            return;//error
+        }
         Token nameBegin = new Token("<PER>");
         Token nameEnd = new Token("</PER>");
         tokensList.add(startNameIndex -1, nameBegin);
         tokensList.add(startNameIndex + numberOfTokensInName, nameEnd);
         theText = this.makeString();
     }
-    
+
 }
