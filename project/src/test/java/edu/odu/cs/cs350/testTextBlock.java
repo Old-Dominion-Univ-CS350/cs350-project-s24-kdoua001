@@ -1,4 +1,5 @@
 package edu.odu.cs.cs350;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,50 +10,48 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-    
-public class testTextBlock{
+public class testTextBlock {
 
     @Test
-    public void testTextBlockConstructor()
-    {
+    public void testTextBlockConstructor() {
         String inputTest = "<NER> Ralph, Izzy, Peter </NER>";
-        TextBlock  inputTxt = new TextBlock(inputTest);
+        TextBlock inputTxt = new TextBlock(inputTest);
         inputTxt.createTokens(inputTest);
-        
+
         assertEquals("<NER> Ralph, Izzy, Peter </NER>", inputTxt.getTextBlock());
 
     }
-    
-    
+
     @Test
-    public void testSetTextBlock()
-    {
+    public void testSetTextBlock() {
         TextBlock firstBlock = new TextBlock("default string");
 
-        //create another block of words
+        // create another block of words
         String blockOfWords = "This is a block of words";
 
-        //use setter for textblock class
+        // use setter for textblock class
         firstBlock.setTextBlock(blockOfWords);
-        
+
         assertEquals(blockOfWords, firstBlock.getTextBlock());
     }
-    
+
     @Test
-    public void testCreateTokens()
-    {
+    public void testCreateTokens() {
+        // create a block of words
         String blockOfWords = "This is a block of words";
         TextBlock secondBlockOfText = new TextBlock(blockOfWords);
 
+        // create tokens for the block of words
         secondBlockOfText.createTokens(blockOfWords);
         String subStringOfBlock = "This";
 
+        // check if the first token is equal to the first word in the block of words
         assertEquals(subStringOfBlock, secondBlockOfText.getTokensList().get(0).getToken());
-        
+
     }
 
     @Test
-    public void testSetTokens(){
+    public void testSetTokens() {
         String originalText = "This is to test set tokens function";
         TextBlock aBlockOfText = new TextBlock(originalText);
 
@@ -62,12 +61,10 @@ public class testTextBlock{
         List<Token> newTokens = aBlockOfText.createTokens("new tokens for test");
         aBlockOfText.setTokensList(newTokens);
         assertEquals("new", aBlockOfText.getTokensList().get(0).getToken());
-   }
+    }
 
-
-   @Test
-   public void testToString()
-   {
+    @Test
+    public void testToString() {
         Token My = new Token("My");
         Token name = new Token("name");
         Token is = new Token("is");
@@ -86,11 +83,8 @@ public class testTextBlock{
         block.addToken(John);
         block.addToken(Jim);
         block.addToken(Doe);
-    
-        assertThat(block.toString(), is ("<NER> My name is <PER> John Jim Doe </PER> </NER>"));
-   }
 
- 
- 
+        assertThat(block.toString(), is("<NER> My name is <PER> John Jim Doe </PER> </NER>"));
+    }
+
 }
-
