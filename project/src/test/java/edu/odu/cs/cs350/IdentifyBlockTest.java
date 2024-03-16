@@ -1,40 +1,50 @@
 package edu.odu.cs.cs350;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class IdentifyBlockTest {
 
-    @Test
-    public void testReadFile() {
-        IdentifyBlock identifyBlock = new IdentifyBlock();
-        String filePath = "src/test/data/testinput.txt"; // Replace with the actual file path
-        // Read the content of the file using the method to be tested
-        identifyBlock.readFile(filePath);
-        // Expected content of the file
-        String expectedContent = "<NER>This is a test file. It contains some text.</NER>";
-        // Compare the actual content with the expected content
-        assertEquals(expectedContent, identifyBlock.getDataFromFile());
-    }
 
     @Test
-    public void testFileExists() {
-        IdentifyBlock identifyBlock = new IdentifyBlock();
-
-        // Test with an existing file
-        String existingFilePath = "src/test/data/testinput.txt"; // Replace with the actual file path
-        assertTrue(identifyBlock.fileExists(existingFilePath));
-
-        // Test with a non-existing file
-        String nonExistingFilePath = "src/test/data/nonexistentfile.txt"; // Replace with a non-existing file path
-        assertFalse(identifyBlock.fileExists(nonExistingFilePath));
+    public void testDefaultConstructor() {
+        IdentifyBlock block = new IdentifyBlock();
+        assertEquals("", block.getDataFromFile());
+    }
+ 
+    @Test
+    public void testParameterizedConstructor() {
+        String block = "<NER> this is for testing </NER>";
+        IdentifyBlock testInput = new IdentifyBlock(block);
+ 
+        assertEquals("<NER> this is for testing </NER>", testInput.getDataFromFile());
     }
 
+
+    public void testReadInput() throws Exception {
+        // Prepare input data
+        String inputData = "Test input data";
+        InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream); // Redirect System.in to our input stream
+ 
+        IdentifyBlock identifyBlock = new IdentifyBlock();
+        identifyBlock.readInput(); // Call the method to read input
+ 
+        // Assert that dataFromFile is equal to inputData
+        assertEquals(inputData, identifyBlock.getDataFromFile());
+ 
+        // Clean up: Restore System.in
+        System.setIn(System.in);
+    }
+
+     
     @Test
     public void testExtractNerBlocks() {
         IdentifyBlock identifyBlock = new IdentifyBlock();
@@ -56,4 +66,5 @@ public class IdentifyBlockTest {
             assertEquals(expectedBlocks.get(i), actualBlocks.get(i));
         }
     }
+
 }

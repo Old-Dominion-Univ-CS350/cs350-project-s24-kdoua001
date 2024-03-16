@@ -1,7 +1,9 @@
 package edu.odu.cs.cs350;
 
-import java.util.Scanner;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 
  
@@ -19,7 +21,7 @@ public class IdentifyBlock {
     //Constructor with data param
     public IdentifyBlock(String data) {
         this.dataFromFile = data;
-        this.nerBlocks = extractNerBlocks(data)
+        this.nerBlocks = extractNerBlocks(data);
     }
  
     //getter for dataFromFile
