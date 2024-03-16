@@ -25,16 +25,15 @@ public class IdentifyBlockTest {
     @Test
     public void testFileExists() {
         IdentifyBlock identifyBlock = new IdentifyBlock();
-        
+
         // Test with an existing file
         String existingFilePath = "src/test/data/testinput.txt"; // Replace with the actual file path
         assertTrue(identifyBlock.fileExists(existingFilePath));
-        
+
         // Test with a non-existing file
         String nonExistingFilePath = "src/test/data/nonexistentfile.txt"; // Replace with a non-existing file path
         assertFalse(identifyBlock.fileExists(nonExistingFilePath));
     }
-
 
     @Test
     public void testExtractNerBlocks() {
