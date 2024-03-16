@@ -64,26 +64,31 @@ public class testTextBlock{
         assertEquals("new", aBlockOfText.getTokensList().get(0).getToken());
    }
 
-    @Test
-    public void testAddPersonTag(){
-        String string = "<NER> My name is John Doe </NER>";
-        TextBlock block = new TextBlock(string);
-        block.addPersonTag(4, 2);
-        assertThat(block.getTextBlock(), is ("<NER> My name is <PER> John Doe </PER> </NER>"));
-   }
 
    @Test
-   public void testMakeString(){
-        String string = "<NER> My name is John Doe </NER>";
-        TextBlock block = new TextBlock(string);
-        assertThat(block.getTextBlock(), is (string));
-        block.makeString();
-        assertThat(block.getTextBlock(), is (string));
-        block.addPersonTag(4,2);
-        assertThat(block.getTextBlock(), is ("<NER> My name is <PER> John Doe </PER> </NER>"));
+   public void testToString()
+   {
+        Token My = new Token("My");
+        Token name = new Token("name");
+        Token is = new Token("is");
+        Token John = new Token("John");
+        Token Jim = new Token("Jim");
+        Token Doe = new Token("Doe");
 
+        John.setIsAName(true);
+        Jim.setIsAName(true);
+        Doe.setIsAName(true);
+
+        TextBlock block = new TextBlock(" ");
+        block.addToken(My);
+        block.addToken(name);
+        block.addToken(is);
+        block.addToken(John);
+        block.addToken(Jim);
+        block.addToken(Doe);
+    
+        assertThat(block.toString(), is ("<NER> My name is <PER> John Jim Doe </PER> </NER>"));
    }
-
 
  
  

@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 public class Token {
     
     private String TokenString;
+    private boolean isAName;
     private boolean inDictionary;
     private boolean isLocation;
     private boolean commonFirst;
@@ -9,12 +10,6 @@ public class Token {
     private boolean honorific;
     private boolean killWord;
     private boolean isPunctuation;
-    
-    
-
-    public boolean isPunctuation() {
-        return isPunctuation;
-    }
 
     Token(String AssignedString){
         this.TokenString =  AssignedString;
@@ -27,9 +22,19 @@ public class Token {
         this.isPunctuation = false;
     }
 
+    public boolean isPunctuation() {
+        return isPunctuation;
+    }
+
+
     String getToken()
     {
         return this.TokenString;
+    }
+
+    boolean getIsAName()
+    {
+        return this.isAName;
     }
 
     boolean getInDictionary()
@@ -65,6 +70,11 @@ public class Token {
     void setToken(String str)
     {
         this.TokenString = str;
+    }
+
+    void setIsAName(boolean isName)
+    {
+        this.isAName = isName;
     }
 
     void setInDictonary(boolean bool)
