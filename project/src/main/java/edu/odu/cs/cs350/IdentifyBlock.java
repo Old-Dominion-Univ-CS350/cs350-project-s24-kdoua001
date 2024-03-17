@@ -51,7 +51,19 @@ public class IdentifyBlock {
    
     //Method to identify tagged blocks of text 
     public List<String> extractNerBlocks(String text) {
+        List<String> taggedBlocks = new ArrayList<>();
 
+        //Define pattern to identify blocks of text
+        Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
+        Matcher matcher = pattern.matcher(text);
+
+        //Find patterns and adds them to the list
+        while (matcher.find()) {
+            String textBlocks = matcher.group();
+            taggedBlocks.add(textBlocks);
+        }
+
+        return taggedBlocks;
     }
 
 }
