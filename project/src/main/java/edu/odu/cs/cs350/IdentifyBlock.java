@@ -4,7 +4,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
  
 public class IdentifyBlock {
@@ -39,6 +40,7 @@ public class IdentifyBlock {
         this.dataFromFile = data;
     }
 
+    //Reads input and stores it in string
     public void readInput() throws Exception {
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
         scanner.useDelimiter("\\A");
@@ -47,5 +49,9 @@ public class IdentifyBlock {
         scanner.close();
     }
    
+    //Method to identify tagged blocks of text 
+    public List<String> extractNerBlocks(String text) {
+
+    }
 
 }
