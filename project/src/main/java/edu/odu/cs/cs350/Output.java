@@ -8,6 +8,9 @@ import java.util.List;
 
 
 public class OutputInfo {
+    private String input;
+    
+    /*
     private String dataFromTextBlocks;
 
     public void getDataFromTextBlocks()
@@ -26,5 +29,22 @@ public class OutputInfo {
         String output = newOutput.getDataFromTextBlocks();
         System.out.println(output);
     }
+    */
 
+    public void outputTaggedBlocks()
+    {
+        List<String> nerBlocks;
+        List<String> output;
+        IdentifyBlock inputBlock = new IdentifyBlock(input);
+        nerBlocks = inputBlock.getNerBlocks();
+        for (String string : nerBlocks)
+        {
+            TextBlock textBlock = new TextBlock(string);
+            output.add(textBlock.toString());
+        }
+        for (String string : output)
+        {
+            System.out.println(output);
+        }
+    }
 }
