@@ -49,40 +49,35 @@ public class TextBlock {
 
         return tokens;
     }
-    
-    /**
-     * Adds NER blocks
-     * Adds each token in tokensList to a single string
-     * @return a single string with all the tokens and NER blocks
-     */
-    public String makeString(){
-        StringBuilder theString = new StringBuilder();
-        theString.append("<NER> ");
-        for(Token token : tokensList){
-            theString.append(token.getToken());
-            theString.append(" ");
-        }
-        theString.append("</NER>");
-        return theString.toString();
-    }
 
-    /**
-     * Adds PER tags
-     * @param startNameIndex The beginning of the personal name
-     * @param numberOfTokensInName The number of tokens that make up the name
-     */
-    public void addPersonTag(int startNameIndex, int numberOfTokensInName){
-       if (startNameIndex < 0 || startNameIndex >= (tokensList.size() + 2)){
-            return;//error
+    public String toString(){
+        StringBuilder theString = new StringBuilder();
+        boolean lastWasName = false;
+        theString.append("<NER> ");
+        for (Token token : tokensList) {
+            if (token.getIsAName()) {
+                if (!lastWasName) {
+                    theString.append("<PER> ");
+                }
+                theString.append(token.getToken()).append(" ");
+                lastWasName = true;
+            } else {
+                if (lastWasName) {
+                    theString.append("</PER>");
+                }
+                theString.append(token.getToken()).append(" ");
+                lastWasName = false;
+            }
         }
-       if(startNameIndex + numberOfTokensInName > (tokensList.size() + 2)){
-            return;//error
-        }
-        Token nameBegin = new Token("<PER>");
-        Token nameEnd = new Token("</PER>");
-        tokensList.add(startNameIndex -1, nameBegin);
-        tokensList.add(startNameIndex + numberOfTokensInName, nameEnd);
-        theText = this.makeString();
+            if (lastWasName) {
+                theString.append("</PER>");
+            }
+        theString.append(" </NER>");
+        return theString.toString().trim();
+    }
+ 
+    public void addToken(Token token){
+        this.tokensList.add(token);
     }
 
 }
