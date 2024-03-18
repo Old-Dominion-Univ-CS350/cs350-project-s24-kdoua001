@@ -1,1 +1,0 @@
-Java source code for testing, will not be part of the deliverable

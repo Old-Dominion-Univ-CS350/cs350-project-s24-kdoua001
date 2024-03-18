@@ -1,8 +1,9 @@
 package edu.odu.cs.cs350;
+
 public class Token {
     
-    private String TokenString;
-    private boolean isAName;
+    private String tokenString;
+    private boolean isName;
     private boolean inDictionary;
     private boolean isLocation;
     private boolean commonFirst;
@@ -11,8 +12,9 @@ public class Token {
     private boolean killWord;
     private boolean isPunctuation;
 
-    Token(String AssignedString){
-        this.TokenString =  AssignedString;
+    // Constructor
+    public Token(String assignedString){
+        this.tokenString = assignedString;
         this.inDictionary = false;
         this.isLocation = false;
         this.commonFirst = false;
@@ -22,93 +24,77 @@ public class Token {
         this.isPunctuation = false;
     }
 
-    public boolean isPunctuation() {
-        return isPunctuation;
+    // Getter methods
+    public String getTokenString() {
+        return this.tokenString;
     }
 
-
-    String getToken()
-    {
-        return this.TokenString;
+    public boolean isName() {
+        return this.isName;
     }
 
-    boolean getIsAName()
-    {
-        return this.isAName;
-    }
-
-    boolean getInDictionary()
-    {
+    public boolean isInDictionary() {
         return this.inDictionary;
     }
 
-    boolean getIsLocation()
-    {
+    public boolean isLocation() {
         return this.isLocation;
     }
 
-    boolean getCommonFirst()
-    {
+    public boolean isCommonFirst() {
         return this.commonFirst;
     }
 
-    boolean getCommonLast()
-    {
+    public boolean isCommonLast() {
         return this.commonLast;
     }
 
-    boolean getHonorific()
-    {
+    public boolean isHonorific() {
         return this.honorific;
     }
 
-    boolean getKillWord()
-    {
+    public boolean isKillWord() {
         return this.killWord;
     }
 
-    void setToken(String str)
-    {
-        this.TokenString = str;
+    public boolean isPunctuation() {
+        return this.isPunctuation;
     }
 
-    void setIsAName(boolean isName)
-    {
-        this.isAName = isName;
+    // Setter methods
+    public void setTokenString(String tokenString) {
+        this.tokenString = tokenString;
     }
 
-    void setInDictonary(boolean bool)
-    {
-        this.inDictionary = bool;
+    public void setIsName(boolean isName) {
+        this.isName = isName;
     }
 
-    void setIsLocation(boolean bool)
-    {
-        this.isLocation = bool;
+    public void setIsInDictionary(boolean inDictionary) {
+        this.inDictionary = inDictionary;
     }
 
-    void setCommonFirst(boolean bool)
-    {
-        this.commonFirst = bool;
+    public void setIsLocation(boolean isLocation) {
+        this.isLocation = isLocation;
     }
 
-    void setCommonLast(boolean bool)
-    {
-        this.commonLast = bool;
+    public void setIsCommonFirst(boolean commonFirst) {
+        this.commonFirst = commonFirst;
     }
 
-    void setHonorific(boolean bool)
-    {
-        this.honorific = bool;
+    public void setIsCommonLast(boolean commonLast) {
+        this.commonLast = commonLast;
     }
 
-    void setKillWord(boolean bool)
-    {
-        this.killWord = bool;
+    public void setIsHonorific(boolean honorific) {
+        this.honorific = honorific;
     }
 
-    void setPunctuation(boolean isPunctuation) {
+    public void setIsKillWord(boolean killWord) {
+        this.killWord = killWord;
+    }
+
+    public void setIsPunctuation(boolean isPunctuation) {
         this.isPunctuation = isPunctuation;
     }
-
 }

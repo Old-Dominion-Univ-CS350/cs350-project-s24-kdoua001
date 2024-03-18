@@ -6,21 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextBlock {
-    private  String theText;
     private  List<Token> tokensList;
         
     TextBlock(String BlockText){
-        this.theText =  BlockText;
         this.tokensList = createTokens(BlockText);
-    }
-    
-    
-    public void setTextBlock(String AssignedBlock) {
-        this.theText =  AssignedBlock;
-    }
-
-    public String getTextBlock() {
-        return this.theText;
     }
 
     public void setTokensList(List<Token> AssignedTokens) {
@@ -33,49 +22,63 @@ public class TextBlock {
 
     public List<Token> createTokens(String BlockText) {
         //Returns True if Word or Puncuation is Found
-        String noTags = BlockText.replaceAll("<[^>]*>", ""); //I took the tags out of tokensList. makeString() will add them back to the string -Peter
+        String noTags = BlockText.replaceAll("<[^>]*>", "");
         List<Token> tokens = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
-        Matcher matcher = pattern.matcher(noTags); //Changed BlockText to noTags -Peter
+        Matcher matcher = pattern.matcher(noTags);
 
         //Set isPuncuation to True if Punc is Found in First Char, False if Not
         while (matcher.find()) {
             String tokenString = matcher.group();
             Token AddMe = new Token(tokenString);
             boolean isPunc = Character.isLetterOrDigit(tokenString.charAt(0));
-            AddMe.setPunctuation(isPunc);
+            AddMe.setIsPunctuation(!isPunc);
             tokens.add(AddMe);
         }
 
         return tokens;
     }
 
+    /**
+     * @return string representation of TextBlock
+     * Entire text block will be wrapped in <NER> </NER> and
+     * persons will be wrapped in <PER> </PER>
+     */
     public String toString(){
         StringBuilder theString = new StringBuilder();
-        boolean lastWasName = false;
-        theString.append("<NER> ");
-        for (Token token : tokensList) {
-            if (token.getIsAName()) {
-                if (!lastWasName) {
-                    theString.append("<PER> ");
-                }
-                theString.append(token.getToken()).append(" ");
-                lastWasName = true;
-            } else {
-                if (lastWasName) {
-                    theString.append("</PER>");
-                }
-                theString.append(token.getToken()).append(" ");
-                lastWasName = false;
+        theString.append("<NER>"); 
+    
+        int lastIndex = tokensList.size() - 1;
+
+        for (int index = 0; index <= lastIndex; index++){
+            Token currentToken = tokensList.get(index);
+            Token previousToken = (index > 0) ? tokensList.get(index - 1) : null;
+            Token nextToken = (index < lastIndex) ? tokensList.get(index + 1) : null;
+
+            if (currentToken.isName() && !previousToken.isName()){
+                theString.append("<PER>");//beginning of name
+            }
+
+            theString.append(currentToken.getTokenString());
+
+            if (currentToken.isName() && !nextToken.isName()){
+                theString.append("</PER>");//end of name
+            }
+
+            if(!(nextToken == null) && !nextToken.isPunctuation()){
+                theString.append(" ");
             }
         }
-            if (lastWasName) {
-                theString.append("</PER>");
-            }
-        theString.append(" </NER>");
+        
+        theString.append("</NER>");
         return theString.toString().trim();
     }
- 
+
+    /**
+     * 
+     * @param token a Token object
+     * Adds a token to tokensList
+     */
     public void addToken(Token token){
         this.tokensList.add(token);
     }
