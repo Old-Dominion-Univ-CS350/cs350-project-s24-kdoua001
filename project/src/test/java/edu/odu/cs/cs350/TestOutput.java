@@ -12,6 +12,17 @@ import java.util.List;
 public class TestOutput {
 
     @Test
-    public void testString{
+    public void testdefaultConstructor()
+    {
+        OutputInfo data = new Main();
+        assertEquals("", data.getDataFromTextBlocks());
+    }
+
+    @Test
+    public void testParameterizedConstructor()
+    {
+        String data = "<NER> this is for testing </NER>";
+        OutputInfo testData = new OutputInfo(data);
+        assertEquals("<NER> this is for testing </NER>", testData.getDataFromTextBlocks());
     }
 }

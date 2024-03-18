@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Main {
+public class OutputInfo {
     private String dataFromTextBlocks;
+
+    private void getDataFromTextBlocks()
+    {
+        this.dataFromTextBlocks = "";
+    }
+
+    public void getDataFromTextBlocks(String theString)
+    {
+        this.dataFromTextBlocks = theString;
+    }
 }
