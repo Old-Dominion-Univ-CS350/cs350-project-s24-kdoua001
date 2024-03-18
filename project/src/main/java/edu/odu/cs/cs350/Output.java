@@ -24,7 +24,7 @@ public class OutputInfo {
     {
         OutputInfo newOutput = new OutputInfo();
         String output = newOutput.getDataFromTextBlocks();
-        System.out.printIn(output);
+        System.out.println(output);
     }
 
 }
