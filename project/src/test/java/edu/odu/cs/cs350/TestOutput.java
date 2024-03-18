@@ -14,7 +14,7 @@ public class TestOutput {
     @Test
     public void testdefaultConstructor()
     {
-        OutputInfo data = new Main();
+        OutputInfo data = new OutputInfo();
         assertEquals("", data.getDataFromTextBlocks());
     }
 

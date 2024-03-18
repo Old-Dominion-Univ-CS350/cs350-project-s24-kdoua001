@@ -10,7 +10,7 @@ import java.util.List;
 public class OutputInfo {
     private String dataFromTextBlocks;
 
-    private void getDataFromTextBlocks()
+    public void getDataFromTextBlocks()
     {
         this.dataFromTextBlocks = "";
     }
@@ -19,4 +19,12 @@ public class OutputInfo {
     {
         this.dataFromTextBlocks = theString;
     }
+
+    public void outputText()
+    {
+        OutputInfo newOutput = new OutputInfo();
+        String output = newOutput.getDataFromTextBlocks();
+        System.out.printIn(output);
+    }
+
 }
