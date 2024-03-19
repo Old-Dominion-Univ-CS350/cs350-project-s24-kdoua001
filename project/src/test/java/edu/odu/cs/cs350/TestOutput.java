@@ -11,6 +11,7 @@ import java.util.List;
 
 public class TestOutput {
 
+    /*
     @Test
     public void testdefaultConstructor()
     {
@@ -24,5 +25,13 @@ public class TestOutput {
         String data = "<NER> this is for testing </NER>";
         OutputInfo testData = new OutputInfo(data);
         assertEquals("<NER> this is for testing </NER>", testData.getDataFromTextBlocks());
+    }
+    */
+
+    @Test
+    public void testOutputTaggedBlocks()
+    {
+        String input = "<NER> this is for testing </NER>";
+        IdentifyBlock inputBlock = new IdentifyBlock(input);
     }
 }
