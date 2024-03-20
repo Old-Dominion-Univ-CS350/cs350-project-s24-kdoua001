@@ -11,8 +11,10 @@ public class Token {
     private boolean honorific;
     private boolean killWord;
     private boolean isPunctuation;
-
-    // Constructor
+    
+    /**
+     * Constructor
+     */
     public Token(String assignedString){
         this.tokenString = assignedString;
         this.inDictionary = false;
@@ -24,7 +26,10 @@ public class Token {
         this.isPunctuation = false;
     }
 
-    // Getter methods
+     /**
+     * @param
+     * @return 
+     */
     public String getTokenString() {
         return this.tokenString;
     }
