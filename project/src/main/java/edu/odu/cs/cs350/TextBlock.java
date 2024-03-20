@@ -7,19 +7,34 @@ import java.util.List;
 
 public class TextBlock {
     private  List<Token> tokensList;
-        
+
+    /**
+     * Main Constructor 
+     */
     TextBlock(String BlockText){
         this.tokensList = createTokens(BlockText);
     }
 
+    /**
+     * @param AssignedTokens
+     * @return none
+     */
     public void setTokensList(List<Token> AssignedTokens) {
         this.tokensList = AssignedTokens;
     }
 
+    /**
+     * @param none
+     * @return tokenlist
+     */
     public List<Token> getTokensList() {
         return this.tokensList;
     }
 
+    /**
+     * @param BlockText
+     * @return List of Tokens
+     */
     public List<Token> createTokens(String BlockText) {
         //Returns True if Word or Puncuation is Found
         String noTags = BlockText.replaceAll("<[^>]*>", "");

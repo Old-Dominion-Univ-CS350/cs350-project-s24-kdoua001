@@ -1,2 +1,0 @@
- Java source code. After compilation, is part of the deliverable.
- 
