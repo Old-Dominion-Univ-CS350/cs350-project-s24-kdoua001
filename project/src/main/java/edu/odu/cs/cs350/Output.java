@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Class for running and outputting program
  */
-public class OutputInfo {
+public class Output {
     private String input;
     
     /*
