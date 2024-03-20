@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Class for running and outputting program
+ */
 public class OutputInfo {
     private String input;
     
