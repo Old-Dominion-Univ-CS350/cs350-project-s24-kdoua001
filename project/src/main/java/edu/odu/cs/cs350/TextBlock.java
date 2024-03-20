@@ -65,6 +65,18 @@ public class TextBlock {
     
         int lastIndex = tokensList.size() - 1;
 
+        addPersonTags(theString, lastIndex);
+        
+        theString.append("</NER>");
+        return theString.toString().trim();
+    }
+
+    /**
+     * Used by toString to find tokens with isName() == ture and place <PER> </PER> tags around names 
+     * @param theString a string representation of textBlock
+     * @param lastIndex tokenList.size() -1
+     */
+    private void addPersonTags(StringBuilder theString, int lastIndex) {
         for (int index = 0; index <= lastIndex; index++){
             Token currentToken = tokensList.get(index);
             Token previousToken = (index > 0) ? tokensList.get(index - 1) : null;
@@ -84,9 +96,6 @@ public class TextBlock {
                 theString.append(" ");
             }
         }
-        
-        theString.append("</NER>");
-        return theString.toString().trim();
     }
 
     /**
