@@ -40,7 +40,7 @@ public class Output {
     public void outputTaggedBlocks()
     {
         List<String> nerBlocks;
-        List<String> output;
+        List<String> output = new ArrayList<>();
         IdentifyBlock inputBlock = new IdentifyBlock(input);
         nerBlocks = inputBlock.getNerBlocks();
         for (String string : nerBlocks)
@@ -50,7 +50,7 @@ public class Output {
         }
         for (String string : output)
         {
-            System.out.println(output);
+            System.out.println(string);
         }
     }
 }
