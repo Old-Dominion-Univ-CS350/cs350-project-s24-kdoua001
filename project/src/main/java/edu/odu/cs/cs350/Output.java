@@ -34,6 +34,9 @@ public class OutputInfo {
     }
     */
 
+    /**
+     * Main function
+     */
     public void outputTaggedBlocks()
     {
         List<String> nerBlocks;
