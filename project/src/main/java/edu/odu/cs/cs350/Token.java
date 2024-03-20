@@ -28,7 +28,7 @@ public class Token {
 
      /**
      * @param
-     * @return 
+     * @return the string of the token
      */
     public String getTokenString() {
         return this.tokenString;
@@ -36,7 +36,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if is a name, false if else
      */
     public boolean isName() {
         return this.isName;
@@ -44,7 +44,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true of dictionary, false if not
      */
     public boolean isInDictionary() {
         return this.inDictionary;
@@ -52,7 +52,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if is a location, false if not
      */
     public boolean isLocation() {
         return this.isLocation;
@@ -60,7 +60,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if a common first name, false if not
      */
     public boolean isCommonFirst() {
         return this.commonFirst;
@@ -68,7 +68,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if common last name, false if not
      */
     public boolean isCommonLast() {
         return this.commonLast;
@@ -76,7 +76,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if a honorific, false if not
      */
     public boolean isHonorific() {
         return this.honorific;
@@ -84,7 +84,7 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if a kill word, false if not
      */
     public boolean isKillWord() {
         return this.killWord;
@@ -92,19 +92,24 @@ public class Token {
 
     /**
      * @param
-     * @return 
+     * @return true if a puncuation, false if not
      */
     public boolean isPunctuation() {
         return this.isPunctuation;
     }
 
-    // Setter methods
+    /**
+     * Sets the TokenString of a Token
+     * @param tokenString
+     * @return
+     */
     public void setTokenString(String tokenString) {
         this.tokenString = tokenString;
     }
 
     /**
-     * @param
+     * Sets the Bool isName of a Token
+     * @param isName
      * @return 
      */
     public void setIsName(boolean isName) {
@@ -112,7 +117,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool inDictionary of Token
+     * @param inDictionary
      * @return 
      */
     public void setIsInDictionary(boolean inDictionary) {
@@ -120,7 +126,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool isLocation of Token
+     * @param isLocation
      * @return 
      */
     public void setIsLocation(boolean isLocation) {
@@ -128,7 +135,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool commonFirst of a Token
+     * @param commonFirst
      * @return 
      */
     public void setIsCommonFirst(boolean commonFirst) {
@@ -136,7 +144,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool commonLast of a Token
+     * @param commonLast
      * @return 
      */
     public void setIsCommonLast(boolean commonLast) {
@@ -144,7 +153,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool honorific of a Token
+     * @param honorific
      * @return 
      */
     public void setIsHonorific(boolean honorific) {
@@ -152,7 +162,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool killWord of a Token
+     * @param killword
      * @return 
      */
     public void setIsKillWord(boolean killWord) {
@@ -160,7 +171,8 @@ public class Token {
     }
 
     /**
-     * @param
+     * Sets the Bool isPunctuation of a Token 
+     * @param isPunctuation
      * @return 
      */
     public void setIsPunctuation(boolean isPunctuation) {
