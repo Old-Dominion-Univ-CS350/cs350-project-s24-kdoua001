@@ -66,4 +66,19 @@ public class IdentifyBlock {
         return taggedBlocks;
     }
 
+    public void Output()
+    {
+        List<String> output = new ArrayList<>();
+        nerBlocks = getNerBlocks();
+        for (String string : nerBlocks)
+        {
+            TextBlock textBlock = new TextBlock(string);
+            output.add(textBlock.toString());
+        }
+        for (String string : output)
+        {
+            System.out.println(string);
+        }
+    }
+
 }
