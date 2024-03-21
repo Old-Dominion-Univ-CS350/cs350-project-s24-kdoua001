@@ -66,15 +66,6 @@ public class TextBlock {
     public String toString() {
         StringBuilder theString = new StringBuilder();
         theString.append("<NER>");
-        findPerTags(theString);
-        theString.append("</NER>");
-        return theString.toString().trim();
-}
-    /**
-     * used by toString
-     * @param theString the string which token strings are being added to
-     */
-    private void findPerTags(StringBuilder theString) {
         for (int index = 0; index < tokensList.size(); index++) {
             Token currentToken = tokensList.get(index);
             Token previousToken = (index > 0) ? tokensList.get(index - 1) : null;
@@ -94,7 +85,9 @@ public class TextBlock {
                 theString.append(" ");
             }
         }
-    }
+        theString.append("</NER>");
+        return theString.toString().trim();
+}
 
     /**
      * 
