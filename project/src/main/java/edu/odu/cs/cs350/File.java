@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class File {
    
     private String dataFromFile;
-    private List<String> blocks;
+    private List<TextBlock> blocks;
    
     /**
      * Constructor
