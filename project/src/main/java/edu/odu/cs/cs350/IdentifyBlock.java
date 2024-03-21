@@ -13,34 +13,51 @@ public class IdentifyBlock {
     private String dataFromFile;
     private List<String> nerBlocks;
    
-    //Constructor
+    /**
+     * Constructor
+     */
     public IdentifyBlock() {
         this.dataFromFile = "";
         this.nerBlocks = new ArrayList<>();
     }
 
-    //Constructor with data param
+    /**
+     * Constructor with data param
+     * @param data
+     */
     public IdentifyBlock(String data) {
         this.dataFromFile = data;
         this.nerBlocks = extractNerBlocks(data);
     }
  
-    //getter for dataFromFile
+    /**
+     * getter for dataFromFile
+     * @return
+     */
     public String getDataFromFile(){
         return this.dataFromFile;
     }
 
-    //Getter for nerBlocks
+    /**
+     * Getter for nerBlocks
+     * @return
+     */
     public List<String> getNerBlocks() {
         return this.nerBlocks;
     }
 
-    //Setter for dataFromFile
+    /**
+     * Setter for dataFromFile
+     * @param data
+     */
     public void setDataFromFile(String data){
         this.dataFromFile = data;
     }
 
-    //Reads input and stores it in string
+    /**
+     * Reads input and stores it in string
+     * @throws Exception
+     */
     public void readInput() throws Exception {
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
         scanner.useDelimiter("\\A");
@@ -49,7 +66,11 @@ public class IdentifyBlock {
         scanner.close();
     }
    
-    //Method to identify tagged blocks of text 
+    /**
+     * Method to identify tagged blocks of text
+     * @param text
+     * @return
+     */
     public List<String> extractNerBlocks(String text) {
         List<String> taggedBlocks = new ArrayList<>();
 
@@ -66,6 +87,9 @@ public class IdentifyBlock {
         return taggedBlocks;
     }
 
+    /**
+     * Output text blocks
+     */
     public void Output()
     {
         List<String> output = new ArrayList<>();
