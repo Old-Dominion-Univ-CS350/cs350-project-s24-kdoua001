@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Class for running and outputting program
  */
-public class Output {
+public class MainFile {
     // private String input;
     
     /*
@@ -37,11 +37,12 @@ public class Output {
     /**
      * Main function
      */
-    public void outputTaggedBlocks()
+    public void Main()
     {
-        List<String> nerBlocks;
-        List<String> output = new ArrayList<>();
-        IdentifyBlock inputBlock = new IdentifyBlock();
+        // List<String> nerBlocks;
+        // List<String> output = new ArrayList<>();
+        // IdentifyBlock inputBlock = new IdentifyBlock();
+        /*
         nerBlocks = inputBlock.getNerBlocks();
         for (String string : nerBlocks)
         {
@@ -52,5 +53,6 @@ public class Output {
         {
             System.out.println(string);
         }
+        */
     }
 }
