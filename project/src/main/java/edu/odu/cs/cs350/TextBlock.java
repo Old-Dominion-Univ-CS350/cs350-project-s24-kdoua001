@@ -59,48 +59,37 @@ public class TextBlock {
     }
 
     /**
-     * @return string representation of TextBlock
-     * Entire text block will be wrapped in <NER> </NER> and
-     * persons will be wrapped in <PER> </PER>
+     * converts TextBlock object to string representation
+     * Will be wrapped in <NER> </NER> and personal names will be wrapped in <PER> </PER>
+     * @return string representation of a TextBlock object
      */
-    public String toString(){
+    public String toString() {
         StringBuilder theString = new StringBuilder();
-        theString.append("<NER>"); 
-    
-        int lastIndex = tokensList.size() - 1;
+        theString.append("<NER>");
 
-        addPersonTags(theString, lastIndex);
-        
-        theString.append("</NER>");
-        return theString.toString().trim();
-    }
-
-    /**
-     * Used by toString to find tokens with isName() == ture and place <PER> </PER> tags around names 
-     * @param theString a string representation of textBlock
-     * @param lastIndex tokenList.size() -1
-     */
-    private void addPersonTags(StringBuilder theString, int lastIndex) {
-        for (int index = 0; index <= lastIndex; index++){
+        for (int index = 0; index < tokensList.size(); index++) {
             Token currentToken = tokensList.get(index);
             Token previousToken = (index > 0) ? tokensList.get(index - 1) : null;
-            Token nextToken = (index < lastIndex) ? tokensList.get(index + 1) : null;
+            Token nextToken = (index < tokensList.size() - 1) ? tokensList.get(index + 1) : null;
 
-            if (currentToken.isName() && !previousToken.isName()){
-                theString.append("<PER>");//beginning of name
+            if (isNameStart(currentToken, previousToken)) {
+                theString.append("<PER>"); // Beginning of name
             }
 
             theString.append(currentToken.getTokenString());
 
-            if (currentToken.isName() && !nextToken.isName()){
-                theString.append("</PER>");//end of name
+            if (isNameEnd(currentToken, nextToken)) {
+                theString.append("</PER>"); // End of name
             }
 
-            if(!(nextToken == null) && !nextToken.isPunctuation()){
+            if (!isLastToken(index, tokensList.size()) && !nextToken.isPunctuation()) {
                 theString.append(" ");
             }
         }
-    }
+
+        theString.append("</NER>");
+        return theString.toString().trim();
+}
 
     /**
      * 
@@ -109,6 +98,37 @@ public class TextBlock {
      */
     public void addToken(Token token){
         this.tokensList.add(token);
+    }
+
+    
+    /**
+     * used by toString
+     * @param currentToken current token in TextBlock being processed
+     * @param previousToken previous token in TextBlock
+     * @return true if current token is a name AND previous token is not 
+     */
+    private boolean isNameStart(Token currentToken, Token previousToken) {
+        return currentToken.isName() && (previousToken == null || !previousToken.isName());
+    }
+
+    /**
+     * used by toString
+     * @param currentToken current token in TextBlock being processed
+     * @param nextToken next token in TextBlock to be processed
+     * @return true if current token is a name AND the next token is not 
+     */
+    private boolean isNameEnd(Token currentToken, Token nextToken) {
+        return currentToken.isName() && (nextToken == null || !nextToken.isName());
+    }
+
+    /**
+     * 
+     * @param currentIndex current token in TextBlock being processed
+     * @param totalTokens total number of tokens in TextBlock 
+     * @return true if the current token is the last token in TextBlock
+     */
+    private boolean isLastToken(int currentIndex, int totalTokens) {
+        return currentIndex == totalTokens - 1;
     }
 
 }
