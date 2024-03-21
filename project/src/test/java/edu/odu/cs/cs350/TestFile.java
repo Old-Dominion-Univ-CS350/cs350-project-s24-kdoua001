@@ -19,8 +19,9 @@ public class TestFile {
 
     @Test
     public void testDefaultConstructor() {
-        File block = new File();
-        assertEquals("", block.getDataFromFile());
+        File file = new File();
+        assertEquals("", file.getDataFromFile());
+        assertEquals(new ArrayList<>(), file.getBlocks());
     }
  
     @Test

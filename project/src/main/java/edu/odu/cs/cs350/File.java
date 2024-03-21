@@ -45,7 +45,7 @@ public class File {
      * Getter for nerBlocks
      * @return
      */
-    public List<String> getBlocks() {
+    public List<TextBlock> getBlocks() {
         return this.blocks;
     }
 
@@ -74,8 +74,8 @@ public class File {
      * @param text
      * @return
      */
-    public List<String> extractBlocks(String text) {
-        List<String> taggedBlocks = new ArrayList<>();
+    public List<TextBlock> extractBlocks(String text) {
+        List<TextBlock> taggedBlocks = new ArrayList<>();
 
         //Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
@@ -95,7 +95,7 @@ public class File {
      */
     public void output()
     {
-        List<String> output = new ArrayList<>();
+        List<TextBlock> output = new ArrayList<>();
         blocks = getBlocks();
         for (String string : blocks)
         {
