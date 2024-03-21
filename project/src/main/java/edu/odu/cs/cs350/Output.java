@@ -41,7 +41,7 @@ public class Output {
     {
         List<String> nerBlocks;
         List<String> output = new ArrayList<>();
-        IdentifyBlock inputBlock = new IdentifyBlock();
+        File inputBlock = new File();
         nerBlocks = inputBlock.getNerBlocks();
         for (String string : nerBlocks)
         {

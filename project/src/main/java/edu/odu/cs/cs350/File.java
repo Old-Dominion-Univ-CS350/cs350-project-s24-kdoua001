@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 /**
  * IdentifyBlock class
  */
-public class IdentifyBlock {
+public class File {
    
     private String dataFromFile;
     private List<String> blocks;
@@ -19,7 +19,7 @@ public class IdentifyBlock {
     /**
      * Constructor
      */
-    public IdentifyBlock() {
+    public File() {
         this.dataFromFile = "";
         this.blocks = new ArrayList<>();
     }
@@ -28,7 +28,7 @@ public class IdentifyBlock {
      * Constructor with data param
      * @param data
      */
-    public IdentifyBlock(String data) {
+    public File(String data) {
         this.dataFromFile = data;
         this.blocks = extractBlocks(data);
     }
