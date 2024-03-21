@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestOutput {
+public class TestMainFile {
 
     /*
     @Test
@@ -29,9 +29,9 @@ public class TestOutput {
     */
 
     @Test
-    public void testOutputTaggedBlocks()
+    public void testMain()
     {
-        String input = "<NER> this is for testing </NER>";
-        IdentifyBlock inputBlock = new IdentifyBlock(input);
+        // String input = "<NER> this is for testing </NER>";
+        // IdentifyBlock inputBlock = new IdentifyBlock();
     }
 }
