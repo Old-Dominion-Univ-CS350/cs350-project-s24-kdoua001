@@ -40,7 +40,7 @@ public class TextBlock {
      * @return List of Tokens
      */
     public List<Token> createTokens(String BlockText) {
-        //Returns True if Word or Puncuation is Found
+        //Returns True if Word or Puncuation is Found 
         String noTags = BlockText.replaceAll("<[^>]*>", "");
         List<Token> tokens = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
