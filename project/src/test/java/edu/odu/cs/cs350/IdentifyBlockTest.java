@@ -70,7 +70,7 @@ public class IdentifyBlockTest {
         expectedBlocks.add("<NER>with</NER>");
 
         // Call extractNerBlocks method
-        List<String> actualBlocks = identifyBlock.extractNerBlocks(inputData);
+        List<String> actualBlocks = identifyBlock.extractBlocks(inputData);
 
         // Compare the actual blocks with the expected blocks
         assertEquals(expectedBlocks.size(), actualBlocks.size());

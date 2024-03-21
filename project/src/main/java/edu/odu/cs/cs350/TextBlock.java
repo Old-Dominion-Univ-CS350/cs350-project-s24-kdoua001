@@ -50,8 +50,8 @@ public class TextBlock {
         while (matcher.find()) {
             String tokenString = matcher.group();
             Token AddMe = new Token(tokenString);
-            boolean isPunc = Character.isLetterOrDigit(tokenString.charAt(0));
-            AddMe.setIsPunctuation(!isPunc);
+            boolean isPunctuation = Character.isLetterOrDigit(tokenString.charAt(0));
+            AddMe.setIsPunctuation(!isPunctuation);
             tokens.add(AddMe);
         }
 

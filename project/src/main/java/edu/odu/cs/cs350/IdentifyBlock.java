@@ -14,14 +14,14 @@ import java.util.regex.Pattern;
 public class IdentifyBlock {
    
     private String dataFromFile;
-    private List<String> nerBlocks;
+    private List<String> blocks;
    
     /**
      * Constructor
      */
     public IdentifyBlock() {
         this.dataFromFile = "";
-        this.nerBlocks = new ArrayList<>();
+        this.blocks = new ArrayList<>();
     }
 
     /**
@@ -30,7 +30,7 @@ public class IdentifyBlock {
      */
     public IdentifyBlock(String data) {
         this.dataFromFile = data;
-        this.nerBlocks = extractNerBlocks(data);
+        this.blocks = extractBlocks(data);
     }
  
     /**
@@ -45,8 +45,8 @@ public class IdentifyBlock {
      * Getter for nerBlocks
      * @return
      */
-    public List<String> getNerBlocks() {
-        return this.nerBlocks;
+    public List<String> getBlocks() {
+        return this.blocks;
     }
 
     /**
@@ -74,16 +74,16 @@ public class IdentifyBlock {
      * @param text
      * @return
      */
-    public List<String> extractNerBlocks(String text) {
+    public List<String> extractBlocks(String text) {
         List<String> taggedBlocks = new ArrayList<>();
 
         //Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
-        Matcher matcher = pattern.matcher(text);
+        Matcher theMatcher = pattern.matcher(text);
 
         //Find patterns and adds them to the list
-        while (matcher.find()) {
-            String textBlocks = matcher.group();
+        while (theMatcher.find()) {
+            String textBlocks = theMatcher.group();
             taggedBlocks.add(textBlocks);
         }
 
@@ -96,8 +96,8 @@ public class IdentifyBlock {
     public void Output()
     {
         List<String> output = new ArrayList<>();
-        nerBlocks = getNerBlocks();
-        for (String string : nerBlocks)
+        blocks = getBlocks();
+        for (String string : blocks)
         {
             TextBlock textBlock = new TextBlock(string);
             output.add(textBlock.toString());
