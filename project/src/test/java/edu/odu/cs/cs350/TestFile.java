@@ -14,19 +14,19 @@ import static org.hamcrest.Matchers.*;
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 
-public class IdentifyBlockTest {
+public class TestFile {
 
 
     @Test
     public void testDefaultConstructor() {
-        IdentifyBlock block = new IdentifyBlock();
+        File block = new File();
         assertEquals("", block.getDataFromFile());
     }
  
     @Test
     public void testParameterizedConstructor() {
         String block = "<NER>this is for testing</NER>";
-        IdentifyBlock testInput = new IdentifyBlock(block);
+        File testInput = new File(block);
  
         assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
         
@@ -46,7 +46,7 @@ public class IdentifyBlockTest {
         InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
         System.setIn(inputStream); // Redirect System.in to our input stream
  
-        IdentifyBlock identifyBlock = new IdentifyBlock();
+        File identifyBlock = new File();
         identifyBlock.readInput(); // Call the method to read input
  
         // Assert that dataFromFile is equal to inputData
@@ -59,7 +59,7 @@ public class IdentifyBlockTest {
      
     @Test
     public void testExtractNerBlocks() {
-        IdentifyBlock identifyBlock = new IdentifyBlock();
+        File identifyBlock = new File();
 
         // Sample input data containing NER blocks
         String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";

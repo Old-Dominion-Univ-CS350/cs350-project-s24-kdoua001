@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestMainFile {
+public class TestExtractor {
 
     /*
     @Test
@@ -29,7 +29,7 @@ public class TestMainFile {
     */
 
     @Test
-    public void testMain()
+    public void testExtractor()
     {
         // String input = "<NER> this is for testing </NER>";
         // IdentifyBlock inputBlock = new IdentifyBlock();
