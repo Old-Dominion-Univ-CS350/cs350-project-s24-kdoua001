@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+
+import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 
 public class IdentifyBlockTest {
 
@@ -21,10 +25,18 @@ public class IdentifyBlockTest {
  
     @Test
     public void testParameterizedConstructor() {
-        String block = "<NER> this is for testing </NER>";
+        String block = "<NER>this is for testing</NER>";
         IdentifyBlock testInput = new IdentifyBlock(block);
  
-        assertEquals("<NER> this is for testing </NER>", testInput.getDataFromFile());
+        assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
+        
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        testInput.Output();
+
+        assertEquals(block, outputStreamCaptor.toString().trim());
+
     }
 
 
