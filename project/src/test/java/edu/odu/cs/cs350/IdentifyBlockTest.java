@@ -33,7 +33,7 @@ public class IdentifyBlockTest {
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
 
-        testInput.Output();
+        testInput.output();
 
         assertEquals(block, outputStreamCaptor.toString().trim());
 

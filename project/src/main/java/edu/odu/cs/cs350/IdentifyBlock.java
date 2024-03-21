@@ -93,7 +93,7 @@ public class IdentifyBlock {
     /**
      * Output text blocks
      */
-    public void Output()
+    public void output()
     {
         List<String> output = new ArrayList<>();
         blocks = getBlocks();
