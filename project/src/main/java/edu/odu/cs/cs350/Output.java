@@ -11,7 +11,7 @@ import java.util.List;
  * Class for running and outputting program
  */
 public class Output {
-    private String input;
+    // private String input;
     
     /*
     private String dataFromTextBlocks;
@@ -41,7 +41,7 @@ public class Output {
     {
         List<String> nerBlocks;
         List<String> output = new ArrayList<>();
-        IdentifyBlock inputBlock = new IdentifyBlock(input);
+        IdentifyBlock inputBlock = new IdentifyBlock();
         nerBlocks = inputBlock.getNerBlocks();
         for (String string : nerBlocks)
         {
