@@ -7,15 +7,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
- 
 /**
  * IdentifyBlock class
  */
 public class File {
-   
+
     private String dataFromFile;
-    private List<TextBlock> blocks;
-   
+    private transient List<TextBlock> blocks;
+
     /**
      * Constructor
      */
@@ -26,23 +25,35 @@ public class File {
 
     /**
      * Constructor with data param
+     * 
      * @param data
      */
     public File(String data) {
         this.dataFromFile = data;
+        initializeBlocks(data);
+    }
+
+    /**
+     * Initialize blocks from data
+     * 
+     * @param data
+     */
+    private void initializeBlocks(String data) {
         this.blocks = extractBlocks(data);
     }
- 
+
     /**
      * getter for dataFromFile
+     * 
      * @return
      */
-    public String getDataFromFile(){
+    public String getDataFromFile() {
         return this.dataFromFile;
     }
 
     /**
      * Getter for nerBlocks
+     * 
      * @return
      */
     public List<TextBlock> getBlocks() {
@@ -51,14 +62,16 @@ public class File {
 
     /**
      * Setter for dataFromFile
+     * 
      * @param data
      */
-    public void setDataFromFile(String data){
+    public void setDataFromFile(String data) {
         this.dataFromFile = data;
     }
 
     /**
      * Reads input and stores it in string
+     * 
      * @throws Exception
      */
     public void readInput() throws Exception {
@@ -68,20 +81,21 @@ public class File {
         this.dataFromFile = content;
         scanner.close();
     }
-   
+
     /**
      * Method to identify tagged blocks of text
+     * 
      * @param text
      * @return
      */
     public List<TextBlock> extractBlocks(String text) {
         List<TextBlock> taggedBlocks = new ArrayList<>();
 
-        //Define pattern to identify blocks of text
+        // Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
         Matcher match = pattern.matcher(text);
 
-        //Find patterns and adds them to the list
+        // Find patterns and adds them to the list
         while (match.find()) {
             String textBlocks = match.group();
             taggedBlocks.add(textBlocks);
@@ -93,17 +107,14 @@ public class File {
     /**
      * Output text blocks
      */
-    public void output()
-    {
+    public void output() {
         List<TextBlock> output = new ArrayList<>();
         blocks = getBlocks();
-        for (String string : blocks)
-        {
+        for (String string : blocks) {
             TextBlock textBlock = new TextBlock(string);
             output.add(textBlock.toString());
         }
-        for (String string : output)
-        {
+        for (String string : output) {
             System.out.println(string);
         }
     }
