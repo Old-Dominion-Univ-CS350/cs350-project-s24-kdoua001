@@ -1,5 +1,9 @@
 plugins {
     id 'java'
+    id 'jacoco'
+    id 'pmd'
+    id 'com.github.spotbugs' version '5.0.5'
+    id 'org.jbake.site' version '5.5.0'
 
 }
 
@@ -15,6 +19,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'org.jmockit:jmockit:1.49'
 }
 
 test {
