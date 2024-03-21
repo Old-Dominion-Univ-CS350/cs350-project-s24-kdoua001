@@ -79,11 +79,11 @@ public class IdentifyBlock {
 
         //Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
-        Matcher theMatcher = pattern.matcher(text);
+        Matcher match = pattern.matcher(text);
 
         //Find patterns and adds them to the list
-        while (theMatcher.find()) {
-            String textBlocks = theMatcher.group();
+        while (match.find()) {
+            String textBlocks = match.group();
             taggedBlocks.add(textBlocks);
         }
 

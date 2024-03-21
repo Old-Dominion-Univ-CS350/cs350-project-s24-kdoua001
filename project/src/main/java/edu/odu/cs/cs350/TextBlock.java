@@ -44,11 +44,11 @@ public class TextBlock {
         String noTags = BlockText.replaceAll("<[^>]*>", "");
         List<Token> tokens = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
-        Matcher matcher = pattern.matcher(noTags);
+        Matcher match = pattern.matcher(noTags);
 
         //Set isPuncuation to True if Punc is Found in First Char, False if Not
-        while (matcher.find()) {
-            String tokenString = matcher.group();
+        while (match.find()) {
+            String tokenString = match.group();
             Token AddMe = new Token(tokenString);
             boolean isPunctuation = Character.isLetterOrDigit(tokenString.charAt(0));
             AddMe.setIsPunctuation(!isPunctuation);
