@@ -1,5 +1,10 @@
 package edu.odu.cs.cs350;
 
+/**
+ * This class represents a token object 
+ * It contains boolean values for various token attributes
+ * It also contains a string representation of the token
+ */
 public class Token {
     
     private String tokenString;
