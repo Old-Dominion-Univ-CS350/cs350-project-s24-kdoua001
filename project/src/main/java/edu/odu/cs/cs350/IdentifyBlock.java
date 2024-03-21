@@ -8,6 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
  
+/**
+ * IdentifyBlock class
+ */
 public class IdentifyBlock {
    
     private String dataFromFile;
