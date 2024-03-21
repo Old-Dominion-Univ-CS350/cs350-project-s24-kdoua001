@@ -16,15 +16,15 @@ java {
 repositories {
     mavenCentral()
    // ivy {
-     //   url 'https://www.cs.odu.edu/~zeil/ivyrepo'
-   // }
+   //    url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+   //  }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     testImplementation 'org.jmockit:jmockit:1.49'
-   // implementation 'edu.odu.cs.extract:extract-wordlist:4.2'
+   // implementation 'edu.odu.cs.extract:extract-wordlists:4.2'
    // implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.6'
 }
 
