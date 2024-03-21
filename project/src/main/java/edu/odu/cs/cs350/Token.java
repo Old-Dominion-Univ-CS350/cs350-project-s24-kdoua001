@@ -13,8 +13,8 @@ public class Token {
     private boolean isLocation;
     private boolean commonFirst;
     private boolean commonLast;
-    private boolean honorific;
-    private boolean killWord;
+    private boolean isHonorific;
+    private boolean isKillWord;
     private boolean isPunctuation;
     
     /**
@@ -26,8 +26,8 @@ public class Token {
         this.isLocation = false;
         this.commonFirst = false;
         this.commonLast = false;
-        this.honorific = false;
-        this.killWord = false;
+        this.isHonorific = false;
+        this.isKillWord = false;
         this.isPunctuation = false;
     }
 
@@ -84,7 +84,7 @@ public class Token {
      * @return true if a honorific, false if not
      */
     public boolean isHonorific() {
-        return this.honorific;
+        return this.isHonorific;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Token {
      * @return true if a kill word, false if not
      */
     public boolean isKillWord() {
-        return this.killWord;
+        return this.isKillWord;
     }
 
     /**
@@ -108,53 +108,53 @@ public class Token {
      * @param tokenString
      * @return
      */
-    public void setTokenString(String tokenString) {
-        this.tokenString = tokenString;
+    public void setTokenString(String string) {
+        this.tokenString = string;
     }
 
     /**
      * Sets the Bool isName of a Token
-     * @param isName
+     * @param name
      * @return 
      */
-    public void setIsName(boolean isName) {
-        this.isName = isName;
+    public void setIsName(boolean name) {
+        this.isName = name;
     }
 
     /**
      * Sets the Bool inDictionary of Token
-     * @param inDictionary
+     * @param dictionary
      * @return 
      */
-    public void setIsInDictionary(boolean inDictionary) {
-        this.inDictionary = inDictionary;
+    public void setIsInDictionary(boolean dictionary) {
+        this.inDictionary = dictionary;
     }
 
     /**
      * Sets the Bool isLocation of Token
-     * @param isLocation
+     * @param location
      * @return 
      */
-    public void setIsLocation(boolean isLocation) {
-        this.isLocation = isLocation;
+    public void setIsLocation(boolean location) {
+        this.isLocation = location;
     }
 
     /**
      * Sets the Bool commonFirst of a Token
-     * @param commonFirst
+     * @param first
      * @return 
      */
-    public void setIsCommonFirst(boolean commonFirst) {
-        this.commonFirst = commonFirst;
+    public void setIsCommonFirst(boolean first) {
+        this.commonFirst = first;
     }
 
     /**
      * Sets the Bool commonLast of a Token
-     * @param commonLast
+     * @param last
      * @return 
      */
-    public void setIsCommonLast(boolean commonLast) {
-        this.commonLast = commonLast;
+    public void setIsCommonLast(boolean last) {
+        this.commonLast = last;
     }
 
     /**
@@ -163,7 +163,7 @@ public class Token {
      * @return 
      */
     public void setIsHonorific(boolean honorific) {
-        this.honorific = honorific;
+        this.isHonorific = honorific;
     }
 
     /**
@@ -172,15 +172,15 @@ public class Token {
      * @return 
      */
     public void setIsKillWord(boolean killWord) {
-        this.killWord = killWord;
+        this.isKillWord = killWord;
     }
 
     /**
      * Sets the Bool isPunctuation of a Token 
-     * @param isPunctuation
+     * @param punctuation
      * @return 
      */
-    public void setIsPunctuation(boolean isPunctuation) {
-        this.isPunctuation = isPunctuation;
+    public void setIsPunctuation(boolean punctuation) {
+        this.isPunctuation = punctuation;
     }
 }
