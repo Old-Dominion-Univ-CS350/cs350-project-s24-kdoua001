@@ -1,37 +1,37 @@
 package edu.odu.cs.cs350;
 
 /**
- * This class represents a token object 
+ * This class represents a token object
  * It contains boolean values for various token attributes
  * It also contains a string representation of the token
  */
 public class Token {
-    
+
     private String tokenString;
-    private boolean isName;
+    private boolean nameFlag;
     private boolean inDictionary;
-    private boolean isLocation;
+    private boolean locationFlag;
     private boolean commonFirst;
     private boolean commonLast;
-    private boolean isHonorific;
-    private boolean isKillWord;
-    private boolean isPunctuation;
-    
+    private boolean honorificFlag;
+    private boolean killWordFlag;
+    private boolean punctuationFlag;
+
     /**
      * Constructor
      */
-    public Token(String assignedString){
+    public Token(String assignedString) {
         this.tokenString = assignedString;
         this.inDictionary = false;
-        this.isLocation = false;
+        this.locationFlag = false;
         this.commonFirst = false;
         this.commonLast = false;
-        this.isHonorific = false;
-        this.isKillWord = false;
-        this.isPunctuation = false;
+        this.honorificFlag = false;
+        this.killWordFlag = false;
+        this.punctuationFlag = false;
     }
 
-     /**
+    /**
      * @param
      * @return the string of the token
      */
@@ -44,7 +44,7 @@ public class Token {
      * @return true if is a name, false if else
      */
     public boolean isName() {
-        return this.isName;
+        return this.nameFlag;
     }
 
     /**
@@ -60,7 +60,7 @@ public class Token {
      * @return true if is a location, false if not
      */
     public boolean isLocation() {
-        return this.isLocation;
+        return this.locationFlag;
     }
 
     /**
@@ -84,7 +84,7 @@ public class Token {
      * @return true if a honorific, false if not
      */
     public boolean isHonorific() {
-        return this.isHonorific;
+        return this.honorificFlag;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Token {
      * @return true if a kill word, false if not
      */
     public boolean isKillWord() {
-        return this.isKillWord;
+        return this.killWordFlag;
     }
 
     /**
@@ -100,11 +100,12 @@ public class Token {
      * @return true if a puncuation, false if not
      */
     public boolean isPunctuation() {
-        return this.isPunctuation;
+        return this.punctuationFlag;
     }
 
     /**
      * Sets the TokenString of a Token
+     * 
      * @param tokenString
      * @return
      */
@@ -114,17 +115,19 @@ public class Token {
 
     /**
      * Sets the Bool isName of a Token
+     * 
      * @param name
-     * @return 
+     * @return
      */
     public void setIsName(boolean name) {
-        this.isName = name;
+        this.nameFlag = name;
     }
 
     /**
      * Sets the Bool inDictionary of Token
+     * 
      * @param dictionary
-     * @return 
+     * @return
      */
     public void setIsInDictionary(boolean dictionary) {
         this.inDictionary = dictionary;
@@ -132,17 +135,19 @@ public class Token {
 
     /**
      * Sets the Bool isLocation of Token
+     * 
      * @param location
-     * @return 
+     * @return
      */
     public void setIsLocation(boolean location) {
-        this.isLocation = location;
+        this.locationFlag = location;
     }
 
     /**
      * Sets the Bool commonFirst of a Token
+     * 
      * @param first
-     * @return 
+     * @return
      */
     public void setIsCommonFirst(boolean first) {
         this.commonFirst = first;
@@ -150,8 +155,9 @@ public class Token {
 
     /**
      * Sets the Bool commonLast of a Token
+     * 
      * @param last
-     * @return 
+     * @return
      */
     public void setIsCommonLast(boolean last) {
         this.commonLast = last;
@@ -159,28 +165,31 @@ public class Token {
 
     /**
      * Sets the Bool honorific of a Token
+     * 
      * @param honorific
-     * @return 
+     * @return
      */
     public void setIsHonorific(boolean honorific) {
-        this.isHonorific = honorific;
+        this.honorificFlag = honorific;
     }
 
     /**
      * Sets the Bool killWord of a Token
+     * 
      * @param killword
-     * @return 
+     * @return
      */
     public void setIsKillWord(boolean killWord) {
-        this.isKillWord = killWord;
+        this.killWordFlag = killWord;
     }
 
     /**
-     * Sets the Bool isPunctuation of a Token 
+     * Sets the Bool isPunctuation of a Token
+     * 
      * @param punctuation
-     * @return 
+     * @return
      */
     public void setIsPunctuation(boolean punctuation) {
-        this.isPunctuation = punctuation;
+        this.punctuationFlag = punctuation;
     }
 }

@@ -1,4 +1,5 @@
 package edu.odu.cs.cs350;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -6,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class testToken {
 
     @Test
-    public void testConstructor(){
+    public void testConstructor() {
         String string = "token";
         Token theToken = new Token(string);
         assertEquals(string, theToken.getTokenString());
@@ -20,7 +21,7 @@ public class testToken {
     }
 
     @Test
-    public void testSetTokenString(){
+    public void testSetTokenString() {
         String string = " ";
         Token theToken = new Token(string);
         theToken.setTokenString("token");
@@ -35,7 +36,7 @@ public class testToken {
     }
 
     @Test
-    public void testSetIsName(){
+    public void testSetIsName() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsName(true);
@@ -46,11 +47,11 @@ public class testToken {
         assertFalse(theToken.isCommonFirst());
         assertFalse(theToken.isCommonLast());
         assertFalse(theToken.isHonorific());
-        assertFalse(theToken.isPunctuation()); 
+        assertFalse(theToken.isPunctuation());
     }
 
     @Test
-    public void testSetIsInDictionary(){
+    public void testSetIsInDictionary() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsInDictionary(true);
@@ -65,7 +66,7 @@ public class testToken {
     }
 
     @Test
-    public void testSetIsLocation(){
+    public void testSetIsLocation() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsLocation(true);
@@ -78,9 +79,9 @@ public class testToken {
         assertFalse(theToken.isHonorific());
         assertFalse(theToken.isPunctuation());
     }
-    
+
     @Test
-    public void testSetIsCommonFirst(){
+    public void testSetIsCommonFirst() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsCommonFirst(true);
@@ -95,7 +96,7 @@ public class testToken {
     }
 
     @Test
-    public void testSetIsCommonLast(){
+    public void testSetIsCommonLast() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsCommonLast(true);
@@ -110,7 +111,7 @@ public class testToken {
     }
 
     @Test
-    public void testSetIsHonorific(){
+    public void testSetIsHonorific() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsHonorific(true);
@@ -121,11 +122,11 @@ public class testToken {
         assertFalse(theToken.isCommonFirst());
         assertFalse(theToken.isCommonLast());
         assertTrue(theToken.isHonorific());
-        assertFalse(theToken.isPunctuation()); 
+        assertFalse(theToken.isPunctuation());
     }
 
     @Test
-    public void testSetIsPunctuation(){
+    public void testSetIsPunctuation() {
         String string = "token";
         Token theToken = new Token(string);
         theToken.setIsPunctuation(true);
