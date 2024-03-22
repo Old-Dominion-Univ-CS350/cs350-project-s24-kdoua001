@@ -30,7 +30,7 @@ public class IdentifyBlock {
      */
     public IdentifyBlock(String data) {
         this.dataFromFile = data;
-        this.blocks = new ArrayList<>();
+        this.blocks = extractBlocks(data);
     }
 
     /**
@@ -79,12 +79,12 @@ public class IdentifyBlock {
      * @param text
      * @return
      */
-    public List<String> extractBlocks(String text) {
+    public List<String> extractBlocks(String data) {
         List<String> taggedBlocks = new ArrayList<>();
 
         // Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
-        Matcher match = pattern.matcher(text);
+        Matcher match = pattern.matcher(data);
 
         // Find patterns and adds them to the list
         while (match.find()) {
