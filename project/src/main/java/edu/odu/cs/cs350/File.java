@@ -23,24 +23,24 @@ public class File {
         this.blocks = new ArrayList<>();
     }
 
-        /**
-        * Constructor with data param
-        * 
-        * @param data
-        */
-       public File(String data) {
-           this.dataFromFile = data;
-           initializeBlocks(data);
-       }
+    /**
+     * Constructor with data param
+     * 
+     * @param data
+     */
+    public File(String data) {
+        this.dataFromFile = data;
+        initializeBlocks(data);
+    }
 
-        /**
-        * Initialize blocks from data
-        * 
-        * @param data
-        */
-        private void initializeBlocks(String data) {
+    /**
+     * Initialize blocks from data
+     * 
+     * @param data
+     */
+    private void initializeBlocks(String data) {
         this.blocks = extractBlocks(data);
-     }
+    }
 
     /**
      * getter for dataFromFile
@@ -60,35 +60,35 @@ public class File {
         return this.blocks;
     }
 
-        /**
-        * Setter for dataFromFile
-        * 
-        * @param data
-        */
-         public void setDataFromFile(String data) {
-         this.dataFromFile = data;
-       }
+    /**
+     * Setter for dataFromFile
+     * 
+     * @param data
+     */
+        public void setDataFromFile(String data) {
+        this.dataFromFile = data;
+    }
 
-        /**
-        * Reads input and stores it in string
-        * 
-        * @throws Exception
-        */
-        public void readInput() throws Exception {
+    /**
+     * Reads input and stores it in string
+     * 
+     * @throws Exception
+     */
+    public void readInput() throws Exception {
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
         scanner.useDelimiter("\\A");
         String content = scanner.next();
-         this.dataFromFile = content;
+        this.dataFromFile = content;
         scanner.close();
-       }
+    }
 
-       /**
-       * Method to identify tagged blocks of text
-       * 
-       * @param text
-       * @return
-       */
-        public List<TextBlock> extractBlocks(String text) {
+    /**
+     * Method to identify tagged blocks of text
+     * 
+     * @param text
+     * @return
+     */
+    public List<TextBlock> extractBlocks(String text) {
         List<TextBlock> taggedBlocks = new ArrayList<>();
 
         // Define pattern to identify blocks of text
@@ -104,10 +104,10 @@ public class File {
          return taggedBlocks;
     }
 
-     /**
-      * Output text blocks
-    */
-     public void output() {
+    /**
+     * Output text blocks
+     */
+    public void output() {
         Create output list
         List<TextBlock> output = new ArrayList<>();
     
@@ -115,18 +115,18 @@ public class File {
         blocks = getBlocks();
     
         Loop for adding blocks to output
-         for (String string : blocks) {
+        for (String string : blocks) {
             Get text block to add to output
-             TextBlock textBlock = new TextBlock(string);
-             Add text block to output list
-             output.add(textBlock.toString());
-         }
+            TextBlock textBlock = new TextBlock(string);
+            Add text block to output list
+            output.add(textBlock.toString());
+        }
     
         Loop for outputting textblocks
-         for (String string : output) {
+        for (String string : output) {
              Output each text block from output list
             System.out.println(string);
-         }
+        }
     }
 
 }
