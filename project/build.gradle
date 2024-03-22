@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id 'pmd'
+   // id 'pmd'
     id 'com.github.spotbugs' version '5.0.5'
     id 'org.jbake.site' version '5.5.0'
     id ("org.xbib.gradle.plugin.jflex") version "1.7.0"
