@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestExtractor {
+public class TestOutputInfo {
 
     /*
     @Test

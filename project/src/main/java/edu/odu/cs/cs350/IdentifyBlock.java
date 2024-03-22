@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * IdentifyBlock class
  */
-public class File {
+public class IdentifyBlock {
 
     private String dataFromFile;
     private List<String> blocks;
@@ -18,7 +18,7 @@ public class File {
     /**
      * Constructor
      */
-    public File() {
+    public IdentifyBlock() {
         this.dataFromFile = "";
         this.blocks = new ArrayList<>();
     }
@@ -28,7 +28,7 @@ public class File {
      * 
      * @param data
      */
-    public File(String data) {
+    public IdentifyBlock(String data) {
         this.dataFromFile = data;
         this.blocks = new ArrayList<>();
     }
