@@ -24,60 +24,60 @@ public class TestFile {
         assertEquals(new ArrayList<>(), file.getBlocks());
     }
  
-    // @Test
-    // public void testParameterizedConstructor() {
-    //     String block = "<NER>this is for testing</NER>";
-    //     File testInput = new File(block);
+    @Test
+    public void testParameterizedConstructor() {
+        String block = "<NER>this is for testing</NER>";
+        File testInput = new File(block);
  
-    //     assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
+        assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
         
-    //     ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    //     System.setOut(new PrintStream(outputStreamCaptor));
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
 
-    //     testInput.output();
+        testInput.output();
 
-    //     assertEquals(block, outputStreamCaptor.toString().trim());
+        assertEquals(block, outputStreamCaptor.toString().trim());
 
-    // }
+    }
 
 
-    // public void testReadInput() throws Exception {
-    //     // Prepare input data
-    //     String inputData = "Test input data";
-    //     InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
-    //     System.setIn(inputStream); // Redirect System.in to our input stream
+    public void testReadInput() throws Exception {
+        // Prepare input data
+        String inputData = "Test input data";
+        InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
+        System.setIn(inputStream); // Redirect System.in to our input stream
  
-    //     File identifyBlock = new File();
-    //     identifyBlock.readInput(); // Call the method to read input
+        File identifyBlock = new File();
+        identifyBlock.readInput(); // Call the method to read input
  
-    //     // Assert that dataFromFile is equal to inputData
-    //     assertEquals(inputData, identifyBlock.getDataFromFile());
+        // Assert that dataFromFile is equal to inputData
+        assertEquals(inputData, identifyBlock.getDataFromFile());
  
-    //     // Clean up: Restore System.in
-    //     System.setIn(System.in);
-    // }
+        // Clean up: Restore System.in
+        System.setIn(System.in);
+    }
 
      
-    // @Test
-    // public void testExtractNerBlocks() {
-    //     File identifyBlock = new File();
+    @Test
+    public void testExtractNerBlocks() {
+        File identifyBlock = new File();
 
-    //     // Sample input data containing NER blocks
-    //     String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";
+        // Sample input data containing NER blocks
+        String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";
 
-    //     // Expected extracted NER blocks
-    //     List<String> expectedBlocks = new ArrayList<>();
-    //     expectedBlocks.add("<NER>sample</NER>");
-    //     expectedBlocks.add("<NER>with</NER>");
+        // Expected extracted NER blocks
+        List<String> expectedBlocks = new ArrayList<>();
+        expectedBlocks.add("<NER>sample</NER>");
+        expectedBlocks.add("<NER>with</NER>");
 
-    //     // Call extractNerBlocks method
-    //     List<String> actualBlocks = identifyBlock.extractBlocks(inputData);
+        // Call extractNerBlocks method
+        List<String> actualBlocks = identifyBlock.extractBlocks(inputData);
 
-    //     // Compare the actual blocks with the expected blocks
-    //     assertEquals(expectedBlocks.size(), actualBlocks.size());
-    //     for (int i = 0; i < expectedBlocks.size(); i++) {
-    //         assertEquals(expectedBlocks.get(i), actualBlocks.get(i));
-    //     }
-    // }
+        // Compare the actual blocks with the expected blocks
+        assertEquals(expectedBlocks.size(), actualBlocks.size());
+        for (int i = 0; i < expectedBlocks.size(); i++) {
+            assertEquals(expectedBlocks.get(i), actualBlocks.get(i));
+        }
+    }
 
 }
