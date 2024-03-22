@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class File {
 
     private String dataFromFile;
-    private transient List<TextBlock> blocks;
+    private List<String> blocks;
 
     /**
      * Constructor
@@ -30,7 +30,7 @@ public class File {
      */
     public File(String data) {
         this.dataFromFile = data;
-        initializeBlocks(data);
+        this.blocks = initializeBlocks(data);
     }
 
     /**
@@ -38,7 +38,7 @@ public class File {
      * 
      * @param data
      */
-    private void initializeBlocks(String data) {
+    public List<String> initializeBlocks(String data) {
         this.blocks = extractBlocks(data);
     }
 
@@ -56,7 +56,7 @@ public class File {
      * 
      * @return
      */
-    public List<TextBlock> getBlocks() {
+    public List<String> getBlocks() {
         return this.blocks;
     }
 
@@ -88,8 +88,8 @@ public class File {
      * @param text
      * @return
      */
-    public List<TextBlock> extractBlocks(String text) {
-        List<TextBlock> taggedBlocks = new ArrayList<>();
+    public List<String> extractBlocks(String text) {
+        List<String> taggedBlocks = new ArrayList<>();
 
         // Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
@@ -97,8 +97,8 @@ public class File {
 
         // Find patterns and adds them to the list
         while (match.find()) {
-            String textBlocks = match.group();
-             taggedBlocks.add(textBlocks);
+            String Strings = match.group();
+             taggedBlocks.add(Strings);
         }
 
          return taggedBlocks;
@@ -109,7 +109,7 @@ public class File {
      */
     public void output() {
         // Create output list
-        List<TextBlock> output = new ArrayList<>();
+        List<String> output = new ArrayList<>();
     
         // Get text blocks for list
         blocks = getBlocks();
@@ -117,12 +117,12 @@ public class File {
         // Loop for adding blocks to output
         for (String string : blocks) {
             // Get text block to add to output
-            TextBlock textBlock = new TextBlock(string);
+            String String = new String(string);
             // Add text block to output list
-            output.add(textBlock.toString());
+            output.add(String.toString());
         }
     
-        // Loop for outputting textblocks
+        // Loop for outputting Strings
         for (String string : output) {
             // Output each text block from output list
             System.out.println(string);
