@@ -34,23 +34,23 @@ public class Output {
     }
     */ 
 
-    /**
-     * Main function
-     */
-    public void outputTaggedBlocks()
-    {
-        List<String> nerBlocks;
-        List<String> output = new ArrayList<>();
-        File inputBlock = new File();
-        nerBlocks = inputBlock.getNerBlocks();
-        for (String string : nerBlocks)
-        {
-            TextBlock textBlock = new TextBlock(string);
-            output.add(textBlock.toString());
-        }
-        for (String string : output)
-        {
-            System.out.println(string);
-        }
-    }
+    // /**
+    //  * Main function
+    //  */
+    // public void outputTaggedBlocks()
+    // {
+    //     List<String> nerBlocks;
+    //     List<String> output = new ArrayList<>();
+    //     File inputBlock = new File();
+    //     nerBlocks = inputBlock.getNerBlocks();
+    //     for (String string : nerBlocks)
+    //     {
+    //         TextBlock textBlock = new TextBlock(string);
+    //         output.add(textBlock.toString());
+    //     }
+    //     for (String string : output)
+    //     {
+    //         System.out.println(string);
+    //     }
+    // }
 }
