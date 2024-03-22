@@ -30,16 +30,7 @@ public class File {
      */
     public File(String data) {
         this.dataFromFile = data;
-        this.blocks = initializeBlocks(data);
-    }
-
-    /**
-     * Initialize blocks from data
-     * 
-     * @param data
-     */
-    public List<String> initializeBlocks(String data) {
-        this.blocks = extractBlocks(data);
+        this.blocks = new ArrayList<>();
     }
 
     /**
