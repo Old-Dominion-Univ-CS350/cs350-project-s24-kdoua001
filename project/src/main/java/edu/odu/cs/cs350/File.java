@@ -23,24 +23,24 @@ public class File {
         this.blocks = new ArrayList<>();
     }
 
-    // /**
-    //  * Constructor with data param
-    //  * 
-    //  * @param data
-    //  */
-    // public File(String data) {
-    //     this.dataFromFile = data;
-    //     initializeBlocks(data);
-    // }
+        /**
+        * Constructor with data param
+        * 
+        * @param data
+        */
+       public File(String data) {
+           this.dataFromFile = data;
+           initializeBlocks(data);
+       }
 
-    // /**
-    //  * Initialize blocks from data
-    //  * 
-    //  * @param data
-    //  */
-    // private void initializeBlocks(String data) {
-    //     this.blocks = extractBlocks(data);
-    // }
+        /**
+        * Initialize blocks from data
+        * 
+        * @param data
+        */
+        private void initializeBlocks(String data) {
+        this.blocks = extractBlocks(data);
+     }
 
     /**
      * getter for dataFromFile
@@ -60,49 +60,49 @@ public class File {
         return this.blocks;
     }
 
-    // /**
-    //  * Setter for dataFromFile
-    //  * 
-    //  * @param data
-    //  */
-    // public void setDataFromFile(String data) {
-    //     this.dataFromFile = data;
-    // }
+        /**
+        * Setter for dataFromFile
+        * 
+        * @param data
+        */
+         public void setDataFromFile(String data) {
+         this.dataFromFile = data;
+       }
 
-    // /**
-    //  * Reads input and stores it in string
-    //  * 
-    //  * @throws Exception
-    //  */
-    // public void readInput() throws Exception {
-    //     Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-    //     scanner.useDelimiter("\\A");
-    //     String content = scanner.next();
-    //     this.dataFromFile = content;
-    //     scanner.close();
-    // }
+        /**
+        * Reads input and stores it in string
+        * 
+        * @throws Exception
+        */
+        public void readInput() throws Exception {
+        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+        scanner.useDelimiter("\\A");
+        String content = scanner.next();
+         this.dataFromFile = content;
+        scanner.close();
+       }
 
-    // /**
-    //  * Method to identify tagged blocks of text
-    //  * 
-    //  * @param text
-    //  * @return
-    //  */
-    // public List<TextBlock> extractBlocks(String text) {
-    //     List<TextBlock> taggedBlocks = new ArrayList<>();
+       /**
+       * Method to identify tagged blocks of text
+       * 
+       * @param text
+       * @return
+       */
+        public List<TextBlock> extractBlocks(String text) {
+        List<TextBlock> taggedBlocks = new ArrayList<>();
 
-    //     // Define pattern to identify blocks of text
-    //     Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
-    //     Matcher match = pattern.matcher(text);
+        // Define pattern to identify blocks of text
+        Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
+        Matcher match = pattern.matcher(text);
 
-    //     // Find patterns and adds them to the list
-    //     while (match.find()) {
-    //         String textBlocks = match.group();
-    //         taggedBlocks.add(textBlocks);
-    //     }
+        // Find patterns and adds them to the list
+        while (match.find()) {
+            String textBlocks = match.group();
+             taggedBlocks.add(textBlocks);
+        }
 
-    //     return taggedBlocks;
-    // }
+         return taggedBlocks;
+    }
 
      /**
       * Output text blocks
