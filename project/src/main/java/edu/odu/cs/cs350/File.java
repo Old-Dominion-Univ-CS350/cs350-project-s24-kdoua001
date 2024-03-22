@@ -108,23 +108,23 @@ public class File {
      * Output text blocks
      */
     public void output() {
-        Create output list
+        //Create output list
         List<TextBlock> output = new ArrayList<>();
     
-        Get text blocks for list
+        //Get text blocks for list
         blocks = getBlocks();
     
-        Loop for adding blocks to output
+        //Loop for adding blocks to output
         for (String string : blocks) {
-            Get text block to add to output
+            //Get text block to add to output
             TextBlock textBlock = new TextBlock(string);
-            Add text block to output list
+            //Add text block to output list
             output.add(textBlock.toString());
         }
     
-        Loop for outputting textblocks
+        //Loop for outputting textblocks
         for (String string : output) {
-             Output each text block from output list
+             //Output each text block from output list
             System.out.println(string);
         }
     }
