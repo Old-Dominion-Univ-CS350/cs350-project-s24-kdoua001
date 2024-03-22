@@ -39,18 +39,31 @@ public class Extractor {
      */
     public void Main()
     {
-        // List<String> nerBlocks;
-        // List<String> output = new ArrayList<>();
-        // IdentifyBlock inputBlock = new IdentifyBlock();
         /*
+        // To generate the list of blocks
+        // List<String> nerBlocks;
+        
+        // Create output list
+        // List<String> output = new ArrayList<>();
+
+        // Create list of blocks
+        // IdentifyBlock inputBlock = new IdentifyBlock();
+        
+        // Get text blocks
         nerBlocks = inputBlock.getNerBlocks();
+
+        // Loop for adding blocks to output
         for (String string : nerBlocks)
         {
+            // Get text block to add to output
             TextBlock textBlock = new TextBlock(string);
+            // Add text block to output list
             output.add(textBlock.toString());
         }
+        // Loop for outputting textblocks
         for (String string : output)
         {
+            // Output each text block from output list
             System.out.println(string);
         }
         */
