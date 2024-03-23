@@ -5,22 +5,20 @@ import java.io.File;
 public class Extractor {
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 1) {
-            System.out.println("Usage: java Extractor <inputFile>");
-            return;
-        }
+        Scanner scanner = new Scanner(System.in);
 
-        String inputFile = args[0];
+        System.out.print("Enter the path to the input file: ");
+        String inputFile = scanner.nextLine();
 
         // Check if the input file exists
         File file = new File(inputFile);
         if (!file.exists()) {
             System.out.println("Error: Input file not found.");
+            scanner.close();
             return;
         }
 
         System.out.println("Input file: " + inputFile);
 
-        // Perform actions with the input file
     }
 }
