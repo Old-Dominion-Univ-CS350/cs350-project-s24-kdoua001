@@ -9,14 +9,15 @@ public class Extractor {
             return;
         }
 
-        String command = args[0];
-        if (command.equals("-jar")) {
-            if (args.length < 3 || !args[1].equals("PNE.jar")) {
-                System.out.println("Usage: java Main -jar PNE.jar <inputFile>");
-                return;
-            }
+        String inputFile = args[0];
+
+        File file = new File(inputFile);
+        if (!file.exists()) {
+            System.out.println("Error: Input file not found.");
+            return;
         }
 
+        System.out.println("Input file: " + inputFile);
     }
 
 }
