@@ -65,19 +65,37 @@ public class TestIdentifyBlock {
         // Sample input data containing NER blocks
         String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";
 
+        TextBlock textBlock1 =new TextBlock("<NER>sample</NER>");
+        TextBlock textBlock2 = new TextBlock("<NER>with</NER>");
+
         // Expected extracted NER blocks
-        List<String> expectedBlocks = new ArrayList<>();
-        expectedBlocks.add("<NER>sample</NER>");
-        expectedBlocks.add("<NER>with</NER>");
+        List<TextBlock> expectedBlocks = new ArrayList<>();
+        expectedBlocks.add(textBlock1);
+        expectedBlocks.add(textBlock2);
 
         // Call extractNerBlocks method
-        List<String> actualBlocks = identifyBlock.extractBlocks(inputData);
+        List<TextBlock> actualBlocks = identifyBlock.extractBlocks(inputData);
 
         // Compare the actual blocks with the expected blocks
         assertEquals(expectedBlocks.size(), actualBlocks.size());
         for (int i = 0; i < expectedBlocks.size(); i++) {
-            assertEquals(expectedBlocks.get(i), actualBlocks.get(i));
+            assertEquals(expectedBlocks.get(i).toString(), actualBlocks.get(i).toString());
         }
+    }
+
+    @Test
+    public void testPersonTags(){
+        String inputData = "<NER>My name is John Smith.</NER>";
+        IdentifyBlock identifyBlock = new IdentifyBlock(inputData);
+        String expectedBlocks = "<NER>My name is <PER>John Smith</PER>.</NER>";
+
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+
+        identifyBlock.output();
+        assertEquals(expectedBlocks, (outputStreamCaptor.toString().trim()));
+
+
     }
 
 }

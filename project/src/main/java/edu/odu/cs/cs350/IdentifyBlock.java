@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class IdentifyBlock {
 
     private String dataFromFile;
-    private List<String> blocks;
+    private List<TextBlock> blocks;
 
     /**
      * Constructor
@@ -47,7 +47,7 @@ public class IdentifyBlock {
      * 
      * @return
      */
-    public List<String> getBlocks() {
+    public List<TextBlock> getBlocks() {
         return this.blocks;
     }
 
@@ -79,8 +79,9 @@ public class IdentifyBlock {
      * @param text
      * @return
      */
-    public List<String> extractBlocks(String data) {
+    public List<TextBlock> extractBlocks(String data) {
         List<String> taggedBlocks = new ArrayList<>();
+        List<TextBlock> textBlocksList = new ArrayList<>();
 
         // Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
@@ -88,11 +89,14 @@ public class IdentifyBlock {
 
         // Find patterns and adds them to the list
         while (match.find()) {
-            String Strings = match.group();
-             taggedBlocks.add(Strings);
+            taggedBlocks.add(match.group());
         }
 
-         return taggedBlocks;
+        for(String string : taggedBlocks){
+            TextBlock textBlock = new TextBlock(string);
+            textBlocksList.add(textBlock);
+        }
+        return textBlocksList;
     }
 
     /**
@@ -103,14 +107,11 @@ public class IdentifyBlock {
         List<String> output = new ArrayList<>();
     
         // Get text blocks for list
-        blocks = getBlocks();
     
         // Loop for adding blocks to output
-        for (String string : blocks) {
-            // Get text block to add to output
-            String String = new String(string);
+        for (TextBlock textblock : blocks) {
             // Add text block to output list
-            output.add(String.toString());
+            output.add(textblock.toString());
         }
     
         // Loop for outputting Strings

@@ -29,11 +29,11 @@ public class Extractor {
         IdentifyBlock identifyBlock = new IdentifyBlock();
         identifyBlock.readInput();
         String input = identifyBlock.getDataFromFile();
-        List<String> blocks = identifyBlock.extractBlocks(input);
+        List<TextBlock> blocks = identifyBlock.extractBlocks(input);
 
         // Output the extracted blocks
         System.out.println("Extracted Blocks:");
-        for (String block : blocks) {
+        for (TextBlock block : blocks) {
             System.out.println(block);
         }
     }
