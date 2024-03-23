@@ -8,6 +8,13 @@ plugins {
 
 }
 
+jar {
+    archiveFileName = 'PNE.jar'
+    manifest {
+        attributes 'Main-Class': 'edu.odu.cs.cs350.Extractor'
+    }
+}
+
 java {
     sourceCompatibility = JavaVersion.toVersion(11)
     targetCompatibility = JavaVersion.toVersion(11)
