@@ -15,6 +15,8 @@ public class Extractor {
                 System.out.println("Usage: java Main -jar PNE.jar <inputFile>");
                 return;
             }
+        }
+
     }
 
 }
