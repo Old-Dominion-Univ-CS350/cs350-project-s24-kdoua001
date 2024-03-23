@@ -15,11 +15,12 @@ public class Extractor {
         File file = new File(inputFile);
         if (!file.exists()) {
             System.out.println("Error: Input file not found.");
-            scanner.close();
             return;
         }
 
         System.out.println("Input file: " + inputFile);
+
+        scanner.close();
 
     }
 }
