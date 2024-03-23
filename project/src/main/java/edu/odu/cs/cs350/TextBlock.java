@@ -77,7 +77,7 @@ public class TextBlock {
                 theString.append("<PER>");//beginning of name
             }
             theString.append(currentToken.getTokenString());
-            if (currentToken.isName() && !nextToken.isName()){
+            if ((nextToken == null || !nextToken.isName()) && currentToken.isName()){
                 theString.append("</PER>");//end of name
             }
             if(!(nextToken == null) && !nextToken.isPunctuation()){
