@@ -26,6 +26,7 @@ public class Extractor {
 
     }
     */
+    
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
