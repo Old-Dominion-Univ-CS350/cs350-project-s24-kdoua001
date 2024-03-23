@@ -56,21 +56,21 @@ public class Document {
      * 
      * @param data
      */
-        public void setDataFromFile(String data) {
+    public void setDataFromFile(String data) {
         this.dataFromFile = data;
     }
 
     // /**
-    //  * Reads input and stores it in string
-    //  * 
-    //  * @throws Exception
-    //  */
+    // * Reads input and stores it in string
+    // *
+    // * @throws Exception
+    // */
     // public void readInput() throws Exception {
-    //     Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-    //     scanner.useDelimiter("\\A");
-    //     String content = scanner.next();
-    //     this.dataFromFile = content;
-    //     scanner.close();
+    // Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+    // scanner.useDelimiter("\\A");
+    // String content = scanner.next();
+    // this.dataFromFile = content;
+    // scanner.close();
     // }
 
     /**
@@ -93,7 +93,7 @@ public class Document {
             taggedBlocks.add(AddMe);
         }
 
-         return taggedBlocks;
+        return taggedBlocks;
     }
 
     /**
@@ -102,10 +102,10 @@ public class Document {
     public void printDocument() {
         // Create output list
         List<String> output = new ArrayList<>();
-    
+
         // Get text blocks for list
         blocks = getBlocks();
-    
+
         // Loop for adding blocks to output
         for (TextBlock Block : blocks) {
             // Get text block to add to output
@@ -113,7 +113,7 @@ public class Document {
             // Add text block to output list
             output.add(BlockString);
         }
-    
+
         // Loop for outputting Strings
         for (String string : output) {
             // Output each text block from output list
