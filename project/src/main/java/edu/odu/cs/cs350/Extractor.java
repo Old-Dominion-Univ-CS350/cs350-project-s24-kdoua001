@@ -1,10 +1,11 @@
 package edu.odu.cs.cs350;
 
 import java.io.File;
+import java.util.List;
 import java.util.Scanner;
 
 public class Extractor {
-
+    /* 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
@@ -23,4 +24,18 @@ public class Extractor {
         scanner.close();
 
     }
+    */
+    public static void main(String[] args) throws Exception {
+        IdentifyBlock identifyBlock = new IdentifyBlock();
+        identifyBlock.readInput();
+        String input = identifyBlock.getDataFromFile();
+        List<String> blocks = identifyBlock.extractBlocks(input);
+
+        // Output the extracted blocks
+        System.out.println("Extracted Blocks:");
+        for (String block : blocks) {
+            System.out.println(block);
+        }
+    }
+
 }
