@@ -66,9 +66,9 @@ public class TestDocument {
         String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";
 
         // Expected extracted NER blocks
-        List<String> expectedBlocks = new ArrayList<>();
-        expectedBlocks.add("<NER>sample</NER>");
-        expectedBlocks.add("<NER>with</NER>");
+        List<TextBlock> expectedBlocks = new ArrayList<>();
+        expectedBlocks.add(new TextBlock("<NER>sample</NER>"));
+        expectedBlocks.add(new TextBlock("<NER>with</NER>"));
 
         // Call extractNerBlocks method
         List<TextBlock> actualBlocks = identifyBlock.createBlocks(inputData);
@@ -76,7 +76,7 @@ public class TestDocument {
         // Compare the actual blocks with the expected blocks
         assertEquals(expectedBlocks.size(), actualBlocks.size());
         for (int i = 0; i < expectedBlocks.size(); i++) {
-            assertEquals(expectedBlocks.get(i), actualBlocks.get(i));
+            assertEquals(expectedBlocks.get(i).toString(), actualBlocks.get(i).toString());
         }
     }
 
