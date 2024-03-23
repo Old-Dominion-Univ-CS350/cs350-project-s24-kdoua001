@@ -8,17 +8,19 @@ public class Extractor {
         if (args.length == 0) {
             System.out.println("Usage: java Main <command> <inputFile>");
             // return;
+        } else {
+
+            String inputFile = args[0];
+
+            File file = new File(inputFile);
+            if (!file.exists()) {
+                System.out.println("Error: Input file not found.");
+                return;
+            }
+
+            System.out.println("Input file: " + inputFile);
         }
 
-        String inputFile = args[0];
-
-        File file = new File(inputFile);
-        if (!file.exists()) {
-            System.out.println("Error: Input file not found.");
-            return;
-        }
-
-        System.out.println("Input file: " + inputFile);
     }
 
 }
