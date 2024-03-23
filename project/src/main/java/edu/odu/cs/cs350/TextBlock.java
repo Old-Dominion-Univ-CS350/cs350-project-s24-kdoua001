@@ -64,6 +64,7 @@ public class TextBlock {
      * persons will be wrapped in <PER> </PER>
      */
     public String toString(){
+        myNameIs();//Demonstration purposes only.
         StringBuilder theString = new StringBuilder();
         theString.append("<NER>"); 
         int lastIndex = tokensList.size() - 1;
@@ -95,6 +96,33 @@ public class TextBlock {
      */
     public void addToken(Token token){
         this.tokensList.add(token);
+    }
+
+    /**
+     * used to search tokensList for a token containing a string
+     * @param search the string representation of a token to be found 
+     * @return true if a token in tokensList contains the string
+     */
+    public boolean containsString(String search){
+        for(Token token : tokensList){
+            if(token.getTokenString().equals(search)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * For demonstration purposes only
+     * If the first three tokens in a textblock are "My" "name" "is" it will set the next two tokens as personal Names
+     * This will allow us to demonstrate that personal names will appear wrapped in <PER> </PER> tags in output 
+     */
+    public void myNameIs()
+    {
+        if(this.containsString("My") && this.containsString("name") && this.containsString("is")){
+            tokensList.get(3).setIsName(true);
+            tokensList.get(4).setIsName(true);
+        }
     }
 
 }

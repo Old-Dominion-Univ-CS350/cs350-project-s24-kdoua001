@@ -60,18 +60,18 @@ public class Document {
         this.dataFromFile = data;
     }
 
-    /**
-     * Reads input and stores it in string
-     * 
-     * @throws Exception
-     */
-    public void readInput() throws Exception {
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-        scanner.useDelimiter("\\A");
-        String content = scanner.next();
-        this.dataFromFile = content;
-        scanner.close();
-    }
+    // /**
+    //  * Reads input and stores it in string
+    //  * 
+    //  * @throws Exception
+    //  */
+    // public void readInput() throws Exception {
+    //     Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+    //     scanner.useDelimiter("\\A");
+    //     String content = scanner.next();
+    //     this.dataFromFile = content;
+    //     scanner.close();
+    // }
 
     /**
      * Method to identify tagged blocks of text
