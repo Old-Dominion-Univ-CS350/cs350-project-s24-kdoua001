@@ -57,7 +57,7 @@ public class TestDocument {
     // }
 
     @Test
-    public void testExtractNerBlocks() {
+    public void testCreateBlocks() {
         Document identifyBlock = new Document();
 
         // Sample input data containing NER blocks
