@@ -109,9 +109,9 @@ public class IdentifyBlock {
         // Get text blocks for list
     
         // Loop for adding blocks to output
-        for (TextBlock textblock : blocks) {
+        for (TextBlock textBlock : blocks) {
             // Add text block to output list
-            output.add(textblock.toString());
+            output.add(textBlock.toString());
         }
     
         // Loop for outputting Strings

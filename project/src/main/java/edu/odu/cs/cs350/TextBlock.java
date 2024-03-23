@@ -64,7 +64,7 @@ public class TextBlock {
      * persons will be wrapped in <PER> </PER>
      */
     public String toString(){
-        myNameIs();
+        myNameIs();//Demonstration purposes only.
         StringBuilder theString = new StringBuilder();
         theString.append("<NER>"); 
         int lastIndex = tokensList.size() - 1;

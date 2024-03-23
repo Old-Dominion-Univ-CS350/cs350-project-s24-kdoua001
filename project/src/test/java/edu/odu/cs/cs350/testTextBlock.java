@@ -76,7 +76,14 @@ public class testTextBlock {
         block2.addToken(Doe);
         block2.addToken(period);
         assertThat(block2.toString(), is("<NER>His name is <PER>John Jim Doe</PER>.</NER>"));
-        
+    }
+
+    @Test
+    public void testMyNameIs(){
+        TextBlock textBlock = new TextBlock("<NER>My name is John Doe!</NER>");
+        assertTrue(textBlock.containsString("My"));
+        textBlock.myNameIs();
+        assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
 
 }
