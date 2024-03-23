@@ -1,6 +1,7 @@
 package edu.odu.cs.cs350;
 
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,16 +27,17 @@ public class Extractor {
     }
     */
     public static void main(String[] args) throws Exception {
-        IdentifyBlock identifyBlock = new IdentifyBlock();
-        identifyBlock.readInput();
-        String input = identifyBlock.getDataFromFile();
-        List<String> blocks = identifyBlock.extractBlocks(input);
+
+        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+        scanner.useDelimiter("\\A");
+        String contentOfFile = scanner.next();
+        scanner.close();
+
+        Document Document = new Document(contentOfFile);
 
         // Output the extracted blocks
         System.out.println("Extracted Blocks:");
-        for (String block : blocks) {
-            System.out.println(block);
-        }
+        Document.printDocument();
     }
 
 }

@@ -10,15 +10,15 @@ import java.util.regex.Pattern;
 /**
  * IdentifyBlock class
  */
-public class IdentifyBlock {
+public class Document {
 
     private String dataFromFile;
-    private List<String> blocks;
+    private List<TextBlock> blocks;
 
     /**
      * Constructor
      */
-    public IdentifyBlock() {
+    public Document() {
         this.dataFromFile = "";
         this.blocks = new ArrayList<>();
     }
@@ -28,9 +28,9 @@ public class IdentifyBlock {
      * 
      * @param data
      */
-    public IdentifyBlock(String data) {
+    public Document(String data) {
         this.dataFromFile = data;
-        this.blocks = extractBlocks(data);
+        this.blocks = createBlocks(data);
     }
 
     /**
@@ -47,7 +47,7 @@ public class IdentifyBlock {
      * 
      * @return
      */
-    public List<String> getBlocks() {
+    public List<TextBlock> getBlocks() {
         return this.blocks;
     }
 
@@ -79,8 +79,8 @@ public class IdentifyBlock {
      * @param text
      * @return
      */
-    public List<String> extractBlocks(String data) {
-        List<String> taggedBlocks = new ArrayList<>();
+    public List<TextBlock> createBlocks(String data) {
+        List<TextBlock> taggedBlocks = new ArrayList<>();
 
         // Define pattern to identify blocks of text
         Pattern pattern = Pattern.compile("<NER>.*?</NER>", Pattern.DOTALL);
@@ -88,8 +88,9 @@ public class IdentifyBlock {
 
         // Find patterns and adds them to the list
         while (match.find()) {
-            String Strings = match.group();
-             taggedBlocks.add(Strings);
+            String blocktext = match.group();
+            TextBlock AddMe = new TextBlock(blocktext);
+            taggedBlocks.add(AddMe);
         }
 
          return taggedBlocks;
@@ -98,7 +99,7 @@ public class IdentifyBlock {
     /**
      * Output text blocks
      */
-    public void output() {
+    public void printDocument() {
         // Create output list
         List<String> output = new ArrayList<>();
     
@@ -106,11 +107,11 @@ public class IdentifyBlock {
         blocks = getBlocks();
     
         // Loop for adding blocks to output
-        for (String string : blocks) {
+        for (TextBlock Block : blocks) {
             // Get text block to add to output
-            String String = new String(string);
+            String BlockString = Block.toString();
             // Add text block to output list
-            output.add(String.toString());
+            output.add(BlockString);
         }
     
         // Loop for outputting Strings

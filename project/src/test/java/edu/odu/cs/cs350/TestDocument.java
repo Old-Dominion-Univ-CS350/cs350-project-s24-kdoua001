@@ -14,12 +14,12 @@ import static org.hamcrest.Matchers.*;
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 
-public class TestIdentifyBlock {
+public class TestDocument {
 
 
     @Test
     public void testDefaultConstructor() {
-        IdentifyBlock file = new IdentifyBlock();
+        Document file = new Document();
         assertEquals("", file.getDataFromFile());
         assertEquals(new ArrayList<>(), file.getBlocks());
     }
@@ -27,40 +27,40 @@ public class TestIdentifyBlock {
     @Test
     public void testParameterizedConstructor() {
         String block = "<NER>this is for testing</NER>";
-        IdentifyBlock testInput = new IdentifyBlock(block);
+        Document testInput = new Document(block);
  
         assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
         
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
 
-        testInput.output();
+        testInput.printDocument();
 
         assertEquals(block, outputStreamCaptor.toString().trim());
 
     }
 
 
-    public void testReadInput() throws Exception {
-        // Prepare input data
-        String inputData = "Test input data";
-        InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
-        System.setIn(inputStream); // Redirect System.in to our input stream
+    // public void testReadInput() throws Exception {
+    //     // Prepare input data
+    //     String inputData = "Test input data";
+    //     InputStream inputStream = new ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
+    //     System.setIn(inputStream); // Redirect System.in to our input stream
  
-        IdentifyBlock identifyBlock = new IdentifyBlock();
-        identifyBlock.readInput(); // Call the method to read input
+    //     Document identifyBlock = new Document();
+    //     identifyBlock.readInput(); // Call the method to read input
  
-        // Assert that dataFromFile is equal to inputData
-        assertEquals(inputData, identifyBlock.getDataFromFile());
+    //     // Assert that dataFromFile is equal to inputData
+    //     assertEquals(inputData, identifyBlock.getDataFromFile());
  
-        // Clean up: Restore System.in
-        System.setIn(System.in);
-    }
+    //     // Clean up: Restore System.in
+    //     System.setIn(System.in);
+    // }
 
      
     @Test
     public void testExtractNerBlocks() {
-        IdentifyBlock identifyBlock = new IdentifyBlock();
+        Document identifyBlock = new Document();
 
         // Sample input data containing NER blocks
         String inputData = "This is a <NER>sample</NER> text <NER>with</NER> NER blocks.";
@@ -71,7 +71,7 @@ public class TestIdentifyBlock {
         expectedBlocks.add("<NER>with</NER>");
 
         // Call extractNerBlocks method
-        List<String> actualBlocks = identifyBlock.extractBlocks(inputData);
+        List<TextBlock> actualBlocks = identifyBlock.createBlocks(inputData);
 
         // Compare the actual blocks with the expected blocks
         assertEquals(expectedBlocks.size(), actualBlocks.size());
