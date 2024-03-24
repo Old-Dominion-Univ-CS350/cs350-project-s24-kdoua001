@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main class for calling other classes and functions
+ */
 public class Extractor {
     /* 
     public static void main(String[] args) throws Exception {
@@ -27,6 +30,12 @@ public class Extractor {
     }
     */
     
+    /**
+     * Main function
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
