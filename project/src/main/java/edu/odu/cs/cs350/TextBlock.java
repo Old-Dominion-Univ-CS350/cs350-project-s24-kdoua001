@@ -12,7 +12,7 @@ import java.util.List;
 public class TextBlock {
     private  List<Token> tokensList;
 
-    /**
+     /**
      * Main Constructor 
      */
     TextBlock(String BlockText){
