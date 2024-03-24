@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+ /**
  * This class represents a TextBlock object
  * It contains functions for creating tokens and converting TextBlocks to a string
  */
