@@ -44,7 +44,7 @@ public class TestDocument {
     // String inputData = "Test input data";
     // InputStream inputStream = new
     // ByteArrayInputStream(inputData.getBytes(StandardCharsets.UTF_8));
-    // System.setIn(inputStream); // Redirect System.in to our input stream
+    // System.setIn(inputStream); // Redirect System.in to our input stream test
 
     // Document identifyBlock = new Document();
     // identifyBlock.readInput(); // Call the method to read input
