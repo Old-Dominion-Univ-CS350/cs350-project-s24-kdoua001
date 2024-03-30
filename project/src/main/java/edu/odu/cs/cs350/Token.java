@@ -7,7 +7,7 @@ package edu.odu.cs.cs350;
  */
 public class Token {
 
-    private String tokenString;
+    private String tokenString = null;
     private boolean nameFlag;
     private boolean inDictionary;
     private boolean locationFlag;
@@ -191,5 +191,10 @@ public class Token {
      */
     public void setIsPunctuation(boolean punctuation) {
         this.punctuationFlag = punctuation;
+    }
+
+    @Override
+    public String toString(){
+        return this.tokenString;
     }
 }
