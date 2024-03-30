@@ -86,4 +86,15 @@ public class testTextBlock {
         assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
 
+    @Test
+    public void testGenerateShingles(){
+        List<List<Token>> shingles = new ArrayList<>();
+        String text = "<NER>by John Doe, Lawrence Livermore Laboratory n</NER>";
+        TextBlock block = new TextBlock(text);
+        shingles = block.generateShingles(block.getTokensList());
+        for(List<Token> shingle : shingles){
+            System.out.println("Shingle: " + shingle);
+        }
+    }
+
 }
