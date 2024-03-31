@@ -47,7 +47,7 @@ public class TextBlock {
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
         Matcher match = pattern.matcher(noTags);
 
-        //Set isPuncuation to True if Punc is Found in First Char, False if Not
+        //Set isPunctuation to True if Punc is Found in First Char, False if Not
         while (match.find()) {
             String tokenString = match.group();
             Token AddMe = new Token(tokenString);
