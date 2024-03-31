@@ -12,6 +12,7 @@ import java.util.List;
 public class TextBlock {
     private  List<Token> tokensList;
 
+    static final int shingleSize = 3;
      /**
      * Main Constructor 
      */
@@ -46,7 +47,7 @@ public class TextBlock {
         Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
         Matcher match = pattern.matcher(noTags);
 
-        //Set isPuncuation to True if Punc is Found in First Char, False if Not
+        //Set isPunctuation to True if Punc is Found in First Char, False if Not
         while (match.find()) {
             String tokenString = match.group();
             Token AddMe = new Token(tokenString);
@@ -63,6 +64,7 @@ public class TextBlock {
      * Entire text block will be wrapped in <NER> </NER> and
      * persons will be wrapped in <PER> </PER>
      */
+    @Override
     public String toString(){
         myNameIs();//Demonstration purposes only.
         StringBuilder theString = new StringBuilder();
@@ -87,6 +89,46 @@ public class TextBlock {
         
         theString.append("</NER>");
         return theString.toString().trim();
+    }
+
+    /**
+     * This function will generate shingles to be used to generate input for the learning machine
+     * as described in section 5.3 in the Design Notes
+     * 
+     * @param tokens a list of tokens to be turned into shingles
+     * @return a list containing lists of tokens. 
+     */
+    public static List<List<Token>> generateShingles(List<Token> tokens) {
+        List<List<Token>> shingles = new ArrayList<>();
+
+        int windowSize = 2 * shingleSize + 1;
+
+        // Add initial null tokens for lists with null tokens at the beginning 
+        for (int i = 0; i < shingleSize; i++) {
+            List<Token> nullWindow = new ArrayList<>();
+            for (int j = 0; j < shingleSize - i; j++) {
+                nullWindow.add(null);
+            }
+            nullWindow.addAll(tokens.subList(0, i + shingleSize + 1));
+            shingles.add(nullWindow);
+        }
+
+        // Add tokens to list
+        for (int i = 0; i <= tokens.size() - windowSize; i++) {
+            List<Token> window = new ArrayList<>(tokens.subList(i, i + windowSize));
+            shingles.add(window);
+        }
+
+        // Add trailing null tokens for lists with null tokens at the end 
+        for (int i = 0; i < shingleSize; i++) {
+            List<Token> nullWindow = new ArrayList<>(tokens.subList(tokens.size() - windowSize + i, tokens.size()));
+            for (int j = 0; j < shingleSize - i; j++) {
+                nullWindow.add(null);
+            }
+            shingles.add(nullWindow);
+        }
+
+        return shingles;
     }
 
     /**

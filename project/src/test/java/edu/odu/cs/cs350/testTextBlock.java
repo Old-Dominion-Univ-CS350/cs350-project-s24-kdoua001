@@ -55,13 +55,13 @@ public class testTextBlock {
         String text = "<NER>My name is John Doe!</NER>";
         TextBlock block = new TextBlock(text);
         assertThat(block.toString(), is("<NER>My name is <PER>John Doe</PER>!</NER>"));
-        
+
         Token John = new Token("John");
         John.setIsName(true);
         John.setIsPunctuation(false);
         Token Jim = new Token("Jim");
-        Jim.setIsName(true);  
-        Jim.setIsPunctuation(false);      
+        Jim.setIsName(true);
+        Jim.setIsPunctuation(false);
         Token Doe = new Token("Doe");
         Doe.setIsName(true);
         Doe.setIsPunctuation(false);
@@ -79,11 +79,119 @@ public class testTextBlock {
     }
 
     @Test
-    public void testMyNameIs(){
+    public void testMyNameIs() {
         TextBlock textBlock = new TextBlock("<NER>My name is John Doe!</NER>");
         assertTrue(textBlock.containsString("My"));
         textBlock.myNameIs();
         assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
+
+    @Test
+    public void testGenerateShingles() {
+        List<List<Token>> shingles = new ArrayList<>();
+        String text = "<NER>by John Doe, Lawrence Livermore Laboratory n</NER>";
+        TextBlock block = new TextBlock(text);
+        shingles = block.generateShingles(block.getTokensList());
+        for (List<Token> shingle : shingles) {
+            System.out.println("Shingle: " + shingle);
+        }
+    }
+
+    @Test
+    public void testIsLexicalFeature() {
+        String lexicalFeaturesStringExample = "This is test input 10";
+        TextBlock aBlockOfText = new TextBlock(lexicalFeaturesStringExample);
+        boolean isANum = false;
+        List<Token> inputTokens = aBlockOfText.createTokens(lexicalFeaturesStringExample);
+
+        for (int i = 0; i < inputTokens.size(); i++) {
+            Token token = inputTokens.get(i);
+            String tokenValue = token.getTokenString();
+            if (tokenValue.matches("\\d+")) {
+                isANum = true;
+
+                break;
+            }
+        }
+        // for (Token token : inputTokens) {
+        // String tokenValue = token.getTokenString();
+        // if (tokenValue.matches("\\d+")) {
+        // isANum = true;
+
+        // break;
+        // }
+
+        // }
+
+        assertTrue(isANum);
+
+    }
+
+
+    /*
+    @Test
+    public void testIsAllCapitals() {
+        String testInput = "This is a TEST";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isAllCapitals = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue.matches("[A-Z]")) { // Need to fix
+                isAllCapitals = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isAllCapitals);
+    }
+    */
+
+    /*
+    @Test
+    public void testIsNewLine() {
+        String testInput = "This is a test \n";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isNewLine = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue.matches("\n")) { // Need to check for other new line characters
+                isNewLine = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isNewLine);
+    }
+    */
+
+    /*
+    @Test
+    public void testIsNull() {
+        String testInput = "This is a test NULL";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isNull = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue == 0) { // Check if this would actually work with NULL in a string and with other null character representations
+                isNull = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isNull);
+    }
+    */
 
 }
