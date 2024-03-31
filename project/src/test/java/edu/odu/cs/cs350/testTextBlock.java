@@ -127,4 +127,71 @@ public class testTextBlock {
 
     }
 
+
+    /*
+    @Test
+    public void testIsAllCapitals() {
+        String testInput = "This is a TEST";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isAllCapitals = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue.matches("[A-Z]")) { // Need to fix
+                isAllCapitals = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isAllCapitals);
+    }
+    */
+
+    /*
+    @Test
+    public void testIsNewLine() {
+        String testInput = "This is a test \n";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isNewLine = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue.matches("\n")) { // Need to check for other new line characters
+                isNewLine = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isNewLine);
+    }
+    */
+
+    /*
+    @Test
+    public void testIsNull() {
+        String testInput = "This is a test NULL";
+        TextBlock testTextBlock = new TextBlock(testInput);
+        boolean isNull = false;
+        List<Token> testInputTokens = testTextBlock.createTokens(testInput);
+
+        for (int i = 0; i < testInputTokens.size(); i++) {
+            Token testToken = testInputTokens.get(i);
+            String testTokenValue = testToken.getTokenString();
+            if (testTokenValue == 0) { // Check if this would actually work with NULL in a string and with other null character representations
+                isNull = true;
+
+                break;
+            }
+        }
+
+        assertTrue(isNull);
+    }
+    */
+
 }
