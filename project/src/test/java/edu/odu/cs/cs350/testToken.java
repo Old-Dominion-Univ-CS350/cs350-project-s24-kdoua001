@@ -142,9 +142,14 @@ public class testToken {
 
     @Test
     public void testLexicalFeatureNumber() {
+        // Test input a string representing a number
         String testInput = "10";
+
+        // creating a new Token object with test input and lexicalFeature.Number
         Token token = new Token(testInput, LexicalFeature.NUMBER);
 
+        // check if lexical feature associated with the token is equal to
+        // LexicalFeature.NUMBER
         assertEquals(LexicalFeature.NUMBER, token.getLexicalFeature());
 
     }
