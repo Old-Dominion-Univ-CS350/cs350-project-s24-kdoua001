@@ -32,7 +32,7 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     testImplementation 'org.jmockit:jmockit:1.49'
    // implementation 'edu.odu.cs.extract:extract-wordlists:4.2'
-   // implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.6'
+    implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.6'
 }
 
 test {
