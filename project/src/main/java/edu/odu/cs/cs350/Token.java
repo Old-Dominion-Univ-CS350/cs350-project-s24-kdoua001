@@ -22,6 +22,7 @@ public class Token {
      * Constructor
      * 
      * @param number
+     * @param lexical feature the lexical feature associated with the token.
      */
     public Token(String assignedString, LexicalFeature lexicalFeature) {
         this.tokenString = assignedString;
@@ -202,6 +203,11 @@ public class Token {
         return this.tokenString;
     }
 
+    /**
+     * gets the lexical feature associated with this token.
+     * 
+     * @return the lexical feature of this token
+     */
     public LexicalFeature getLexicalFeature() {
         return lexicalFeature;
     }
