@@ -9,7 +9,7 @@ public class testToken {
     @Test
     public void testConstructor() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
         assertFalse(theToken.isInDictionary());
@@ -23,7 +23,7 @@ public class testToken {
     @Test
     public void testSetTokenString() {
         String string = " ";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setTokenString("token");
         assertEquals("token", theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -38,7 +38,7 @@ public class testToken {
     @Test
     public void testSetIsName() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsName(true);
         assertEquals(string, theToken.getTokenString());
         assertTrue(theToken.isName());
@@ -53,7 +53,7 @@ public class testToken {
     @Test
     public void testSetIsInDictionary() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsInDictionary(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -68,7 +68,7 @@ public class testToken {
     @Test
     public void testSetIsLocation() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsLocation(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -83,7 +83,7 @@ public class testToken {
     @Test
     public void testSetIsCommonFirst() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsCommonFirst(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -98,7 +98,7 @@ public class testToken {
     @Test
     public void testSetIsCommonLast() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsCommonLast(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -113,7 +113,7 @@ public class testToken {
     @Test
     public void testSetIsHonorific() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsHonorific(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -128,7 +128,7 @@ public class testToken {
     @Test
     public void testSetIsPunctuation() {
         String string = "token";
-        Token theToken = new Token(string);
+        Token theToken = new Token(string, null);
         theToken.setIsPunctuation(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -145,7 +145,7 @@ public class testToken {
         String testInput = "10";
         Token token = new Token(testInput, LexicalFeature.NUMBER);
 
-        assertEquals(LexicalFeature.NUMBER, token.getLexicalFeature);
+        assertEquals(LexicalFeature.NUMBER, token.getLexicalFeature());
 
     }
 }

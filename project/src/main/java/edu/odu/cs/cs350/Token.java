@@ -16,12 +16,16 @@ public class Token {
     private boolean honorificFlag;
     private boolean killWordFlag;
     private boolean punctuationFlag;
+    private LexicalFeature lexicalFeature;
 
     /**
      * Constructor
+     * 
+     * @param number
      */
-    public Token(String assignedString) {
+    public Token(String assignedString, LexicalFeature lexicalFeature) {
         this.tokenString = assignedString;
+        this.lexicalFeature = lexicalFeature;
         this.inDictionary = false;
         this.locationFlag = false;
         this.commonFirst = false;
@@ -194,7 +198,11 @@ public class Token {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.tokenString;
+    }
+
+    public LexicalFeature getLexicalFeature() {
+        return lexicalFeature;
     }
 }
