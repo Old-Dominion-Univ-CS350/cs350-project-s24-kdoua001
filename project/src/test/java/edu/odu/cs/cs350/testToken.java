@@ -139,4 +139,13 @@ public class testToken {
         assertFalse(theToken.isHonorific());
         assertTrue(theToken.isPunctuation());
     }
+
+    @Test
+    public void testLexicalFeatureNumber() {
+        String testInput = "10";
+        Token token = new Token(testInput, LexicalFeature.NUMBER);
+
+        assertEquals(LexicalFeature.NUMBER, token.getLexicalFeature);
+
+    }
 }
