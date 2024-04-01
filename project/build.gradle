@@ -22,9 +22,9 @@ java {
 
 repositories {
     mavenCentral()
-   // ivy {
-   //    url 'https://www.cs.odu.edu/~zeil/ivyrepo'
-   //  }
+    ivy {
+      url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+     }
 }
 
 dependencies {
