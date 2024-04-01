@@ -1,3 +1,12 @@
+pluginManagement {
+    repositories {
+        ivy { // Use my own CS dept repo
+            url 'https://www.cs.odu.edu/~zeil/ivyrepo'
+        }
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'PNE'
  
 include "project"
