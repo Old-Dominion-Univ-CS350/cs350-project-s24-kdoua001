@@ -148,6 +148,9 @@ public class testToken {
         String singleCapLetterInput = "A";
         String aCapitalizedWordInput = "Word";
         String allCapsInput = "HELLO";
+        String newLineInput = "\n";
+        String nullInput = "";
+        String otherInput = "other";
 
         // creating a new Token object with test input with various lexical Features
         Token token = new Token(testInput, LexicalFeature.NUMBER);
@@ -155,6 +158,9 @@ public class testToken {
         Token singleCapToken = new Token(singleCapLetterInput, LexicalFeature.SINGLECAPLETTER);
         Token capWordToken = new Token(aCapitalizedWordInput, LexicalFeature.CAPITALIZEDWORD);
         Token allCapToken = new Token(allCapsInput, LexicalFeature.ALLCAPS);
+        Token newLineToken = new Token(newLineInput, LexicalFeature.NEWLINE);
+        Token nullToken = new Token(nullInput, LexicalFeature.NULLFEATURE);
+        Token otherToken = new Token(otherInput, LexicalFeature.OTHER);
 
         // check if lexical feature associated with the token is equal to certain
         // lexical feature
@@ -163,6 +169,9 @@ public class testToken {
         assertEquals(LexicalFeature.SINGLECAPLETTER, singleCapToken.getLexicalFeature());
         assertEquals(LexicalFeature.CAPITALIZEDWORD, capWordToken.getLexicalFeature());
         assertEquals(LexicalFeature.ALLCAPS, allCapToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NEWLINE, newLineToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NULLFEATURE, nullToken.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, otherToken.getLexicalFeature());
 
     }
 
