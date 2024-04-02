@@ -215,4 +215,13 @@ public class Token {
     public void setLexicalFeature(LexicalFeature lexicalFeature) {
         this.lexicalFeature = lexicalFeature;
     }
+
+    public void detectLexicalFeature() {
+        if (tokenString.matches("\\d+")) {
+            lexicalFeature = LexicalFeature.NUMBER;
+
+        }
+
+    }
+
 }
