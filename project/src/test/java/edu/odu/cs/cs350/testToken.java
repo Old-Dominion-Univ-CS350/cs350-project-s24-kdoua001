@@ -169,9 +169,13 @@ public class testToken {
     @Test
     public void testDetectLexicalFeature() {
         String testInput = "My";
+        String testRepOfNumber = "10";
         Token tokenInput = new Token(testInput, null);
+        Token numbToken = new Token(testRepOfNumber, null);
         tokenInput.setLexicalFeature(LexicalFeature.CAPITALIZEDWORD);
+        testRepOfNumber.detectLexicalFeature();
 
         assertEquals(LexicalFeature.CAPITALIZEDWORD, tokenInput.getLexicalFeature());
+        assertEquals("NUMBER", numbToken.getLexicalFeature());
     }
 }
