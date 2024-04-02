@@ -144,13 +144,25 @@ public class testToken {
     public void testLexicalFeatureNumber() {
         // Test input a string representing a number
         String testInput = "10";
+        String punctuationMarkInput = "!";
+        String singleCapLetterInput = "A";
+        String aCapitalizedWordInput = "Word";
+        String allCapsInput = "HELLO";
 
-        // creating a new Token object with test input and lexicalFeature.Number
+        // creating a new Token object with test input with various lexical Features
         Token token = new Token(testInput, LexicalFeature.NUMBER);
+        Token puncToken = new Token(punctuationMarkInput, LexicalFeature.PUNCTUATION);
+        Token singleCapToken = new Token(singleCapLetterInput, LexicalFeature.SINGLECAPLETTER);
+        Token capWordToken = new Token(aCapitalizedWordInput, LexicalFeature.CAPITALIZEDWORD);
+        Token allCapToken = new Token(allCapsInput, LexicalFeature.ALLCAPS);
 
         // check if lexical feature associated with the token is equal to
         // LexicalFeature.NUMBER
         assertEquals(LexicalFeature.NUMBER, token.getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, puncToken.getLexicalFeature());
+        assertEquals(LexicalFeature.SINGLECAPLETTER, singleCapToken.getLexicalFeature());
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, capWordToken.getLexicalFeature());
+        assertEquals(LexicalFeature.ALLCAPS, allCapToken.getLexicalFeature());
 
     }
 }
