@@ -215,4 +215,8 @@ public class Token {
     public void setLexicalFeature(LexicalFeature lexicalFeature) {
         this.lexicalFeature = lexicalFeature;
     }
+
+    public void detectLexicalFeature() {
+
+    }
 }

@@ -173,7 +173,7 @@ public class testToken {
         Token tokenInput = new Token(testInput, null);
         Token numbToken = new Token(testRepOfNumber, null);
         tokenInput.setLexicalFeature(LexicalFeature.CAPITALIZEDWORD);
-        testRepOfNumber.detectLexicalFeature();
+        numbToken.detectLexicalFeature();
 
         assertEquals(LexicalFeature.CAPITALIZEDWORD, tokenInput.getLexicalFeature());
         assertEquals("NUMBER", numbToken.getLexicalFeature());
