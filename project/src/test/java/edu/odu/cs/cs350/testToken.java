@@ -176,6 +176,6 @@ public class testToken {
         numbToken.detectLexicalFeature();
 
         assertEquals(LexicalFeature.CAPITALIZEDWORD, tokenInput.getLexicalFeature());
-        assertEquals("NUMBER", numbToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NUMBER, numbToken.getLexicalFeature());
     }
 }
