@@ -211,4 +211,8 @@ public class Token {
     public LexicalFeature getLexicalFeature() {
         return lexicalFeature;
     }
+
+    public void setLexicalFeature(LexicalFeature lexicalFeature) {
+        this.lexicalFeature = lexicalFeature;
+    }
 }
