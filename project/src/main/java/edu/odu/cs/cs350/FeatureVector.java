@@ -1,5 +1,48 @@
 package edu.odu.cs.cs350;
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instances;
+import java.util.List;
+import java.util.ArrayList;
 
 public class FeatureVector {
+     
+    //Method to create feature vectors based on Token attributes
+    public Instances createVectors(List<Token> tokenList) 
+    {
+        ArrayList<Attribute> attributes = new ArrayList<>();
+
+        //add boolean attributes from Token class
+        attributes.add(new Attribute("isName"));
+        attributes.add(new Attribute("isInDictionary"));
+        attributes.add(new Attribute("isLocation"));
+        attributes.add(new Attribute("isCommonFirst"));
+        attributes.add(new Attribute("isCommonLast"));
+        attributes.add(new Attribute("isHonorific"));
+        attributes.add(new Attribute("isKillWord"));
+        attributes.add(new Attribute("isPunctuation"));
+
+        //create instances object with the defined attributes
+        Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
+
+        for (Token token : tokenList) {
+            double[] values = new double[data.numAttributes()];
+
+            // Set attribute values based on Token attributes
+            values[0] = token.isName() ? 1.0 : 0.0;
+            values[1] = token.isInDictionary() ? 1.0 : 0.0;
+            values[2] = token.isLocation() ? 1.0 : 0.0;
+            values[3] = token.isCommonFirst() ? 1.0 : 0.0;
+            values[4] = token.isCommonLast() ? 1.0 : 0.0;
+            values[5] = token.isHonorific() ? 1.0 : 0.0;
+            values[6] = token.isKillWord() ? 1.0 : 0.0;
+            values[7] = token.isPunctuation() ? 1.0 : 0.0;
+
+            // Create DenseInstance and add to Instances object
+            data.add(new DenseInstance(1.0, values));
+        }
+
+        return data;
+    }
     
 }
