@@ -217,6 +217,11 @@ public class Token {
     }
 
     public void detectLexicalFeature() {
+        if (tokenString.matches("\\d+")) {
+            lexicalFeature = LexicalFeature.NUMBER;
+
+        }
 
     }
+
 }
