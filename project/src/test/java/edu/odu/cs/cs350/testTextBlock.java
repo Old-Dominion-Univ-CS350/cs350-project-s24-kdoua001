@@ -97,105 +97,20 @@ public class testTextBlock {
         }
     }
 
-    /*
-     * @Test
-     * public void testIsLexicalFeature() {
-     * String lexicalFeaturesStringExample = "This is test input 10";
-     * TextBlock aBlockOfText = new TextBlock(lexicalFeaturesStringExample);
-     * boolean isANum = false;
-     * List<Token> inputTokens =
-     * aBlockOfText.createTokens(lexicalFeaturesStringExample);
-     * 
-     * for (int i = 0; i < inputTokens.size(); i++) {
-     * Token token = inputTokens.get(i);
-     * String tokenValue = token.getTokenString();
-     * if (tokenValue.matches("\\d+")) {
-     * isANum = true;
-     * 
-     * break;
-     * }
-     * }
-     * // for (Token token : inputTokens) {
-     * // String tokenValue = token.getTokenString();
-     * // if (tokenValue.matches("\\d+")) {
-     * // isANum = true;
-     * 
-     * // break;
-     * // }
-     * 
-     * // }
-     * 
-     * assertTrue(isANum);
-     * 
-     * }
-     */
+    @Test
+    public void testCreateTokensWithLexicalFeatures() {
+        String testInput = "This is a test, with some punctuation.";
+        TextBlock block = new TextBlock(testInput);
 
-    /*
-     * @Test
-     * public void testIsAllCapitals() {
-     * String testInput = "This is a TEST";
-     * TextBlock testTextBlock = new TextBlock(testInput);
-     * boolean isAllCapitals = false;
-     * List<Token> testInputTokens = testTextBlock.createTokens(testInput);
-     * 
-     * for (int i = 0; i < testInputTokens.size(); i++) {
-     * Token testToken = testInputTokens.get(i);
-     * String testTokenValue = testToken.getTokenString();
-     * if (testTokenValue.matches("[A-Z]")) { // Need to fix
-     * isAllCapitals = true;
-     * 
-     * break;
-     * }
-     * }
-     * 
-     * assertTrue(isAllCapitals);
-     * }
-     */
+        // Tokenize the test input
+        List<Token> tokens = block.createTokens(testInput);
 
-    /*
-     * @Test
-     * public void testIsNewLine() {
-     * String testInput = "This is a test \n";
-     * TextBlock testTextBlock = new TextBlock(testInput);
-     * boolean isNewLine = false;
-     * List<Token> testInputTokens = testTextBlock.createTokens(testInput);
-     * 
-     * for (int i = 0; i < testInputTokens.size(); i++) {
-     * Token testToken = testInputTokens.get(i);
-     * String testTokenValue = testToken.getTokenString();
-     * if (testTokenValue.matches("\n")) { // Need to check for other new line
-     * characters
-     * isNewLine = true;
-     * 
-     * break;
-     * }
-     * }
-     * 
-     * assertTrue(isNewLine);
-     * }
-     */
+        // Assert that number of tokens matches the expected number
+        assertEquals(9, tokens.size());
 
-    /*
-     * @Test
-     * public void testIsNull() {
-     * String testInput = "This is a test NULL";
-     * TextBlock testTextBlock = new TextBlock(testInput);
-     * boolean isNull = false;
-     * List<Token> testInputTokens = testTextBlock.createTokens(testInput);
-     * 
-     * for (int i = 0; i < testInputTokens.size(); i++) {
-     * Token testToken = testInputTokens.get(i);
-     * String testTokenValue = testToken.getTokenString();
-     * if (testTokenValue == 0) { // Check if this would actually work with NULL in
-     * a string and with other null character representations
-     * isNull = true;
-     * 
-     * break;
-     * }
-     * }
-     * 
-     * assertTrue(isNull);
-     * }
-     */
+        // assert lexical features for each token
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, tokens.get(0).getLexicalFeature());
+
+    }
 
 }

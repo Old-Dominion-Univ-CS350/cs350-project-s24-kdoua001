@@ -56,6 +56,9 @@ public class TextBlock {
             Token AddMe = new Token(tokenString, null);
             boolean isPunctuation = Character.isLetterOrDigit(tokenString.charAt(0));
             AddMe.setIsPunctuation(!isPunctuation);
+
+            // detect lexical feature of tokens
+            AddMe.detectLexicalFeature();
             tokens.add(AddMe);
         }
 
