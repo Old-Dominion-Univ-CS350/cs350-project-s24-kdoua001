@@ -152,7 +152,7 @@ public class testToken {
         String allCapsInput = "HELLO";
         String newLineInput = "\n";
         String nullInput = "";
-        String otherInput = "other";
+        String otherInput = "h.e.l.l.o";
 
         // creating a new Token object with test input with various lexical Features
         Token token = new Token(testInput, LexicalFeature.NUMBER);
@@ -182,37 +182,85 @@ public class testToken {
         String testRepOfNumber = "10";
         String testLeadingZeroNumber = "007";
         String negativeInteger = "-456";
+        String floatingPointNumber = "3.14";
 
         Token numbToken = new Token(testRepOfNumber, null);
         Token leadingZToken = new Token(testLeadingZeroNumber, null);
         Token negativeToken = new Token(negativeInteger, null);
+        Token floatingToken = new Token(floatingPointNumber, null);
 
         numbToken.detectLexicalFeature();
         leadingZToken.detectLexicalFeature();
         negativeToken.detectLexicalFeature();
+        floatingToken.detectLexicalFeature();
 
         assertEquals(LexicalFeature.NUMBER, numbToken.getLexicalFeature());
         assertEquals(LexicalFeature.NUMBER, leadingZToken.getLexicalFeature());
-        // assertEquals(LexicalFeature.NUMBER, negativeToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NUMBER, negativeToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NUMBER, floatingToken.getLexicalFeature());
     }
 
     @Test
     public void testDetectLexicalFeatureCapWord() {
+        String capitalizedWordInput = "Hello";
+        String textSingleCapitalizedLetter = "World";
+
+        Token capitalizedWordToken = new Token(capitalizedWordInput, null);
+        Token singleCapToken = new Token(textSingleCapitalizedLetter, null);
+        capitalizedWordToken.detectLexicalFeature();
+        singleCapToken.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, capitalizedWordToken.getLexicalFeature());
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, singleCapToken.getLexicalFeature());
 
     }
 
     @Test
     public void testDetectLexicalFeatureAllCaps() {
+        String allCapsWord = "TEST";
+        String allCapsWordStringInput = "BUILD";
 
+        Token allCapsWordToken = new Token(allCapsWord, null);
+        Token allCapitalizedWordToken = new Token(allCapsWordStringInput, null);
+        allCapsWordToken.detectLexicalFeature();
+        allCapitalizedWordToken.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.ALLCAPS, allCapsWordToken.getLexicalFeature());
+        assertEquals(LexicalFeature.ALLCAPS, allCapitalizedWordToken.getLexicalFeature());
     }
 
     @Test
     public void testDetectLexicalFeatureSingleCap() {
+        String singleLetterInput = "L";
+        String secondSingleLetterInput = "M";
 
+        Token tokenizeSingleLetterInput = new Token(singleLetterInput, null);
+        Token tokenizeSecondSingleLetterInput = new Token(secondSingleLetterInput, null);
+
+        tokenizeSingleLetterInput.detectLexicalFeature();
+        tokenizeSecondSingleLetterInput.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.SINGLECAPLETTER, tokenizeSingleLetterInput.getLexicalFeature());
+        assertEquals(LexicalFeature.SINGLECAPLETTER, tokenizeSecondSingleLetterInput.getLexicalFeature());
     }
 
     @Test
     public void testDetectLexicalFeaturePunctuation() {
+        String testComma = ",";
+        String testPeriod = ".";
+        String testExclamationMark = "!";
+
+        Token commaToken = new Token(testComma, null);
+        Token periodToken = new Token(testPeriod, null);
+        Token exclamationMarkToken = new Token(testExclamationMark, null);
+
+        commaToken.detectLexicalFeature();
+        periodToken.detectLexicalFeature();
+        exclamationMarkToken.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.PUNCTUATION, commaToken.getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, periodToken.getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, exclamationMarkToken.getLexicalFeature());
 
     }
 }

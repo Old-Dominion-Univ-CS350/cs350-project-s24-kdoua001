@@ -223,7 +223,7 @@ public class Token {
     }
 
     public void detectLexicalFeature() {
-        if (tokenString.matches("\\d+")) {
+        if (tokenString.matches("-?\\d+(\\.\\d+)?")) {
             lexicalFeature = LexicalFeature.NUMBER;
         } else if (tokenString.length() == 1 && Character.isUpperCase(tokenString.charAt(0))) {
             lexicalFeature = LexicalFeature.SINGLECAPLETTER;
