@@ -2,6 +2,8 @@ package edu.odu.cs.cs350;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class testToken {
@@ -176,15 +178,41 @@ public class testToken {
     }
 
     @Test
-    public void testDetectLexicalFeature() {
-        String testInput = "My";
+    public void testDetectLexicalFeatureNumber() {
         String testRepOfNumber = "10";
-        Token tokenInput = new Token(testInput, null);
-        Token numbToken = new Token(testRepOfNumber, null);
-        tokenInput.setLexicalFeature(LexicalFeature.CAPITALIZEDWORD);
-        numbToken.detectLexicalFeature();
+        String testLeadingZeroNumber = "007";
+        String negativeInteger = "-456";
 
-        assertEquals(LexicalFeature.CAPITALIZEDWORD, tokenInput.getLexicalFeature());
+        Token numbToken = new Token(testRepOfNumber, null);
+        Token leadingZToken = new Token(testLeadingZeroNumber, null);
+        Token negativeToken = new Token(negativeInteger, null);
+
+        numbToken.detectLexicalFeature();
+        leadingZToken.detectLexicalFeature();
+        negativeToken.detectLexicalFeature();
+
         assertEquals(LexicalFeature.NUMBER, numbToken.getLexicalFeature());
+        assertEquals(LexicalFeature.NUMBER, leadingZToken.getLexicalFeature());
+        // assertEquals(LexicalFeature.NUMBER, negativeToken.getLexicalFeature());
+    }
+
+    @Test
+    public void testDetectLexicalFeatureCapWord() {
+
+    }
+
+    @Test
+    public void testDetectLexicalFeatureAllCaps() {
+
+    }
+
+    @Test
+    public void testDetectLexicalFeatureSingleCap() {
+
+    }
+
+    @Test
+    public void testDetectLexicalFeaturePunctuation() {
+
     }
 }

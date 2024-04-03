@@ -225,18 +225,18 @@ public class Token {
     public void detectLexicalFeature() {
         if (tokenString.matches("\\d+")) {
             lexicalFeature = LexicalFeature.NUMBER;
+        } else if (tokenString.length() == 1 && Character.isUpperCase(tokenString.charAt(0))) {
+            lexicalFeature = LexicalFeature.SINGLECAPLETTER;
         } else if (tokenString.matches("[A-Z][a-z]*")) {
             lexicalFeature = LexicalFeature.CAPITALIZEDWORD;
-        } else if (tokenString.matches("[A-Z]['A-Z']*")) {
-            lexicalFeature = LexicalFeature.SINGLECAPLETTER;
+        } else if (tokenString.matches("[A-Z]+")) {
+            lexicalFeature = LexicalFeature.ALLCAPS;
         } else if (Pattern.matches(".*[.,?!]$", tokenString)) {
             lexicalFeature = LexicalFeature.PUNCTUATION;
         } else if (tokenString.equals("\n")) {
             lexicalFeature = LexicalFeature.NEWLINE;
         } else if (tokenString.isEmpty()) {
             lexicalFeature = LexicalFeature.NULLFEATURE;
-        } else if (tokenString.matches("[A-Z]+")) {
-            lexicalFeature = LexicalFeature.ALLCAPS;
         } else {
             lexicalFeature = LexicalFeature.OTHER;
         }
