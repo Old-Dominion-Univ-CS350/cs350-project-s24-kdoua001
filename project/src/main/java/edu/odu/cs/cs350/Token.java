@@ -1,5 +1,7 @@
 package edu.odu.cs.cs350;
 
+import java.util.regex.Pattern;
+
 /**
  * This class represents a token object
  * It contains boolean values for various token attributes
@@ -223,14 +225,28 @@ public class Token {
     public void detectLexicalFeature() {
         if (tokenString.matches("\\d+")) {
             lexicalFeature = LexicalFeature.NUMBER;
-
+        } else if (tokenString.matches("[A-Z][a-z]*")) {
+            lexicalFeature = LexicalFeature.CAPITALIZEDWORD;
+        } else if (tokenString.matches("[A-Z]['A-Z']*")) {
+            lexicalFeature = LexicalFeature.SINGLECAPLETTER;
+        } else if (Pattern.matches(".*[.,?!]$", tokenString)) {
+            lexicalFeature = LexicalFeature.PUNCTUATION;
+        } else if (tokenString.equals("\n")) {
+            lexicalFeature = LexicalFeature.NEWLINE;
+        } else if (tokenString.isEmpty()) {
+            lexicalFeature = LexicalFeature.NULLFEATURE;
+        } else if (tokenString.matches("[A-Z]+")) {
+            lexicalFeature = LexicalFeature.ALLCAPS;
+        } else {
+            lexicalFeature = LexicalFeature.OTHER;
         }
 
     }
 
-    //_____________________________SPRINT 2 STUFF__________________________________________________
+    // _____________________________SPRINT 2
+    // STUFF__________________________________________________
 
-        /**
+    /**
      * Sets the part-of-speech (POS) tag for this token.
      *
      * @param tag The POS tag
