@@ -287,4 +287,32 @@ public class testToken {
         assertEquals(LexicalFeature.NULLFEATURE, tokenizeNullFeature.getLexicalFeature());
     }
 
+    @Test
+    public void testDetectLexicalFeatureOther()
+    {
+        String firstTestOther = "a";
+        String secondTestOther = "words";
+        String thirdTestOther = "TEST123";
+        String fourthTestOther = "don't";
+        String fifthTestOther = "odu.edu";
+
+        Token tokenizeFirstOther = new Token(firstTestOther, null);
+        Token tokenizeSecondOther = new Token(secondTestOther, null);
+        Token tokenizeThirdOther = new Token(thirdTestOther, null);
+        Token tokenizeFourthOther = new Token(fourthTestOther, null);
+        Token tokenizeFifthOther = new Token(fifthTestOther, null);
+
+        tokenizeFirstOther.detectLexicalFeature();
+        tokenizeSecondOther.detectLexicalFeature();
+        tokenizeThirdOther.detectLexicalFeature();
+        tokenizeFourthOther.detectLexicalFeature();
+        tokenizeFifthOther.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.OTHER, tokenizeFirstOther.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, tokenizeSecondOther.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, tokenizeThirdOther.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, tokenizeFourthOther.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, tokenizeFifthOther.getLexicalFeature());
+    }
+
 }
