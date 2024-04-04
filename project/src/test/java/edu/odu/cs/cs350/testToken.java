@@ -261,6 +261,17 @@ public class testToken {
         assertEquals(LexicalFeature.PUNCTUATION, commaToken.getLexicalFeature());
         assertEquals(LexicalFeature.PUNCTUATION, periodToken.getLexicalFeature());
         assertEquals(LexicalFeature.PUNCTUATION, exclamationMarkToken.getLexicalFeature());
+    }
 
+    @Test
+    public void testDetectLexicalFeatureNewLine()
+    {
+        String testNewLine = "\n";
+
+        Token tokenizeNewLine = new Token(testNewLine, null);
+
+        tokenizeNewLine.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.NEWLINE, tokenizeNewLine.getLexicalFeature());
     }
 }
