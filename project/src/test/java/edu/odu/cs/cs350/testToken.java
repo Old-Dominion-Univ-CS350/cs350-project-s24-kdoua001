@@ -274,4 +274,17 @@ public class testToken {
 
         assertEquals(LexicalFeature.NEWLINE, tokenizeNewLine.getLexicalFeature());
     }
+
+    @Test
+    public void testDetectLexicalFeatureNullFeature()
+    {
+        String testNullFeature = "NULL";
+
+        Token tokenizeNullFeature = new Token(testNullFeature, null);
+
+        tokenizeNullFeature.detectLexicalFeature();
+
+        assertEquals(LexicalFeature.NULLFEATURE, tokenizeNullFeature.getLexicalFeature());
+    }
+
 }
