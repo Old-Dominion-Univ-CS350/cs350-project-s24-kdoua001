@@ -295,24 +295,28 @@ public class testToken {
         String thirdTestOther = "TEST123";
         String fourthTestOther = "don't";
         String fifthTestOther = "odu.edu";
+        String sixthTestOther = "tEst";
 
         Token tokenizeFirstOther = new Token(firstTestOther, null);
         Token tokenizeSecondOther = new Token(secondTestOther, null);
         Token tokenizeThirdOther = new Token(thirdTestOther, null);
         Token tokenizeFourthOther = new Token(fourthTestOther, null);
         Token tokenizeFifthOther = new Token(fifthTestOther, null);
+        Token tokenizeSixthOther = new Token(sixthTestOther, null);
 
         tokenizeFirstOther.detectLexicalFeature();
         tokenizeSecondOther.detectLexicalFeature();
         tokenizeThirdOther.detectLexicalFeature();
         tokenizeFourthOther.detectLexicalFeature();
         tokenizeFifthOther.detectLexicalFeature();
+        tokenizeSixthOther.detectLexicalFeature();
 
         assertEquals(LexicalFeature.OTHER, tokenizeFirstOther.getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, tokenizeSecondOther.getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, tokenizeThirdOther.getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, tokenizeFourthOther.getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, tokenizeFifthOther.getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, tokenizeSixthOther.getLexicalFeature());
     }
 
 }
