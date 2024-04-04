@@ -278,7 +278,7 @@ public class testToken {
     @Test
     public void testDetectLexicalFeatureNullFeature()
     {
-        String testNullFeature = "NULL";
+        String testNullFeature = "";
 
         Token tokenizeNullFeature = new Token(testNullFeature, null);
 
