@@ -1,4 +1,5 @@
 package edu.odu.cs.cs350;
+
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
@@ -6,13 +7,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class FeatureVector {
-     
-    //Method to create feature vectors based on Token attributes
-    public Instances createVectors(List<Token> tokenList) 
-    {
+
+    // Method to create feature vectors based on Token attributes
+    public Instances createVectors(List<Token> tokenList) {
         ArrayList<Attribute> attributes = new ArrayList<>();
 
-        //add boolean attributes from Token class
+        // add boolean attributes from Token class
         attributes.add(new Attribute("isName"));
         attributes.add(new Attribute("isInDictionary"));
         attributes.add(new Attribute("isLocation"));
@@ -22,7 +22,19 @@ public class FeatureVector {
         attributes.add(new Attribute("isKillWord"));
         attributes.add(new Attribute("isPunctuation"));
 
-        //create instances object with the defined attributes
+        // Add lexical feature attribute
+        ArrayList<String> lexicalFeatureValues = new ArrayList<>();
+        lexicalFeatureValues.add("NUMBER");
+        lexicalFeatureValues.add("SINGLECAPLETTER");
+        lexicalFeatureValues.add("CAPITALIZEDWORD");
+        lexicalFeatureValues.add("ALLCAPS");
+        lexicalFeatureValues.add("PUNCTUATION");
+        lexicalFeatureValues.add("NEWLINE");
+        lexicalFeatureValues.add("NULLFEATURE");
+        lexicalFeatureValues.add("OTHER");
+        attributes.add(new Attribute("lexicalFeature", lexicalFeatureValues));
+
+        // create instances object with the defined attributes
         Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
 
         for (Token token : tokenList) {
@@ -38,11 +50,14 @@ public class FeatureVector {
             values[6] = token.isKillWord() ? 1.0 : 0.0;
             values[7] = token.isPunctuation() ? 1.0 : 0.0;
 
+            // Set lexical feature value
+            values[8] = token.getLexicalFeature().ordinal();
+
             // Create DenseInstance and add to Instances object
             data.add(new DenseInstance(1.0, values));
         }
 
         return data;
     }
-    
+
 }
