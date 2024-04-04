@@ -27,8 +27,8 @@ public class Token {
     /**
      * Constructor
      * 
-     * @param number
-     * @param lexical feature the lexical feature associated with the token.
+     * @param assignedString assigned string 
+     * @param lexicalFeature feature the lexical feature associated with the token.
      */
     public Token(String assignedString, LexicalFeature lexicalFeature) {
         this.tokenString = assignedString;
@@ -43,7 +43,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return the string of the token
      */
     public String getTokenString() {
@@ -51,7 +50,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if is a name, false if else
      */
     public boolean isName() {
@@ -59,7 +57,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true of dictionary, false if not
      */
     public boolean isInDictionary() {
@@ -67,7 +64,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if is a location, false if not
      */
     public boolean isLocation() {
@@ -75,7 +71,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if a common first name, false if not
      */
     public boolean isCommonFirst() {
@@ -83,7 +78,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if common last name, false if not
      */
     public boolean isCommonLast() {
@@ -91,7 +85,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if a honorific, false if not
      */
     public boolean isHonorific() {
@@ -99,7 +92,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if a kill word, false if not
      */
     public boolean isKillWord() {
@@ -107,7 +99,6 @@ public class Token {
     }
 
     /**
-     * @param
      * @return true if a puncuation, false if not
      */
     public boolean isPunctuation() {
@@ -117,8 +108,7 @@ public class Token {
     /**
      * Sets the TokenString of a Token
      * 
-     * @param tokenString
-     * @return
+     * @param string string representation of Token
      */
     public void setTokenString(String string) {
         this.tokenString = string;
@@ -127,8 +117,7 @@ public class Token {
     /**
      * Sets the Bool isName of a Token
      * 
-     * @param name
-     * @return
+     * @param name boolean isName
      */
     public void setIsName(boolean name) {
         this.nameFlag = name;
@@ -136,9 +125,7 @@ public class Token {
 
     /**
      * Sets the Bool inDictionary of Token
-     * 
-     * @param dictionary
-     * @return
+     * @param dictionary is this token in the dictionary
      */
     public void setIsInDictionary(boolean dictionary) {
         this.inDictionary = dictionary;
@@ -146,9 +133,7 @@ public class Token {
 
     /**
      * Sets the Bool isLocation of Token
-     * 
-     * @param location
-     * @return
+     * @param location is this token a location
      */
     public void setIsLocation(boolean location) {
         this.locationFlag = location;
@@ -156,9 +141,7 @@ public class Token {
 
     /**
      * Sets the Bool commonFirst of a Token
-     * 
-     * @param first
-     * @return
+     * @param first is this a common first name
      */
     public void setIsCommonFirst(boolean first) {
         this.commonFirst = first;
@@ -166,19 +149,15 @@ public class Token {
 
     /**
      * Sets the Bool commonLast of a Token
-     * 
-     * @param last
-     * @return
+     * @param last is this a common last name
      */
     public void setIsCommonLast(boolean last) {
         this.commonLast = last;
     }
 
     /**
-     * Sets the Bool honorific of a Token
-     * 
-     * @param honorific
-     * @return
+     * Sets the Bool honorific of a Token 
+     * @param honorific is this a honorific
      */
     public void setIsHonorific(boolean honorific) {
         this.honorificFlag = honorific;
@@ -187,8 +166,7 @@ public class Token {
     /**
      * Sets the Bool killWord of a Token
      * 
-     * @param killword
-     * @return
+     * @param killWord is this a kill word
      */
     public void setIsKillWord(boolean killWord) {
         this.killWordFlag = killWord;
@@ -197,13 +175,15 @@ public class Token {
     /**
      * Sets the Bool isPunctuation of a Token
      * 
-     * @param punctuation
-     * @return
+     * @param punctuation is this punctuation
      */
     public void setIsPunctuation(boolean punctuation) {
         this.punctuationFlag = punctuation;
     }
 
+    /**
+     * @return string representation of a Token
+     */
     @Override
     public String toString() {
         return this.tokenString;
@@ -218,10 +198,17 @@ public class Token {
         return lexicalFeature;
     }
 
+    /**
+     * 
+     * @param lexicalFeature lexical feature
+     */
     public void setLexicalFeature(LexicalFeature lexicalFeature) {
         this.lexicalFeature = lexicalFeature;
     }
 
+    /**
+     * detected lexical features
+     */
     public void detectLexicalFeature() {
         if (tokenString.matches("-?\\d+(\\.\\d+)?")) {
             lexicalFeature = LexicalFeature.NUMBER;
@@ -265,7 +252,7 @@ public class Token {
     }
 
     /**
-     * Increases the probability of this token being a personal name (<PER>) by the
+     * Increases the probability of this token being a personal name (PER) by the
      * specified amount.
      *
      * @param increase The amount to increase the probability by
@@ -275,7 +262,7 @@ public class Token {
     }
 
     /**
-     * Decreases the probability of this token being a personal name (<PER>) by the
+     * Decreases the probability of this token being a personal name (PER) by the
      * specified amount.
      *
      * @param decrease The amount to decrease the probability by
@@ -285,7 +272,7 @@ public class Token {
     }
 
     /**
-     * Returns the current probability of this token being a personal name (<PER>).
+     * Returns the current probability of this token being a personal name (PER).
      *
      * @return The probability of being a PER
      */

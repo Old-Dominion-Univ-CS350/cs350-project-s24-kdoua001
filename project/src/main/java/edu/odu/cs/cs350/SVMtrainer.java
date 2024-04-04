@@ -4,8 +4,17 @@ import weka.classifiers.functions.SMO;
 import weka.core.Instances;
 import java.io.*;
 
+/**
+ * 
+ */
 public class SVMtrainer {
 
+    /**
+     * 
+     * @param data data 
+     * @return svm 
+     * @throws Exception exception 
+     */
     public SMO trainSVM(Instances data) throws Exception {
         // Create SMO (Sequential Minimal Optimization) classifier
         SMO svm = new SMO();
@@ -20,6 +29,12 @@ public class SVMtrainer {
         return svm;
     }
 
+    /**
+     * 
+     * @param svm svm 
+     * @param modelFile modelFile
+     * @throws Exception exception
+     */
     public void saveModel(SMO svm, String modelFile) throws Exception {
         // Save the trained model to a file
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(modelFile));

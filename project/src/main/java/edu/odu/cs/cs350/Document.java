@@ -26,7 +26,7 @@ public class Document {
     /**
      * Constructor with data param
      * 
-     * @param data
+     * @param data data 
      */
     public Document(String data) {
         this.dataFromFile = data;
@@ -36,7 +36,7 @@ public class Document {
     /**
      * getter for dataFromFile
      * 
-     * @return
+     * @return data from file
      */
     public String getDataFromFile() {
         return this.dataFromFile;
@@ -45,7 +45,7 @@ public class Document {
     /**
      * Getter for nerBlocks
      * 
-     * @return
+     * @return ner blocks
      */
     public List<TextBlock> getBlocks() {
         return this.blocks;
@@ -54,7 +54,7 @@ public class Document {
     /**
      * Setter for dataFromFile
      * 
-     * @param data
+     * @param data data to set 
      */
     public void setDataFromFile(String data) {
         this.dataFromFile = data;
@@ -76,8 +76,8 @@ public class Document {
     /**
      * Method to identify tagged blocks of text
      * 
-     * @param text
-     * @return
+     * @param data text
+     * @return taggedBlocks
      */
     public List<TextBlock> createBlocks(String data) {
         List<TextBlock> taggedBlocks = new ArrayList<>();

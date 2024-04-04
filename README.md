@@ -8,10 +8,6 @@ The actual source code for the project should be placed within the `project`
 * This means that, when opening this as a Java project in your IDE, you will
   likely want to open the `project/` directory rather than this one.
 
-#Names
-Iizalaarab Elhaimeur - Back from the Dead
-Khamnulin Douangdara 
-Matthew Haydon
-Ralph Mpanu
-Peter Spadaro
-Corey Brady
+# Website
+
+*[Website](https://old-dominion-univ-cs350.github.io/cs350-project-s24-kdoua001/)

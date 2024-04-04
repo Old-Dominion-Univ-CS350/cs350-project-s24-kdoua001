@@ -24,15 +24,13 @@ public class TextBlock {
     }
 
     /**
-     * @param AssignedTokens
-     * @return none
+     * @param AssignedTokens assignedTokens
      */
     public void setTokensList(List<Token> AssignedTokens) {
         this.tokensList = AssignedTokens;
     }
 
     /**
-     * @param none
      * @return tokenlist
      */
     public List<Token> getTokensList() {
@@ -40,7 +38,7 @@ public class TextBlock {
     }
 
     /**
-     * @param BlockText
+     * @param BlockText string of textblocks
      * @return List of Tokens
      */
     public List<Token> createTokens(String BlockText) {
@@ -67,8 +65,8 @@ public class TextBlock {
 
     /**
      * @return string representation of TextBlock
-     *         Entire text block will be wrapped in <NER> </NER> and
-     *         persons will be wrapped in <PER> </PER>
+     *         Entire text block will be wrapped in NER /NER and
+     *         persons will be wrapped in PER /PER
      */
     @Override
     public String toString() {
@@ -167,7 +165,7 @@ public class TextBlock {
      * If the first three tokens in a textblock are "My" "name" "is" it will set the
      * next two tokens as personal Names
      * This will allow us to demonstrate that personal names will appear wrapped in
-     * <PER> </PER> tags in output
+     * PER /PER tags in output
      */
     public void myNameIs() {
         if (this.containsString("My") && this.containsString("name") && this.containsString("is")) {

@@ -33,8 +33,8 @@ public class Extractor {
     /**
      * Main function
      * 
-     * @param args
-     * @throws Exception
+     * @param args args
+     * @throws Exception exception
      */
     public static void main(String[] args) throws Exception {
 
