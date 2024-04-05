@@ -14,14 +14,48 @@ public class TestTagger {
 
     @Test
     public void testIsArticle() {
-        //Create TokenList - This Will Be Taken From a TextBlock
+        //Create Tokens - This Will Be Taken From a TextBlock
         Token testToken0 = new Token("a");
         Token testToken1 = new Token("an");
         Token testToken2 = new Token("the");
 
 
         Tagger tagger = new Tagger();
-        assertTrue(tagger.IsArticle(testToken0));
+        assertTrue(tagger.IsArticle(testToken0.getTokenString()));
+        assertTrue(tagger.IsArticle(testToken1.getTokenString()));
+        assertTrue(tagger.IsArticle(testToken2.getTokenString()));
     }
+
+    @Test
+    public void testIsConjunction() {
+        //Create Tokens - This Will Be Taken From a TextBlock
+        Token testToken0 = new Token("and");
+
+
+        Tagger tagger = new Tagger();
+        assertTrue(tagger.IsConjunction(testToken0.getTokenString()));
+    }
+
+    @Test
+    public void testIsPeriod() {
+        //Create Tokens - This Will Be Taken From a TextBlock
+        Token testToken0 = new Token(".");
+
+
+        Tagger tagger = new Tagger();
+        assertTrue(tagger.IsPeriod(testToken0.getTokenString()));
+    }
+
+    @Test
+    public void testIsComma() {
+        //Create Tokens - This Will Be Taken From a TextBlock
+        Token testToken0 = new Token(",");
+
+
+        Tagger tagger = new Tagger();
+        assertTrue(tagger.IsComma(testToken0.getTokenString()));
+    }
+
+
     
 }
