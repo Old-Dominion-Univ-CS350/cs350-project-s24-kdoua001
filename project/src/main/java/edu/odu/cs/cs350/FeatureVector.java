@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * 
+ * This class creates feature vectors based on token attributes/other 
+ * features using Weka's Instances class. 
  */
 public class FeatureVector {
 
