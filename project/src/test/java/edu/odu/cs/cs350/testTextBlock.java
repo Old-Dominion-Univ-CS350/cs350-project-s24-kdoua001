@@ -88,8 +88,8 @@ public class testTextBlock {
         assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
 
-    @Test 
-    public void TestGenerateShingles(){
+    @Test
+    public void TestGenerateShingles() {
         List<Token> tokenList = new ArrayList<>();
         List<List<Token>> shingles = new ArrayList<>();
         String text = "<NER>by John Doe, n Lawrence Livermore Laboratory</NER>";
@@ -128,6 +128,17 @@ public class testTextBlock {
 
         // assert lexical features for each token
         assertEquals(LexicalFeature.CAPITALIZEDWORD, tokens.get(0).getLexicalFeature());
+
+    }
+
+    @Test
+    public void testDetectPersonalNamesInTextBlock() {
+        // test input containing personal names
+        String testInput = "Izzy, Peter, and Ralph worked on textBlock and Token class for sprint 1.";
+
+        // Create a textblock with test input
+        TextBlock block = new TextBlock(testInput);
+        List<Token> tokens = block.createTokens(testInput);
 
     }
 
