@@ -49,7 +49,7 @@ public class testFeatureVectors {
         assertEquals(LexicalFeature.ALLCAPS.ordinal(), (int) instanceValues[8]); // lexicalFeature
     }
 
-    //Method to create a mock Token object
+    //Method to create a test Token object
     private Token createToken(boolean name, boolean inDictionary, boolean location, boolean commonFirst,
                               boolean commonLast, boolean honorific, boolean killWord, boolean punctuation,
                               LexicalFeature lexicalFeature) {
