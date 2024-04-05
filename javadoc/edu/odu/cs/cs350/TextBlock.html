@@ -105,11 +105,11 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createTokens(java.lang.String)" class="member-name-link">createTokens</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;BlockText)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#generateShingles(java.util.List)" class="member-name-link">generateShingles</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokens)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#generateShingles(java.util.List,int,int)" class="member-name-link">generateShingles</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokens,
+ int&nbsp;start,
+ int&nbsp;end)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">This function will generate shingles to be used to generate input for the
- learning machine
- as described in section 5.3 in the Design Notes</div>
+<div class="block">Used to generate shingling to be used as input for the learning machine.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTokensList()" class="member-name-link">getTokensList</a>()</code></div>
@@ -193,21 +193,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="generateShingles(java.util.List)">
-<h3>generateShingles</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&gt;</span>&nbsp;<span class="element-name">generateShingles</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokens)</span></div>
-<div class="block">This function will generate shingles to be used to generate input for the
- learning machine
- as described in section 5.3 in the Design Notes</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>tokens</code> - a list of tokens to be turned into shingles</dd>
-<dt>Returns:</dt>
-<dd>a list containing lists of tokens.</dd>
-</dl>
-</section>
-</li>
-<li>
 <section class="detail" id="addToken(edu.odu.cs.cs350.Token)">
 <h3>addToken</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addToken</span><wbr><span class="parameters">(<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&nbsp;token)</span></div>
@@ -240,6 +225,24 @@ loadScripts(document, 'script');</script>
  next two tokens as personal Names
  This will allow us to demonstrate that personal names will appear wrapped in
  PER /PER tags in output</div>
+</section>
+</li>
+<li>
+<section class="detail" id="generateShingles(java.util.List,int,int)">
+<h3>generateShingles</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&gt;</span>&nbsp;<span class="element-name">generateShingles</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokens,
+ int&nbsp;start,
+ int&nbsp;end)</span></div>
+<div class="block">Used to generate shingling to be used as input for the learning machine. 
+ Section 5.3 of design notes.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>tokens</code> - a list of Tokens we want to apply shingling to</dd>
+<dd><code>start</code> - The number of tokens before the current token that are included in the shingle</dd>
+<dd><code>end</code> - The number of tokens after the current token that are included in the shingle</dd>
+<dt>Returns:</dt>
+<dd>A list of a list of tokens with shingling applied.</dd>
+</dl>
 </section>
 </li>
 </ul>
