@@ -13,8 +13,8 @@ public class testFeatureVectors {
     public void testCreateVectors() {
         //Create a list of sample tokens
         List<Token> tokenList = new ArrayList<>();
-        tokenList.add(createToken(true, true, true, true, true, true, true, true, LexicalFeature.NUMBER));
-        tokenList.add(createToken(false, true, false, false, false, false, false, false, LexicalFeature.ALLCAPS));
+        tokenList.add(createToken(true, true, true, true, true, true, true, true, LexicalFeature.NUMBER, FeatureOfSpeech.ARTICLES));
+        tokenList.add(createToken(false, true, false, false, false, false, false, false, LexicalFeature.ALLCAPS, FeatureOfSpeech.PERIOD));
 
         //Create the FeatureVector instance
         FeatureVector featureVector = new FeatureVector();
@@ -35,6 +35,7 @@ public class testFeatureVectors {
         assertEquals(1.0, instanceValues[6]); // isKillWord
         assertEquals(1.0, instanceValues[7]); // isPunctuation
         assertEquals(LexicalFeature.NUMBER.ordinal(), (int) instanceValues[8]); // lexicalFeature
+        assertEquals(FeatureOfSpeech.ARTICLES.ordinal(), (int) instanceValues[9]); // speechFeature
 
         //Check attribute values for the second instance
         instanceValues = data.get(1).toDoubleArray();
@@ -47,12 +48,13 @@ public class testFeatureVectors {
         assertEquals(0.0, instanceValues[6]); // isKillWord
         assertEquals(0.0, instanceValues[7]); // isPunctuation
         assertEquals(LexicalFeature.ALLCAPS.ordinal(), (int) instanceValues[8]); // lexicalFeature
+        assertEquals(FeatureOfSpeech.PERIOD.ordinal(), (int) instanceValues[9]); // speechFeature
     }
 
     //Method to create a test Token object
     private Token createToken(boolean name, boolean inDictionary, boolean location, boolean commonFirst,
                               boolean commonLast, boolean honorific, boolean killWord, boolean punctuation,
-                              LexicalFeature lexicalFeature) {
+                              LexicalFeature lexicalFeature, FeatureOfSpeech speechFeature) {
         Token token = new Token("", lexicalFeature);
         token.setIsName(name);
         token.setIsInDictionary(inDictionary);
@@ -62,6 +64,7 @@ public class testFeatureVectors {
         token.setIsHonorific(honorific);
         token.setIsKillWord(killWord);
         token.setIsPunctuation(punctuation);
+        token.setFeatureOfSpeech(speechFeature);
         return token;
     }
     
