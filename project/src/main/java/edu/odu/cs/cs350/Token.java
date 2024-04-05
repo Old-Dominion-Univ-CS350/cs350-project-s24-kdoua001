@@ -20,10 +20,6 @@ public class Token {
     private boolean punctuationFlag;
     private LexicalFeature lexicalFeature;
 
-    // New field for POS tag
-    private String posTag;
-    private double perProbability = 0.5; // Initial probability of being a PER
-
     /**
      * Constructor for Token
      * @param assignedString string to assign to token
@@ -244,56 +240,6 @@ public class Token {
             lexicalFeature = LexicalFeature.OTHER;
         }
 
-    }
-
-    // _____________________________SPRINT 2
-    // STUFF__________________________________________________
-
-    /**
-     * Sets the part-of-speech (POS) tag for this token.
-     *
-     * @param tag The POS tag
-     */
-    public void setPosTag(String tag) {
-        this.posTag = tag;
-    }
-
-    /**
-     * Returns the part-of-speech (POS) tag for this token.
-     *
-     * @return The POS tag
-     */
-    public String getPosTag() {
-        return this.posTag;
-    }
-
-    /**
-     * Increases the probability of this token being a personal name (PER) by the
-     * specified amount.
-     *
-     * @param increase The amount to increase the probability by
-     */
-    public void increasePERProbability(double increase) {
-        this.perProbability = Math.min(this.perProbability + increase, 1.0);
-    }
-
-    /**
-     * Decreases the probability of this token being a personal name (PER) by the
-     * specified amount.
-     *
-     * @param decrease The amount to decrease the probability by
-     */
-    public void decreasePERProbability(double decrease) {
-        this.perProbability = Math.max(this.perProbability - decrease, 0.0);
-    }
-
-    /**
-     * Returns the current probability of this token being a personal name (PER).
-     *
-     * @return The probability of being a PER
-     */
-    public double getPERProbability() {
-        return this.perProbability;
     }
 
 }
