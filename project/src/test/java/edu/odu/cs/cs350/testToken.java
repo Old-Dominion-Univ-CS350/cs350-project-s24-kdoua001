@@ -317,6 +317,49 @@ public class testToken {
     }
 
     @Test
+    public void testGetFeatureOfSpeech(){
+        Token token = new Token("randomString");
+
+        assertNull(token.getFeatureOfSpeech());
+    }
+
+    @Test
+    public void testSetFeatureOfSpeech(){
+        Token token = new Token("and");
+
+        assertEquals(FeatureOfSpeech.CONJUNCTION, token.getFeatureOfSpeech());
+    }
+
+    @Test
+    public void testDetectFeatureOfSpeech()
+    {
+        String articleA = "a";
+        String articleAn = "an";
+        String articleThe = "the";
+        String conjunction = "and";
+        String periodPunctuation = ".";
+        String commaPunctuation = ",";
+        String hyphenPunctuation = "-";
+
+        // Create tokens
+        Token tokenizeArticleA = new Token(articleA);
+        Token tokenizeArticleAn = new Token(articleAn);
+        Token tokenizeArticleThe = new Token(articleThe);
+        Token tokenizeConjunction = new Token(conjunction);
+        Token tokenizePeriodPunctuation = new Token(periodPunctuation);
+        Token tokenizeCommaPunctuation = new Token(commaPunctuation);
+        Token tokenizeHyphenPunctuation = new Token(hyphenPunctuation);
+
+        assertEquals(FeatureOfSpeech.ARTICLES, tokenizeArticleA.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.ARTICLES, tokenizeArticleAn.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.ARTICLES, tokenizeArticleThe.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.CONJUNCTION, tokenizeConjunction.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.PERIOD, tokenizePeriodPunctuation.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.COMMA, tokenizeCommaPunctuation.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.HYPHEN, tokenizeHyphenPunctuation.getFeatureOfSpeech());
+
+    }
+    
     public void testDetectPersonalName() {
         // test input containing a personal name
         String testInputWithPersonalNames = "Ralph";

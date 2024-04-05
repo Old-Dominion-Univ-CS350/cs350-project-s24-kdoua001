@@ -21,6 +21,7 @@ public class Token {
     private boolean killWordFlag;
     private boolean punctuationFlag;
     private LexicalFeature lexicalFeature;
+    private FeatureOfSpeech speechFeature;
 
     /**
      * Constructor for Token
@@ -36,6 +37,7 @@ public class Token {
         this.honorificFlag = false;
         this.killWordFlag = false;
         this.punctuationFlag = false;
+        DetectFeatureOfSpeech();
 
     }
 
@@ -55,6 +57,7 @@ public class Token {
         this.honorificFlag = false;
         this.killWordFlag = false;
         this.punctuationFlag = false;
+        DetectFeatureOfSpeech();
     }
 
     /**
@@ -209,6 +212,8 @@ public class Token {
         return this.tokenString;
     }
 
+    // -------------------------------------------------------------------------------------------------------------------------------------
+
     /**
      * gets the lexical feature associated with this token.
      * 
@@ -248,6 +253,35 @@ public class Token {
             lexicalFeature = LexicalFeature.OTHER;
         }
 
+    }
+
+    public void setFeatureOfSpeech(FeatureOfSpeech feature) {
+        speechFeature = feature;
+    }
+
+    public FeatureOfSpeech getFeatureOfSpeech() {
+        return speechFeature;
+    }
+
+    public void DetectFeatureOfSpeech() {
+
+        Tagger tagger = new Tagger();
+
+        if (tagger.IsArticle(tokenString)) {
+            setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);
+        }
+        if (tagger.IsConjunction(tokenString)) {
+            setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);
+        }
+        if (tagger.IsPeriod(tokenString)) {
+            setFeatureOfSpeech(FeatureOfSpeech.PERIOD);
+        }
+        if (tagger.IsComma(tokenString)) {
+            setFeatureOfSpeech(FeatureOfSpeech.COMMA);
+        }
+        if (tagger.IsHyphen(tokenString)) {
+            setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
+        }
     }
 
     /**

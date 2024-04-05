@@ -27,4 +27,8 @@ public class Tagger {
     public boolean IsComma(String word) {
         return "," == word;
     }
+
+    public boolean IsHyphen(String word) {
+        return "-" == word;
+    }
 }
