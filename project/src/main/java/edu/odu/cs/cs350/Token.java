@@ -282,7 +282,8 @@ public class Token {
         if (tagger.IsHyphen(tokenString)){
             setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
         }
-        
+    }
+
     public static String detectPersonalName(Token token) {
         // Check lexical feature of the token
         LexicalFeature lexicalFeature = token.getLexicalFeature();
