@@ -56,6 +56,27 @@ public class TestTagger {
         assertTrue(tagger.IsComma(testToken0.getTokenString()));
     }
 
+    @Test
+    public void testIsHyphen() {
+        //Create Tokens - This Will Be Taken From a TextBlock
+        Token testToken0 = new Token("-");
+
+
+        Tagger tagger = new Tagger();
+        assertTrue(tagger.IsHyphen(testToken0.getTokenString()));
+    }
+    
+    // @Test
+    // public void testDetectFeatureOffSpeech() {
+    //     //Create Tokens - This Will Be Taken From a TextBlock
+    //     Token testToken0 = new Token("a");
+    //     Token testToken1 = new Token("an");
+    //     Token testToken2 = new Token("the");
+    //     Token testToken3 = new Token("and");
+    //     Token testToken4 = new Token(".");
+    //     Token testToken5 = new Token(",");
+    //     Token testToken6 = new Token("-");
+    // }
 
     
 }
