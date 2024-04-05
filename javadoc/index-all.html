@@ -48,7 +48,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="edu/odu/cs/cs350/TextBlock.html#addToken(edu.odu.cs.cs350.Token)" class="member-name-link">addToken(Token)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/TextBlock.html" title="class in edu.odu.cs.cs350">TextBlock</a></dt>
@@ -57,12 +57,24 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Indicates that the word or token is in all caps.</div>
 </dd>
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#ARTICLES" class="member-name-link">ARTICLES</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates that the word or token is an article (e.g., "a", "an", "the").</div>
+</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
 <dt><a href="edu/odu/cs/cs350/LexicalFeature.html#CAPITALIZEDWORD" class="member-name-link">CAPITALIZEDWORD</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></dt>
 <dd>
 <div class="block">Indicates that the word or token is capitalized.</div>
+</dd>
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#COMMA" class="member-name-link">COMMA</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates that the word or token is a comma.</div>
+</dd>
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#CONJUNCTION" class="member-name-link">CONJUNCTION</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates that the word or token is a conjunction (e.g., "and", "or", "but").</div>
 </dd>
 <dt><a href="edu/odu/cs/cs350/TextBlock.html#containsString(java.lang.String)" class="member-name-link">containsString(String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/TextBlock.html" title="class in edu.odu.cs.cs350">TextBlock</a></dt>
 <dd>
@@ -81,6 +93,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
+<dt><a href="edu/odu/cs/cs350/Token.html#DetectFeatureOfSpeech()" class="member-name-link">DetectFeatureOfSpeech()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#detectLexicalFeature()" class="member-name-link">detectLexicalFeature()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>
 <div class="block">detected lexical features</div>
@@ -113,6 +127,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html" class="type-name-link" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a> - Enum Class in <a href="edu/odu/cs/cs350/package-summary.html">edu.odu.cs.cs350</a></dt>
+<dd>
+<div class="block">Represents a part of speech feature for a word or token.</div>
+</dd>
 <dt><a href="edu/odu/cs/cs350/FeatureVector.html" class="type-name-link" title="class in edu.odu.cs.cs350">FeatureVector</a> - Class in <a href="edu/odu/cs/cs350/package-summary.html">edu.odu.cs.cs350</a></dt>
 <dd>
 <div class="block">This class creates feature vectors based on token attributes/other 
@@ -135,6 +153,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">getter for dataFromFile</div>
 </dd>
+<dt><a href="edu/odu/cs/cs350/Token.html#getFeatureOfSpeech()" class="member-name-link">getFeatureOfSpeech()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#getLexicalFeature()" class="member-name-link">getLexicalFeature()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>
 <div class="block">gets the lexical feature associated with this token.</div>
@@ -143,6 +163,13 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#getTokenString()" class="member-name-link">getTokenString()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>&nbsp;</dd>
+</dl>
+<h2 class="title" id="I:H">H</h2>
+<dl class="index">
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#HYPHEN" class="member-name-link">HYPHEN</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates that the word or token contains a hyphen.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -157,6 +184,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="edu/odu/cs/cs350/Tagger.html#IsConjunction(java.lang.String)" class="member-name-link">IsConjunction(String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Tagger.html" title="class in edu.odu.cs.cs350">Tagger</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#isHonorific()" class="member-name-link">isHonorific()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="edu/odu/cs/cs350/Tagger.html#IsHyphen(java.lang.String)" class="member-name-link">IsHyphen(String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Tagger.html" title="class in edu.odu.cs.cs350">Tagger</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#isInDictionary()" class="member-name-link">isInDictionary()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>&nbsp;</dd>
@@ -212,6 +241,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#OTHER" class="member-name-link">OTHER</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates any other part of speech feature not covered by the predefined categories.</div>
+</dd>
 <dt><a href="edu/odu/cs/cs350/LexicalFeature.html#OTHER" class="member-name-link">OTHER</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></dt>
 <dd>
 <div class="block">Indicates any other lexical feature not covered by the predefined categories.</div>
@@ -219,6 +252,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#PERIOD" class="member-name-link">PERIOD</a> - Enum constant in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Indicates that the word or token is a period.</div>
+</dd>
 <dt><a href="edu/odu/cs/cs350/Document.html#printDocument()" class="member-name-link">printDocument()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Document.html" title="class in edu.odu.cs.cs350">Document</a></dt>
 <dd>
 <div class="block">Output text blocks</div>
@@ -236,6 +273,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Setter for dataFromFile</div>
 </dd>
+<dt><a href="edu/odu/cs/cs350/Token.html#setFeatureOfSpeech(edu.odu.cs.cs350.FeatureOfSpeech)" class="member-name-link">setFeatureOfSpeech(FeatureOfSpeech)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#setIsCommonFirst(boolean)" class="member-name-link">setIsCommonFirst(boolean)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>
 <div class="block">Sets the Bool commonFirst of a Token</div>
@@ -318,9 +357,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="edu/odu/cs/cs350/LexicalFeature.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
+<dt><a href="edu/odu/cs/cs350/FeatureOfSpeech.html#values()" class="member-name-link">values()</a> - Static method in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
 </dd>
 <dt><a href="edu/odu/cs/cs350/LexicalFeature.html#values()" class="member-name-link">values()</a> - Static method in enum class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></dt>
 <dd>
@@ -328,7 +376,7 @@ loadScripts(document, 'script');</script>
 the order they are declared.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
