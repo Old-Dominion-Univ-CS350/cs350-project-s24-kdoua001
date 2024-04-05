@@ -96,47 +96,6 @@ public class TextBlock {
     }
 
     /**
-     * This function will generate shingles to be used to generate input for the
-     * learning machine
-     * as described in section 5.3 in the Design Notes
-     * 
-     * @param tokens a list of tokens to be turned into shingles
-     * @return a list containing lists of tokens.
-     */
-    public static List<List<Token>> generateShingles(List<Token> tokens) {
-        List<List<Token>> shingles = new ArrayList<>();
-
-        int windowSize = 2 * shingleSize + 1;
-
-        // Add initial null tokens for lists with null tokens at the beginning
-        for (int i = 0; i < shingleSize; i++) {
-            List<Token> nullWindow = new ArrayList<>();
-            for (int j = 0; j < shingleSize - i; j++) {
-                nullWindow.add(null);
-            }
-            nullWindow.addAll(tokens.subList(0, i + shingleSize + 1));
-            shingles.add(nullWindow);
-        }
-
-        // Add tokens to list
-        for (int i = 0; i <= tokens.size() - windowSize; i++) {
-            List<Token> window = new ArrayList<>(tokens.subList(i, i + windowSize));
-            shingles.add(window);
-        }
-
-        // Add trailing null tokens for lists with null tokens at the end
-        for (int i = 0; i < shingleSize; i++) {
-            List<Token> nullWindow = new ArrayList<>(tokens.subList(tokens.size() - windowSize + i, tokens.size()));
-            for (int j = 0; j < shingleSize - i; j++) {
-                nullWindow.add(null);
-            }
-            shingles.add(nullWindow);
-        }
-
-        return shingles;
-    }
-
-    /**
      * 
      * @param token a Token object
      *              Adds a token to tokensList
@@ -172,6 +131,50 @@ public class TextBlock {
             tokensList.get(3).setIsName(true);
             tokensList.get(4).setIsName(true);
         }
+    }
+
+    /**
+     * Used to generate shingling to be used as input for the learning machine. 
+     * Section 5.3 of design notes.
+     * @param tokens a list of Tokens we want to apply shingling to
+     * @param start The number of tokens before the current token that are included in the shingle
+     * @param end The number of tokens after the current token that are included in the shingle
+     * @return A list of a list of tokens with shingling applied. 
+     */
+    public static List<List<Token>> generateShingles(List<Token> tokens, int start, int end) {
+        List<List<Token>> shingles = new ArrayList<>();
+
+        // Add null tokens at the beginning and end of the list
+        List<Token> paddedTokens = new ArrayList<>();
+        for (int i = 0; i < start; i++) {
+            paddedTokens.add(new Token("null"));
+        }
+        paddedTokens.addAll(tokens);
+        for (int i = 0; i < end; i++) {
+            paddedTokens.add(new Token("null"));
+        }
+
+        for (int i = start; i < paddedTokens.size() - end; i++) {
+            List<Token> shingle = new ArrayList<>();
+
+            // Add the k tokens before the current token
+            for (int j = i - start; j < i; j++) {
+                shingle.add(paddedTokens.get(j));
+            }
+
+            // Add the current token
+            shingle.add(paddedTokens.get(i));
+
+            // Add the k' tokens after the current token
+            for (int j = i + 1; j < i + 1 + end; j++) {
+                shingle.add(paddedTokens.get(j));
+            }
+
+            // Add the shingle to the result list
+            shingles.add(shingle);
+        }
+
+        return shingles;
     }
 
 }

@@ -10,6 +10,8 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import java.io.ByteArrayOutputStream;
+
 public class testTextBlock {
 
     @Test
@@ -86,15 +88,31 @@ public class testTextBlock {
         assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
 
-    @Test
-    public void testGenerateShingles() {
+    @Test 
+    public void TestGenerateShingles(){
+        List<Token> tokenList = new ArrayList<>();
         List<List<Token>> shingles = new ArrayList<>();
-        String text = "<NER>by John Doe, Lawrence Livermore Laboratory n</NER>";
+        String text = "<NER>by John Doe, n Lawrence Livermore Laboratory</NER>";
         TextBlock block = new TextBlock(text);
-        shingles = block.generateShingles(block.getTokensList());
+        tokenList = block.getTokensList();
+        shingles = block.generateShingles(tokenList, 3, 3);
         for (List<Token> shingle : shingles) {
-            System.out.println("Shingle: " + shingle);
+            for (Token token : shingle) {
+                System.out.print(token.toString() + " ");
+            }
+            System.out.println();
         }
+        List<Token> expected = new ArrayList<>();
+        expected.add(new Token("null"));
+        expected.add(new Token("null"));
+        expected.add(new Token("null"));
+        expected.add(new Token("by"));
+        expected.add(new Token("John"));
+        expected.add(new Token("Doe"));
+        expected.add(new Token(","));
+
+        assertEquals(shingles.get(0).toString(), expected.toString());
+
     }
 
     @Test

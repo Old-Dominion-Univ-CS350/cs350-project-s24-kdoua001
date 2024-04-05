@@ -25,6 +25,22 @@ public class Token {
     private double perProbability = 0.5; // Initial probability of being a PER
 
     /**
+     * Constructor for Token
+     * @param assignedString string to assign to token
+     */
+    public Token(String assignedString){
+        this.tokenString = assignedString;
+        this.inDictionary = false;
+        this.locationFlag = false;
+        this.commonFirst = false;
+        this.commonLast = false;
+        this.honorificFlag = false;
+        this.killWordFlag = false;
+        this.punctuationFlag = false;
+
+    }
+
+    /**
      * Constructor
      * 
      * @param assignedString assigned string 
