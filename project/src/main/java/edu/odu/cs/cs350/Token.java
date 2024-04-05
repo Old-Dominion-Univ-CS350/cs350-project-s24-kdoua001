@@ -255,14 +255,26 @@ public class Token {
 
     }
 
+    /**
+     * @return
+     * @param feature
+     */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
         speechFeature = feature;
     }
 
+    /**
+     * @param
+     * @return
+     */
     public FeatureOfSpeech getFeatureOfSpeech() {
         return speechFeature;
     }
 
+    /**
+     * @return
+     * @param 
+     */
     public void DetectFeatureOfSpeech() {
 
         Tagger tagger = new Tagger();
