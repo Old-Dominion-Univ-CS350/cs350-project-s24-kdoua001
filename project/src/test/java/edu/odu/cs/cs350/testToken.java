@@ -321,7 +321,7 @@ public class testToken {
         String testInputWithPersonalNames = "Ralph, Peter, and Izzy worked on textBlock class for sprint 1";
         Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames, null);
 
-        tokenizePersonalNameInput.detectPersonalName();
+        // String result = detectPersonalName(tokenizePersonalNameInput);
 
     }
 

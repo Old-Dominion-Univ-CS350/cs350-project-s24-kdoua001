@@ -250,7 +250,7 @@ public class Token {
 
     }
 
-    public String detectPersonalName(Token token) {
+    public static String detectPersonalName(Token token) {
         // Check lexical feature of the token
         LexicalFeature lexicalFeature = token.getLexicalFeature();
 
@@ -262,7 +262,7 @@ public class Token {
 
     }
 
-    private boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
+    public static boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD;
 
     }
