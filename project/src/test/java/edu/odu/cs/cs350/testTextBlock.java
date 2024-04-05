@@ -119,23 +119,30 @@ public class testTextBlock {
     public void testCreateTokensWithLexicalFeatures() {
         String firstTestInput = "This is a test, with some punctuation.";
         String secondTestInput = "Here is a test with an email, someone@odu.edu.";
+        String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
 
         TextBlock firstBlock = new TextBlock(firstTestInput);
         TextBlock secondBlock = new TextBlock(secondTestInput);
+        TextBlock thirdBlock = new TextBlock(thirdTestInput);
 
         // Tokenize the test input
         List<Token> firstTokens = firstBlock.createTokens(firstTestInput);
         List<Token> secondTokens = secondBlock.createTokens(secondTestInput);
+        List<Token> thirdTokens = thirdBlock.createTokens(thirdTestInput);
 
         // Assert that number of tokens matches the expected number
         assertEquals(9, firstTokens.size());
         assertEquals(10, secondTokens.size());
+        assertEquals(16, thirdTokens.size());
 
         // assert lexical features for each token
         assertEquals(LexicalFeature.CAPITALIZEDWORD, firstTokens.get(0).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, firstTokens.get(1).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, secondTokens.get(9).getLexicalFeature());
-
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(8).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(10).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(12).getLexicalFeature());
+        
     }
 
     @Test
