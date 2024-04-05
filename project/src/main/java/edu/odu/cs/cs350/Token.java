@@ -2,8 +2,6 @@ package edu.odu.cs.cs350;
 
 import java.util.regex.Pattern;
 
-import javax.lang.model.util.ElementScanner14;
-
 /**
  * This class represents a token object
  * It contains boolean values for various token attributes
