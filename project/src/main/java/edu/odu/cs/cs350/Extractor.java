@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import weka.classifiers.functions.SMO;
+import weka.*;
 import weka.core.Instances;
+import weka.core.converters.ArffSaver;
+import weka.core.converters.ConverterUtils.DataSource;
 import weka.knowledgeflow.steps.Block;
 
 /**
