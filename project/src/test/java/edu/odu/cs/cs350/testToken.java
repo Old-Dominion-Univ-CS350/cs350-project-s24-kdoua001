@@ -264,8 +264,7 @@ public class testToken {
     }
 
     @Test
-    public void testDetectLexicalFeatureNewLine()
-    {
+    public void testDetectLexicalFeatureNewLine() {
         String testNewLine = "\n";
 
         Token tokenizeNewLine = new Token(testNewLine, null);
@@ -276,8 +275,7 @@ public class testToken {
     }
 
     @Test
-    public void testDetectLexicalFeatureNullFeature()
-    {
+    public void testDetectLexicalFeatureNullFeature() {
         String testNullFeature = "";
 
         Token tokenizeNullFeature = new Token(testNullFeature, null);
@@ -288,8 +286,7 @@ public class testToken {
     }
 
     @Test
-    public void testDetectLexicalFeatureOther()
-    {
+    public void testDetectLexicalFeatureOther() {
         String firstTestOther = "a";
         String secondTestOther = "words";
         String thirdTestOther = "TEST123";
@@ -360,6 +357,15 @@ public class testToken {
         assertEquals(FeatureOfSpeech.PERIOD, tokenizePeriodPunctuation.getFeatureOfSpeech());
         assertEquals(FeatureOfSpeech.COMMA, tokenizeCommaPunctuation.getFeatureOfSpeech());
         assertEquals(FeatureOfSpeech.HYPHEN, tokenizeHyphenPunctuation.getFeatureOfSpeech());
+
+    }
+    
+    public void testDetectPersonalName() {
+        String testInputWithPersonalNames = "Ralph, Peter, and Izzy worked on textBlock class for sprint 1";
+        Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames, null);
+
+        // String result = detectPersonalName(tokenizePersonalNameInput);
+
     }
 
 }

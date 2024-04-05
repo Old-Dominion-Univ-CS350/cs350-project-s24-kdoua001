@@ -2,6 +2,8 @@ package edu.odu.cs.cs350;
 
 import java.util.regex.Pattern;
 
+import javax.lang.model.util.ElementScanner14;
+
 /**
  * This class represents a token object
  * It contains boolean values for various token attributes
@@ -23,9 +25,10 @@ public class Token {
 
     /**
      * Constructor for Token
+     * 
      * @param assignedString string to assign to token
      */
-    public Token(String assignedString){
+    public Token(String assignedString) {
         this.tokenString = assignedString;
         this.inDictionary = false;
         this.locationFlag = false;
@@ -41,7 +44,7 @@ public class Token {
     /**
      * Constructor
      * 
-     * @param assignedString assigned string 
+     * @param assignedString assigned string
      * @param lexicalFeature feature the lexical feature associated with the token.
      */
     public Token(String assignedString, LexicalFeature lexicalFeature) {
@@ -140,6 +143,7 @@ public class Token {
 
     /**
      * Sets the Bool inDictionary of Token
+     * 
      * @param dictionary is this token in the dictionary
      */
     public void setIsInDictionary(boolean dictionary) {
@@ -148,6 +152,7 @@ public class Token {
 
     /**
      * Sets the Bool isLocation of Token
+     * 
      * @param location is this token a location
      */
     public void setIsLocation(boolean location) {
@@ -156,6 +161,7 @@ public class Token {
 
     /**
      * Sets the Bool commonFirst of a Token
+     * 
      * @param first is this a common first name
      */
     public void setIsCommonFirst(boolean first) {
@@ -164,6 +170,7 @@ public class Token {
 
     /**
      * Sets the Bool commonLast of a Token
+     * 
      * @param last is this a common last name
      */
     public void setIsCommonLast(boolean last) {
@@ -171,7 +178,8 @@ public class Token {
     }
 
     /**
-     * Sets the Bool honorific of a Token 
+     * Sets the Bool honorific of a Token
+     * 
      * @param honorific is this a honorific
      */
     public void setIsHonorific(boolean honorific) {
@@ -274,6 +282,22 @@ public class Token {
         if (tagger.IsHyphen(tokenString)){
             setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
         }
+        
+    public static String detectPersonalName(Token token) {
+        // Check lexical feature of the token
+        LexicalFeature lexicalFeature = token.getLexicalFeature();
+
+        if (isLikelyPersonalName(lexicalFeature)) {
+            return "<PER>" + token.getTokenString() + "</PER>";
+        } else {
+            return token.getTokenString();
+        }
+
+    }
+
+    public static boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
+        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD;
+
     }
 
 }
