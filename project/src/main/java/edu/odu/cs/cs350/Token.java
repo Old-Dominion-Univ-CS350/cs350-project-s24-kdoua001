@@ -250,20 +250,37 @@ public class Token {
 
     }
 
-    public static String detectPersonalName(Token token) {
+    /**
+     * Detects if the token's lexical features suggest it represents a personal name
+     * and wraps the token string in <PER> tags if it is likely a personal name
+     * 
+     * @return the token string wrapped in <PER> tags if it's likely a personal name
+     */
+    public String detectPersonalName() {
         // Check lexical feature of the token
-        LexicalFeature lexicalFeature = token.getLexicalFeature();
+        LexicalFeature lexicalFeature = this.getLexicalFeature();
 
+        // Check if the lexical feature suggests it is likely a personal name
         if (isLikelyPersonalName(lexicalFeature)) {
-            return "<PER>" + token.getTokenString() + "</PER>";
+            return "<PER>" + this.getTokenString() + "</PER>";
         } else {
-            return token.getTokenString();
+            return this.getTokenString(); // else return the token without per tags
         }
 
     }
 
-    public static boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
-        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD;
+    /**
+     * Determine if the provided lexical feature is likely to represent a personal
+     * name.
+     * 
+     * @param lexicalFeature
+     * @return True if the lexical feature is either Capitalized word, All caps, or
+     *         Single capitalized letter
+     */
+    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
+        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD
+                || lexicalFeature == LexicalFeature.ALLCAPS
+                || lexicalFeature == LexicalFeature.SINGLECAPLETTER;
 
     }
 

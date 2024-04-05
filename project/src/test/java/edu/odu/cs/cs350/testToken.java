@@ -318,10 +318,23 @@ public class testToken {
 
     @Test
     public void testDetectPersonalName() {
-        String testInputWithPersonalNames = "Ralph, Peter, and Izzy worked on textBlock class for sprint 1";
-        Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames, null);
+        // test input containing a personal name
+        String testInputWithPersonalNames = "Ralph";
 
-        // String result = detectPersonalName(tokenizePersonalNameInput);
+        // create a token with the test input
+        Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames, null);
+        tokenizePersonalNameInput.detectLexicalFeature();
+
+        // check if detected lexical feature suggests its likely a personal name
+        boolean result = tokenizePersonalNameInput.isLikelyPersonalName(tokenizePersonalNameInput.getLexicalFeature());
+        // detect personal name based on lexical features: Capitalized Word, ALL-CAPS,
+        // OR SingleCap
+        String personalNameDetectResult = tokenizePersonalNameInput.detectPersonalName();
+
+        // assert that detected lexical feature suggests a likely personal name
+        assertEquals(true, result);
+        // assert that the personal name is correctly wrapped in <PER> tags
+        assertEquals("<PER>Ralph</PER>", personalNameDetectResult);
 
     }
 
