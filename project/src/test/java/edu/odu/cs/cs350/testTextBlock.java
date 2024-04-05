@@ -117,17 +117,39 @@ public class testTextBlock {
 
     @Test
     public void testCreateTokensWithLexicalFeatures() {
-        String testInput = "This is a test, with some punctuation.";
-        TextBlock block = new TextBlock(testInput);
+        String firstTestInput = "This is a test, with some punctuation.";
+        String secondTestInput = "Here is a test with an email, someone@odu.edu.";
+        String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
+        String fourthTestInput = "How about we go to a new line, \n.";
+
+        TextBlock firstBlock = new TextBlock(firstTestInput);
+        TextBlock secondBlock = new TextBlock(secondTestInput);
+        TextBlock thirdBlock = new TextBlock(thirdTestInput);
+        TextBlock fourthBlock = new TextBlock(fourthTestInput);
 
         // Tokenize the test input
-        List<Token> tokens = block.createTokens(testInput);
+        List<Token> firstTokens = firstBlock.createTokens(firstTestInput);
+        List<Token> secondTokens = secondBlock.createTokens(secondTestInput);
+        List<Token> thirdTokens = thirdBlock.createTokens(thirdTestInput);
+        List<Token> fourthTokens = fourthBlock.createTokens(fourthTestInput);
 
         // Assert that number of tokens matches the expected number
-        assertEquals(9, tokens.size());
+        assertEquals(9, firstTokens.size());
+        assertEquals(10, secondTokens.size());
+        assertEquals(16, thirdTokens.size());
+        assertEquals(11, fourthTokens.size());
 
         // assert lexical features for each token
-        assertEquals(LexicalFeature.CAPITALIZEDWORD, tokens.get(0).getLexicalFeature());
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, firstTokens.get(0).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, firstTokens.get(1).getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, firstTokens.get(5).getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, firstTokens.get(9).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, secondTokens.get(9).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(8).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(10).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(12).getLexicalFeature());
+        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(10).getLexicalFeature());
+
 
     }
 
