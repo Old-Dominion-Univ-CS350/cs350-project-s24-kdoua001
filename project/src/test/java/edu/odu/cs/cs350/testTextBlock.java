@@ -58,16 +58,16 @@ public class testTextBlock {
         TextBlock block = new TextBlock(text);
         assertThat(block.toString(), is("<NER>My name is <PER>John Doe</PER>!</NER>"));
 
-        Token John = new Token("John", null);
+        Token John = new Token("John");
         John.setIsName(true);
         John.setIsPunctuation(false);
-        Token Jim = new Token("Jim", null);
+        Token Jim = new Token("Jim");
         Jim.setIsName(true);
         Jim.setIsPunctuation(false);
-        Token Doe = new Token("Doe", null);
+        Token Doe = new Token("Doe");
         Doe.setIsName(true);
         Doe.setIsPunctuation(false);
-        Token period = new Token(".", null);
+        Token period = new Token(".");
         period.setIsPunctuation(true);
 
         String text2 = "<NER>His name is</NER>";

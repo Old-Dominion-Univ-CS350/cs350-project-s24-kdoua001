@@ -11,20 +11,22 @@ public class testFeatureVectors {
 
     @Test
     public void testCreateVectors() {
-        //Create a list of sample tokens
+        // Create a list of sample tokens
         List<Token> tokenList = new ArrayList<>();
-        tokenList.add(createToken(true, true, true, true, true, true, true, true, LexicalFeature.NUMBER, FeatureOfSpeech.ARTICLES));
-        tokenList.add(createToken(false, true, false, false, false, false, false, false, LexicalFeature.ALLCAPS, FeatureOfSpeech.PERIOD));
+        tokenList.add(createToken(true, true, true, true, true, true, true, true, LexicalFeature.NUMBER,
+                FeatureOfSpeech.ARTICLES));
+        tokenList.add(createToken(false, true, false, false, false, false, false, false, LexicalFeature.ALLCAPS,
+                FeatureOfSpeech.PERIOD));
 
-        //Create the FeatureVector instance
+        // Create the FeatureVector instance
         FeatureVector featureVector = new FeatureVector();
         Instances data = featureVector.createVectors(tokenList);
 
-        //Assertions
+        // Assertions
         assertNotNull(data);
         assertEquals(tokenList.size(), data.numInstances());
 
-        //Check attribute values for the first instance
+        // Check attribute values for the first instance
         double[] instanceValues = data.get(0).toDoubleArray();
         assertEquals(1.0, instanceValues[0]); // isName
         assertEquals(1.0, instanceValues[1]); // isInDictionary
@@ -37,7 +39,7 @@ public class testFeatureVectors {
         assertEquals(LexicalFeature.NUMBER.ordinal(), (int) instanceValues[8]); // lexicalFeature
         assertEquals(FeatureOfSpeech.ARTICLES.ordinal(), (int) instanceValues[9]); // speechFeature
 
-        //Check attribute values for the second instance
+        // Check attribute values for the second instance
         instanceValues = data.get(1).toDoubleArray();
         assertEquals(0.0, instanceValues[0]); // isName
         assertEquals(1.0, instanceValues[1]); // isInDictionary
@@ -51,11 +53,11 @@ public class testFeatureVectors {
         assertEquals(FeatureOfSpeech.PERIOD.ordinal(), (int) instanceValues[9]); // speechFeature
     }
 
-    //Method to create a test Token object
+    // Method to create a test Token object
     private Token createToken(boolean name, boolean inDictionary, boolean location, boolean commonFirst,
-                              boolean commonLast, boolean honorific, boolean killWord, boolean punctuation,
-                              LexicalFeature lexicalFeature, FeatureOfSpeech speechFeature) {
-        Token token = new Token("", lexicalFeature);
+            boolean commonLast, boolean honorific, boolean killWord, boolean punctuation,
+            LexicalFeature lexicalFeature, FeatureOfSpeech speechFeature) {
+        Token token = new Token("");
         token.setIsName(name);
         token.setIsInDictionary(inDictionary);
         token.setIsLocation(location);
@@ -67,6 +69,5 @@ public class testFeatureVectors {
         token.setFeatureOfSpeech(speechFeature);
         return token;
     }
-    
-    
+
 }

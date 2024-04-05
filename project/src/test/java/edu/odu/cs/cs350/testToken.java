@@ -11,7 +11,7 @@ public class testToken {
     @Test
     public void testConstructor() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
         assertFalse(theToken.isInDictionary());
@@ -25,7 +25,7 @@ public class testToken {
     @Test
     public void testSetTokenString() {
         String string = " ";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setTokenString("token");
         assertEquals("token", theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -40,7 +40,7 @@ public class testToken {
     @Test
     public void testSetIsName() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsName(true);
         assertEquals(string, theToken.getTokenString());
         assertTrue(theToken.isName());
@@ -55,7 +55,7 @@ public class testToken {
     @Test
     public void testSetIsInDictionary() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsInDictionary(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -70,7 +70,7 @@ public class testToken {
     @Test
     public void testSetIsLocation() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsLocation(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -85,7 +85,7 @@ public class testToken {
     @Test
     public void testSetIsCommonFirst() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsCommonFirst(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -100,7 +100,7 @@ public class testToken {
     @Test
     public void testSetIsCommonLast() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsCommonLast(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -115,7 +115,7 @@ public class testToken {
     @Test
     public void testSetIsHonorific() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsHonorific(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -130,7 +130,7 @@ public class testToken {
     @Test
     public void testSetIsPunctuation() {
         String string = "token";
-        Token theToken = new Token(string, null);
+        Token theToken = new Token(string);
         theToken.setIsPunctuation(true);
         assertEquals(string, theToken.getTokenString());
         assertFalse(theToken.isName());
@@ -155,14 +155,14 @@ public class testToken {
         String otherInput = "h.e.l.l.o";
 
         // creating a new Token object with test input with various lexical Features
-        Token token = new Token(testInput, LexicalFeature.NUMBER);
-        Token puncToken = new Token(punctuationMarkInput, LexicalFeature.PUNCTUATION);
-        Token singleCapToken = new Token(singleCapLetterInput, LexicalFeature.SINGLECAPLETTER);
-        Token capWordToken = new Token(aCapitalizedWordInput, LexicalFeature.CAPITALIZEDWORD);
-        Token allCapToken = new Token(allCapsInput, LexicalFeature.ALLCAPS);
-        Token newLineToken = new Token(newLineInput, LexicalFeature.NEWLINE);
-        Token nullToken = new Token(nullInput, LexicalFeature.NULLFEATURE);
-        Token otherToken = new Token(otherInput, LexicalFeature.OTHER);
+        Token token = new Token(testInput);
+        Token puncToken = new Token(punctuationMarkInput);
+        Token singleCapToken = new Token(singleCapLetterInput);
+        Token capWordToken = new Token(aCapitalizedWordInput);
+        Token allCapToken = new Token(allCapsInput);
+        Token newLineToken = new Token(newLineInput);
+        Token nullToken = new Token(nullInput);
+        Token otherToken = new Token(otherInput);
 
         // check if lexical feature associated with the token is equal to certain
         // lexical feature
@@ -184,10 +184,10 @@ public class testToken {
         String negativeInteger = "-456";
         String floatingPointNumber = "3.14";
 
-        Token numbToken = new Token(testRepOfNumber, null);
-        Token leadingZToken = new Token(testLeadingZeroNumber, null);
-        Token negativeToken = new Token(negativeInteger, null);
-        Token floatingToken = new Token(floatingPointNumber, null);
+        Token numbToken = new Token(testRepOfNumber);
+        Token leadingZToken = new Token(testLeadingZeroNumber);
+        Token negativeToken = new Token(negativeInteger);
+        Token floatingToken = new Token(floatingPointNumber);
 
         numbToken.detectLexicalFeature();
         leadingZToken.detectLexicalFeature();
@@ -205,8 +205,8 @@ public class testToken {
         String capitalizedWordInput = "Hello";
         String textSingleCapitalizedLetter = "World";
 
-        Token capitalizedWordToken = new Token(capitalizedWordInput, null);
-        Token singleCapToken = new Token(textSingleCapitalizedLetter, null);
+        Token capitalizedWordToken = new Token(capitalizedWordInput);
+        Token singleCapToken = new Token(textSingleCapitalizedLetter);
         capitalizedWordToken.detectLexicalFeature();
         singleCapToken.detectLexicalFeature();
 
@@ -220,8 +220,8 @@ public class testToken {
         String allCapsWord = "TEST";
         String allCapsWordStringInput = "BUILD";
 
-        Token allCapsWordToken = new Token(allCapsWord, null);
-        Token allCapitalizedWordToken = new Token(allCapsWordStringInput, null);
+        Token allCapsWordToken = new Token(allCapsWord);
+        Token allCapitalizedWordToken = new Token(allCapsWordStringInput);
         allCapsWordToken.detectLexicalFeature();
         allCapitalizedWordToken.detectLexicalFeature();
 
@@ -234,8 +234,8 @@ public class testToken {
         String singleLetterInput = "L";
         String secondSingleLetterInput = "M";
 
-        Token tokenizeSingleLetterInput = new Token(singleLetterInput, null);
-        Token tokenizeSecondSingleLetterInput = new Token(secondSingleLetterInput, null);
+        Token tokenizeSingleLetterInput = new Token(singleLetterInput);
+        Token tokenizeSecondSingleLetterInput = new Token(secondSingleLetterInput);
 
         tokenizeSingleLetterInput.detectLexicalFeature();
         tokenizeSecondSingleLetterInput.detectLexicalFeature();
@@ -250,9 +250,9 @@ public class testToken {
         String testPeriod = ".";
         String testExclamationMark = "!";
 
-        Token commaToken = new Token(testComma, null);
-        Token periodToken = new Token(testPeriod, null);
-        Token exclamationMarkToken = new Token(testExclamationMark, null);
+        Token commaToken = new Token(testComma);
+        Token periodToken = new Token(testPeriod);
+        Token exclamationMarkToken = new Token(testExclamationMark);
 
         commaToken.detectLexicalFeature();
         periodToken.detectLexicalFeature();
@@ -267,7 +267,7 @@ public class testToken {
     public void testDetectLexicalFeatureNewLine() {
         String testNewLine = "\n";
 
-        Token tokenizeNewLine = new Token(testNewLine, null);
+        Token tokenizeNewLine = new Token(testNewLine);
 
         tokenizeNewLine.detectLexicalFeature();
 
@@ -278,7 +278,7 @@ public class testToken {
     public void testDetectLexicalFeatureNullFeature() {
         String testNullFeature = "";
 
-        Token tokenizeNullFeature = new Token(testNullFeature, null);
+        Token tokenizeNullFeature = new Token(testNullFeature);
 
         tokenizeNullFeature.detectLexicalFeature();
 
@@ -294,12 +294,12 @@ public class testToken {
         String fifthTestOther = "odu.edu";
         String sixthTestOther = "tEst";
 
-        Token tokenizeFirstOther = new Token(firstTestOther, null);
-        Token tokenizeSecondOther = new Token(secondTestOther, null);
-        Token tokenizeThirdOther = new Token(thirdTestOther, null);
-        Token tokenizeFourthOther = new Token(fourthTestOther, null);
-        Token tokenizeFifthOther = new Token(fifthTestOther, null);
-        Token tokenizeSixthOther = new Token(sixthTestOther, null);
+        Token tokenizeFirstOther = new Token(firstTestOther);
+        Token tokenizeSecondOther = new Token(secondTestOther);
+        Token tokenizeThirdOther = new Token(thirdTestOther);
+        Token tokenizeFourthOther = new Token(fourthTestOther);
+        Token tokenizeFifthOther = new Token(fifthTestOther);
+        Token tokenizeSixthOther = new Token(sixthTestOther);
 
         tokenizeFirstOther.detectLexicalFeature();
         tokenizeSecondOther.detectLexicalFeature();
@@ -366,8 +366,8 @@ public class testToken {
         String testOtherPersonalNameInput = "Matthew";
 
         // create a token with the test input
-        Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames, null);
-        Token tokenizeToken = new Token(testOtherPersonalNameInput, null);
+        Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames);
+        Token tokenizeToken = new Token(testOtherPersonalNameInput);
         tokenizePersonalNameInput.detectLexicalFeature();
         tokenizeToken.detectLexicalFeature();
 

@@ -36,26 +36,8 @@ public class Token {
         this.killWordFlag = false;
         this.punctuationFlag = false;
         DetectFeatureOfSpeech();
+        detectLexicalFeature();
 
-    }
-
-    /**
-     * Constructor
-     * 
-     * @param assignedString assigned string
-     * @param lexicalFeature feature the lexical feature associated with the token.
-     */
-    public Token(String assignedString, LexicalFeature lexicalFeature) {
-        this.tokenString = assignedString;
-        this.lexicalFeature = lexicalFeature;
-        this.inDictionary = false;
-        this.locationFlag = false;
-        this.commonFirst = false;
-        this.commonLast = false;
-        this.honorificFlag = false;
-        this.killWordFlag = false;
-        this.punctuationFlag = false;
-        DetectFeatureOfSpeech();
     }
 
     /**
@@ -271,7 +253,7 @@ public class Token {
 
     /**
      * @return
-     * @param 
+     * @param
      */
     public void DetectFeatureOfSpeech() {
 
