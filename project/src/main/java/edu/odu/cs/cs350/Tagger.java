@@ -1,9 +1,7 @@
 package edu.odu.cs.cs350;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.netlib.util.booleanW;
+
 
 /**
  * The Tagger class provides methods to detect the part of speech or lexical feature
