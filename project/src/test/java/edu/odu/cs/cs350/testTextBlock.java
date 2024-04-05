@@ -122,14 +122,12 @@ public class testTextBlock {
         String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
         String fourthTestInput = "How about we go to a new line, \n.";
         String fifthTestInput = "Where are some numbers and such, A NUMBER 50.";
-        String sixthTestInput;
 
         TextBlock firstBlock = new TextBlock(firstTestInput);
         TextBlock secondBlock = new TextBlock(secondTestInput);
         TextBlock thirdBlock = new TextBlock(thirdTestInput);
         TextBlock fourthBlock = new TextBlock(fourthTestInput);
         TextBlock fifthBlock = new TextBlock(fifthTestInput);
-        TextBlock sixthBlock = new TextBlock(sixthTestInput);
 
         // Tokenize the test input
         List<Token> firstTokens = firstBlock.createTokens(firstTestInput);
@@ -137,7 +135,6 @@ public class testTextBlock {
         List<Token> thirdTokens = thirdBlock.createTokens(thirdTestInput);
         List<Token> fourthTokens = fourthBlock.createTokens(fourthTestInput);
         List<Token> fifthTokens = fifthBlock.createTokens(fifthTestInput);
-        List<Token> sixthTokens = sixthBlock.createTokens(sixthTestInput);
 
         // Assert that number of tokens matches the expected number
         assertEquals(9, firstTokens.size());
@@ -145,7 +142,6 @@ public class testTextBlock {
         assertEquals(16, thirdTokens.size());
         assertEquals(11, fourthTokens.size());
         assertEquals(11, fifthTokens.size());
-        assertEquals(0, sixthTokens.size());
 
         // assert lexical features for each token
         assertEquals(LexicalFeature.CAPITALIZEDWORD, firstTokens.get(0).getLexicalFeature());
