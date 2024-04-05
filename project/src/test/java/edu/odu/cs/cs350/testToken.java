@@ -317,22 +317,21 @@ public class testToken {
     }
 
     @Test
-    public void testGetFeatureOfSpeech(){
+    public void testGetFeatureOfSpeech() {
         Token token = new Token("randomString");
 
         assertNull(token.getFeatureOfSpeech());
     }
 
     @Test
-    public void testSetFeatureOfSpeech(){
+    public void testSetFeatureOfSpeech() {
         Token token = new Token("and");
 
         assertEquals(FeatureOfSpeech.CONJUNCTION, token.getFeatureOfSpeech());
     }
 
     @Test
-    public void testDetectFeatureOfSpeech()
-    {
+    public void testDetectFeatureOfSpeech() {
         String articleA = "a";
         String articleAn = "an";
         String articleThe = "the";
@@ -359,7 +358,8 @@ public class testToken {
         assertEquals(FeatureOfSpeech.HYPHEN, tokenizeHyphenPunctuation.getFeatureOfSpeech());
 
     }
-    
+
+    @Test
     public void testDetectPersonalName() {
         // test input containing a personal name
         String testInputWithPersonalNames = "Ralph";
