@@ -92,7 +92,7 @@ public class testTextBlock {
     }
 
     @Test
-    public void TestGenerateShingles() {
+    public void testGenerateShingles() {
         List<Token> tokenList = new ArrayList<>();
         List<List<Token>> shingles = new ArrayList<>();
         String text = "<NER>by John Doe, n Lawrence Livermore Laboratory</NER>";
@@ -105,6 +105,17 @@ public class testTextBlock {
             }
             System.out.println();
         }
+
+        //In debug console, demonstrates PER tags can be applied at various locations
+        System.out.println();
+        for (List<Token> shingle : shingles) {
+            for (Token token : shingle) {
+                System.out.print(token.detectPersonalName() + " ");
+            }
+            System.out.println();
+        }
+        
+
         List<Token> expected = new ArrayList<>();
         expected.add(new Token("null"));
         expected.add(new Token("null"));
