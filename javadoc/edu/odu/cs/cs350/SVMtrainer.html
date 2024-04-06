@@ -76,6 +76,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SVMtrainer</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">This class provides methods for training and saving Support Vector Machine
+ (SVM) models using WEKA.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,10 +108,14 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#saveModel(weka.classifiers.functions.SMO,java.lang.String)" class="member-name-link">saveModel</a><wbr>(weka.classifiers.functions.SMO&nbsp;svm,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;modelFile)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Saves the trained SVM model to a file.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>weka.classifiers.functions.SMO</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#trainSVM(weka.core.Instances)" class="member-name-link">trainSVM</a><wbr>(weka.core.Instances&nbsp;data)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Trains a Support Vector Machine (SVM) model.</div>
+</div>
 </div>
 </div>
 </div>
@@ -146,9 +152,14 @@ loadScripts(document, 'script');</script>
 <h3>trainSVM</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">weka.classifiers.functions.SMO</span>&nbsp;<span class="element-name">trainSVM</span><wbr><span class="parameters">(weka.core.Instances&nbsp;data)</span>
                                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
+<div class="block">Trains a Support Vector Machine (SVM) model.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>data</code> - The dataset to be used for training.</dd>
+<dt>Returns:</dt>
+<dd>The trained SVM model.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code> - If an error occurs during training.</dd>
 </dl>
 </section>
 </li>
@@ -158,9 +169,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">saveModel</span><wbr><span class="parameters">(weka.classifiers.functions.SMO&nbsp;svm,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;modelFile)</span>
                throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
+<div class="block">Saves the trained SVM model to a file.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>svm</code> - The trained SVM model to be saved.</dd>
+<dd><code>modelFile</code> - The file path where the model will be saved.</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code> - If an error occurs during model saving.</dd>
 </dl>
 </section>
 </li>

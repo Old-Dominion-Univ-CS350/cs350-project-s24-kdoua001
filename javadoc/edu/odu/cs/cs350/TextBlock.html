@@ -233,13 +233,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&gt;</span>&nbsp;<span class="element-name">generateShingles</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&gt;&nbsp;tokens,
  int&nbsp;start,
  int&nbsp;end)</span></div>
-<div class="block">Used to generate shingling to be used as input for the learning machine. 
+<div class="block">Used to generate shingling to be used as input for the learning machine.
  Section 5.3 of design notes.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>tokens</code> - a list of Tokens we want to apply shingling to</dd>
-<dd><code>start</code> - The number of tokens before the current token that are included in the shingle</dd>
-<dd><code>end</code> - The number of tokens after the current token that are included in the shingle</dd>
+<dd><code>start</code> - The number of tokens before the current token that are included
+               in the shingle</dd>
+<dd><code>end</code> - The number of tokens after the current token that are included
+               in the shingle</dd>
 <dt>Returns:</dt>
 <dd>A list of a list of tokens with shingling applied.</dd>
 </dl>

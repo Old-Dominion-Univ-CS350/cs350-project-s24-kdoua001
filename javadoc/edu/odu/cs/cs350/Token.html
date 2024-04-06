@@ -94,11 +94,6 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">Constructor for Token</div>
 </div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(java.lang.String,edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">Token</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;assignedString,
- <a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
-<div class="col-last odd-row-color">
-<div class="block">Constructor</div>
-</div>
 </div>
 </section>
 </li>
@@ -107,7 +102,7 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
 <div class="table-header col-first">Modifier and Type</div>
@@ -115,22 +110,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#DetectFeatureOfSpeech()" class="member-name-link">DetectFeatureOfSpeech</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Detected Feature of Speech</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectLexicalFeature()" class="member-name-link">detectLexicalFeature</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">detected lexical features</div>
+<div class="block">Detected lexical features.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#detectPersonalName(edu.odu.cs.cs350.Token)" class="member-name-link">detectPersonalName</a><wbr>(<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&nbsp;token)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectPersonalName()" class="member-name-link">detectPersonalName</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Detects if the token's lexical features suggest it represents a personal name
+ and wraps the token string in PER tags if it is likely a personal name</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFeatureOfSpeech()" class="member-name-link">getFeatureOfSpeech</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the Speech feature associated with this token.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLexicalFeature()" class="member-name-link">getLexicalFeature</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">gets the lexical feature associated with this token.</div>
+<div class="block">Gets the lexical feature associated with this token.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTokenString()" class="member-name-link">getTokenString</a>()</code></div>
@@ -150,9 +152,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isKillWord()" class="member-name-link">isKillWord</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">isLikelyPersonalName</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">isLikelyPersonalName</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Determine if the provided lexical feature is likely to represent a personal
+ name.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isLocation()" class="member-name-link">isLocation</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -164,7 +169,9 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setFeatureOfSpeech(edu.odu.cs.cs350.FeatureOfSpeech)" class="member-name-link">setFeatureOfSpeech</a><wbr>(<a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a>&nbsp;feature)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for Speech features.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setIsCommonFirst(boolean)" class="member-name-link">setIsCommonFirst</a><wbr>(boolean&nbsp;first)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -207,7 +214,9 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLexicalFeature(edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">setLexicalFeature</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for lexical features.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTokenString(java.lang.String)" class="member-name-link">setTokenString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;string)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -241,19 +250,6 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>assignedString</code> - string to assign to token</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,edu.odu.cs.cs350.LexicalFeature)">
-<h3>Token</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Token</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;assignedString,
- <a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</span></div>
-<div class="block">Constructor</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>assignedString</code> - assigned string</dd>
-<dd><code>lexicalFeature</code> - feature the lexical feature associated with the token.</dd>
 </dl>
 </section>
 </li>
@@ -470,7 +466,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getLexicalFeature()">
 <h3>getLexicalFeature</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a></span>&nbsp;<span class="element-name">getLexicalFeature</span>()</div>
-<div class="block">gets the lexical feature associated with this token.</div>
+<div class="block">Gets the lexical feature associated with this token.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the lexical feature of this token</dd>
@@ -481,6 +477,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setLexicalFeature(edu.odu.cs.cs350.LexicalFeature)">
 <h3>setLexicalFeature</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLexicalFeature</span><wbr><span class="parameters">(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</span></div>
+<div class="block">Setter for lexical features.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>lexicalFeature</code> - lexical feature</dd>
@@ -491,37 +488,63 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="detectLexicalFeature()">
 <h3>detectLexicalFeature</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectLexicalFeature</span>()</div>
-<div class="block">detected lexical features</div>
+<div class="block">Detected lexical features.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="setFeatureOfSpeech(edu.odu.cs.cs350.FeatureOfSpeech)">
 <h3>setFeatureOfSpeech</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setFeatureOfSpeech</span><wbr><span class="parameters">(<a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a>&nbsp;feature)</span></div>
+<div class="block">Setter for Speech features.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>feature</code> - feature</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getFeatureOfSpeech()">
 <h3>getFeatureOfSpeech</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></span>&nbsp;<span class="element-name">getFeatureOfSpeech</span>()</div>
+<div class="block">Gets the Speech feature associated with this token.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>speechFeature</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="DetectFeatureOfSpeech()">
 <h3>DetectFeatureOfSpeech</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">DetectFeatureOfSpeech</span>()</div>
+<div class="block">Detected Feature of Speech</div>
 </section>
 </li>
 <li>
-<section class="detail" id="detectPersonalName(edu.odu.cs.cs350.Token)">
+<section class="detail" id="detectPersonalName()">
 <h3>detectPersonalName</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">detectPersonalName</span><wbr><span class="parameters">(<a href="Token.html" title="class in edu.odu.cs.cs350">Token</a>&nbsp;token)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">detectPersonalName</span>()</div>
+<div class="block">Detects if the token's lexical features suggest it represents a personal name
+ and wraps the token string in PER tags if it is likely a personal name</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the token string wrapped in PER tags if it's likely a personal name</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature)">
 <h3>isLikelyPersonalName</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isLikelyPersonalName</span><wbr><span class="parameters">(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isLikelyPersonalName</span><wbr><span class="parameters">(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</span></div>
+<div class="block">Determine if the provided lexical feature is likely to represent a personal
+ name.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>lexicalFeature</code> - lexicalfeature</dd>
+<dt>Returns:</dt>
+<dd>True if the lexical feature is either Capitalized word, All caps, or
+         Single capitalized letter</dd>
+</dl>
 </section>
 </li>
 </ul>
