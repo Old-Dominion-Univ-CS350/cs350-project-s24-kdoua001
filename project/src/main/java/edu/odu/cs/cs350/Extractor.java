@@ -10,6 +10,7 @@ import java.util.Random;
 import weka.classifiers.functions.SMO;
 import weka.*;
 import weka.core.Instances;
+import weka.core.SerializationHelper;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.knowledgeflow.steps.Block;
@@ -47,9 +48,11 @@ public class Extractor {
      */
     public static void main(String[] args) throws Exception {
 
-        string trainingFileName;
+        String trainingFileName = "trainingData.txt";
 
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
+        ClassLoader cLoader = Thread.currentThread().getContextClassLoader();
+        InputStreamReader trainingFile = new InputStreamReader(cLoader.getResourceAsStream(trainingFileName), "UTF-8");
+        Scanner scanner = new Scanner(trainingFile);
         scanner.useDelimiter("\\A");
         String contentOfFile = scanner.next();
         scanner.close();
@@ -92,8 +95,9 @@ public class Extractor {
 
         // Save the trained model to a file
         String modelFile = "trained_model.model";
-        svmTrainer.saveModel(trainedModel, modelFile);
-        System.out.println("SVM model trained and saved successfully.");
+        SerializationHelper.write(modelFile, trainedModel);
+        // svmTrainer.saveModel(trainedModel, modelFile);
+        // System.out.println("SVM model trained and saved successfully.");
 
     }
 }
