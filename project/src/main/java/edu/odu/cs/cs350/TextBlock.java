@@ -7,17 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents a TextBlock object
+ * This class represents a TextBlock object.
  * It contains functions for creating tokens and converting TextBlocks to a
- * string
+ * string.
  */
 public class TextBlock {
+    /**
+     * List of tokens.
+     */
     private List<Token> tokensList;
 
+    /**
+     * Shingle size.
+     */
     static final int shingleSize = 3;
 
     /**
-     * Main Constructor
+     * Main Constructor.
+     * 
+     * @param BlockText
      */
     TextBlock(String BlockText) {
         this.tokensList = createTokens(BlockText);
@@ -105,7 +113,7 @@ public class TextBlock {
     }
 
     /**
-     * used to search tokensList for a token containing a string
+     * Used to search tokensList for a token containing a string.
      * 
      * @param search the string representation of a token to be found
      * @return true if a token in tokensList contains the string
@@ -120,11 +128,11 @@ public class TextBlock {
     }
 
     /**
-     * For demonstration purposes only
+     * For demonstration purposes only.
      * If the first three tokens in a textblock are "My" "name" "is" it will set the
-     * next two tokens as personal Names
+     * next two tokens as personal Names.
      * This will allow us to demonstrate that personal names will appear wrapped in
-     * PER /PER tags in output
+     * PER /PER tags in output.
      */
     public void myNameIs() {
         if (this.containsString("My") && this.containsString("name") && this.containsString("is")) {
