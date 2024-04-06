@@ -153,9 +153,11 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isKillWord()" class="member-name-link">isKillWord</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">isLikelyPersonalName</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature,edu.odu.cs.cs350.FeatureOfSpeech)" class="member-name-link">isLikelyPersonalName</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature,
+ <a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a>&nbsp;featureOfSpeech)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Determine if the provided lexical feature is likely to represent a personal
+<div class="block">Determine if the provided lexical feature, feature of speech is likely to
+ represent a personal
  name.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
@@ -533,17 +535,21 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature)">
+<section class="detail" id="isLikelyPersonalName(edu.odu.cs.cs350.LexicalFeature,edu.odu.cs.cs350.FeatureOfSpeech)">
 <h3>isLikelyPersonalName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isLikelyPersonalName</span><wbr><span class="parameters">(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</span></div>
-<div class="block">Determine if the provided lexical feature is likely to represent a personal
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isLikelyPersonalName</span><wbr><span class="parameters">(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature,
+ <a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a>&nbsp;featureOfSpeech)</span></div>
+<div class="block">Determine if the provided lexical feature, feature of speech is likely to
+ represent a personal
  name.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>lexicalFeature</code> - lexicalfeature</dd>
+<dd><code>lexicalFeature</code> - lexical feature to be evaluated.</dd>
+<dd><code>featureOfSpeech</code> - associated with the token.</dd>
 <dt>Returns:</dt>
 <dd>True if the lexical feature is either Capitalized word, All caps, or
-         Single capitalized letter</dd>
+         Single capitalized letter and the feature of speech is not an
+         article, conjunction, period, comma or hyphen.</dd>
 </dl>
 </section>
 </li>
