@@ -361,7 +361,7 @@ public class testToken {
 
     @Test
     public void testDetectPersonalName() {
-        // test input containing a personal name
+        // Test input containing a personal name
         String testInputWithPersonalNames = "Ralph";
         String testOtherPersonalNameInput = "Matthew";
         String testAnotherPersonalNameInput = "A";
