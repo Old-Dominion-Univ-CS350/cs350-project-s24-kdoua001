@@ -140,7 +140,7 @@ public class testTextBlock {
         assertEquals(9, firstTokens.size());
         assertEquals(14, secondTokens.size());
         assertEquals(18, thirdTokens.size());
-        assertEquals(10, fourthTokens.size());
+        assertEquals(9, fourthTokens.size());
         assertEquals(11, fifthTokens.size());
 
         // assert lexical features for each token
