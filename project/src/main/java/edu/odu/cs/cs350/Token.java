@@ -195,7 +195,7 @@ public class Token {
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * gets the lexical feature associated with this token.
+     * Gets the lexical feature associated with this token.
      * 
      * @return the lexical feature of this token
      */
@@ -204,6 +204,7 @@ public class Token {
     }
 
     /**
+     * Setter for lexical features.
      * 
      * @param lexicalFeature lexical feature
      */
@@ -212,7 +213,7 @@ public class Token {
     }
 
     /**
-     * detected lexical features
+     * Detected lexical features.
      */
     public void detectLexicalFeature() {
         if (tokenString.matches("-?\\d+(\\.\\d+)?")) {
