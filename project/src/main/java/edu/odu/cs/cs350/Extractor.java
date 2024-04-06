@@ -52,7 +52,6 @@ public class Extractor {
         scanner.close();
 
         Document Document = new Document(contentOfFile);
-
         List<TextBlock> blocks = Document.getBlocks();
 
         // Create a FeatureVector object
