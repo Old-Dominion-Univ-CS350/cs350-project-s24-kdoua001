@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 import weka.classifiers.functions.SMO;
 import weka.*;
@@ -45,6 +46,8 @@ public class Extractor {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+
+        string trainingFileName;
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
         scanner.useDelimiter("\\A");
