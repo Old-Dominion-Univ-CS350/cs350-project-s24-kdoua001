@@ -3,9 +3,9 @@ package edu.odu.cs.cs350;
 import java.util.regex.Pattern;
 
 /**
- * This class represents a token object
- * It contains boolean values for various token attributes
- * It also contains a string representation of the token
+ * This class represents a token object.
+ * It contains boolean values for various token attributes.
+ * It also contains a string representation of the token.
  */
 public class Token {
     /**
@@ -65,7 +65,7 @@ public class Token {
     private FeatureOfSpeech speechFeature;
 
     /**
-     * Constructor for Token
+     * Constructor for Token.
      * 
      * @param assignedString string to assign to token
      */
@@ -147,88 +147,88 @@ public class Token {
     }
 
     /**
-     * Sets the TokenString of a Token
+     * Sets the TokenString of a Token.
      * 
-     * @param string string representation of Token
+     * @param string string representation of Token.
      */
     public void setTokenString(String string) {
         this.tokenString = string;
     }
 
     /**
-     * Sets the Bool isName of a Token
+     * Sets the Bool isName of a Token.
      * 
-     * @param name boolean isName
+     * @param name boolean isName.
      */
     public void setIsName(boolean name) {
         this.nameFlag = name;
     }
 
     /**
-     * Sets the Bool inDictionary of Token
+     * Sets the Bool inDictionary of Token.
      * 
-     * @param dictionary is this token in the dictionary
+     * @param dictionary is this token in the dictionary.
      */
     public void setIsInDictionary(boolean dictionary) {
         this.inDictionary = dictionary;
     }
 
     /**
-     * Sets the Bool isLocation of Token
+     * Sets the Bool isLocation of Token.
      * 
-     * @param location is this token a location
+     * @param location is this token a location.
      */
     public void setIsLocation(boolean location) {
         this.locationFlag = location;
     }
 
     /**
-     * Sets the Bool commonFirst of a Token
+     * Sets the Bool commonFirst of a Token.
      * 
-     * @param first is this a common first name
+     * @param first is this a common first name.
      */
     public void setIsCommonFirst(boolean first) {
         this.commonFirst = first;
     }
 
     /**
-     * Sets the Bool commonLast of a Token
+     * Sets the Bool commonLast of a Token.
      * 
-     * @param last is this a common last name
+     * @param last is this a common last name.
      */
     public void setIsCommonLast(boolean last) {
         this.commonLast = last;
     }
 
     /**
-     * Sets the Bool honorific of a Token
+     * Sets the Bool honorific of a Token.
      * 
-     * @param honorific is this a honorific
+     * @param honorific is this a honorific.
      */
     public void setIsHonorific(boolean honorific) {
         this.honorificFlag = honorific;
     }
 
     /**
-     * Sets the Bool killWord of a Token
+     * Sets the Bool killWord of a Token.
      * 
-     * @param killWord is this a kill word
+     * @param killWord is this a kill word.
      */
     public void setIsKillWord(boolean killWord) {
         this.killWordFlag = killWord;
     }
 
     /**
-     * Sets the Bool isPunctuation of a Token
+     * Sets the Bool isPunctuation of a Token.
      * 
-     * @param punctuation is this punctuation
+     * @param punctuation is this punctuation.
      */
     public void setIsPunctuation(boolean punctuation) {
         this.punctuationFlag = punctuation;
     }
 
     /**
-     * @return string representation of a Token
+     * @return string representation of a Token.
      */
     @Override
     public String toString() {
@@ -240,7 +240,7 @@ public class Token {
     /**
      * Gets the lexical feature associated with this token.
      * 
-     * @return the lexical feature of this token
+     * @return the lexical feature of this token.
      */
     public LexicalFeature getLexicalFeature() {
         return lexicalFeature;
@@ -249,7 +249,7 @@ public class Token {
     /**
      * Setter for lexical features.
      * 
-     * @param lexicalFeature lexical feature
+     * @param lexicalFeature lexical feature.
      */
     public void setLexicalFeature(LexicalFeature lexicalFeature) {
         this.lexicalFeature = lexicalFeature;
@@ -298,7 +298,7 @@ public class Token {
     }
 
     /**
-     * Detected Feature of Speech
+     * Detected Feature of Speech.
      */
     public void DetectFeatureOfSpeech() {
 
@@ -322,10 +322,10 @@ public class Token {
     }
 
     /**
-     * Detects if the token's lexical features suggest it represents a personal name
-     * and wraps the token string in PER tags if it is likely a personal name
+     * Detects if the token's lexical features suggest it represents a personal name.
+     * and wraps the token string in PER tags if it is likely a personal name.
      * 
-     * @return the token string wrapped in PER tags if it's likely a personal name
+     * @return the token string wrapped in PER tags if it's likely a personal name.
      */
     public String detectPersonalName() {
         // Check lexical feature of the token
@@ -340,8 +340,8 @@ public class Token {
     }
 
     /**
-     * Determine if the provided lexical feature, feature of speech is likely to
-     * represent a personal
+     * Determine if the provided lexical feature, feature of speech is likely to.
+     * represent a personal.
      * name.
      * 
      * @param lexicalFeature  lexical feature to be evaluated.
