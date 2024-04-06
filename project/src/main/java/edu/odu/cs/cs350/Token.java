@@ -297,12 +297,15 @@ public class Token {
     }
 
     /**
-     * Determine if the provided lexical feature is likely to represent a personal
+     * Determine if the provided lexical feature, feature of speech is likely to
+     * represent a personal
      * name.
      * 
-     * @param lexicalFeature
+     * @param lexicalFeature  lexical feature to be evaluated.
+     * @param featureOfSpeech associated with the token.
      * @return True if the lexical feature is either Capitalized word, All caps, or
-     *         Single capitalized letter
+     *         Single capitalized letter and the feature of speech is not an
+     *         article, conjunction, period, comma or hyphen.
      */
     public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureOfSpeech) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD
