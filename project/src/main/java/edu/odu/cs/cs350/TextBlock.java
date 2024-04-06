@@ -18,9 +18,10 @@ public class TextBlock {
     private List<Token> tokensList;
 
     /**
-     * Shingle size.
+     * 
+     * List containging a list of shingles for the textblock
      */
-    static final int shingleSize = 3;
+    private List<List<Token>> shinglesList;
 
     /**
      * Main Constructor.
@@ -29,6 +30,7 @@ public class TextBlock {
      */
     TextBlock(String BlockText) {
         this.tokensList = createTokens(BlockText);
+        shinglesList = this.generateShingles(tokensList, 3,3);
     }
 
     /**
@@ -152,7 +154,7 @@ public class TextBlock {
      *               in the shingle
      * @return A list of a list of tokens with shingling applied.
      */
-    public static List<List<Token>> generateShingles(List<Token> tokens, int start, int end) {
+    public List<List<Token>> generateShingles(List<Token> tokens, int start, int end) {
         List<List<Token>> shingles = new ArrayList<>();
 
         // Add null tokens at the beginning and end of the list
