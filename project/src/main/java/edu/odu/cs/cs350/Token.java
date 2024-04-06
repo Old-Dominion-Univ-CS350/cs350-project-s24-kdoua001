@@ -281,7 +281,7 @@ public class Token {
 
     /**
      * Sets the Feature Of Speech Attribute.
-     * @param feature
+     * @param feature feature
      */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
         speechFeature = feature;
