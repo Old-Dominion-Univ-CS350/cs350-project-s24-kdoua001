@@ -2,6 +2,9 @@ package edu.odu.cs.cs350;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import weka.core.pmml.Array;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -161,12 +164,32 @@ public class testTextBlock {
     @Test
     public void testDetectPersonalNamesInTextBlock() {
         // test input containing personal names
-        String testInput = "Izzy, Peter, and Ralph worked on textBlock and Token class for sprint 1.";
+        String testInput = "<NER> Ralph worked on user story number 7 for sprint 2.</NER>";
 
         // Create a textblock with test input
         TextBlock block = new TextBlock(testInput);
         List<Token> tokens = block.createTokens(testInput);
 
+        // Detect personal names in the text block
+        List<String> detectedPersonalNames = new ArrayList<>();
+        for (Token token : tokens) {
+            String personalName = token.detectPersonalName();
+            detectedPersonalNames.add(personalName);
+
+        }
+
+        // Expected output
+        String expectedOutput = "<PER>Ralph</PER> worked on user story number 7 for sprint 2 .";
+
+        // actual string
+        StringBuilder detectedOutputBuilder = new StringBuilder();
+        for (String personalName : detectedPersonalNames) {
+            detectedOutputBuilder.append(personalName).append(" ");
+
+        }
+        String detectedOutput = detectedOutputBuilder.toString().trim();
+
+        assertEquals(expectedOutput, detectedOutput);
     }
 
 }
