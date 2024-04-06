@@ -256,7 +256,9 @@ public class Token {
     }
 
     /**
-     * Detected lexical features.
+     * Assigns a Lexical Feature Type to the Token
+     * @param
+     * @return
      */
     public void detectLexicalFeature() {
         if (tokenString.matches("-?\\d+(\\.\\d+)?")) {
@@ -280,25 +282,27 @@ public class Token {
     }
 
     /**
-     * Setter for Speech features.
-     * 
-     * @param feature feature
+     * Sets the Feature Of Speech Attribute
+     * @return
+     * @param feature
      */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
         speechFeature = feature;
     }
 
     /**
-     * Gets the Speech feature associated with this token.
-     * 
-     * @return speechFeature
+     * Gets the Feature of Speech Attribute
+     * @param
+     * @return FeatureOfSpeech speechFeature 
      */
     public FeatureOfSpeech getFeatureOfSpeech() {
         return speechFeature;
     }
 
     /**
-     * Detected Feature of Speech.
+     * Assigns the Token a Feature of Speech Type
+     * @return
+     * @param 
      */
     public void DetectFeatureOfSpeech() {
 
