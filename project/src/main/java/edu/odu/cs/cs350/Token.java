@@ -8,17 +8,60 @@ import java.util.regex.Pattern;
  * It also contains a string representation of the token
  */
 public class Token {
-
+    /**
+     * The token string representation.
+     * This is the raw string value of the token.
+     */
     private String tokenString = null;
+    
+    /**
+     * Flag indicating whether the token represents a name.
+     */
     private boolean nameFlag;
+    
+    /**
+     * Flag indicating whether the token is found in the dictionary.
+     */
     private boolean inDictionary;
+    
+    /**
+     * Flag indicating whether the token represents a location.
+     */
     private boolean locationFlag;
+    
+    /**
+     * Flag indicating whether the token is a common first name.
+     */
     private boolean commonFirst;
+    
+    /**
+     * Flag indicating whether the token is a common last name.
+     */
     private boolean commonLast;
+    
+    /**
+     * Flag indicating whether the token has an honorific (e.g., "Mr.", "Dr.").
+     */
     private boolean honorificFlag;
+    
+    /**
+     * Flag indicating whether the token is a "kill word" that should be ignored.
+     */
     private boolean killWordFlag;
+    
+    /**
+     * Flag indicating whether the token contains punctuation.
+     */
     private boolean punctuationFlag;
+    
+    /**
+     * The lexical feature of the token.
+     */
     private LexicalFeature lexicalFeature;
+    
+    /**
+     * The part of speech feature of the token.
+     */
     private FeatureOfSpeech speechFeature;
 
     /**
