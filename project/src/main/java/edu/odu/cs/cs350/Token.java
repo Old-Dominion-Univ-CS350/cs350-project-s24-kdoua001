@@ -256,7 +256,7 @@ public class Token {
     }
 
     /**
-     * Assigns a Lexical Feature Type to the Token
+     * Assigns a Lexical Feature Type to the Token.
      * @param
      * @return
      */
@@ -282,7 +282,7 @@ public class Token {
     }
 
     /**
-     * Sets the Feature Of Speech Attribute
+     * Sets the Feature Of Speech Attribute.
      * @return
      * @param feature
      */
@@ -291,16 +291,16 @@ public class Token {
     }
 
     /**
-     * Gets the Feature of Speech Attribute
+     * Gets the Feature of Speech Attribute.
      * @param
-     * @return FeatureOfSpeech speechFeature 
+     * @return FeatureOfSpeech speechFeature
      */
     public FeatureOfSpeech getFeatureOfSpeech() {
         return speechFeature;
     }
 
     /**
-     * Assigns the Token a Feature of Speech Type
+     * Assigns the Token a Feature of Speech Type.
      * @return
      * @param 
      */
