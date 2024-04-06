@@ -120,7 +120,7 @@ public class testTextBlock {
         String firstTestInput = "This is a test, with some punctuation.";
         String secondTestInput = "Here is a test with an email, someone@odu.edu.";
         String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
-        String fourthTestInput = "How about we go to a new line, \n.";
+        String fourthTestInput = "How about we go to a new line, \n";
         String fifthTestInput = "Where are some numbers and such, A NUMBER 50.";
 
         TextBlock firstBlock = new TextBlock(firstTestInput);
