@@ -45,18 +45,18 @@ public class TextBlock {
         // Returns True if Word or Puncuation is Found
         String noTags = BlockText.replaceAll("<[^>]*>", "");
         List<Token> tokens = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
+        Pattern pattern = Pattern.compile("\\w+|\\p{Punct}|\\n");
         Matcher match = pattern.matcher(noTags);
 
         // Set isPunctuation to True if Punc is Found in First Char, False if Not
         while (match.find()) {
             String tokenString = match.group();
-            Token AddMe = new Token(tokenString, null);
+            Token AddMe = new Token(tokenString);
             boolean isPunctuation = Character.isLetterOrDigit(tokenString.charAt(0));
             AddMe.setIsPunctuation(!isPunctuation);
 
             // detect lexical feature of tokens
-            AddMe.detectLexicalFeature();
+            // AddMe.detectLexicalFeature();
             tokens.add(AddMe);
         }
 
@@ -134,12 +134,15 @@ public class TextBlock {
     }
 
     /**
-     * Used to generate shingling to be used as input for the learning machine. 
+     * Used to generate shingling to be used as input for the learning machine.
      * Section 5.3 of design notes.
+     * 
      * @param tokens a list of Tokens we want to apply shingling to
-     * @param start The number of tokens before the current token that are included in the shingle
-     * @param end The number of tokens after the current token that are included in the shingle
-     * @return A list of a list of tokens with shingling applied. 
+     * @param start  The number of tokens before the current token that are included
+     *               in the shingle
+     * @param end    The number of tokens after the current token that are included
+     *               in the shingle
+     * @return A list of a list of tokens with shingling applied.
      */
     public static List<List<Token>> generateShingles(List<Token> tokens, int start, int end) {
         List<List<Token>> shingles = new ArrayList<>();

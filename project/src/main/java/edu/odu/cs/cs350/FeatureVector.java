@@ -12,8 +12,12 @@ import java.util.ArrayList;
  */
 public class FeatureVector {
 
+    public FeatureVector(){
+        
+    }
+
     /**
-     * Method to create feature vectors based on Token attributes
+     * Method to create feature vectors based on Token attributes.
      * @param tokenList tokenList
      * @return data
      */

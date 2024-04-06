@@ -2,6 +2,9 @@ package edu.odu.cs.cs350;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import weka.core.pmml.Array;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -58,16 +61,16 @@ public class testTextBlock {
         TextBlock block = new TextBlock(text);
         assertThat(block.toString(), is("<NER>My name is <PER>John Doe</PER>!</NER>"));
 
-        Token John = new Token("John", null);
+        Token John = new Token("John");
         John.setIsName(true);
         John.setIsPunctuation(false);
-        Token Jim = new Token("Jim", null);
+        Token Jim = new Token("Jim");
         Jim.setIsName(true);
         Jim.setIsPunctuation(false);
-        Token Doe = new Token("Doe", null);
+        Token Doe = new Token("Doe");
         Doe.setIsName(true);
         Doe.setIsPunctuation(false);
-        Token period = new Token(".", null);
+        Token period = new Token(".");
         period.setIsPunctuation(true);
 
         String text2 = "<NER>His name is</NER>";
@@ -89,7 +92,7 @@ public class testTextBlock {
     }
 
     @Test
-    public void TestGenerateShingles() {
+    public void testGenerateShingles() {
         List<Token> tokenList = new ArrayList<>();
         List<List<Token>> shingles = new ArrayList<>();
         String text = "<NER>by John Doe, n Lawrence Livermore Laboratory</NER>";
@@ -102,6 +105,17 @@ public class testTextBlock {
             }
             System.out.println();
         }
+
+        //In debug console, demonstrates PER tags can be applied at various locations
+        System.out.println();
+        for (List<Token> shingle : shingles) {
+            for (Token token : shingle) {
+                System.out.print(token.detectPersonalName() + " ");
+            }
+            System.out.println();
+        }
+        
+
         List<Token> expected = new ArrayList<>();
         expected.add(new Token("null"));
         expected.add(new Token("null"));
@@ -117,29 +131,76 @@ public class testTextBlock {
 
     @Test
     public void testCreateTokensWithLexicalFeatures() {
-        String testInput = "This is a test, with some punctuation.";
-        TextBlock block = new TextBlock(testInput);
+        String firstTestInput = "This is a test, with some punctuation.";
+        String secondTestInput = "Here is a test with an email, someone@odu.edu.";
+        String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
+        String fourthTestInput = "\ntest";
+        String fifthTestInput = "Where are some numbers and such, A NUMBER 50.";
+
+        TextBlock firstBlock = new TextBlock(firstTestInput);
+        TextBlock secondBlock = new TextBlock(secondTestInput);
+        TextBlock thirdBlock = new TextBlock(thirdTestInput);
+        TextBlock fourthBlock = new TextBlock(fourthTestInput);
+        TextBlock fifthBlock = new TextBlock(fifthTestInput);
 
         // Tokenize the test input
-        List<Token> tokens = block.createTokens(testInput);
+        List<Token> firstTokens = firstBlock.createTokens(firstTestInput);
+        List<Token> secondTokens = secondBlock.createTokens(secondTestInput);
+        List<Token> thirdTokens = thirdBlock.createTokens(thirdTestInput);
+        List<Token> fourthTokens = fourthBlock.createTokens(fourthTestInput);
+        List<Token> fifthTokens = fifthBlock.createTokens(fifthTestInput);
 
         // Assert that number of tokens matches the expected number
-        assertEquals(9, tokens.size());
+        assertEquals(9, firstTokens.size());
+        assertEquals(14, secondTokens.size());
+        assertEquals(18, thirdTokens.size());
+        assertEquals(2, fourthTokens.size());
+        assertEquals(11, fifthTokens.size());
 
-        // assert lexical features for each token
-        assertEquals(LexicalFeature.CAPITALIZEDWORD, tokens.get(0).getLexicalFeature());
+        assertEquals(LexicalFeature.CAPITALIZEDWORD, firstTokens.get(0).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, firstTokens.get(1).getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, firstTokens.get(4).getLexicalFeature());
+        assertEquals(LexicalFeature.PUNCTUATION, firstTokens.get(8).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, secondTokens.get(9).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(7).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(9).getLexicalFeature());
+        assertEquals(LexicalFeature.OTHER, thirdTokens.get(11).getLexicalFeature());
+        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(0).getLexicalFeature());
+        assertEquals(LexicalFeature.SINGLECAPLETTER, fifthTokens.get(7).getLexicalFeature());
+        assertEquals(LexicalFeature.ALLCAPS, fifthTokens.get(8).getLexicalFeature());
+        assertEquals(LexicalFeature.NUMBER, fifthTokens.get(9).getLexicalFeature());
 
     }
 
     @Test
     public void testDetectPersonalNamesInTextBlock() {
         // test input containing personal names
-        String testInput = "Izzy, Peter, and Ralph worked on textBlock and Token class for sprint 1.";
+        String testInput = "<NER> Ralph worked on user story number 7 for sprint 2.</NER>";
 
         // Create a textblock with test input
         TextBlock block = new TextBlock(testInput);
         List<Token> tokens = block.createTokens(testInput);
 
+        // Detect personal names in the text block
+        List<String> detectedPersonalNames = new ArrayList<>();
+        for (Token token : tokens) {
+            String personalName = token.detectPersonalName();
+            detectedPersonalNames.add(personalName);
+
+        }
+
+        // Expected output
+        String expectedOutput = "<PER>Ralph</PER> worked on user story number 7 for sprint 2 .";
+
+        // actual string
+        StringBuilder detectedOutputBuilder = new StringBuilder();
+        for (String personalName : detectedPersonalNames) {
+            detectedOutputBuilder.append(personalName).append(" ");
+
+        }
+        String detectedOutput = detectedOutputBuilder.toString().trim();
+
+        assertEquals(expectedOutput, detectedOutput);
     }
 
 }

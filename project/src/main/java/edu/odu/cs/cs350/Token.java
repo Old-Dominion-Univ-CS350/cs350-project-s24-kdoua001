@@ -2,8 +2,6 @@ package edu.odu.cs.cs350;
 
 import java.util.regex.Pattern;
 
-import javax.lang.model.util.ElementScanner14;
-
 /**
  * This class represents a token object
  * It contains boolean values for various token attributes
@@ -38,26 +36,8 @@ public class Token {
         this.killWordFlag = false;
         this.punctuationFlag = false;
         DetectFeatureOfSpeech();
+        detectLexicalFeature();
 
-    }
-
-    /**
-     * Constructor
-     * 
-     * @param assignedString assigned string
-     * @param lexicalFeature feature the lexical feature associated with the token.
-     */
-    public Token(String assignedString, LexicalFeature lexicalFeature) {
-        this.tokenString = assignedString;
-        this.lexicalFeature = lexicalFeature;
-        this.inDictionary = false;
-        this.locationFlag = false;
-        this.commonFirst = false;
-        this.commonLast = false;
-        this.honorificFlag = false;
-        this.killWordFlag = false;
-        this.punctuationFlag = false;
-        DetectFeatureOfSpeech();
     }
 
     /**
@@ -215,7 +195,7 @@ public class Token {
     // -------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * gets the lexical feature associated with this token.
+     * Gets the lexical feature associated with this token.
      * 
      * @return the lexical feature of this token
      */
@@ -224,6 +204,7 @@ public class Token {
     }
 
     /**
+     * Setter for lexical features.
      * 
      * @param lexicalFeature lexical feature
      */
@@ -303,14 +284,13 @@ public class Token {
 
     /**
      * Detects if the token's lexical features suggest it represents a personal name
-     * and wraps the token string in <PER> tags if it is likely a personal name
+     * and wraps the token string in PER tags if it is likely a personal name
      * 
-     * @return the token string wrapped in <PER> tags if it's likely a personal name
+     * @return the token string wrapped in PER tags if it's likely a personal name
      */
     public String detectPersonalName() {
         // Check lexical feature of the token
         LexicalFeature lexicalFeature = this.getLexicalFeature();
-
         // Check if the lexical feature suggests it is likely a personal name
         if (isLikelyPersonalName(lexicalFeature)) {
             return "<PER>" + this.getTokenString() + "</PER>";
@@ -321,12 +301,14 @@ public class Token {
     }
 
     /**
-     * Determine if the provided lexical feature is likely to represent a personal
+     * Determine if the provided lexical feature, feature of speech is likely to
+     * represent a personal
      * name.
      * 
-     * @param lexicalFeature
+     * @param lexicalFeature  lexical feature to be evaluated.
      * @return True if the lexical feature is either Capitalized word, All caps, or
-     *         Single capitalized letter
+     *         Single capitalized letter and the feature of speech is not an
+     *         article, conjunction, period, comma or hyphen.
      */
     public boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD

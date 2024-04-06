@@ -8,15 +8,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * IdentifyBlock class
+ * IdentifyBlock class.
  */
 public class Document {
 
+    /**
+    * Data obtained from file.
+    */
     private String dataFromFile;
+
+    /**
+     * List of object Textblocks from file.
+     */
     private List<TextBlock> blocks;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public Document() {
         this.dataFromFile = "";
@@ -24,7 +31,7 @@ public class Document {
     }
 
     /**
-     * Constructor with data param
+     * Constructor with data param.
      * 
      * @param data data 
      */
@@ -34,7 +41,7 @@ public class Document {
     }
 
     /**
-     * getter for dataFromFile
+     * Getter for dataFromFile.
      * 
      * @return data from file
      */
@@ -43,7 +50,7 @@ public class Document {
     }
 
     /**
-     * Getter for nerBlocks
+     * Getter for nerBlocks.
      * 
      * @return ner blocks
      */
@@ -52,7 +59,7 @@ public class Document {
     }
 
     /**
-     * Setter for dataFromFile
+     * Setter for dataFromFile.
      * 
      * @param data data to set 
      */
@@ -74,7 +81,7 @@ public class Document {
     // }
 
     /**
-     * Method to identify tagged blocks of text
+     * Method to identify tagged blocks of text.
      * 
      * @param data text
      * @return taggedBlocks
@@ -97,7 +104,7 @@ public class Document {
     }
 
     /**
-     * Output text blocks
+     * Output text blocks.
      */
     public void printDocument() {
         // Create output list
