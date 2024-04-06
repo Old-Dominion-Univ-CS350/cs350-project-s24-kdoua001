@@ -16,7 +16,7 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.knowledgeflow.steps.Block;
 
 /**
- * Main class for calling other classes and functions
+ * Main class for calling other classes and functions.
  */
 public class Extractor {
     /*
@@ -41,7 +41,7 @@ public class Extractor {
      */
 
     /**
-     * Main function
+     * Main function.
      * 
      * @param args args
      * @throws Exception exception
