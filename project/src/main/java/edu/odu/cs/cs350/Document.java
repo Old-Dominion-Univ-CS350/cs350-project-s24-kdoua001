@@ -12,7 +12,14 @@ import java.util.regex.Pattern;
  */
 public class Document {
 
+    /**
+    * Data obtained from file.
+    */
     private String dataFromFile;
+
+    /**
+     * List of object Textblocks from file.
+     */
     private List<TextBlock> blocks;
 
     /**
