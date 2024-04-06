@@ -302,7 +302,6 @@ public class Token {
      * name.
      * 
      * @param lexicalFeature  lexical feature to be evaluated.
-     * @param featureOfSpeech associated with the token.
      * @return True if the lexical feature is either Capitalized word, All caps, or
      *         Single capitalized letter and the feature of speech is not an
      *         article, conjunction, period, comma or hyphen.
