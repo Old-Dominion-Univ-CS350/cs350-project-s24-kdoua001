@@ -367,7 +367,7 @@ public class testToken {
         String testAnotherPersonalNameInput = "A";
         String testLastPersonalNameInput = "MAH";
 
-        // create a token with the test input
+        // Create a token with the test input
         Token tokenizePersonalNameInput = new Token(testInputWithPersonalNames);
         Token tokenizeToken = new Token(testOtherPersonalNameInput);
         Token tokenizeAnotherToken = new Token(testAnotherPersonalNameInput);
