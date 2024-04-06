@@ -66,6 +66,7 @@ public class testFeatureVectors {
         token.setIsHonorific(honorific);
         token.setIsKillWord(killWord);
         token.setIsPunctuation(punctuation);
+        token.setLexicalFeature(lexicalFeature);
         token.setFeatureOfSpeech(speechFeature);
         return token;
     }
