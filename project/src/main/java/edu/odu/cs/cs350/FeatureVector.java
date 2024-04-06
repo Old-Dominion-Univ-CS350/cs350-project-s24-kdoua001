@@ -12,8 +12,11 @@ import java.util.ArrayList;
  */
 public class FeatureVector {
 
+    /**
+     * Default constructor.
+     */
     public FeatureVector(){
-        
+
     }
 
     /**
@@ -22,6 +25,26 @@ public class FeatureVector {
      * @return data
      */
     public Instances createVectors(List<Token> tokenList) {
+        ArrayList<Attribute> attributes = createAttributes();
+
+        // Create instances object with the defined attributes
+        Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
+
+        for (Token token : tokenList) {
+            double[] values = createAttributeValues(token);
+
+            // Create DenseInstance and add to Instances object
+            data.add(new DenseInstance(1.0, values));
+        }
+
+        return data;
+    }
+
+    /**
+     * Creates the attributes for the feature vectors.
+     * @return List of attributes.
+     */
+    private ArrayList<Attribute> createAttributes() {
         ArrayList<Attribute> attributes = new ArrayList<>();
 
         // Boolean attributes from Token class
@@ -56,33 +79,33 @@ public class FeatureVector {
         speechFeatureValue.add("OTHER");
         attributes.add(new Attribute("speechFeature", speechFeatureValue));
 
-        // Create instances object with the defined attributes
-        Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
-
-        for (Token token : tokenList) {
-            double[] values = new double[data.numAttributes()];
-
-            // Set attribute values based on Token attributes
-            values[0] = token.isName() ? 1.0 : 0.0;
-            values[1] = token.isInDictionary() ? 1.0 : 0.0;
-            values[2] = token.isLocation() ? 1.0 : 0.0;
-            values[3] = token.isCommonFirst() ? 1.0 : 0.0;
-            values[4] = token.isCommonLast() ? 1.0 : 0.0;
-            values[5] = token.isHonorific() ? 1.0 : 0.0;
-            values[6] = token.isKillWord() ? 1.0 : 0.0;
-            values[7] = token.isPunctuation() ? 1.0 : 0.0;
-
-            // Set lexical feature value
-            values[8] = token.getLexicalFeature().ordinal();
-
-            // Set Speech feature value
-            values[9] = token.getFeatureOfSpeech().ordinal();
-
-            // Create DenseInstance and add to Instances object
-            data.add(new DenseInstance(1.0, values));
-        }
-
-        return data;
+        return attributes;
     }
 
+    /**
+     * Creates the attribute values for a given token.
+     * @param token The token for which attribute values are to be created.
+     * @return Array of attribute values.
+     */
+    private double[] createAttributeValues(Token token) {
+        double[] values = new double[10]; // Assuming there are 10 attributes in total
+
+        // Set attribute values based on Token attributes
+        values[0] = token.isName() ? 1.0 : 0.0;
+        values[1] = token.isInDictionary() ? 1.0 : 0.0;
+        values[2] = token.isLocation() ? 1.0 : 0.0;
+        values[3] = token.isCommonFirst() ? 1.0 : 0.0;
+        values[4] = token.isCommonLast() ? 1.0 : 0.0;
+        values[5] = token.isHonorific() ? 1.0 : 0.0;
+        values[6] = token.isKillWord() ? 1.0 : 0.0;
+        values[7] = token.isPunctuation() ? 1.0 : 0.0;
+
+        // Set lexical feature value
+        values[8] = token.getLexicalFeature().ordinal();
+
+        // Set Speech feature value
+        values[9] = token.getFeatureOfSpeech().ordinal();
+
+        return values;
+    }
 }
