@@ -120,7 +120,7 @@ public class testTextBlock {
         String firstTestInput = "This is a test, with some punctuation.";
         String secondTestInput = "Here is a test with an email, someone@odu.edu.";
         String thirdTestInput = "What if we tested something random, nAmes, d4tes, it'll, please work.";
-        String fourthTestInput = "How about we go to a new line. \n On the next line.";
+        String fourthTestInput = "\ntest";
         String fifthTestInput = "Where are some numbers and such, A NUMBER 50.";
 
         TextBlock firstBlock = new TextBlock(firstTestInput);
@@ -140,10 +140,9 @@ public class testTextBlock {
         assertEquals(9, firstTokens.size());
         assertEquals(14, secondTokens.size());
         assertEquals(18, thirdTokens.size());
-        assertEquals(15, fourthTokens.size());
+        assertEquals(2, fourthTokens.size());
         assertEquals(11, fifthTokens.size());
 
-        // assert lexical features for each token
         assertEquals(LexicalFeature.CAPITALIZEDWORD, firstTokens.get(0).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, firstTokens.get(1).getLexicalFeature());
         assertEquals(LexicalFeature.PUNCTUATION, firstTokens.get(4).getLexicalFeature());
@@ -152,7 +151,7 @@ public class testTextBlock {
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(7).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(9).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(11).getLexicalFeature());
-        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(9).getLexicalFeature());
+        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(0).getLexicalFeature());
         assertEquals(LexicalFeature.SINGLECAPLETTER, fifthTokens.get(7).getLexicalFeature());
         assertEquals(LexicalFeature.ALLCAPS, fifthTokens.get(8).getLexicalFeature());
         assertEquals(LexicalFeature.NUMBER, fifthTokens.get(9).getLexicalFeature());

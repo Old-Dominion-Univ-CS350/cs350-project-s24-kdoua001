@@ -45,7 +45,7 @@ public class TextBlock {
         // Returns True if Word or Puncuation is Found
         String noTags = BlockText.replaceAll("<[^>]*>", "");
         List<Token> tokens = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\w+|\\p{Punct}");
+        Pattern pattern = Pattern.compile("\\w+|\\p{Punct}|\\n");
         Matcher match = pattern.matcher(noTags);
 
         // Set isPunctuation to True if Punc is Found in First Char, False if Not
