@@ -237,24 +237,25 @@ public class Token {
     }
 
     /**
-     * @return
-     * @param feature
+     * Setter for Speech features.
+     * 
+     * @param feature feature
      */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
         speechFeature = feature;
     }
 
     /**
-     * @param
-     * @return
+     * Gets the Speech feature associated with this token.
+     * 
+     * @return speechFeature
      */
     public FeatureOfSpeech getFeatureOfSpeech() {
         return speechFeature;
     }
 
     /**
-     * @return
-     * @param
+     * Detected Feature of Speech
      */
     public void DetectFeatureOfSpeech() {
 
@@ -279,9 +280,9 @@ public class Token {
 
     /**
      * Detects if the token's lexical features suggest it represents a personal name
-     * and wraps the token string in <PER> tags if it is likely a personal name
+     * and wraps the token string in PER tags if it is likely a personal name
      * 
-     * @return the token string wrapped in <PER> tags if it's likely a personal name
+     * @return the token string wrapped in PER tags if it's likely a personal name
      */
     public String detectPersonalName() {
         // Check lexical feature of the token
