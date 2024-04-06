@@ -287,9 +287,8 @@ public class Token {
     public String detectPersonalName() {
         // Check lexical feature of the token
         LexicalFeature lexicalFeature = this.getLexicalFeature();
-        DetectFeatureOfSpeech();
         // Check if the lexical feature suggests it is likely a personal name
-        if (isLikelyPersonalName(lexicalFeature, getFeatureOfSpeech())) {
+        if (isLikelyPersonalName(lexicalFeature)) {
             return "<PER>" + this.getTokenString() + "</PER>";
         } else {
             return this.getTokenString(); // else return the token without per tags
@@ -308,15 +307,10 @@ public class Token {
      *         Single capitalized letter and the feature of speech is not an
      *         article, conjunction, period, comma or hyphen.
      */
-    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureOfSpeech) {
+    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD
                 || lexicalFeature == LexicalFeature.ALLCAPS
-                || lexicalFeature == LexicalFeature.SINGLECAPLETTER &&
-                        (featureOfSpeech != FeatureOfSpeech.ARTICLES &&
-                                featureOfSpeech != FeatureOfSpeech.CONJUNCTION &&
-                                featureOfSpeech != FeatureOfSpeech.PERIOD &&
-                                featureOfSpeech != FeatureOfSpeech.COMMA &&
-                                featureOfSpeech != FeatureOfSpeech.HYPHEN);
+                || lexicalFeature == LexicalFeature.SINGLECAPLETTER;
 
     }
 

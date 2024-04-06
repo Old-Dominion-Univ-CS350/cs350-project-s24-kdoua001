@@ -372,10 +372,8 @@ public class testToken {
         tokenizeToken.detectLexicalFeature();
 
         // check if detected lexical feature suggests its likely a personal name
-        boolean result = tokenizePersonalNameInput.isLikelyPersonalName(tokenizePersonalNameInput.getLexicalFeature(),
-                tokenizePersonalNameInput.getFeatureOfSpeech());
-        boolean result2 = tokenizeToken.isLikelyPersonalName(tokenizeToken.getLexicalFeature(),
-                tokenizeToken.getFeatureOfSpeech());
+        boolean result = tokenizePersonalNameInput.isLikelyPersonalName(tokenizePersonalNameInput.getLexicalFeature());
+        boolean result2 = tokenizeToken.isLikelyPersonalName(tokenizeToken.getLexicalFeature());
         // detect personal name based on lexical features: Capitalized Word, ALL-CAPS,
         // OR SingleCap
         String personalNameDetectResult = tokenizePersonalNameInput.detectPersonalName();
