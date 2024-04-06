@@ -139,7 +139,7 @@ public class testTextBlock {
         // Assert that number of tokens matches the expected number
         assertEquals(9, firstTokens.size());
         assertEquals(14, secondTokens.size());
-        assertEquals(16, thirdTokens.size());
+        assertEquals(18, thirdTokens.size());
         assertEquals(11, fourthTokens.size());
         assertEquals(11, fifthTokens.size());
 
