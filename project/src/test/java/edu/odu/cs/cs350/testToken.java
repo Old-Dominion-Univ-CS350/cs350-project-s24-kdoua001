@@ -143,8 +143,8 @@ public class testToken {
     }
 
     @Test
-    public void testLexicalFeatureNumber() {
-        // Test input a string representing a number
+    public void testLexicalFeatures() {
+        // Test input strings representing representing various lexical features
         String testInput = "10";
         String punctuationMarkInput = "!";
         String singleCapLetterInput = "A";
