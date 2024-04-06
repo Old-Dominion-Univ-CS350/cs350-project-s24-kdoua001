@@ -183,7 +183,7 @@ public class TextBlock {
                 shingle.add(paddedTokens.get(j));
             }
 
-            // Add the shingle to the result list
+            // Add the shingle to the result list 
             shingles.add(shingle);
         }
 
