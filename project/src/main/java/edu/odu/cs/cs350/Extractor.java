@@ -48,56 +48,52 @@ public class Extractor {
      */
     public static void main(String[] args) throws Exception {
 
-        String trainingFileName = "trainingData.txt";
-
-        ClassLoader cLoader = Thread.currentThread().getContextClassLoader();
-        InputStreamReader trainingFile = new InputStreamReader(cLoader.getResourceAsStream(trainingFileName), "UTF-8");
-        Scanner scanner = new Scanner(trainingFile);
-        scanner.useDelimiter("\\A");
-        String contentOfFile = scanner.next();
-        scanner.close();
-
-        Document Document = new Document(contentOfFile);
-        List<TextBlock> blocks = Document.getBlocks();
-
-        // Create a FeatureVector object
-        FeatureVector featureVector = new FeatureVector();
-
-        // Create a SVMtrainer object
-        SVMtrainer svmTrainer = new SVMtrainer();
-
-        // Create an empty Instances object to hold the training data
-
-        Instances trainingData = null;
-
-        for (TextBlock block : blocks) {
-            // Create TextBlock object for each block
-            String BlockString = block.toString();
-            TextBlock TextBlock = new TextBlock(BlockString);
-            List<Token> Tokens = TextBlock.createTokens(BlockString);
-
-            // Create feature vectors for the current block's tokens
-            Instances blockData = featureVector.createVectors(Tokens);
-
-            // If trainingData is null, initialize it with the first blockData
-            if (trainingData == null) {
-                trainingData = new Instances(blockData, 0);
-            } else {
-                // Merge the current blockData with trainingData
-                for (int i = 0; i < blockData.numInstances(); i++) {
-                    trainingData.add(blockData.instance(i));
-                }
+        try {
+            // Load your data from wherever it is stored
+            String dataFilePath = "project/src/main/data/trainingData.txt";
+            Scanner dataScanner = new Scanner(new File(dataFilePath));
+            StringBuilder dataBuilder = new StringBuilder();
+            while (dataScanner.hasNextLine()) {
+                dataBuilder.append(dataScanner.nextLine()).append("\n");
             }
+            String data = dataBuilder.toString();
+            dataScanner.close();
+
+            // Create a Document object
+            Document document = new Document(data);
+
+            // Get the list of text blocks from the document
+            List<TextBlock> blocks = document.getBlocks();
+
+            // Create a FeatureVector object
+            FeatureVector featureVector = new FeatureVector();
+
+            // Create an empty list to store all tokens
+            List<Token> allTokens = new ArrayList<>();
+
+            // Iterate over each text block
+            for (TextBlock block : blocks) {
+                // Get the list of tokens from the current text block
+                List<Token> tokens = block.getTokensList();
+                // Add these tokens to the list of all tokens
+                allTokens.addAll(tokens);
+            }
+
+            // Create feature vectors from all tokens
+            Instances instances = featureVector.createVectors(allTokens);
+
+            // Train the SVM classifier
+            SVMtrainer svmtrainer = new SVMtrainer();
+            SMO svm = svmtrainer.trainSVM(instances);
+
+            // Save the trained model
+            String modelFilePath = "path/to/save/your/model";
+            svmtrainer.saveModel(svm, modelFilePath);
+
+            System.out.println("Training and saving the model completed successfully.");
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        // Train the SVM model
-        SMO trainedModel = svmTrainer.trainSVM(trainingData);
-
-        // Save the trained model to a file
-        String modelFile = "trained_model.model";
-        SerializationHelper.write(modelFile, trainedModel);
-        // svmTrainer.saveModel(trainedModel, modelFile);
-        // System.out.println("SVM model trained and saved successfully.");
-
     }
 }
