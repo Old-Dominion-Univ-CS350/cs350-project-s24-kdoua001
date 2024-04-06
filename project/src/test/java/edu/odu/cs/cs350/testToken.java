@@ -320,7 +320,7 @@ public class testToken {
     public void testGetFeatureOfSpeech() {
         Token token = new Token("randomString");
 
-        assertNull(token.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.OTHER,token.getFeatureOfSpeech());
     }
 
     @Test

@@ -305,17 +305,20 @@ public class Token {
         if (tagger.IsArticle(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);
         }
-        if (tagger.IsConjunction(tokenString)) {
+        else if (tagger.IsConjunction(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);
         }
-        if (tagger.IsPeriod(tokenString)) {
+        else if (tagger.IsPeriod(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.PERIOD);
         }
-        if (tagger.IsComma(tokenString)) {
+        else if (tagger.IsComma(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.COMMA);
         }
-        if (tagger.IsHyphen(tokenString)) {
+        else if (tagger.IsHyphen(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
+        }
+        else {
+            setFeatureOfSpeech(FeatureOfSpeech.OTHER);
         }
     }
 
