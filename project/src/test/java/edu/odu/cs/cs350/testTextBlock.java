@@ -152,7 +152,7 @@ public class testTextBlock {
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(7).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(9).getLexicalFeature());
         assertEquals(LexicalFeature.OTHER, thirdTokens.get(11).getLexicalFeature());
-        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(10).getLexicalFeature());
+        assertEquals(LexicalFeature.NEWLINE, fourthTokens.get(8).getLexicalFeature());
         assertEquals(LexicalFeature.SINGLECAPLETTER, fifthTokens.get(7).getLexicalFeature());
         assertEquals(LexicalFeature.ALLCAPS, fifthTokens.get(8).getLexicalFeature());
         assertEquals(LexicalFeature.NUMBER, fifthTokens.get(9).getLexicalFeature());
