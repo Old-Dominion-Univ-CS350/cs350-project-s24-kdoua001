@@ -332,7 +332,7 @@ public class Token {
         FeatureOfSpeech featureOfSpeech = this.getFeatureOfSpeech();
         // Check if the lexical feature suggests it is likely a personal name
         if (isLikelyPersonalName(lexicalFeature, featureOfSpeech)) {
-            return "<PER>" + this.getTokenString() + "</PER>";
+            return "<PER>" + this.getTokenString() + "</PER>" + "";
         } else {
             return this.getTokenString(); // else return the token without per tags
         }
@@ -344,7 +344,7 @@ public class Token {
      * represent a personal.
      * name.
      * 
-     * @param lexicalFeature lexical feature to be evaluated.
+     * @param lexicalFeature  lexical feature to be evaluated.
      * @param featureOfSpeech speech feature to be evaluated.
      * @return True if the lexical feature is either Capitalized word, All caps, or
      *         Single capitalized letter and the feature of speech is not an

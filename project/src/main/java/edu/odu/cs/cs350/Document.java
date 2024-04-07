@@ -138,13 +138,26 @@ public class Document {
             List<Token> tokens = block.getTokensList();
             StringBuilder output = new StringBuilder();
 
+            boolean previousTokenWasPunctuation = false; // Track if the previous token was punctuation
+
             for (Token token : tokens) {
                 String personalName = token.detectPersonalName();
-                output.append(personalName).append(" ");
+
+                // Append a space if the previous token was not punctuation and the current
+                // token is not punctuation
+                if (!previousTokenWasPunctuation && !token.isPunctuation()) {
+                    output.append(" ");
+                }
+
+                output.append(personalName);
+
+                // Update the flag for the next iteration
+                previousTokenWasPunctuation = token.isPunctuation();
             }
 
+            // Trim the output string to remove any leading or trailing spaces
             System.out.println(output.toString().trim());
         }
-    }
 
+    }
 }
