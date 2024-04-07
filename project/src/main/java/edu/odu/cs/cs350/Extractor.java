@@ -87,7 +87,7 @@ public class Extractor {
             SMO svm = svmtrainer.trainSVM(instances);
 
             // Save the trained model
-            String modelFilePath = "path/to/save/your/model";
+            String modelFilePath = "project/src/resources/smo.model";
             svmtrainer.saveModel(svm, modelFilePath);
 
             System.out.println("Training and saving the model completed successfully.");

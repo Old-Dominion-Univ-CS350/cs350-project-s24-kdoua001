@@ -19,7 +19,7 @@ public class TextBlock {
 
     /**
      * 
-     * List containging a list of shingles for the textblock
+     * List containging a list of shingles for the textblock.
      */
     private List<List<Token>> shinglesList;
 

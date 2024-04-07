@@ -320,7 +320,7 @@ public class testToken {
     public void testGetFeatureOfSpeech() {
         Token token = new Token("randomString");
 
-        assertEquals(FeatureOfSpeech.OTHER,token.getFeatureOfSpeech());
+        assertEquals(FeatureOfSpeech.OTHER, token.getFeatureOfSpeech());
     }
 
     @Test
@@ -364,7 +364,7 @@ public class testToken {
         // Test input containing a personal name
         String testInputWithPersonalNames = "Ralph";
         String testOtherPersonalNameInput = "Matthew";
-        String testAnotherPersonalNameInput = "A";
+        String testAnotherPersonalNameInput = "T";
         String testLastPersonalNameInput = "MAH";
 
         // Create a token with the test input
@@ -378,10 +378,14 @@ public class testToken {
         tokenizeLastToken.detectLexicalFeature();
 
         // check if detected lexical feature suggests its likely a personal name
-        boolean result = tokenizePersonalNameInput.isLikelyPersonalName(tokenizePersonalNameInput.getLexicalFeature(), tokenizePersonalNameInput.getFeatureOfSpeech());
-        boolean result2 = tokenizeToken.isLikelyPersonalName(tokenizeToken.getLexicalFeature(), tokenizeToken.getFeatureOfSpeech());
-        boolean result3 = tokenizeAnotherToken.isLikelyPersonalName(tokenizeAnotherToken.getLexicalFeature(), tokenizeAnotherToken.getFeatureOfSpeech());
-        boolean result4 = tokenizeLastToken.isLikelyPersonalName(tokenizeLastToken.getLexicalFeature(), tokenizeLastToken.getFeatureOfSpeech());
+        boolean result = tokenizePersonalNameInput.isLikelyPersonalName(tokenizePersonalNameInput.getLexicalFeature(),
+                tokenizePersonalNameInput.getFeatureOfSpeech());
+        boolean result2 = tokenizeToken.isLikelyPersonalName(tokenizeToken.getLexicalFeature(),
+                tokenizeToken.getFeatureOfSpeech());
+        boolean result3 = tokenizeAnotherToken.isLikelyPersonalName(tokenizeAnotherToken.getLexicalFeature(),
+                tokenizeAnotherToken.getFeatureOfSpeech());
+        boolean result4 = tokenizeLastToken.isLikelyPersonalName(tokenizeLastToken.getLexicalFeature(),
+                tokenizeLastToken.getFeatureOfSpeech());
 
         // detect personal name based on lexical features: Capitalized Word, ALL-CAPS,
         // OR SingleCap
@@ -399,9 +403,8 @@ public class testToken {
         // assert that the personal name is correctly wrapped in <PER> tags
         assertEquals("<PER>Ralph</PER>", personalNameDetectResult);
         assertEquals("<PER>Matthew</PER>", detectOtherPersonalName);
-        assertEquals("<PER>A</PER>", detectAnotherPersonalName);
+        assertEquals("<PER>T</PER>", detectAnotherPersonalName);
         assertEquals("<PER>MAH</PER>", detectLastPersonalName);
-
 
     }
 

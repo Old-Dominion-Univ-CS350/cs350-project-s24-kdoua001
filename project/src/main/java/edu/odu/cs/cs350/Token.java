@@ -13,52 +13,52 @@ public class Token {
      * This is the raw string value of the token.
      */
     private String tokenString = null;
-    
+
     /**
      * Flag indicating whether the token represents a name.
      */
     private boolean nameFlag;
-    
+
     /**
      * Flag indicating whether the token is found in the dictionary.
      */
     private boolean inDictionary;
-    
+
     /**
      * Flag indicating whether the token represents a location.
      */
     private boolean locationFlag;
-    
+
     /**
      * Flag indicating whether the token is a common first name.
      */
     private boolean commonFirst;
-    
+
     /**
      * Flag indicating whether the token is a common last name.
      */
     private boolean commonLast;
-    
+
     /**
      * Flag indicating whether the token has an honorific (e.g., "Mr.", "Dr.").
      */
     private boolean honorificFlag;
-    
+
     /**
      * Flag indicating whether the token is a "kill word" that should be ignored.
      */
     private boolean killWordFlag;
-    
+
     /**
      * Flag indicating whether the token contains punctuation.
      */
     private boolean punctuationFlag;
-    
+
     /**
      * The lexical feature of the token.
      */
     private LexicalFeature lexicalFeature;
-    
+
     /**
      * The part of speech feature of the token.
      */
@@ -281,6 +281,7 @@ public class Token {
 
     /**
      * Sets the Feature Of Speech Attribute.
+     * 
      * @param feature feature
      */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
@@ -289,6 +290,7 @@ public class Token {
 
     /**
      * Gets the Feature of Speech Attribute.
+     * 
      * @return FeatureOfSpeech speechFeature
      */
     public FeatureOfSpeech getFeatureOfSpeech() {
@@ -304,26 +306,22 @@ public class Token {
 
         if (tagger.IsArticle(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);
-        }
-        else if (tagger.IsConjunction(tokenString)) {
+        } else if (tagger.IsConjunction(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);
-        }
-        else if (tagger.IsPeriod(tokenString)) {
+        } else if (tagger.IsPeriod(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.PERIOD);
-        }
-        else if (tagger.IsComma(tokenString)) {
+        } else if (tagger.IsComma(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.COMMA);
-        }
-        else if (tagger.IsHyphen(tokenString)) {
+        } else if (tagger.IsHyphen(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
-        }
-        else {
+        } else {
             setFeatureOfSpeech(FeatureOfSpeech.OTHER);
         }
     }
 
     /**
-     * Detects if the token's lexical features suggest it represents a personal name.
+     * Detects if the token's lexical features suggest it represents a personal
+     * name.
      * and wraps the token string in PER tags if it is likely a personal name.
      * 
      * @return the token string wrapped in PER tags if it's likely a personal name.
@@ -333,7 +331,7 @@ public class Token {
         LexicalFeature lexicalFeature = this.getLexicalFeature();
         FeatureOfSpeech featureofspeech = this.getFeatureOfSpeech();
         // Check if the lexical feature suggests it is likely a personal name
-        if (isLikelyPersonalName(lexicalFeature,featureofspeech)) {
+        if (isLikelyPersonalName(lexicalFeature, featureofspeech)) {
             return "<PER>" + this.getTokenString() + "</PER>";
         } else {
             return this.getTokenString(); // else return the token without per tags
@@ -346,21 +344,21 @@ public class Token {
      * represent a personal.
      * name.
      * 
-     * @param lexicalFeature  lexical feature to be evaluated.
+     * @param lexicalFeature lexical feature to be evaluated.
+     * @param featureofspeech speech feature to be evaluated.
      * @return True if the lexical feature is either Capitalized word, All caps, or
      *         Single capitalized letter and the feature of speech is not an
      *         article, conjunction, period, comma or hyphen.
      */
-    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature,FeatureOfSpeech featureofspeech) {
+    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureofspeech) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD
                 || lexicalFeature == LexicalFeature.ALLCAPS
-                || lexicalFeature == LexicalFeature.SINGLECAPLETTER
-                ||featureofspeech != FeatureOfSpeech.ARTICLES
-                ||featureofspeech != FeatureOfSpeech.COMMA
-                ||featureofspeech != FeatureOfSpeech.CONJUNCTION
-                ||featureofspeech != FeatureOfSpeech.HYPHEN
-                ||featureofspeech != FeatureOfSpeech.OTHER
-                ||featureofspeech != FeatureOfSpeech.PERIOD;
+                || lexicalFeature == LexicalFeature.SINGLECAPLETTER &&
+                        (featureofspeech != FeatureOfSpeech.ARTICLES &&
+                                featureofspeech != FeatureOfSpeech.CONJUNCTION &&
+                                featureofspeech != FeatureOfSpeech.PERIOD &&
+                                featureofspeech != FeatureOfSpeech.COMMA &&
+                                featureofspeech != FeatureOfSpeech.HYPHEN);
 
     }
 
