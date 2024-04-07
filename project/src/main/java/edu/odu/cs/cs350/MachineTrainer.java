@@ -15,7 +15,7 @@ import java.util.List;
  * This class provides methods for training and saving Support Vector Machine
  * (SVM) models using WEKA.
  */
-public class SVMtrainer {
+public class MachineTrainer {
 
     /**
      * Trains a Support Vector Machine (SVM) model.

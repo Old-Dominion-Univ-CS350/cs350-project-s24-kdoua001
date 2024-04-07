@@ -11,12 +11,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testSVMtrainer {
+public class testMachineTrainer {
 
     // Checks functionality of the trainSVM method
     public void testTrainSVM() {
-        SVMtrainer svmTrainer = new SVMtrainer();
-    
+        MachineTrainer svmTrainer = new MachineTrainer();
+
         try {
             ArrayList<Attribute> attributes = new ArrayList<>();
             attributes.add(new Attribute("attribute1"));
@@ -29,17 +29,17 @@ public class testSVMtrainer {
             instance1.setValue(attributes.get(0), 1.0);
             instance1.setValue(attributes.get(1), "A");
             data.add(instance1);
-    
+
             DenseInstance instance2 = new DenseInstance(2);
             instance2.setValue(attributes.get(0), 2.0);
             instance2.setValue(attributes.get(1), "B");
             data.add(instance2);
-    
-            if (data.numInstances() >= 5) { 
-                SMO svmModel = svmTrainer.trainSVM(data);
-    
+
+            if (data.numInstances() >= 5) {
+                SMO svmModel = svmTrainer.trainSupportVectorMachine(data);
+
                 assertNotNull(svmModel);
-    
+
             } else {
                 fail("Not enough instances in the dataset for cross-validation");
             }
@@ -48,10 +48,10 @@ public class testSVMtrainer {
         }
     }
 
-    //Checks if model is saved
+    // Checks if model is saved
     @Test
     public void testSaveModel() {
-        SVMtrainer svmTrainer = new SVMtrainer();
+        MachineTrainer svmTrainer = new MachineTrainer();
 
         try {
             // Create a mock SVM model
