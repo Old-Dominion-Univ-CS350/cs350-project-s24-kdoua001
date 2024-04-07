@@ -24,7 +24,7 @@ public class SVMtrainer {
      * @return The trained SVM model.
      * @throws Exception If an error occurs during training.
      */
-    public SMO trainSVM(Instances data) throws Exception {
+    public SMO trainSupportVectorMachine(Instances data) throws Exception {
 
         data.setClassIndex(data.numAttributes() - 1);
         String[] options = { "-N", "0", "-V", "-1" };
@@ -55,29 +55,29 @@ public class SVMtrainer {
          * }
          */
         // Create SMO (Sequential Minimal Optimization) classifier with best parameters
-        SMO svm = new SMO();
-        svm.setOptions(options);
+        SMO SupportVectorMachine = new SMO();
+        SupportVectorMachine.setOptions(options);
         // svm.setKernel(new RBFKernel(data, 25007, bestGamma));
         // svm.setC(bestC);
 
         // Train it
-        svm.buildClassifier(data);
+        SupportVectorMachine.buildClassifier(data);
 
-        return svm;
+        return SupportVectorMachine;
     }
 
     /**
      * Saves the trained SVM model to a file.
      *
-     * @param svm       The trained SVM model to be saved.
-     * @param modelFile The file path where the model will be saved.
+     * @param SupportVectorMachine The trained SVM model to be saved.
+     * @param modelFile            The file path where the model will be saved.
      * @throws Exception If an error occurs during model saving.
      */
-    public void saveModel(SMO svm, String modelFile) throws Exception {
+    public void saveModel(SMO SupportVectorMachine, String modelFile) throws Exception {
         // Save the trained model to a file
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(modelFile));
-        oos.writeObject(svm);
-        oos.close();
+        ObjectOutputStream Output = new ObjectOutputStream(new FileOutputStream(modelFile));
+        Output.writeObject(SupportVectorMachine);
+        Output.close();
     }
 
 }
