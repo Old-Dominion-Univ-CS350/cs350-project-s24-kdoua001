@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
 public class Document {
 
     /**
-    * Data obtained from file.
-    */
+     * Data obtained from file.
+     */
     private String dataFromFile;
 
     /**
@@ -33,7 +33,7 @@ public class Document {
     /**
      * Constructor with data param.
      * 
-     * @param data data 
+     * @param data data
      */
     public Document(String data) {
         this.dataFromFile = data;
@@ -61,7 +61,7 @@ public class Document {
     /**
      * Setter for dataFromFile.
      * 
-     * @param data data to set 
+     * @param data data to set
      */
     public void setDataFromFile(String data) {
         this.dataFromFile = data;
@@ -125,6 +125,25 @@ public class Document {
         for (String string : output) {
             // Output each text block from output list
             System.out.println(string);
+        }
+    }
+
+    public void printDocumentWithPersonalNamesTag() {
+        // Create output list
+        // List<String> output = new ArrayList<>();
+
+        blocks = getBlocks();
+
+        for (TextBlock block : blocks) {
+            List<Token> tokens = block.getTokensList();
+            StringBuilder output = new StringBuilder();
+
+            for (Token token : tokens) {
+                String personalName = token.detectPersonalName();
+                output.append(personalName).append(" ");
+            }
+
+            System.out.println(output.toString().trim());
         }
     }
 
