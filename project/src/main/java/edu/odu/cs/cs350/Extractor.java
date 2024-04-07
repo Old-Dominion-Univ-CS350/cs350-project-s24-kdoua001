@@ -48,17 +48,10 @@ public class Extractor {
      */
     public static void main(String[] args) throws Exception {
 
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-        scanner.useDelimiter("\\A");
-        String contentOfFile = scanner.next();
-        scanner.close();
 
-        Document Document = new Document(contentOfFile);
 
-        // Output the extracted blocks
-        System.out.println("Extracted Blocks:");
-        Document.printDocument();
-    }
+
+
         /* 
         try {
             // Load your data from wherever it is stored
@@ -106,7 +99,6 @@ public class Extractor {
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
-        }
-    }
-    */
+        }  
+    }*/
 }
