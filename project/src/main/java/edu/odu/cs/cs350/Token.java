@@ -329,9 +329,9 @@ public class Token {
     public String detectPersonalName() {
         // Check lexical feature of the token
         LexicalFeature lexicalFeature = this.getLexicalFeature();
-        FeatureOfSpeech featureofspeech = this.getFeatureOfSpeech();
+        FeatureOfSpeech featureOfSpeech = this.getFeatureOfSpeech();
         // Check if the lexical feature suggests it is likely a personal name
-        if (isLikelyPersonalName(lexicalFeature, featureofspeech)) {
+        if (isLikelyPersonalName(lexicalFeature, featureOfSpeech)) {
             return "<PER>" + this.getTokenString() + "</PER>";
         } else {
             return this.getTokenString(); // else return the token without per tags
