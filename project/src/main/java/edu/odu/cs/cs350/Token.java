@@ -345,20 +345,20 @@ public class Token {
      * name.
      * 
      * @param lexicalFeature lexical feature to be evaluated.
-     * @param featureofspeech speech feature to be evaluated.
+     * @param featureOfSpeech speech feature to be evaluated.
      * @return True if the lexical feature is either Capitalized word, All caps, or
      *         Single capitalized letter and the feature of speech is not an
      *         article, conjunction, period, comma or hyphen.
      */
-    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureofspeech) {
+    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureOfSpeech) {
         return lexicalFeature == LexicalFeature.CAPITALIZEDWORD
                 || lexicalFeature == LexicalFeature.ALLCAPS
                 || lexicalFeature == LexicalFeature.SINGLECAPLETTER &&
-                        (featureofspeech != FeatureOfSpeech.ARTICLES &&
-                                featureofspeech != FeatureOfSpeech.CONJUNCTION &&
-                                featureofspeech != FeatureOfSpeech.PERIOD &&
-                                featureofspeech != FeatureOfSpeech.COMMA &&
-                                featureofspeech != FeatureOfSpeech.HYPHEN);
+                        (featureOfSpeech != FeatureOfSpeech.ARTICLES &&
+                                featureOfSpeech != FeatureOfSpeech.CONJUNCTION &&
+                                featureOfSpeech != FeatureOfSpeech.PERIOD &&
+                                featureOfSpeech != FeatureOfSpeech.COMMA &&
+                                featureOfSpeech != FeatureOfSpeech.HYPHEN);
 
     }
 

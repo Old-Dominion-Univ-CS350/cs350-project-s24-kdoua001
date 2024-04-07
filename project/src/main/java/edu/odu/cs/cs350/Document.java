@@ -95,8 +95,8 @@ public class Document {
 
         // Find patterns and adds them to the list
         while (match.find()) {
-            String blocktext = match.group();
-            TextBlock AddMe = new TextBlock(blocktext);
+            String blockText = match.group();
+            TextBlock AddMe = new TextBlock(blockText);
             taggedBlocks.add(AddMe);
         }
 
