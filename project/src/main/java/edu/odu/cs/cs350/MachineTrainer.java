@@ -33,7 +33,7 @@ public class MachineTrainer {
         /*
          * double bestGamma = 0.01;
          * double bestC = 8.0;
-         * double bestResult = 0.0;
+         * double bestResult = 0.0;s
          * 
          * for (double gamma = 0.01; gamma <= 0.1; gamma += 0.09 / 7) {
          * for (double c = 8.0; c <= 15.0; c += 7 / 7) {
