@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class testSys {
+/*
+ * ouput appears in debug console
+ */
+public class exampleSystemTest {
     @Test
-    public void testSystest(){
-        String [] args = {"src/test/data/input.txt"};
-
+    public void systemTest(){
+        String [] args = {"src/systest/data/input.txt"};
         try{
             Extractor.main(args);
         } catch (Exception e){
@@ -16,5 +18,4 @@ public class testSys {
         }
         
     }
-    
 }
