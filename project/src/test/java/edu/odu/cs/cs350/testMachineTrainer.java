@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testMachineTrainer {
+public class TestMachineTrainer {
 
     // Checks functionality of the trainSVM method
     public void testTrainSVM() {

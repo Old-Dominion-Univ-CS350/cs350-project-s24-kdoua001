@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.ByteArrayOutputStream;
 
-public class testTextBlock {
+public class TestTextBlock {
 
     @Test
     public void testTextBlockConstructor() {

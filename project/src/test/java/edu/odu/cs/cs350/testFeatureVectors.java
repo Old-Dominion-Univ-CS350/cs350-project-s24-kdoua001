@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class testFeatureVectors {
+public class TestFeatureVectors {
 
     // Method to create a test Token object
     private Token createToken(boolean name, boolean inDictionary, boolean location, boolean commonFirst,
