@@ -2,6 +2,5 @@
 
 Personal Name Extractor 
 
-[Tests](./tests/test/)
-[JavaDoc](./javadoc/)
-
+* [Tests](./tests/test/)
+* [JavaDoc](./javadoc/)
