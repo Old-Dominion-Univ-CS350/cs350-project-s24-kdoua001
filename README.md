@@ -10,4 +10,4 @@ The actual source code for the project should be placed within the `project`
 
 # Website
 
-*[Website](https://old-dominion-univ-cs350.github.io/cs350-project-s24-kdoua001/)
+[Website](https://old-dominion-univ-cs350.github.io/cs350-project-s24-kdoua001/)

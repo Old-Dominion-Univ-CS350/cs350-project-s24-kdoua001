@@ -1,3 +1,4 @@
+/*
 pluginManagement {
     repositories {
         ivy { // Use my own CS dept repo
@@ -6,7 +7,7 @@ pluginManagement {
         mavenCentral()
     }
 }
-
+*/
 rootProject.name = 'PNE'
  
 include "project"

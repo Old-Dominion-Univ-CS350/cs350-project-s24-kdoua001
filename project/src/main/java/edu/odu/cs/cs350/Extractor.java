@@ -15,6 +15,10 @@ import weka.core.converters.ArffSaver;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.knowledgeflow.steps.Block;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * Main class for calling other classes and functions.
  */
@@ -47,17 +51,21 @@ public class Extractor {
      * @throws Exception exception
      */
     public static void main(String[] args) throws Exception {
-
-        Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-        scanner.useDelimiter("\\A");
-        String contentOfFile = scanner.next();
-        scanner.close();
-
-        Document Document = new Document(contentOfFile);
-
-        // Output the extracted blocks
-        // System.out.println("Extracted Blocks:");
-        Document.printDocumentWithPersonalNamesTag();
+        String filePath = args[0];
+        String contentOfFile = readFileContent(filePath);
+        Document document = new Document(contentOfFile);
+        document.printDocumentWithPersonalNamesTag();
+    }
+    
+    private static String readFileContent(String filePath) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+        }
+        return sb.toString();
     }
     /*
      * try {
