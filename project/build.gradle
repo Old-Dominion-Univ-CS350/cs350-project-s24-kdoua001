@@ -45,15 +45,8 @@ dependencies {
     //testRuntime "org.junit.jupiter:junit-jupiter-engine:5.6.1"//for system tests
 }
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~System Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 testSets { systest }
-
-tasks.withType(Test) {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-        }
-}
 
 check.dependsOn systest
 
@@ -62,6 +55,8 @@ systest.mustRunAfter test
 systest {
     ignoreFailures = true
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 tasks.withType(Test) {
     useJUnitPlatform()
@@ -80,7 +75,7 @@ task copyHTML (type: Copy, dependsOn: ['build']) {
     into 'build/reports'
 }
 
-task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML']) {
+task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest']) {
     from 'build/docs'
     into 'build/reports'
 }
