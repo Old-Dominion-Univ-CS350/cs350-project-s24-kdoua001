@@ -1181,85 +1181,8 @@
       </div>
    </body>
 </html>
-   <div id="b-uid-c41863093748d8b8ce5a135ddec72457-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.Tagger</div>
-            <div class="b-r">In method edu.odu.cs.cs350.Tagger.IsComma(String)</div>
-            <div class="b-r">Actual type String</div>
-            <div class="b-r">Value loaded from word</div>
-            <div class="b-r">String constant ","</div>
-            <div class="b-r">At Tagger.java:[line 56]</div>
-            <div class="b-d">Comparison of String parameter using == or != in edu.odu.cs.cs350.Tagger.IsComma(String)</div>
-         </div>
-         <div id="b-uid-a900ae4e1ac314d8493a668db952925-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.Tagger</div>
-            <div class="b-r">In method edu.odu.cs.cs350.Tagger.IsHyphen(String)</div>
-            <div class="b-r">Actual type String</div>
-            <div class="b-r">Value loaded from word</div>
-            <div class="b-r">String constant "-"</div>
-            <div class="b-r">At Tagger.java:[line 66]</div>
-            <div class="b-d">Comparison of String parameter using == or != in edu.odu.cs.cs350.Tagger.IsHyphen(String)</div>
-         </div>
-         <div id="b-uid-8e57fa9cfd7240f97ca700e64950673d-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.Tagger</div>
-            <div class="b-r">In method edu.odu.cs.cs350.Tagger.IsPeriod(String)</div>
-            <div class="b-r">Actual type String</div>
-            <div class="b-r">Value loaded from word</div>
-            <div class="b-r">String constant "."</div>
-            <div class="b-r">At Tagger.java:[line 46]</div>
-            <div class="b-d">Comparison of String parameter using == or != in edu.odu.cs.cs350.Tagger.IsPeriod(String)</div>
-         </div>
-         <div id="tip-DM_DEFAULT_ENCODING" class="tip">
-            <p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
-         </div>
-         <div id="tip-ES_COMPARING_PARAMETER_STRING_WITH_EQ" class="tip">
-            <p>This code compares a <code>java.lang.String</code> parameter for reference
-            equality using the == or != operators. Requiring callers to
-            pass only String constants or interned strings to a method is unnecessarily
-            fragile, and rarely leads to measurable performance gains. Consider
+       fragile, and rarely leads to measurable performance gains. Consider
             using the <code>equals(Object)</code> method instead.</p>
-         </div>
-         <div id="tip-PATH_TRAVERSAL_IN" class="tip">
-            <p>A file is opened to read its content. The filename comes from an <b>input</b> parameter.
-            If an unfiltered parameter is passed to this file API, files from an arbitrary filesystem location could be read.</p>
-            <p>This rule identifies <b>potential</b> path traversal vulnerabilities. In many cases, the constructed file path cannot be controlled
-            by the user. If that is the case, the reported instance is a false positive.</p>
-            <br/>
-            <p>
-            <b>Vulnerable Code:</b><br/>
-            <pre>@GET
-            @Path("/images/{image}")
-            @Produces("images/*")
-            public Response getImage(@javax.ws.rs.PathParam("image") String image) {
-            File file = new File("resources/images/", image); //Weak point
-            if (!file.exists()) {
-            return Response.status(Status.NOT_FOUND).build();
-            }
-            return Response.ok().entity(new FileInputStream(file)).build();
-            }</pre>
-            </p>
-            <br/>
-            <p>
-            <b>Solution:</b><br/>
-            <pre>import org.apache.commons.io.FilenameUtils;
-            @GET
-            @Path("/images/{image}")
-            @Produces("images/*")
-            public Response getImage(@javax.ws.rs.PathParam("image") String image) {
-            File file = new File("resources/images/", FilenameUtils.getName(image)); //Fix
-            if (!file.exists()) {
-            return Response.status(Status.NOT_FOUND).build();
-            }
-            return Response.ok().entity(new FileInputStream(file)).build();
-            }</pre>
-            </p>
-            <br/>
-            <p>
-            <b>References</b><br/>
-            <a href="http://projects.webappsec.org/w/page/13246952/Path%20Traversal">WASC: Path Traversal</a><br/>
-            <a href="https://www.owasp.org/index.php/Path_Traversal">OWASP: Path Traversal</a><br/>
-            <a href="https://capec.mitre.org/data/definitions/126.html">CAPEC-126: Path Traversal</a><br/>
-            <a href="https://cwe.mitre.org/data/definitions/22.html">CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</a>
-            </p>
          </div>
       </div>
    </body>

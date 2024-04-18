@@ -51,22 +51,18 @@ import java.io.IOException;
      * @throws Exception exception
      */
     public static void main(String[] args) throws Exception {
-<span class="nc" id="L54">        String filePath = args[0];</span>
-<span class="nc" id="L55">        String contentOfFile = readFileContent(filePath);</span>
-<span class="nc" id="L56">        Document document = new Document(contentOfFile);</span>
-<span class="nc" id="L57">        document.printDocumentWithPersonalNamesTag();</span>
-<span class="nc" id="L58">    }</span>
-    
-    private static String readFileContent(String filePath) throws IOException {
-<span class="nc" id="L61">        StringBuilder sb = new StringBuilder();</span>
-<span class="nc" id="L62">        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {</span>
-            String line;
-<span class="nc bnc" id="L64" title="All 2 branches missed.">            while ((line = reader.readLine()) != null) {</span>
-<span class="nc" id="L65">                sb.append(line).append(&quot;\n&quot;);</span>
-            }
-        }
-<span class="nc" id="L68">        return sb.toString();</span>
-    }
+
+<span class="nc" id="L55">        Scanner scanner = new Scanner(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
+<span class="nc" id="L56">        scanner.useDelimiter(&quot;\\A&quot;);</span>
+<span class="nc" id="L57">        String contentOfFile = scanner.next();</span>
+<span class="nc" id="L58">        scanner.close();</span>
+
+<span class="nc" id="L60">        Document Document = new Document(contentOfFile);</span>
+
+        // Output the extracted blocks
+        // System.out.println(&quot;Extracted Blocks:&quot;);
+<span class="nc" id="L64">        Document.printDocumentWithPersonalNamesTag();</span>
+<span class="nc" id="L65">    }</span>
     /*
      * try {
      * // Load your data from wherever it is stored
