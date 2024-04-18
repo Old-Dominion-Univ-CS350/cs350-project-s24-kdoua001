@@ -4,7 +4,7 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-      <title>SpotBugs (4.6.0) analysis for project (spotbugsMain) of release unspecified</title>
+      <title>SpotBugs (4.6.0) analysis for project (spotbugsTest) of release unspecified</title>
       <style type="text/css">
          html, body, div, form {
             margin:0px;
@@ -880,100 +880,69 @@
          ]);
 
          var categories = new Array(
-               {id: "BAD_PRACTICE", label: "Bad practice"},
-               {id: "I18N", label: "Internationalization"},
-               {id: "SECURITY", label: "Security"}
+               {id: "I18N", label: "Internationalization"}
          );
 
          var codes = new Array(
-               {id: "ES", label: "Checking String equality using == or !="},
-               {id: "Dm", label: "Dubious method used"},
-               {id: "SECPTI", label: "Potential Path Traversal (file read)"}
+               {id: "Dm", label: "Dubious method used"}
          );
 
          var patterns = new Array(
-               {category: "BAD_PRACTICE", code: "ES", id: "ES_COMPARING_PARAMETER_STRING_WITH_EQ", label: "Comparison of String parameter using == or !="},
-               {category: "SECURITY", code: "SECPTI", id: "PATH_TRAVERSAL_IN", label: "Potential Path Traversal (file read)"},
                {category: "I18N", code: "Dm", id: "DM_DEFAULT_ENCODING", label: "Reliance on default encoding"}
          );
 
          var classStats = new Array(
-               {className: "edu.odu.cs.cs350.Document", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.Extractor", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "2", bugsP1: "2", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.FeatureOfSpeech", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.FeatureVector", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.LexicalFeature", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.MachineTrainer", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.StreamIterable", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "1", bugsP1: "1", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.Tagger", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "3", bugsP1: "3", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.TextBlock", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.Token", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.WordLists", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
+               {className: "edu.odu.cs.cs350.TestDocument", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "4", bugsP1: "4", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestFeatureVectors", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestMachineTrainer", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestTagger", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestTextBlock", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestToken", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
          );
 
          var packageStats = new Array(
-               {packageName: "edu.odu.cs.cs350", totalBugs: "6", bugsP1: "6", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
+               {packageName: "edu.odu.cs.cs350", totalBugs: "4", bugsP1: "4", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
          );
 
          var bugs = new Array(
                {
-                  id: "57e98b49b7c6fee5b210aefa6908a08f-0",
+                  id: "a6d5f6f839a1c158bea84cb2716a0ced-0",
                   category: "I18N",
                   code: "Dm",
                   pattern: "DM_DEFAULT_ENCODING",
                   priority: 1,
                   firstVersion: 0,
-                  className: "edu.odu.cs.cs350.Extractor",
+                  className: "edu.odu.cs.cs350.TestDocument",
                   packageName: "edu.odu.cs.cs350"
                },
                {
-                  id: "485da8d41a9bf6ce7b1a3a2a8f58d18-0",
-                  category: "SECURITY",
-                  code: "SECPTI",
-                  pattern: "PATH_TRAVERSAL_IN",
-                  priority: 1,
-                  firstVersion: 0,
-                  className: "edu.odu.cs.cs350.Extractor",
-                  packageName: "edu.odu.cs.cs350"
-               },
-               {
-                  id: "e1d444bfdc49dbc052ceb98c727c4688-0",
+                  id: "5f22c606c5a950b71e42580425b609a3-0",
                   category: "I18N",
                   code: "Dm",
                   pattern: "DM_DEFAULT_ENCODING",
                   priority: 1,
                   firstVersion: 0,
-                  className: "edu.odu.cs.cs350.StreamIterable",
+                  className: "edu.odu.cs.cs350.TestDocument",
                   packageName: "edu.odu.cs.cs350"
                },
                {
-                  id: "c41863093748d8b8ce5a135ddec72457-0",
-                  category: "BAD_PRACTICE",
-                  code: "ES",
-                  pattern: "ES_COMPARING_PARAMETER_STRING_WITH_EQ",
+                  id: "41a43684380d6c9091b984404cdabdc3-0",
+                  category: "I18N",
+                  code: "Dm",
+                  pattern: "DM_DEFAULT_ENCODING",
                   priority: 1,
                   firstVersion: 0,
-                  className: "edu.odu.cs.cs350.Tagger",
+                  className: "edu.odu.cs.cs350.TestDocument",
                   packageName: "edu.odu.cs.cs350"
                },
                {
-                  id: "a900ae4e1ac314d8493a668db952925-0",
-                  category: "BAD_PRACTICE",
-                  code: "ES",
-                  pattern: "ES_COMPARING_PARAMETER_STRING_WITH_EQ",
+                  id: "acd7b521ae2cabfe9b65b3d9b49d92d6-0",
+                  category: "I18N",
+                  code: "Dm",
+                  pattern: "DM_DEFAULT_ENCODING",
                   priority: 1,
                   firstVersion: 0,
-                  className: "edu.odu.cs.cs350.Tagger",
-                  packageName: "edu.odu.cs.cs350"
-               },
-               {
-                  id: "8e57fa9cfd7240f97ca700e64950673d-0",
-                  category: "BAD_PRACTICE",
-                  code: "ES",
-                  pattern: "ES_COMPARING_PARAMETER_STRING_WITH_EQ",
-                  priority: 1,
-                  firstVersion: 0,
-                  className: "edu.odu.cs.cs350.Tagger",
+                  className: "edu.odu.cs.cs350.TestDocument",
                   packageName: "edu.odu.cs.cs350"
                }
          );
@@ -984,7 +953,7 @@
    </head>
    <body>
       <h3>
-         <a href="https://spotbugs.github.io">SpotBugs</a> (4.6.0) analysis for project (spotbugsMain) of release unspecified</h3>
+         <a href="https://spotbugs.github.io">SpotBugs</a> (4.6.0) analysis for project (spotbugsTest) of release unspecified</h3>
       <div id="menuWrapper">
          <div id="navcontainer">
             <ul id="navlist">
@@ -1067,19 +1036,19 @@
                   <th>Bugs Experimental</th>
                </tr>
                <tr>
-                  <td class="summary-name">Overall (1 packages, 11 classes)</td>
-                  <td class="summary-size">456</td>
-                  <td class="summary-priority-all">6</td>
-                  <td class="summary-priority-1">6</td>
+                  <td class="summary-name">Overall (1 packages, 6 classes)</td>
+                  <td class="summary-size">638</td>
+                  <td class="summary-priority-all">4</td>
+                  <td class="summary-priority-1">4</td>
                   <td class="summary-priority-2">0</td>
                   <td class="summary-priority-3">0</td>
                   <td class="summary-priority-4">0</td>
                </tr>
                <tr>
                   <td class="summary-name">edu.odu.cs.cs350</td>
-                  <td class="summary-size">456</td>
-                  <td class="summary-priority-all">6</td>
-                  <td class="summary-priority-1">6</td>
+                  <td class="summary-size">638</td>
+                  <td class="summary-priority-all">4</td>
+                  <td class="summary-priority-1">4</td>
                   <td class="summary-priority-2">0</td>
                   <td class="summary-priority-3">0</td>
                   <td class="summary-priority-4">0</td>
@@ -1090,17 +1059,12 @@
             <div id="analyzed-files">
                <h3>Analyzed Files:</h3>
                <ul>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\Document.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\Extractor.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\FeatureOfSpeech.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\FeatureVector.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\LexicalFeature.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\MachineTrainer.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\StreamIterable.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\Tagger.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\TextBlock.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\Token.class</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main\edu\odu\cs\cs350\WordLists.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestDocument.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestFeatureVectors.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestMachineTrainer.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestTagger.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestTextBlock.class</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\test\edu\odu\cs\cs350\TestToken.class</li>
                </ul>
             </div>
             <div id="used-libraries">
@@ -1127,24 +1091,38 @@
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.github.fracpete\jfilechooser-bookmarks\0.1.6\cf79ff5ab7fba256282e546da97a8e7136e9258b\jfilechooser-bookmarks-0.1.6.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.github.vbmacher\java-cup-runtime\11b-20160615\d934da5580347e172a3a25a71fa86e1d3554520e\java-cup-runtime-11b-20160615.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.github.vbmacher\java-cup\11b-20160615\589ba48d4cd8e35935178ba70a9b7911b062978b\java-cup-11b-20160615.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.googlecode.matrix-toolkits-java\mtj\1.0.4\e14ed840ff5e15de92dba2d1af29201fa70a0f35\mtj-1.0.4.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.googlecode.netlib-java\netlib-java\1.1\4a9c3b55b23430e5a6ad86101a88aea500ba8086\netlib-java-1.1.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\com.sun.istack\istack-commons-runtime\3.0.12\cbbe1a62b0cc6c85972e99d52aaee350153dc530\istack-commons-runtime-3.0.12.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\edu.odu.cs.extract\extract-wordlists\4.2\199952438e5ea811bdaba2128dccc86bc7d8e77f\extract-wordlists-4.2.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\jakarta.activation\jakarta.activation-api\1.2.2\99f53adba383cb1bf7c3862844488574b559621f\jakarta.activation-api-1.2.2.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\jakarta.xml.bind\jakarta.xml.bind-api\2.3.3\48e3b9cfc10752fba3521d6511f4165bea951801\jakarta.xml.bind-api-2.3.3.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\junit\junit\4.13.2\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\junit-4.13.2.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\net.sourceforge.f2j\arpack_combined_all\0.1\225619a060b42605b4d9fd4af11815664abf26eb\arpack_combined_all-0.1.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\nz.ac.waikato.cms.weka.thirdparty\bounce\0.18\d774f9a0aa5cbe08dea8907720c64c417aed861\bounce-0.18.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\nz.ac.waikato.cms.weka\weka-stable\3.8.6\7e16bf3b95a17458da6729473d3a0344ef906a16\weka-stable-3.8.6.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.1.0\fc9dff4bb36d627bdc553de77e1f17efd790876c\apiguardian-api-1.1.0.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.glassfish.jaxb\jaxb-runtime\2.3.5\a169a961a2bb9ac69517ec1005e451becf5cdfab\jaxb-runtime-2.3.5.jar</li>
                   <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.glassfish.jaxb\txw2\2.3.5\ec8930fa62e7b1758b1664d135f50c7abe86a4a3\txw2-2.3.5.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\2.2\3f2bd07716a31c395e2837254f37f21f0f0ab24b\hamcrest-core-2.2.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-library\2.2\cf530c8a0bc993487c64e940ae639bb4a6104dc6\hamcrest-library-2.2.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest\2.2\1820c0968dba3a11a1b30669bb1f01978a91dedc\hamcrest-2.2.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.jmockit\jmockit\1.49\e281fc6778c43060402505f062f6515c2adeb037\jmockit-1.49.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-api\5.7.0\b25f3815c4c1860a73041e733a14a0379d00c4d5\junit-jupiter-api-5.7.0.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-params\5.7.0\521dbecace93d5d7ef13a74aab231befd7954424\junit-jupiter-params-5.7.0.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter\5.7.0\3152d152da916ccbb0715f89f7f873f45362ad7f\junit-jupiter-5.7.0.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.7.0\84e309fbf21d857aac079a3c1fffd84284e1114d\junit-platform-commons-1.7.0.jar</li>
+                  <li>C:\Users\peter\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.2.0\28c11eb91f9b6d8e200631d46e20a7f407f2a046\opentest4j-1.2.0.jar</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\classes\java\main</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\build\resources\main</li>
                </ul>
             </div>
             <div id="source-files">
                <h3>Source Files:</h3>
                <ul>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\src\main\java</li>
-                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\src\main\resources</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\src\test\java</li>
+                  <li>C:\Users\peter\CS350\PNEProject\cs350-project-s24-kdoua001\project\src\test\resources</li>
                </ul>
             </div>
             <div id="plugins">
@@ -1169,32 +1147,41 @@
          <div id="listByPackagesContainer" class="displayContainer">Loading...</div>
       </div>
       <div id="bug-collection" style="display:none;">
-         <div id="b-uid-57e98b49b7c6fee5b210aefa6908a08f-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.Extractor</div>
-            <div class="b-r">In method edu.odu.cs.cs350.Extractor.readFileContent(String)</div>
-            <div class="b-r">Called method new java.io.FileReader(String)</div>
-            <div class="b-r">At Extractor.java:[line 62]</div>
-            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.Extractor.readFileContent(String): new java.io.FileReader(String)</div>
+         <div id="b-uid-a6d5f6f839a1c158bea84cb2716a0ced-0" class="bug">
+            <div class="b-r">In class edu.odu.cs.cs350.TestDocument</div>
+            <div class="b-r">In method edu.odu.cs.cs350.TestDocument.testParameterizedConstructor()</div>
+            <div class="b-r">Called method java.io.ByteArrayOutputStream.toString()</div>
+            <div class="b-r">At TestDocument.java:[line 38]</div>
+            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.TestDocument.testParameterizedConstructor(): java.io.ByteArrayOutputStream.toString()</div>
          </div>
-         <div id="b-uid-485da8d41a9bf6ce7b1a3a2a8f58d18-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.Extractor</div>
-            <div class="b-r">In method edu.odu.cs.cs350.Extractor.readFileContent(String)</div>
-            <div class="b-r">At Extractor.java:[line 62]</div>
-            <div class="b-r">Sink method java/io/FileReader.&lt;init&gt;(Ljava/lang/String;)V</div>
-            <div class="b-r">Sink parameter 0</div>
-            <div class="b-r">Unknown source edu/odu/cs/cs350/Extractor.readFileContent(Ljava/lang/String;)Ljava/lang/String; parameter 0</div>
-            <div class="b-r">Method usage with tainted arguments detected</div>
-            <div class="b-r">At Extractor.java:[line 55]</div>
-            <div class="b-d">This API (java/io/FileReader.&lt;init&gt;(Ljava/lang/String;)V) reads a file whose location might be specified by user input</div>
+         <div id="b-uid-5f22c606c5a950b71e42580425b609a3-0" class="bug">
+            <div class="b-r">In class edu.odu.cs.cs350.TestDocument</div>
+            <div class="b-r">In method edu.odu.cs.cs350.TestDocument.testParameterizedConstructor()</div>
+            <div class="b-r">Called method new java.io.PrintStream(OutputStream)</div>
+            <div class="b-r">At TestDocument.java:[line 34]</div>
+            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.TestDocument.testParameterizedConstructor(): new java.io.PrintStream(OutputStream)</div>
          </div>
-         <div id="b-uid-e1d444bfdc49dbc052ceb98c727c4688-0" class="bug">
-            <div class="b-r">In class edu.odu.cs.cs350.StreamIterable</div>
-            <div class="b-r">In method edu.odu.cs.cs350.StreamIterable.iterator()</div>
-            <div class="b-r">Called method new java.util.Scanner(InputStream)</div>
-            <div class="b-r">At WordLists.java:[line 170]</div>
-            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.StreamIterable.iterator(): new java.util.Scanner(InputStream)</div>
+         <div id="b-uid-41a43684380d6c9091b984404cdabdc3-0" class="bug">
+            <div class="b-r">In class edu.odu.cs.cs350.TestDocument</div>
+            <div class="b-r">In method edu.odu.cs.cs350.TestDocument.testPrintDocument()</div>
+            <div class="b-r">Called method java.io.ByteArrayOutputStream.toString()</div>
+            <div class="b-r">At TestDocument.java:[line 101]</div>
+            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.TestDocument.testPrintDocument(): java.io.ByteArrayOutputStream.toString()</div>
          </div>
-         <div id="b-uid-c41863093748d8b8ce5a135ddec72457-0" class="bug">
+         <div id="b-uid-acd7b521ae2cabfe9b65b3d9b49d92d6-0" class="bug">
+            <div class="b-r">In class edu.odu.cs.cs350.TestDocument</div>
+            <div class="b-r">In method edu.odu.cs.cs350.TestDocument.testPrintDocument()</div>
+            <div class="b-r">Called method new java.io.PrintStream(OutputStream)</div>
+            <div class="b-r">At TestDocument.java:[line 97]</div>
+            <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.TestDocument.testPrintDocument(): new java.io.PrintStream(OutputStream)</div>
+         </div>
+         <div id="tip-DM_DEFAULT_ENCODING" class="tip">
+            <p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+         </div>
+      </div>
+   </body>
+</html>
+g">
             <div class="b-r">In class edu.odu.cs.cs350.Tagger</div>
             <div class="b-r">In method edu.odu.cs.cs350.Tagger.IsComma(String)</div>
             <div class="b-r">Actual type String</div>
