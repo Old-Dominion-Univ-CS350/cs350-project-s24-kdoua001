@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tagger.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">Tagger.java</span></div><h1>Tagger.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.util.Arrays;
+
+
+/**
+ * The Tagger class provides methods to detect the part of speech or lexical feature
+ * of a given word or token.
+ */
+public class Tagger {
+    /**
+     * Constructs a new Tagger object.
+     */
+<span class="fc" id="L14">    public Tagger() {</span>
+<span class="fc" id="L15">    }</span>
+
+    /**
+     * Checks if a given word is an article (a, an, the).
+     *
+     * @param word the word to be checked
+     * @return true if the word is an article, false otherwise
+     */
+    public boolean IsArticle(String word) {
+<span class="fc" id="L24">        String[] articles = {&quot;a&quot;, &quot;an&quot;, &quot;the&quot;};</span>
+<span class="fc" id="L25">        return Arrays.asList(articles).contains(word.toLowerCase());</span>
+    }
+
+    /**
+     * Checks if a given word is a conjunction (and).
+     *
+     * @param word the word to be checked
+     * @return true if the word is a conjunction, false otherwise
+     */
+    public boolean IsConjunction(String word) {
+<span class="fc" id="L35">        String[] conjunctions = {&quot;and&quot;};</span>
+<span class="fc" id="L36">        return Arrays.asList(conjunctions).contains(word.toLowerCase());</span>
+    }
+
+    /**
+     * Checks if a given word is a period.
+     *
+     * @param word the word to be checked
+     * @return true if the word is a period, false otherwise
+     */
+    public boolean IsPeriod(String word) {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        return &quot;.&quot; == word;</span>
+    }
+
+    /**
+     * Checks if a given word is a comma.
+     *
+     * @param word the word to be checked
+     * @return true if the word is a comma, false otherwise
+     */
+    public boolean IsComma(String word) {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        return &quot;,&quot; == word;</span>
+    }
+
+    /**
+     * Checks if a given word contains a hyphen.
+     *
+     * @param word the word to be checked
+     * @return true if the word contains a hyphen, false otherwise
+     */
+    public boolean IsHyphen(String word) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        return &quot;-&quot; == word;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

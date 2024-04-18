@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FeatureVector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">FeatureVector.java</span></div><h1>FeatureVector.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instances;
+import java.util.List;
+import java.util.ArrayList;
+
+/**
+ * This class creates feature vectors based on token attributes/other 
+ * features using Weka's Instances class. 
+ */
+public class FeatureVector {
+
+    /**
+     * Default constructor.
+     */
+<span class="fc" id="L18">    public FeatureVector(){</span>
+
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Method to create feature vectors based on Token attributes.
+     * @param tokenList tokenList
+     * @return data
+     */
+    public Instances createVectors(List&lt;Token&gt; tokenList) {
+<span class="fc" id="L28">        ArrayList&lt;Attribute&gt; attributes = createAttributes();</span>
+
+        // Create instances object with the defined attributes
+<span class="fc" id="L31">        Instances data = new Instances(&quot;FeatureVectors&quot;, attributes, tokenList.size());</span>
+
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (Token token : tokenList) {</span>
+<span class="fc" id="L34">            double[] values = createAttributeValues(token);</span>
+
+            // Create DenseInstance and add to Instances object
+<span class="fc" id="L37">            data.add(new DenseInstance(1.0, values));</span>
+<span class="fc" id="L38">        }</span>
+
+<span class="fc" id="L40">        return data;</span>
+    }
+
+    /**
+     * Creates the attributes for the feature vectors.
+     * @return List of attributes.
+     */
+    private ArrayList&lt;Attribute&gt; createAttributes() {
+<span class="fc" id="L48">        ArrayList&lt;Attribute&gt; attributes = new ArrayList&lt;&gt;();</span>
+
+        // Boolean attributes from Token class
+<span class="fc" id="L51">        attributes.add(new Attribute(&quot;isName&quot;));</span>
+<span class="fc" id="L52">        attributes.add(new Attribute(&quot;isInDictionary&quot;));</span>
+<span class="fc" id="L53">        attributes.add(new Attribute(&quot;isLocation&quot;));</span>
+<span class="fc" id="L54">        attributes.add(new Attribute(&quot;isCommonFirst&quot;));</span>
+<span class="fc" id="L55">        attributes.add(new Attribute(&quot;isCommonLast&quot;));</span>
+<span class="fc" id="L56">        attributes.add(new Attribute(&quot;isHonorific&quot;));</span>
+<span class="fc" id="L57">        attributes.add(new Attribute(&quot;isKillWord&quot;));</span>
+<span class="fc" id="L58">        attributes.add(new Attribute(&quot;isPunctuation&quot;));</span>
+
+        // Lexical feature attribute
+<span class="fc" id="L61">        ArrayList&lt;String&gt; lexicalFeatureValues = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L62">        lexicalFeatureValues.add(&quot;NUMBER&quot;);</span>
+<span class="fc" id="L63">        lexicalFeatureValues.add(&quot;SINGLECAPLETTER&quot;);</span>
+<span class="fc" id="L64">        lexicalFeatureValues.add(&quot;CAPITALIZEDWORD&quot;);</span>
+<span class="fc" id="L65">        lexicalFeatureValues.add(&quot;ALLCAPS&quot;);</span>
+<span class="fc" id="L66">        lexicalFeatureValues.add(&quot;PUNCTUATION&quot;);</span>
+<span class="fc" id="L67">        lexicalFeatureValues.add(&quot;NEWLINE&quot;);</span>
+<span class="fc" id="L68">        lexicalFeatureValues.add(&quot;NULLFEATURE&quot;);</span>
+<span class="fc" id="L69">        lexicalFeatureValues.add(&quot;OTHER&quot;);</span>
+<span class="fc" id="L70">        attributes.add(new Attribute(&quot;lexicalFeature&quot;, lexicalFeatureValues));</span>
+
+        // Part of speech feature attribute
+<span class="fc" id="L73">        ArrayList&lt;String&gt; speechFeatureValue = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L74">        speechFeatureValue.add(&quot;ARTICLES&quot;);</span>
+<span class="fc" id="L75">        speechFeatureValue.add(&quot;CONJUNCTION&quot;);</span>
+<span class="fc" id="L76">        speechFeatureValue.add(&quot;PERIOD&quot;);</span>
+<span class="fc" id="L77">        speechFeatureValue.add(&quot;COMMA&quot;);</span>
+<span class="fc" id="L78">        speechFeatureValue.add(&quot;HYPHEN&quot;);</span>
+<span class="fc" id="L79">        speechFeatureValue.add(&quot;OTHER&quot;);</span>
+<span class="fc" id="L80">        attributes.add(new Attribute(&quot;speechFeature&quot;, speechFeatureValue));</span>
+
+<span class="fc" id="L82">        return attributes;</span>
+    }
+
+    /**
+     * Creates the attribute values for a given token.
+     * @param token The token for which attribute values are to be created.
+     * @return Array of attribute values.
+     */
+    private double[] createAttributeValues(Token token) {
+<span class="fc" id="L91">        double[] values = new double[10]; // Assuming there are 10 attributes in total</span>
+
+        // Set attribute values based on Token attributes
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        values[0] = token.isName() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        values[1] = token.isInDictionary() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        values[2] = token.isLocation() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        values[3] = token.isCommonFirst() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        values[4] = token.isCommonLast() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        values[5] = token.isHonorific() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        values[6] = token.isKillWord() ? 1.0 : 0.0;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        values[7] = token.isPunctuation() ? 1.0 : 0.0;</span>
+
+        // Set lexical feature value
+<span class="fc" id="L104">        values[8] = token.getLexicalFeature().ordinal();</span>
+
+        // Set Speech feature value
+<span class="fc" id="L107">        values[9] = token.getFeatureOfSpeech().ordinal();</span>
+
+<span class="fc" id="L109">        return values;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

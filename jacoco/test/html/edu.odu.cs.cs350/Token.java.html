@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Token.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">Token.java</span></div><h1>Token.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.util.regex.Pattern;
+
+/**
+ * This class represents a token object.
+ * It contains boolean values for various token attributes.
+ * It also contains a string representation of the token.
+ */
+public class Token {
+    /**
+     * The token string representation.
+     * This is the raw string value of the token.
+     */
+<span class="fc" id="L15">    private String tokenString = null;</span>
+
+    /**
+     * Flag indicating whether the token represents a name.
+     */
+    private boolean nameFlag;
+
+    /**
+     * Flag indicating whether the token is found in the dictionary.
+     */
+    private boolean inDictionary;
+
+    /**
+     * Flag indicating whether the token represents a location.
+     */
+    private boolean locationFlag;
+
+    /**
+     * Flag indicating whether the token is a common first name.
+     */
+    private boolean commonFirst;
+
+    /**
+     * Flag indicating whether the token is a common last name.
+     */
+    private boolean commonLast;
+
+    /**
+     * Flag indicating whether the token has an honorific (e.g., &quot;Mr.&quot;, &quot;Dr.&quot;).
+     */
+    private boolean honorificFlag;
+
+    /**
+     * Flag indicating whether the token is a &quot;kill word&quot; that should be ignored.
+     */
+    private boolean killWordFlag;
+
+    /**
+     * Flag indicating whether the token contains punctuation.
+     */
+    private boolean punctuationFlag;
+
+    /**
+     * The lexical feature of the token.
+     */
+    private LexicalFeature lexicalFeature;
+
+    /**
+     * The part of speech feature of the token.
+     */
+    private FeatureOfSpeech speechFeature;
+
+    /**
+     * Constructor for Token.
+     * 
+     * @param assignedString string to assign to token
+     */
+<span class="fc" id="L72">    public Token(String assignedString) {</span>
+<span class="fc" id="L73">        this.tokenString = assignedString;</span>
+<span class="fc" id="L74">        this.inDictionary = false;</span>
+<span class="fc" id="L75">        this.locationFlag = false;</span>
+<span class="fc" id="L76">        this.commonFirst = false;</span>
+<span class="fc" id="L77">        this.commonLast = false;</span>
+<span class="fc" id="L78">        this.honorificFlag = false;</span>
+<span class="fc" id="L79">        this.killWordFlag = false;</span>
+<span class="fc" id="L80">        this.punctuationFlag = false;</span>
+<span class="fc" id="L81">        DetectFeatureOfSpeech();</span>
+<span class="fc" id="L82">        detectLexicalFeature();</span>
+
+<span class="fc" id="L84">    }</span>
+
+    /**
+     * @return the string of the token
+     */
+    public String getTokenString() {
+<span class="fc" id="L90">        return this.tokenString;</span>
+    }
+
+    /**
+     * @return true if is a name, false if else
+     */
+    public boolean isName() {
+<span class="fc" id="L97">        return this.nameFlag;</span>
+    }
+
+    /**
+     * @return true of dictionary, false if not
+     */
+    public boolean isInDictionary() {
+<span class="fc" id="L104">        return this.inDictionary;</span>
+    }
+
+    /**
+     * @return true if is a location, false if not
+     */
+    public boolean isLocation() {
+<span class="fc" id="L111">        return this.locationFlag;</span>
+    }
+
+    /**
+     * @return true if a common first name, false if not
+     */
+    public boolean isCommonFirst() {
+<span class="fc" id="L118">        return this.commonFirst;</span>
+    }
+
+    /**
+     * @return true if common last name, false if not
+     */
+    public boolean isCommonLast() {
+<span class="fc" id="L125">        return this.commonLast;</span>
+    }
+
+    /**
+     * @return true if a honorific, false if not
+     */
+    public boolean isHonorific() {
+<span class="fc" id="L132">        return this.honorificFlag;</span>
+    }
+
+    /**
+     * @return true if a kill word, false if not
+     */
+    public boolean isKillWord() {
+<span class="fc" id="L139">        return this.killWordFlag;</span>
+    }
+
+    /**
+     * @return true if a puncuation, false if not
+     */
+    public boolean isPunctuation() {
+<span class="fc" id="L146">        return this.punctuationFlag;</span>
+    }
+
+    /**
+     * Sets the TokenString of a Token.
+     * 
+     * @param string string representation of Token.
+     */
+    public void setTokenString(String string) {
+<span class="fc" id="L155">        this.tokenString = string;</span>
+<span class="fc" id="L156">    }</span>
+
+    /**
+     * Sets the Bool isName of a Token.
+     * 
+     * @param name boolean isName.
+     */
+    public void setIsName(boolean name) {
+<span class="fc" id="L164">        this.nameFlag = name;</span>
+<span class="fc" id="L165">    }</span>
+
+    /**
+     * Sets the Bool inDictionary of Token.
+     * 
+     * @param dictionary is this token in the dictionary.
+     */
+    public void setIsInDictionary(boolean dictionary) {
+<span class="fc" id="L173">        this.inDictionary = dictionary;</span>
+<span class="fc" id="L174">    }</span>
+
+    /**
+     * Sets the Bool isLocation of Token.
+     * 
+     * @param location is this token a location.
+     */
+    public void setIsLocation(boolean location) {
+<span class="fc" id="L182">        this.locationFlag = location;</span>
+<span class="fc" id="L183">    }</span>
+
+    /**
+     * Sets the Bool commonFirst of a Token.
+     * 
+     * @param first is this a common first name.
+     */
+    public void setIsCommonFirst(boolean first) {
+<span class="fc" id="L191">        this.commonFirst = first;</span>
+<span class="fc" id="L192">    }</span>
+
+    /**
+     * Sets the Bool commonLast of a Token.
+     * 
+     * @param last is this a common last name.
+     */
+    public void setIsCommonLast(boolean last) {
+<span class="fc" id="L200">        this.commonLast = last;</span>
+<span class="fc" id="L201">    }</span>
+
+    /**
+     * Sets the Bool honorific of a Token.
+     * 
+     * @param honorific is this a honorific.
+     */
+    public void setIsHonorific(boolean honorific) {
+<span class="fc" id="L209">        this.honorificFlag = honorific;</span>
+<span class="fc" id="L210">    }</span>
+
+    /**
+     * Sets the Bool killWord of a Token.
+     * 
+     * @param killWord is this a kill word.
+     */
+    public void setIsKillWord(boolean killWord) {
+<span class="fc" id="L218">        this.killWordFlag = killWord;</span>
+<span class="fc" id="L219">    }</span>
+
+    /**
+     * Sets the Bool isPunctuation of a Token.
+     * 
+     * @param punctuation is this punctuation.
+     */
+    public void setIsPunctuation(boolean punctuation) {
+<span class="fc" id="L227">        this.punctuationFlag = punctuation;</span>
+<span class="fc" id="L228">    }</span>
+
+    /**
+     * @return string representation of a Token.
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L235">        return this.tokenString;</span>
+    }
+
+    // -------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Gets the lexical feature associated with this token.
+     * 
+     * @return the lexical feature of this token.
+     */
+    public LexicalFeature getLexicalFeature() {
+<span class="fc" id="L246">        return lexicalFeature;</span>
+    }
+
+    /**
+     * Setter for lexical features.
+     * 
+     * @param lexicalFeature lexical feature.
+     */
+    public void setLexicalFeature(LexicalFeature lexicalFeature) {
+<span class="fc" id="L255">        this.lexicalFeature = lexicalFeature;</span>
+<span class="fc" id="L256">    }</span>
+
+    /**
+     * Assigns a Lexical Feature Type to the Token.
+     */
+    public void detectLexicalFeature() {
+<span class="fc bfc" id="L262" title="All 2 branches covered.">        if (tokenString.matches(&quot;-?\\d+(\\.\\d+)?&quot;)) {</span>
+<span class="fc" id="L263">            lexicalFeature = LexicalFeature.NUMBER;</span>
+<span class="fc bfc" id="L264" title="All 4 branches covered.">        } else if (tokenString.length() == 1 &amp;&amp; Character.isUpperCase(tokenString.charAt(0))) {</span>
+<span class="fc" id="L265">            lexicalFeature = LexicalFeature.SINGLECAPLETTER;</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z][a-z]*&quot;)) {</span>
+<span class="fc" id="L267">            lexicalFeature = LexicalFeature.CAPITALIZEDWORD;</span>
+<span class="fc bfc" id="L268" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z]+&quot;)) {</span>
+<span class="fc" id="L269">            lexicalFeature = LexicalFeature.ALLCAPS;</span>
+<span class="fc bfc" id="L270" title="All 2 branches covered.">        } else if (Pattern.matches(&quot;.*[.,?!]$&quot;, tokenString)) {</span>
+<span class="fc" id="L271">            lexicalFeature = LexicalFeature.PUNCTUATION;</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">        } else if (tokenString.equals(&quot;\n&quot;)) {</span>
+<span class="fc" id="L273">            lexicalFeature = LexicalFeature.NEWLINE;</span>
+<span class="fc bfc" id="L274" title="All 2 branches covered.">        } else if (tokenString.isEmpty()) {</span>
+<span class="fc" id="L275">            lexicalFeature = LexicalFeature.NULLFEATURE;</span>
+        } else {
+<span class="fc" id="L277">            lexicalFeature = LexicalFeature.OTHER;</span>
+        }
+
+<span class="fc" id="L280">    }</span>
+
+    /**
+     * Sets the Feature Of Speech Attribute.
+     * 
+     * @param feature feature
+     */
+    public void setFeatureOfSpeech(FeatureOfSpeech feature) {
+<span class="fc" id="L288">        speechFeature = feature;</span>
+<span class="fc" id="L289">    }</span>
+
+    /**
+     * Gets the Feature of Speech Attribute.
+     * 
+     * @return FeatureOfSpeech speechFeature
+     */
+    public FeatureOfSpeech getFeatureOfSpeech() {
+<span class="fc" id="L297">        return speechFeature;</span>
+    }
+
+    /**
+     * Assigns the Token a Feature of Speech Type.
+     */
+    public void DetectFeatureOfSpeech() {
+
+<span class="fc" id="L305">        Tagger tagger = new Tagger();</span>
+
+<span class="fc bfc" id="L307" title="All 2 branches covered.">        if (tagger.IsArticle(tokenString)) {</span>
+<span class="fc" id="L308">            setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);</span>
+<span class="fc bfc" id="L309" title="All 2 branches covered.">        } else if (tagger.IsConjunction(tokenString)) {</span>
+<span class="fc" id="L310">            setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);</span>
+<span class="fc bfc" id="L311" title="All 2 branches covered.">        } else if (tagger.IsPeriod(tokenString)) {</span>
+<span class="fc" id="L312">            setFeatureOfSpeech(FeatureOfSpeech.PERIOD);</span>
+<span class="fc bfc" id="L313" title="All 2 branches covered.">        } else if (tagger.IsComma(tokenString)) {</span>
+<span class="fc" id="L314">            setFeatureOfSpeech(FeatureOfSpeech.COMMA);</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">        } else if (tagger.IsHyphen(tokenString)) {</span>
+<span class="fc" id="L316">            setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);</span>
+        } else {
+<span class="fc" id="L318">            setFeatureOfSpeech(FeatureOfSpeech.OTHER);</span>
+        }
+<span class="fc" id="L320">    }</span>
+
+    /**
+     * Detects if the token's lexical features suggest it represents a personal
+     * name.
+     * and wraps the token string in PER tags if it is likely a personal name.
+     * 
+     * @return the token string wrapped in PER tags if it's likely a personal name.
+     */
+    public String detectPersonalName() {
+        // Check lexical feature of the token
+<span class="fc" id="L331">        LexicalFeature lexicalFeature = this.getLexicalFeature();</span>
+<span class="fc" id="L332">        FeatureOfSpeech featureOfSpeech = this.getFeatureOfSpeech();</span>
+        // Check if the lexical feature suggests it is likely a personal name
+<span class="fc bfc" id="L334" title="All 2 branches covered.">        if (isLikelyPersonalName(lexicalFeature, featureOfSpeech)) {</span>
+<span class="fc" id="L335">            return &quot;&lt;PER&gt;&quot; + this.getTokenString() + &quot;&lt;/PER&gt;&quot; + &quot;&quot;;</span>
+        } else {
+<span class="fc" id="L337">            return this.getTokenString(); // else return the token without per tags</span>
+        }
+
+    }
+
+    /**
+     * Determine if the provided lexical feature, feature of speech is likely to.
+     * represent a personal.
+     * name.
+     * 
+     * @param lexicalFeature  lexical feature to be evaluated.
+     * @param featureOfSpeech speech feature to be evaluated.
+     * @return True if the lexical feature is either Capitalized word, All caps, or
+     *         Single capitalized letter and the feature of speech is not an
+     *         article, conjunction, period, comma or hyphen.
+     */
+    public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureOfSpeech) {
+<span class="pc bpc" id="L354" title="5 of 16 branches missed.">        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD</span>
+                || lexicalFeature == LexicalFeature.ALLCAPS
+                || lexicalFeature == LexicalFeature.SINGLECAPLETTER &amp;&amp;
+                        (featureOfSpeech != FeatureOfSpeech.ARTICLES &amp;&amp;
+                                featureOfSpeech != FeatureOfSpeech.CONJUNCTION &amp;&amp;
+                                featureOfSpeech != FeatureOfSpeech.PERIOD &amp;&amp;
+                                featureOfSpeech != FeatureOfSpeech.COMMA &amp;&amp;
+                                featureOfSpeech != FeatureOfSpeech.HYPHEN);
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

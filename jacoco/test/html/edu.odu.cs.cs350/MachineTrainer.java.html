@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MachineTrainer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">MachineTrainer.java</span></div><h1>MachineTrainer.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import weka.classifiers.Evaluation;
+import weka.classifiers.functions.SMO;
+import weka.classifiers.functions.supportVector.RBFKernel;
+import weka.core.Instance;
+import weka.core.Instances;
+import weka.core.WekaPackageClassLoaderManager;
+
+import java.io.*;
+import java.lang.reflect.Method;
+import java.util.List;
+
+/**
+ * This class provides methods for training and saving Support Vector Machine
+ * (SVM) models using WEKA.
+ */
+<span class="fc" id="L18">public class MachineTrainer {</span>
+
+    /**
+     * Trains a Support Vector Machine (SVM) model.
+     *
+     * @param data The dataset to be used for training.
+     * @return The trained SVM model.
+     * @throws Exception If an error occurs during training.
+     */
+    public SMO trainSupportVectorMachine(Instances data) throws Exception {
+
+<span class="nc" id="L29">        data.setClassIndex(data.numAttributes() - 1);</span>
+<span class="nc" id="L30">        String[] options = { &quot;-N&quot;, &quot;0&quot;, &quot;-V&quot;, &quot;-1&quot; };</span>
+
+        // Tuning hyperparameters gamma and C
+        /*
+         * double bestGamma = 0.01;
+         * double bestC = 8.0;
+         * double bestResult = 0.0;s
+         * 
+         * for (double gamma = 0.01; gamma &lt;= 0.1; gamma += 0.09 / 7) {
+         * for (double c = 8.0; c &lt;= 15.0; c += 7 / 7) {
+         * SMO svm = new SMO();
+         * svm.setOptions(options);
+         * svm.setKernel(new RBFKernel(data, 25007, gamma));
+         * svm.setC(c);
+         * 
+         * Evaluation eval = new Evaluation(data);
+         * eval.crossValidateModel(svm, data, 5, new java.util.Random(1));
+         * double score = eval.pctCorrect();
+         * 
+         * if (score &gt; bestResult) {
+         * bestResult = score;
+         * bestGamma = gamma;
+         * bestC = c;
+         * }
+         * }
+         * }
+         */
+        // Create SMO (Sequential Minimal Optimization) classifier with best parameters
+<span class="nc" id="L58">        SMO SupportVectorMachine = new SMO();</span>
+<span class="nc" id="L59">        SupportVectorMachine.setOptions(options);</span>
+        // svm.setKernel(new RBFKernel(data, 25007, bestGamma));
+        // svm.setC(bestC);
+
+        // Train it
+<span class="nc" id="L64">        SupportVectorMachine.buildClassifier(data);</span>
+
+<span class="nc" id="L66">        return SupportVectorMachine;</span>
+    }
+
+    /**
+     * Saves the trained SVM model to a file.
+     *
+     * @param SupportVectorMachine The trained SVM model to be saved.
+     * @param modelFile            The file path where the model will be saved.
+     * @throws Exception If an error occurs during model saving.
+     */
+    public void saveModel(SMO SupportVectorMachine, String modelFile) throws Exception {
+        // Save the trained model to a file
+<span class="fc" id="L78">        ObjectOutputStream Output = new ObjectOutputStream(new FileOutputStream(modelFile));</span>
+<span class="fc" id="L79">        Output.writeObject(SupportVectorMachine);</span>
+<span class="fc" id="L80">        Output.close();</span>
+<span class="fc" id="L81">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TextBlock.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">TextBlock.java</span></div><h1>TextBlock.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * This class represents a TextBlock object.
+ * It contains functions for creating tokens and converting TextBlocks to a
+ * string.
+ */
+public class TextBlock {
+    /**
+     * List of tokens.
+     */
+    private List&lt;Token&gt; tokensList;
+
+    /**
+     * 
+     * List containging a list of shingles for the textblock.
+     */
+    private List&lt;List&lt;Token&gt;&gt; shinglesList;
+
+    /**
+     * Main Constructor.
+     * 
+     * @param BlockText
+     */
+<span class="fc" id="L31">    TextBlock(String BlockText) {</span>
+<span class="fc" id="L32">        this.tokensList = createTokens(BlockText);</span>
+<span class="fc" id="L33">        shinglesList = this.generateShingles(tokensList, 3,3);</span>
+<span class="fc" id="L34">    }</span>
+
+    /**
+     * @param AssignedTokens assignedTokens
+     */
+    public void setTokensList(List&lt;Token&gt; AssignedTokens) {
+<span class="fc" id="L40">        this.tokensList = AssignedTokens;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * @return tokenlist
+     */
+    public List&lt;Token&gt; getTokensList() {
+<span class="fc" id="L47">        return this.tokensList;</span>
+    }
+
+    /**
+     * @param BlockText string of textblocks
+     * @return List of Tokens
+     */
+    public List&lt;Token&gt; createTokens(String BlockText) {
+        // Returns True if Word or Puncuation is Found
+<span class="fc" id="L56">        String noTags = BlockText.replaceAll(&quot;&lt;[^&gt;]*&gt;&quot;, &quot;&quot;);</span>
+<span class="fc" id="L57">        List&lt;Token&gt; tokens = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L58">        Pattern pattern = Pattern.compile(&quot;\\w+|\\p{Punct}|\\n&quot;);</span>
+<span class="fc" id="L59">        Matcher match = pattern.matcher(noTags);</span>
+
+        // Set isPunctuation to True if Punc is Found in First Char, False if Not
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        while (match.find()) {</span>
+<span class="fc" id="L63">            String tokenString = match.group();</span>
+<span class="fc" id="L64">            Token AddMe = new Token(tokenString);</span>
+<span class="fc" id="L65">            boolean isPunctuation = Character.isLetterOrDigit(tokenString.charAt(0));</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            AddMe.setIsPunctuation(!isPunctuation);</span>
+
+            // detect lexical feature of tokens
+            // AddMe.detectLexicalFeature();
+<span class="fc" id="L70">            tokens.add(AddMe);</span>
+<span class="fc" id="L71">        }</span>
+
+<span class="fc" id="L73">        return tokens;</span>
+    }
+
+    /**
+     * @return string representation of TextBlock
+     *         Entire text block will be wrapped in NER /NER and
+     *         persons will be wrapped in PER /PER
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L83">        myNameIs();// Demonstration purposes only.</span>
+<span class="fc" id="L84">        StringBuilder theString = new StringBuilder();</span>
+<span class="fc" id="L85">        theString.append(&quot;&lt;NER&gt;&quot;);</span>
+<span class="fc" id="L86">        int lastIndex = tokensList.size() - 1;</span>
+
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        for (int index = 0; index &lt;= lastIndex; index++) {</span>
+<span class="fc" id="L89">            Token currentToken = tokensList.get(index);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            Token previousToken = (index &gt; 0) ? tokensList.get(index - 1) : null;</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">            Token nextToken = (index &lt; lastIndex) ? tokensList.get(index + 1) : null;</span>
+<span class="fc bfc" id="L92" title="All 4 branches covered.">            if (currentToken.isName() &amp;&amp; !previousToken.isName()) {</span>
+<span class="fc" id="L93">                theString.append(&quot;&lt;PER&gt;&quot;);// beginning of name</span>
+            }
+<span class="fc" id="L95">            theString.append(currentToken.getTokenString());</span>
+<span class="fc bfc" id="L96" title="All 6 branches covered.">            if ((nextToken == null || !nextToken.isName()) &amp;&amp; currentToken.isName()) {</span>
+<span class="fc" id="L97">                theString.append(&quot;&lt;/PER&gt;&quot;);// end of name</span>
+            }
+<span class="fc bfc" id="L99" title="All 4 branches covered.">            if (!(nextToken == null) &amp;&amp; !nextToken.isPunctuation()) {</span>
+<span class="fc" id="L100">                theString.append(&quot; &quot;);</span>
+            }
+        }
+
+<span class="fc" id="L104">        theString.append(&quot;&lt;/NER&gt;&quot;);</span>
+<span class="fc" id="L105">        return theString.toString().trim();</span>
+    }
+
+    /**
+     * 
+     * @param token a Token object
+     *              Adds a token to tokensList
+     */
+    public void addToken(Token token) {
+<span class="fc" id="L114">        this.tokensList.add(token);</span>
+<span class="fc" id="L115">    }</span>
+
+    /**
+     * Used to search tokensList for a token containing a string.
+     * 
+     * @param search the string representation of a token to be found
+     * @return true if a token in tokensList contains the string
+     */
+    public boolean containsString(String search) {
+<span class="fc bfc" id="L124" title="All 2 branches covered.">        for (Token token : tokensList) {</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">            if (token.getTokenString().equals(search)) {</span>
+<span class="fc" id="L126">                return true;</span>
+            }
+<span class="fc" id="L128">        }</span>
+<span class="fc" id="L129">        return false;</span>
+    }
+
+    /**
+     * For demonstration purposes only.
+     * If the first three tokens in a textblock are &quot;My&quot; &quot;name&quot; &quot;is&quot; it will set the
+     * next two tokens as personal Names.
+     * This will allow us to demonstrate that personal names will appear wrapped in
+     * PER /PER tags in output.
+     */
+    public void myNameIs() {
+<span class="pc bpc" id="L140" title="2 of 6 branches missed.">        if (this.containsString(&quot;My&quot;) &amp;&amp; this.containsString(&quot;name&quot;) &amp;&amp; this.containsString(&quot;is&quot;)) {</span>
+<span class="fc" id="L141">            tokensList.get(3).setIsName(true);</span>
+<span class="fc" id="L142">            tokensList.get(4).setIsName(true);</span>
+        }
+<span class="fc" id="L144">    }</span>
+
+    /**
+     * Used to generate shingling to be used as input for the learning machine.
+     * Section 5.3 of design notes.
+     * 
+     * @param tokens a list of Tokens we want to apply shingling to
+     * @param start  The number of tokens before the current token that are included
+     *               in the shingle
+     * @param end    The number of tokens after the current token that are included
+     *               in the shingle
+     * @return A list of a list of tokens with shingling applied.
+     */
+    public List&lt;List&lt;Token&gt;&gt; generateShingles(List&lt;Token&gt; tokens, int start, int end) {
+<span class="fc" id="L158">        List&lt;List&lt;Token&gt;&gt; shingles = new ArrayList&lt;&gt;();</span>
+
+        // Add null tokens at the beginning and end of the list
+<span class="fc" id="L161">        List&lt;Token&gt; paddedTokens = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        for (int i = 0; i &lt; start; i++) {</span>
+<span class="fc" id="L163">            paddedTokens.add(new Token(&quot;null&quot;));</span>
+        }
+<span class="fc" id="L165">        paddedTokens.addAll(tokens);</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">        for (int i = 0; i &lt; end; i++) {</span>
+<span class="fc" id="L167">            paddedTokens.add(new Token(&quot;null&quot;));</span>
+        }
+
+<span class="fc bfc" id="L170" title="All 2 branches covered.">        for (int i = start; i &lt; paddedTokens.size() - end; i++) {</span>
+<span class="fc" id="L171">            List&lt;Token&gt; shingle = new ArrayList&lt;&gt;();</span>
+
+            // Add the k tokens before the current token
+<span class="fc bfc" id="L174" title="All 2 branches covered.">            for (int j = i - start; j &lt; i; j++) {</span>
+<span class="fc" id="L175">                shingle.add(paddedTokens.get(j));</span>
+            }
+
+            // Add the current token
+<span class="fc" id="L179">            shingle.add(paddedTokens.get(i));</span>
+
+            // Add the k' tokens after the current token
+<span class="fc bfc" id="L182" title="All 2 branches covered.">            for (int j = i + 1; j &lt; i + 1 + end; j++) {</span>
+<span class="fc" id="L183">                shingle.add(paddedTokens.get(j));</span>
+            }
+
+            // Add the shingle to the result list 
+<span class="fc" id="L187">            shingles.add(shingle);</span>
+        }
+
+<span class="fc" id="L190">        return shingles;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
