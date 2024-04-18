@@ -4,5 +4,5 @@ Personal Name Extractor
 
 * [Tests](./tests/test/)
 * [SystemTests](./tests/systest/)
-* [SpotBugs](./spotbugs/)
+* [SpotBugs](./spotbugs/main.html)
 * [JavaDoc](./javadoc/)
