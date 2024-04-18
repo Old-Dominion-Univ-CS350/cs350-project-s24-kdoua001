@@ -51,13 +51,14 @@ dependencies {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~System Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 testSets { systest }
 
-check.dependsOn systest
 
 systest.mustRunAfter test
 
 systest {
     ignoreFailures = true
 }
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 spotbugs{
@@ -113,7 +114,7 @@ task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest', 'spotbug
     into 'build/reports'
 }
 
-task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports',]) {
+task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports', 'spotbugsMain']) {
     group = "Reporting"
     description  'Commit and push website changes to GitHub'
 }
