@@ -79,6 +79,18 @@ spotbugs{
     }
 }
 
+jacoco{
+    toolVersion = "0.8.7"
+    reportsDir = file("build/reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
 tasks.withType(Test) {
     useJUnitPlatform()
     ignoreFailures = true
@@ -96,12 +108,12 @@ task copyHTML (type: Copy, dependsOn: ['build']) {
     into 'build/reports'
 }
 
-task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest']) {
+task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest', 'spotbugsMain', 'jacocoTestReport']) {
     from 'build/docs'
     into 'build/reports'
 }
 
-task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports']) {
+task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports',]) {
     group = "Reporting"
     description  'Commit and push website changes to GitHub'
 }
