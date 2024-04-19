@@ -40,6 +40,9 @@ dependencies {
     testImplementation 'org.jmockit:jmockit:1.49'
     implementation 'edu.odu.cs.extract:extract-wordlists:4.2'
     implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.6'
+    spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.12.0")
+
+
 
     //testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.1"//for system tests
     //testRuntime "org.junit.jupiter:junit-jupiter-engine:5.6.1"//for system tests
@@ -48,7 +51,6 @@ dependencies {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~System Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 testSets { systest }
 
-check.dependsOn systest
 
 systest.mustRunAfter test
 
@@ -56,7 +58,39 @@ systest {
     ignoreFailures = true
 }
 
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+spotbugs{
+    toolVersion = "4.6.0"
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "high"
+    
+    [spotbugsMain, spotbugsTest].each { task ->
+        task.configure {
+            reports {
+                html {
+                    enabled = true
+                    stylesheet = 'fancy-hist.xsl'
+                    destination = file("build/reports/spotbugs/index.html")
+                }
+            }
+        }
+    }
+}
+
+jacoco{
+    toolVersion = "0.8.7"
+    reportsDir = file("build/reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
 
 tasks.withType(Test) {
     useJUnitPlatform()
@@ -75,12 +109,12 @@ task copyHTML (type: Copy, dependsOn: ['build']) {
     into 'build/reports'
 }
 
-task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest']) {
+task reports (type: Copy, dependsOn: ['javadoc', 'copyHTML', 'systest', 'spotbugsMain', 'jacocoTestReport']) {
     from 'build/docs'
     into 'build/reports'
 }
 
-task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports']) {
+task deployReports (type: Delete, dependsOn: ['gitPublishPush', 'reports', 'spotbugsMain']) {
     group = "Reporting"
     description  'Commit and push website changes to GitHub'
 }

@@ -168,6 +168,7 @@ class InputStreamIterable implements Iterable<String> {
      * 
      * @return An iterator.
      */
+    @Override
     public Iterator<String> iterator() {
         Scanner scanner = new Scanner(inputStream);
         try {
