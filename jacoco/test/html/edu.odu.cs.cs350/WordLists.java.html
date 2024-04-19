@@ -22,7 +22,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; englishDictionary() {
 <span class="nc" id="L24">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.english.txt&quot;);</span>
-<span class="nc" id="L25">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L25">        return new StreamInput(list);</span>
     }
 
     /**
@@ -32,7 +32,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; stopList() {
 <span class="nc" id="L34">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Stoplist.english.txt&quot;);</span>
-<span class="nc" id="L35">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L35">        return new StreamInput(list);</span>
     }
 
     /**
@@ -42,7 +42,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; citiesAndStatesUS() {
 <span class="nc" id="L44">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.citiesStates.txt&quot;);</span>
-<span class="nc" id="L45">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L45">        return new StreamInput(list);</span>
     }
 
     /**
@@ -52,7 +52,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; countriesAndTerritories() {
 <span class="nc" id="L54">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.territories.txt&quot;);</span>
-<span class="nc" id="L55">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L55">        return new StreamInput(list);</span>
     }
 
     /**
@@ -62,7 +62,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; places() {
 <span class="nc" id="L64">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.placenames.txt&quot;);</span>
-<span class="nc" id="L65">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L65">        return new StreamInput(list);</span>
     }
 
     /**
@@ -72,7 +72,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; firstNames() {
 <span class="nc" id="L74">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.firstNames.txt&quot;);</span>
-<span class="nc" id="L75">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L75">        return new StreamInput(list);</span>
     }
 
     /**
@@ -82,7 +82,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; lastNames() {
 <span class="nc" id="L84">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.lastNames.txt&quot;);</span>
-<span class="nc" id="L85">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L85">        return new StreamInput(list);</span>
     }
 
     /**
@@ -92,7 +92,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; commonFirstNames() {
 <span class="nc" id="L94">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.commonFirstNames.txt&quot;);</span>
-<span class="nc" id="L95">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L95">        return new StreamInput(list);</span>
     }
 
     /**
@@ -102,7 +102,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; commonLastNames() {
 <span class="nc" id="L104">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.commonLastNames.txt&quot;);</span>
-<span class="nc" id="L105">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L105">        return new StreamInput(list);</span>
     }
 
     /**
@@ -112,7 +112,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; honorifics() {
 <span class="nc" id="L114">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.honorifics.txt&quot;);</span>
-<span class="nc" id="L115">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L115">        return new StreamInput(list);</span>
     }
 
     /**
@@ -122,7 +122,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; lastNamePrefixes() {
 <span class="nc" id="L124">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.prefixes.txt&quot;);</span>
-<span class="nc" id="L125">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L125">        return new StreamInput(list);</span>
     }
 
     /**
@@ -132,7 +132,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; lastNameSuffixes() {
 <span class="nc" id="L134">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.suffixes.txt&quot;);</span>
-<span class="nc" id="L135">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L135">        return new StreamInput(list);</span>
     }
 
     /**
@@ -142,7 +142,7 @@ public final class WordLists {
      */
     public static Iterable&lt;String&gt; nonPersonalIdentifierCues() {
 <span class="nc" id="L144">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.nonPersonalProperNames.txt&quot;);</span>
-<span class="nc" id="L145">        return new InputStreamIterable(list);</span>
+<span class="nc" id="L145">        return new StreamInput(list);</span>
     }
 
 }
@@ -150,7 +150,7 @@ public final class WordLists {
 /**
  * This class provides an iterable for an input stream of strings.
  */
-class InputStreamIterable implements Iterable&lt;String&gt; {
+class StreamInput implements Iterable&lt;String&gt; {
     // InputStream variable
     private InputStream inputStream;
 
@@ -159,7 +159,7 @@ class InputStreamIterable implements Iterable&lt;String&gt; {
      * 
      * @param inputStream The input stream containing strings.
      */
-<span class="nc" id="L162">    public InputStreamIterable(InputStream inputStream) {</span>
+<span class="nc" id="L162">    public StreamInput(InputStream inputStream) {</span>
 <span class="nc" id="L163">        this.inputStream = inputStream;</span>
 <span class="nc" id="L164">    }</span>
 
