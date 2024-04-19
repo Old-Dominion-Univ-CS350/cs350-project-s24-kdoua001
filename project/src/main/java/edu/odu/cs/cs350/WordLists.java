@@ -9,6 +9,7 @@ import java.util.Scanner;
  * This class provides utility methods to access various word lists.
  */
 public final class WordLists {
+    // Package path to contain word lists
     private static String packagePath = "project/src/resources/extract/edu/odu/cs/extract/wordlists";
 
     private WordLists() {
@@ -21,7 +22,7 @@ public final class WordLists {
      */
     public static Iterable<String> englishDictionary() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.english.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -29,9 +30,9 @@ public final class WordLists {
      * 
      * @return An iterable for the stoplist word list.
      */
-    public static Iterable<String> stoplist() {
+    public static Iterable<String> stopList() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Stoplist.english.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -41,7 +42,7 @@ public final class WordLists {
      */
     public static Iterable<String> citiesAndStatesUS() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.citiesStates.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -51,7 +52,7 @@ public final class WordLists {
      */
     public static Iterable<String> countriesAndTerritories() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.territories.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -61,7 +62,7 @@ public final class WordLists {
      */
     public static Iterable<String> places() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.placenames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -71,7 +72,7 @@ public final class WordLists {
      */
     public static Iterable<String> firstNames() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.firstNames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -81,7 +82,7 @@ public final class WordLists {
      */
     public static Iterable<String> lastNames() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.lastNames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -91,7 +92,7 @@ public final class WordLists {
      */
     public static Iterable<String> commonFirstNames() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.commonFirstNames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -101,7 +102,7 @@ public final class WordLists {
      */
     public static Iterable<String> commonLastNames() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.commonLastNames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -111,7 +112,7 @@ public final class WordLists {
      */
     public static Iterable<String> honorifics() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.honorifics.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -121,7 +122,7 @@ public final class WordLists {
      */
     public static Iterable<String> lastNamePrefixes() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.prefixes.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -131,7 +132,7 @@ public final class WordLists {
      */
     public static Iterable<String> lastNameSuffixes() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.suffixes.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
     /**
@@ -141,7 +142,7 @@ public final class WordLists {
      */
     public static Iterable<String> nonPersonalIdentifierCues() {
         InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.nonPersonalProperNames.txt");
-        return new StreamIterable(list);
+        return new InputStreamIterable(list);
     }
 
 }
@@ -149,7 +150,8 @@ public final class WordLists {
 /**
  * This class provides an iterable for an input stream of strings.
  */
-class StreamIterable implements Iterable<String> {
+class InputStreamIterable implements Iterable<String> {
+    // InputStream variable
     private InputStream inputStream;
 
     /**
@@ -157,7 +159,7 @@ class StreamIterable implements Iterable<String> {
      * 
      * @param inputStream The input stream containing strings.
      */
-    public StreamIterable(InputStream inputStream) {
+    public InputStreamIterable(InputStream inputStream) {
         this.inputStream = inputStream;
     }
 
