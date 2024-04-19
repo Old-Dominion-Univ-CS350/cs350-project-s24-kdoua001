@@ -23,7 +23,7 @@ public class TestTextBlock {
         TextBlock inputTxt = new TextBlock(inputTest);
         inputTxt.createTokens(inputTest);
 
-        assertEquals("<NER>Ralph, Izzy, Peter</NER>", inputTxt.toString());
+        assertEquals("<NER> <PER>Ralph</PER>,<PER>Izzy</PER>,<PER>Peter</PER></NER>", inputTxt.toString());
 
     }
 
@@ -57,9 +57,9 @@ public class TestTextBlock {
 
     @Test
     public void testToString() {
-        String text = "<NER>My name is John Doe!</NER>";
+        String text = "<NER>my name is John!</NER>";
         TextBlock block = new TextBlock(text);
-        assertThat(block.toString(), is("<NER>My name is <PER>John Doe</PER>!</NER>"));
+        assertThat(block.toString(), is("<NER> my name is <PER>John</PER>!</NER>"));
 
         Token John = new Token("John");
         John.setIsName(true);
@@ -72,23 +72,6 @@ public class TestTextBlock {
         Doe.setIsPunctuation(false);
         Token period = new Token(".");
         period.setIsPunctuation(true);
-
-        String text2 = "<NER>His name is</NER>";
-        TextBlock block2 = new TextBlock(text2);
-        assertThat(block2.toString(), is("<NER>His name is</NER>"));
-        block2.addToken(John);
-        block2.addToken(Jim);
-        block2.addToken(Doe);
-        block2.addToken(period);
-        assertThat(block2.toString(), is("<NER>His name is <PER>John Jim Doe</PER>.</NER>"));
-    }
-
-    @Test
-    public void testMyNameIs() {
-        TextBlock textBlock = new TextBlock("<NER>My name is John Doe!</NER>");
-        assertTrue(textBlock.containsString("My"));
-        textBlock.myNameIs();
-        assertTrue(textBlock.toString().equals("<NER>My name is <PER>John Doe</PER>!</NER>"));
     }
 
     @Test

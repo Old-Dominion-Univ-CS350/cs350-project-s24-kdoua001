@@ -61,7 +61,7 @@ public class Extractor {
 
         // Output the extracted blocks
         // System.out.println("Extracted Blocks:");
-        Document.printDocumentWithPersonalNamesTag();
+        Document.printDocument();
     }
     /*
      * try {
