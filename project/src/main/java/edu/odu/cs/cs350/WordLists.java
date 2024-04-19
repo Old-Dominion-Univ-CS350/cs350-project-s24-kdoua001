@@ -1,8 +1,13 @@
 
 package edu.odu.cs.cs350;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -168,13 +173,76 @@ class StreamInput implements Iterable<String> {
      * 
      * @return An iterator.
      */
-    @Override
     public Iterator<String> iterator() {
-        Scanner scanner = new Scanner(inputStream);
+        return new InputStreamIterator(this.inputStream);
+    }
+
+}
+
+/**
+ * This class provides an iterator over an input stream of strings.
+ */
+class InputStreamIterator implements Iterator<String> {
+    // BufferReader variable
+    private BufferedReader in;
+    // String variable
+    private String buffer;
+
+    /**
+     * Constructs an InputStreamIterator object with the specified input stream.
+     * 
+     * @param input The input stream to iterate over.
+     */
+    public InputStreamIterator(InputStream input) {
+        this.in = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));
+
         try {
-            return scanner.useDelimiter("\\A").tokens().iterator();
-        } finally {
-            scanner.close();
+            this.buffer = this.in.readLine();
+        } catch (IOException var3) {
+            this.buffer = null;
         }
+
+    }
+
+    /**
+     * Checks if there are more elements in the input stream.
+     * 
+     * @return true if there are more elements, otherwise false.
+     */
+
+    public boolean hasNext() {
+        return this.buffer != null;
+    }
+
+    /**
+     * Retrieves the next element from the input stream.
+     * 
+     * @return The next element.
+     * @throws NoSuchElementException if there are no more elements.
+     */
+
+    public String next() {
+        if (this.buffer == null) {
+            throw new NoSuchElementException();
+        } else {
+            String current = this.buffer;
+
+            try {
+                this.buffer = this.in.readLine();
+            } catch (IOException var3) {
+                this.buffer = null;
+            }
+
+            return current;
+        }
+    }
+
+    /**
+     * Removes the current element from the input stream (unsupported operation).
+     * 
+     * @throws UnsupportedOperationException always, as remove() is not supported.
+     */
+    public void remove() {
+        throw new UnsupportedOperationException("remove() is not supported on InputStreamIterators");
     }
 }
