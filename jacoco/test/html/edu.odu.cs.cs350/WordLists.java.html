@@ -166,12 +166,13 @@ class StreamIterable implements Iterable&lt;String&gt; {
      * 
      * @return An iterator.
      */
+    @Override
     public Iterator&lt;String&gt; iterator() {
-<span class="nc" id="L170">        Scanner scanner = new Scanner(inputStream);</span>
+<span class="nc" id="L171">        Scanner scanner = new Scanner(inputStream);</span>
         try {
-<span class="nc" id="L172">            return scanner.useDelimiter(&quot;\\A&quot;).tokens().iterator();</span>
+<span class="nc" id="L173">            return scanner.useDelimiter(&quot;\\A&quot;).tokens().iterator();</span>
         } finally {
-<span class="nc" id="L174">            scanner.close();</span>
+<span class="nc" id="L175">            scanner.close();</span>
         }
     }
 }
