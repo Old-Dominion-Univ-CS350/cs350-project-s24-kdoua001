@@ -362,4 +362,14 @@ public class Token {
 
     }
 
+    public void detectCommonFirstName() {
+        Iterable<String> commonFirstNames = WordLists.commonFirstNames();
+        for (String name : commonFirstNames) {
+            if (tokenString.equalsIgnoreCase(name)) {
+                commonFirst = true;
+                return;
+            }
+        }
+        commonFirst = false;
+    }
 }
