@@ -408,4 +408,13 @@ public class TestToken {
 
     }
 
+    @Test
+    public void testSetIsCommonFirstName() {
+        String token = "John";
+        Token tokenizePersonalNameInput = new Token(token);
+        // tokenizePersonalNameInput.detectCommonFirstName(
+
+        // assertTrue(tokenizePersonalNameInput.isCommonFirst());
+    }
+
 }
