@@ -372,5 +372,16 @@ public class Token {
 <span class="fc" id="L372">        }</span>
 <span class="nc" id="L373">        commonFirst = false;</span>
 <span class="nc" id="L374">    }</span>
+
+    public void detectCommonLastName() {
+<span class="fc" id="L377">        Iterable&lt;String&gt; commonLastNames = WordLists.commonLastNames();</span>
+<span class="pc bpc" id="L378" title="1 of 2 branches missed.">        for (String lastnames : commonLastNames) {</span>
+<span class="fc bfc" id="L379" title="All 2 branches covered.">            if (tokenString.equalsIgnoreCase(lastnames)) {</span>
+<span class="fc" id="L380">                commonLast = true;</span>
+<span class="fc" id="L381">                return;</span>
+            }
+<span class="fc" id="L383">        }</span>
+<span class="nc" id="L384">        commonLast = false;</span>
+<span class="nc" id="L385">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
