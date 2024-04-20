@@ -1,16 +1,22 @@
 package edu.odu.cs.cs350;
 
-import java.net.URL;
-
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class testWorldLists {
     @Test
     public void testSetIsCommonFirstNamesFileLoading() {
-        String fileName = "project/src/resources/extract/edu/odu/cs/extract/wordlists/Dictionary.commonFirstNames.txt";
-        URL resourceUrl = WordLists.class.getResource(fileName);
-        // assertNotNull(resourceUrl, "Failed to load resource file: " + fileName);
+        // String fileName = "/Dictionary.commonFirstNames.txt";
+        Iterable resourceUrl = WordLists.commonFirstNames();
+        assertNotNull(resourceUrl, "Failed to load resource file");
+        assertEquals(resourceUrl.iterator().next(), "mary");
+    }
 
+    @Test
+    public void testSetIsCommonLastNamesFileLoading() {
+        // String fileName = "/Dictionary.commonFirstNames.txt";
+        Iterable resourceUrl = WordLists.commonLastNames();
+        assertNotNull(resourceUrl, "Failed to load resource file");
+        assertEquals(resourceUrl.iterator().next(), "smith");
     }
 }

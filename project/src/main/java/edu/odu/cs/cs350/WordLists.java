@@ -1,4 +1,3 @@
-
 package edu.odu.cs.cs350;
 
 import java.io.BufferedReader;
@@ -15,7 +14,7 @@ import java.util.Scanner;
  */
 public final class WordLists {
     // Package path to contain word lists
-    private static String packagePath = "project/src/resources/extract/edu/odu/cs/extract/wordlists";
+    private static String packagePath = "/";
 
     private WordLists() {
     }
@@ -96,7 +95,7 @@ public final class WordLists {
      * @return An iterable for the list of common first names.
      */
     public static Iterable<String> commonFirstNames() {
-        InputStream list = WordLists.class.getResourceAsStream(packagePath + "Dictionary.commonFirstNames.txt");
+        InputStream list = WordLists.class.getResourceAsStream(packagePath + "commonFirstNames.txt");
         return new StreamInput(list);
     }
 
