@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public final class WordLists {
     // Package path to contain word lists
-<span class="nc" id="L17">    private static String packagePath = &quot;/&quot;;</span>
+<span class="fc" id="L17">    private static String packagePath = &quot;/&quot;;</span>
 
     private WordLists() {
     }
@@ -95,8 +95,8 @@ public final class WordLists {
      * @return An iterable for the list of common first names.
      */
     public static Iterable&lt;String&gt; commonFirstNames() {
-<span class="nc" id="L98">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;commonFirstNames.txt&quot;);</span>
-<span class="nc" id="L99">        return new StreamInput(list);</span>
+<span class="fc" id="L98">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;commonFirstNames.txt&quot;);</span>
+<span class="fc" id="L99">        return new StreamInput(list);</span>
     }
 
     /**
@@ -163,9 +163,9 @@ class StreamInput implements Iterable&lt;String&gt; {
      * 
      * @param inputStream The input stream containing strings.
      */
-<span class="nc" id="L166">    public StreamInput(InputStream inputStream) {</span>
-<span class="nc" id="L167">        this.inputStream = inputStream;</span>
-<span class="nc" id="L168">    }</span>
+<span class="fc" id="L166">    public StreamInput(InputStream inputStream) {</span>
+<span class="fc" id="L167">        this.inputStream = inputStream;</span>
+<span class="fc" id="L168">    }</span>
 
     /**
      * Returns an iterator over the elements in the input stream.
@@ -173,7 +173,7 @@ class StreamInput implements Iterable&lt;String&gt; {
      * @return An iterator.
      */
     public Iterator&lt;String&gt; iterator() {
-<span class="nc" id="L176">        return new InputStreamIterator(this.inputStream);</span>
+<span class="fc" id="L176">        return new InputStreamIterator(this.inputStream);</span>
     }
 
 }
@@ -192,16 +192,16 @@ class InputStreamIterator implements Iterator&lt;String&gt; {
      * 
      * @param input The input stream to iterate over.
      */
-<span class="nc" id="L195">    public InputStreamIterator(InputStream input) {</span>
-<span class="nc" id="L196">        this.in = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));</span>
+<span class="fc" id="L195">    public InputStreamIterator(InputStream input) {</span>
+<span class="fc" id="L196">        this.in = new BufferedReader(new InputStreamReader(input, StandardCharsets.UTF_8));</span>
 
         try {
-<span class="nc" id="L199">            this.buffer = this.in.readLine();</span>
+<span class="fc" id="L199">            this.buffer = this.in.readLine();</span>
 <span class="nc" id="L200">        } catch (IOException var3) {</span>
 <span class="nc" id="L201">            this.buffer = null;</span>
-<span class="nc" id="L202">        }</span>
+<span class="fc" id="L202">        }</span>
 
-<span class="nc" id="L204">    }</span>
+<span class="fc" id="L204">    }</span>
 
     /**
      * Checks if there are more elements in the input stream.
@@ -210,7 +210,7 @@ class InputStreamIterator implements Iterator&lt;String&gt; {
      */
 
     public boolean hasNext() {
-<span class="nc bnc" id="L213" title="All 2 branches missed.">        return this.buffer != null;</span>
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">        return this.buffer != null;</span>
     }
 
     /**
@@ -221,18 +221,18 @@ class InputStreamIterator implements Iterator&lt;String&gt; {
      */
 
     public String next() {
-<span class="nc bnc" id="L224" title="All 2 branches missed.">        if (this.buffer == null) {</span>
+<span class="pc bpc" id="L224" title="1 of 2 branches missed.">        if (this.buffer == null) {</span>
 <span class="nc" id="L225">            throw new NoSuchElementException();</span>
         } else {
-<span class="nc" id="L227">            String current = this.buffer;</span>
+<span class="fc" id="L227">            String current = this.buffer;</span>
 
             try {
-<span class="nc" id="L230">                this.buffer = this.in.readLine();</span>
+<span class="fc" id="L230">                this.buffer = this.in.readLine();</span>
 <span class="nc" id="L231">            } catch (IOException var3) {</span>
 <span class="nc" id="L232">                this.buffer = null;</span>
-<span class="nc" id="L233">            }</span>
+<span class="fc" id="L233">            }</span>
 
-<span class="nc" id="L235">            return current;</span>
+<span class="fc" id="L235">            return current;</span>
         }
     }
 
