@@ -409,12 +409,22 @@ public class TestToken {
     }
 
     @Test
-    public void testSetIsCommonFirstName() {
+    public void testDetectCommonFirstName() {
         String token = "John";
         Token tokenizePersonalNameInput = new Token(token);
         tokenizePersonalNameInput.detectCommonFirstName();
 
-         assertTrue(tokenizePersonalNameInput.isCommonFirst());
+        assertTrue(tokenizePersonalNameInput.isCommonFirst());
+    }
+
+    @Test
+    public void testDetectCommonLastName() {
+        String token = "Washington";
+        Token tokenizer = new Token(token);
+        tokenizer.detectCommonLastName();
+
+        assertTrue(tokenizer.isCommonLast());
+
     }
 
 }
