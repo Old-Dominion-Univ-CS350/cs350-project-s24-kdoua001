@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    //testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     testImplementation 'org.jmockit:jmockit:1.49'
     implementation 'edu.odu.cs.extract:extract-wordlists:4.2'
@@ -44,11 +44,14 @@ dependencies {
 
 
 
-    //testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.1"//for system tests
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.1"//for system tests
     //testRuntime "org.junit.jupiter:junit-jupiter-engine:5.6.1"//for system tests
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.1'
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~System Test~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 testSets { systest }
 
 
@@ -82,13 +85,13 @@ spotbugs{
 
 jacoco{
     toolVersion = "0.8.7"
-    reportsDir = file("build/reports/jacoco")
+    reportsDirectory = file("build/reports/jacoco")
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled false
-        html.enabled true
+        xml.enabled = false
+        html.enabled = true
     }
 }
 
