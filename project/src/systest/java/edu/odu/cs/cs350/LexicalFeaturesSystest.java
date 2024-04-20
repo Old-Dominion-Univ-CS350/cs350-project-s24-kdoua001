@@ -30,7 +30,7 @@ public class LexicalFeaturesSystest{
 
     @Test
     public void systemTest() throws Exception {
-        String expected = "<NER>\n <PER>Matthew A Haydon</PER> is a person, 8 is a number, and <PER>PETER</PER> is also a person.</NER>";
+        String expected = "<NER>\n<PER>Matthew A Haydon</PER> is a person, 8 is a number, and <PER>PETER</PER> is also a person.</NER>";
         
         // Read the content of the input file
         String inputFileContent = new String(Files.readAllBytes(Paths.get("src/systest/data/LexicalFeatures.txt")), StandardCharsets.UTF_8);
