@@ -65,7 +65,8 @@ public class Token {
     private FeatureOfSpeech speechFeature;
 
     /**
-     * Flag indicating whether the assinged string is possibly part of the english language
+     * Flag indicating whether the assinged string is possibly part of the english
+     * language
      * 
      */
     private boolean isEnglishWord;
@@ -87,7 +88,9 @@ public class Token {
         this.isEnglishWord = false;
         detectFeatureOfSpeech();
         detectLexicalFeature();
+        detectCommonFirstName();
         detectEnglishWord();
+        detectCommonLastName();
 
     }
 
@@ -392,18 +395,18 @@ public class Token {
         commonLast = false;
     }
 
-    public boolean getIsEnglishWord(){
+    public boolean getIsEnglishWord() {
         return isEnglishWord;
     }
 
-    public void setIsEnglishWord(boolean isEqualTo){
+    public void setIsEnglishWord(boolean isEqualTo) {
         isEnglishWord = isEqualTo;
     }
 
-    public void detectEnglishWord(){
+    public void detectEnglishWord() {
         Iterable<String> englishDictionary = WordLists.englishDictionary();
-        for (String dictionaryWord: englishDictionary){
-            if (dictionaryWord.equalsIgnoreCase(tokenString)){
+        for (String dictionaryWord : englishDictionary) {
+            if (dictionaryWord.equalsIgnoreCase(tokenString)) {
                 setIsEnglishWord(true);
                 return;
             }
@@ -411,5 +414,5 @@ public class Token {
         setIsEnglishWord(false);
         return;
     }
-    
+
 }
