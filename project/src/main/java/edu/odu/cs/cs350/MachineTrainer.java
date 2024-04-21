@@ -53,7 +53,7 @@ public class MachineTrainer {
      * @return The best tuned SMO model.
      * @throws Exception if there is an error during the model evaluation.
      */
-    private SMO tuneParameters(Instances data) throws Exception {
+    public SMO tuneParameters(Instances data) throws Exception {
         double bestC = 1.0;
         double bestResult = 0.0;
 

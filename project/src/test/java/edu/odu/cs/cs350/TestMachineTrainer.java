@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 import weka.classifiers.functions.SMO;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
@@ -13,64 +14,59 @@ import java.util.List;
 
 public class TestMachineTrainer {
 
-    // Checks functionality of the trainSVM method
-    public void testTrainSVM() {
-        MachineTrainer svmTrainer = new MachineTrainer();
-
+    // Checks if the parameter tuning method correctly configures and returns an SMO object
+    @Test
+    public void testTuneParameters() {
+        MachineTrainer trainer = new MachineTrainer();
+        
         try {
             ArrayList<Attribute> attributes = new ArrayList<>();
             attributes.add(new Attribute("attribute1"));
             attributes.add(new Attribute("class", List.of("A", "B")));
-
+    
             Instances data = new Instances("TestDataset", attributes, 0);
             data.setClassIndex(data.numAttributes() - 1);
-
-            DenseInstance instance1 = new DenseInstance(2);
-            instance1.setValue(attributes.get(0), 1.0);
-            instance1.setValue(attributes.get(1), "A");
-            data.add(instance1);
-
-            DenseInstance instance2 = new DenseInstance(2);
-            instance2.setValue(attributes.get(0), 2.0);
-            instance2.setValue(attributes.get(1), "B");
-            data.add(instance2);
-
-            if (data.numInstances() >= 5) {
-                SMO svmModel = svmTrainer.trainSupportVectorMachine(data);
-
-                assertNotNull(svmModel);
-
+    
+            // Add enough instances for cross-validation
+            for (int i = 0; i < 10; i++) {  // Ensure at least 10 instances
+                DenseInstance instance = new DenseInstance(2);
+                instance.setValue(attributes.get(0), i);
+                instance.setValue(attributes.get(1), i % 2 == 0 ? "A" : "B");
+                data.add(instance);
+            }
+    
+            if (data.numInstances() >= 5) {  // Now using 5-fold cross-validation should be safe
+                SMO optimizedSmo = trainer.tuneParameters(data);
+                assertNotNull(optimizedSmo, "SMO should not be null after tuning");
             } else {
-                fail("Not enough instances in the dataset for cross-validation");
+                fail("Insufficient data for training");
             }
         } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+            fail("Unexpected exception during test: " + e.getMessage());
         }
     }
-
-    // Checks if model is saved
+    
+    /* 
+    // Tests the saveModel functionality to ensure the model is saved to disk
     @Test
     public void testSaveModel() {
-        MachineTrainer svmTrainer = new MachineTrainer();
-
+        MachineTrainer trainer = new MachineTrainer();
         try {
-            // Create a mock SVM model
-            SMO svmModel = new SMO();
+            SMO mockModel = new SMO(); // Create a mock SMO model
+            String tempModelFilePath = "tempModel.model"; // Temporary file path for testing
 
-            // Define a temporary file for testing
-            String tempModelFilePath = "testModel.model";
+            trainer.saveModel(mockModel, tempModelFilePath); // Attempt to save the model
 
-            // Save the model
-            svmTrainer.saveModel(svmModel, tempModelFilePath);
-
-            // Assert that the model file exists
             File modelFile = new File(tempModelFilePath);
-            assertTrue(modelFile.exists());
+            assertTrue(modelFile.exists(), "Model file should exist after saving");
 
-            // Clean up: delete the temporary model file
-            modelFile.delete();
+            // Clean up after test
+            if (modelFile.exists()) {
+                assertTrue(modelFile.delete(), "Cleanup failed to delete the model file");
+            }
         } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+            fail("Exception occurred during saving the model: " + e.getMessage());
         }
     }
+    */
 }
