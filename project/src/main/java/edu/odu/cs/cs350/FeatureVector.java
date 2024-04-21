@@ -29,7 +29,8 @@ public class FeatureVector {
 
         // Create instances object with the defined attributes
         Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
-
+        data.setClassIndex(0);
+        
         for (Token token : tokenList) {
             double[] values = createAttributeValues(token);
 
