@@ -418,10 +418,6 @@ public class Token {
         return;
     }
 
-    public boolean getIsLocation()) {
-        return locationFlag;
-    }
-
     public void detectCitiesAndStates() {
         Iterable<String> citiesAndStates = WordLists.citiesAndStatesUS();
         for (String cityOrState : citiesAndStates) {
