@@ -91,6 +91,9 @@ public class Token {
         detectCommonFirstName();
         detectEnglishWord();
         detectCommonLastName();
+        detectCitiesAndStates();
+        detectCountriesAndTerritories();
+        detectPlaces();
 
     }
 
@@ -412,6 +415,46 @@ public class Token {
             }
         }
         setIsEnglishWord(false);
+        return;
+    }
+
+    public boolean getIsLocation()) {
+        return locationFlag;
+    }
+
+    public void detectCitiesAndStates() {
+        Iterable<String> citiesAndStates = WordLists.citiesAndStatesUS();
+        for (String cityOrState : citiesAndStates) {
+            if (cityOrState.equalsIgnoreCase(tokenString)) {
+                setIsLocation(true);
+                return;
+            }
+        }
+        setIsLocation(false);
+        return;
+    }
+
+    public void detectCountriesAndTerritories() {
+        Iterable<String> countriesAndTerritories = WordLists.countriesAndTerritories();
+        for (String countryOrTerritory : countriesAndTerritories) {
+            if (countryOrTerritory.equalsIgnoreCase(tokenString)) {
+                setIsLocation(true);
+                return;
+            }
+        }
+        setIsLocation(false);
+        return;
+    }
+
+    public void detectPlaces() {
+        Iterable<String> places = WordLists.places();
+        for (String place : places) {
+            if (place.equalsIgnoreCase(tokenString)) {
+                setIsLocation(true);
+                return;
+            }
+        }
+        setIsLocation(false);
         return;
     }
 
