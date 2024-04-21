@@ -65,6 +65,12 @@ public class Token {
     private FeatureOfSpeech speechFeature;
 
     /**
+     * Flag indicating whether the assinged string is possibly part of the english language
+     * 
+     */
+    private boolean isEnglishWord;
+
+    /**
      * Constructor for Token.
      * 
      * @param assignedString string to assign to token
@@ -78,8 +84,10 @@ public class Token {
         this.honorificFlag = false;
         this.killWordFlag = false;
         this.punctuationFlag = false;
-        DetectFeatureOfSpeech();
+        this.isEnglishWord = false;
+        detectFeatureOfSpeech();
         detectLexicalFeature();
+        detectEnglishWord();
 
     }
 
@@ -300,7 +308,7 @@ public class Token {
     /**
      * Assigns the Token a Feature of Speech Type.
      */
-    public void DetectFeatureOfSpeech() {
+    public void detectFeatureOfSpeech() {
 
         Tagger tagger = new Tagger();
 
@@ -372,4 +380,26 @@ public class Token {
         }
         commonFirst = false;
     }
+
+    public boolean getIsEnglishWord(){
+        return isEnglishWord;
+    }
+
+    public void setIsEnglishWord(boolean isEqualTo){
+        isEnglishWord = isEqualTo;
+    }
+
+    public void detectEnglishWord(){
+        Iterable<String> englishDictionary = WordLists.englishDictionary();
+        for (String dictionaryWord: englishDictionary){
+            if (dictionaryWord.equalsIgnoreCase(tokenString)){
+                setIsEnglishWord(true);
+                return;
+            }
+        }
+        setIsEnglishWord(false);
+        return;
+    }
+
+
 }

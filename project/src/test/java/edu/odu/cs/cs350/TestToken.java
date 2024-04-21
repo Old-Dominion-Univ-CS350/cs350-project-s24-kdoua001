@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import weka.core.pmml.jaxbbindings.True;
+
 public class TestToken {
 
     @Test
@@ -415,6 +417,27 @@ public class TestToken {
         tokenizePersonalNameInput.detectCommonFirstName();
 
          assertTrue(tokenizePersonalNameInput.isCommonFirst());
+    }
+
+    @Test
+    public void testGetisEnglishWord() {
+        Token test_token = new Token("hero");
+        assertEquals(true, test_token.getIsEnglishWord());
+    }
+
+    @Test
+    public void testSetisEnglishWord() {
+        Token test_token = new Token("hero");
+        test_token.setIsEnglishWord(true);
+        assertTrue(test_token.getIsEnglishWord());
+    }
+
+    @Test
+    public void testDetectEnglishWord() {
+        Token test_token = new Token("hero");
+        Token test_token2 = new Token("marshussy");
+        assertTrue(test_token.getIsEnglishWord());
+        assertFalse(test_token2.getIsEnglishWord());
     }
 
 }
