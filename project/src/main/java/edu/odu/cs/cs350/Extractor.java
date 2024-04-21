@@ -1,116 +1,46 @@
 package edu.odu.cs.cs350;
 
-import java.io.File;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Random;
-
-import weka.classifiers.functions.SMO;
-import weka.*;
+import weka.classifiers.Classifier;
 import weka.core.Instances;
-import weka.core.SerializationHelper;
-import weka.core.converters.ArffSaver;
-import weka.core.converters.ConverterUtils.DataSource;
-import weka.knowledgeflow.steps.Block;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * Main class for calling other classes and functions.
  */
 public class Extractor {
-    /*
-     * public static void main(String[] args) throws Exception {
-     * Scanner scanner = new Scanner(System.in);
-     * 
-     * System.out.print("Enter the path to the input file: ");
-     * String inputFile = scanner.nextLine();
-     * 
-     * // Check if the input file exists
-     * File file = new File(inputFile);
-     * if (!file.exists()) {
-     * System.out.println("Error: Input file not found.");
-     * return;
-     * }
-     * 
-     * System.out.println("Input file: " + inputFile);
-     * 
-     * scanner.close();
-     * 
-     * }
-     */
 
     /**
      * Main function.
      * 
-     * @param args args
-     * @throws Exception exception
+     * @param args command-line arguments
+     * @throws Exception if an error occurs during processing
      */
     public static void main(String[] args) throws Exception {
+        // Load the trained model
+        Classifier model = ModelLoader.loadModelFromJar();
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-        scanner.useDelimiter("\\A");
+        scanner.useDelimiter("\\A"); // Use beginning of input as delimiter to read entire input
         String contentOfFile = scanner.next();
         scanner.close();
 
-        Document Document = new Document(contentOfFile);
+        Document document = new Document(contentOfFile);
 
-        // Output the extracted blocks
-        // System.out.println("Extracted Blocks:");
-        Document.printDocument();
+        // Process each TextBlock in the document
+        for (TextBlock block : document.getBlocks()) {
+            FeatureVector featureVector = new FeatureVector();
+            Instances instances = featureVector.createVectors(block.getTokensList());
+            
+            instances.setClassIndex(instances.numAttributes() - 1);
+
+            // Use the model to predict and tag personal names
+            for (int i = 0; i < instances.numInstances(); i++) {
+                double classLabel = model.classifyInstance(instances.instance(i));
+                block.getTokensList().get(i).setIsName(classLabel == 1.0);
+            }
+
+            System.out.println(block.toString());
+        }
     }
-    /*
-     * try {
-     * // Load your data from wherever it is stored
-     * String dataFilePath = "project/src/main/data/trainingData.txt";
-     * Scanner dataScanner = new Scanner(new File(dataFilePath));
-     * StringBuilder dataBuilder = new StringBuilder();
-     * while (dataScanner.hasNextLine()) {
-     * dataBuilder.append(dataScanner.nextLine()).append("\n");
-     * }
-     * String data = dataBuilder.toString();
-     * dataScanner.close();
-     * 
-     * // Create a Document object
-     * Document document = new Document(data);
-     * 
-     * // Get the list of text blocks from the document
-     * List<TextBlock> blocks = document.getBlocks();
-     * 
-     * // Create a FeatureVector object
-     * FeatureVector featureVector = new FeatureVector();
-     * 
-     * // Create an empty list to store all tokens
-     * List<Token> allTokens = new ArrayList<>();
-     * 
-     * // Iterate over each text block
-     * for (TextBlock block : blocks) {
-     * // Get the list of tokens from the current text block
-     * List<Token> tokens = block.getTokensList();
-     * // Add these tokens to the list of all tokens
-     * allTokens.addAll(tokens);
-     * }
-     * 
-     * // Create feature vectors from all tokens
-     * Instances instances = featureVector.createVectors(allTokens);
-     * 
-     * // Train the SVM classifier
-     * SVMtrainer svmtrainer = new SVMtrainer();
-     * SMO svm = svmtrainer.trainSVM(instances);
-     * 
-     * // Save the trained model
-     * String modelFilePath = "project/src/resources/smo.model";
-     * svmtrainer.saveModel(svm, modelFilePath);
-     * 
-     * System.out.println("Training and saving the model completed successfully.");
-     * } catch (Exception e) {
-     * System.err.println("Error: " + e.getMessage());
-     * e.printStackTrace();
-     * }
-     * }
-     */
 }
