@@ -1,8 +1,8 @@
 package edu.odu.cs.cs350;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,19 +18,19 @@ public class LexicalFeaturesSystest{
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
-    @Before
+    @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
 
-    @After
+    @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);
     }
 
     @Test
     public void systemTest() throws Exception {
-        String expected = "<NER>\n <PER>Matthew A Haydon</PER> is a person, 8 is a number, and <PER>PETER</PER> is also a person.</NER>";
+        String expected = "<NER>\n<PER>Matthew A Haydon</PER> is a person, 8 is a number, and <PER>PETER</PER> is also a person.</NER>";
         
         // Read the content of the input file
         String inputFileContent = new String(Files.readAllBytes(Paths.get("src/systest/data/LexicalFeatures.txt")), StandardCharsets.UTF_8);

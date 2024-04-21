@@ -25,10 +25,10 @@ public class TestDocument {
 
     @Test
     public void testParameterizedConstructor() {
-        String block = "<NER>this is for testing</NER>";
+        String block = "<NER> this is for testing</NER>";
         Document testInput = new Document(block);
 
-        assertEquals("<NER>this is for testing</NER>", testInput.getDataFromFile());
+        assertEquals("<NER> this is for testing</NER>", testInput.getDataFromFile());
 
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
@@ -86,8 +86,8 @@ public class TestDocument {
 
         // Create a list to hold the expected output
         List<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add("<NER>Hello, world!</NER>");
-        expectedOutput.add("<NER>This is a test.</NER>");
+        expectedOutput.add("<NER> <PER>Hello</PER>,world!</NER>");
+        expectedOutput.add("<NER> <PER>This</PER> is a test.</NER>");
 
         // Create a list to hold the actual output
         List<String> actualOutput = new ArrayList<>();

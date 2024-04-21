@@ -381,6 +381,17 @@ public class Token {
         commonFirst = false;
     }
 
+    public void detectCommonLastName() {
+        Iterable<String> commonLastNames = WordLists.commonLastNames();
+        for (String lastnames : commonLastNames) {
+            if (tokenString.equalsIgnoreCase(lastnames)) {
+                commonLast = true;
+                return;
+            }
+        }
+        commonLast = false;
+    }
+
     public boolean getIsEnglishWord(){
         return isEnglishWord;
     }
@@ -400,6 +411,5 @@ public class Token {
         setIsEnglishWord(false);
         return;
     }
-
-
+    
 }
