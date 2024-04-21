@@ -18,6 +18,31 @@ jar {
     }
 }
 
+task customFatJar(type: Jar) {
+    archiveBaseName = 'PNE'
+    archiveVersion = '0.1.0'
+    archiveClassifier = null
+    manifest {
+        attributes 'Main-Class': 'edu.odu.cs.cs350.Extractor'
+    }
+
+    // Include all runtime classpath dependencies, but only JAR files
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('.jar') }.collect { zipTree(it) }
+    }
+
+    // Include all compiled classes and resources from your project
+    from sourceSets.main.output
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+task trainModel(type: JavaExec) {
+    main = 'edu.odu.cs.cs350.MachineTrainer'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'src/main/resources/trainingData.txt', 'src/main/resources/model/smo.model'
+}
+
 java {
     sourceCompatibility = JavaVersion.toVersion(11)
     targetCompatibility = JavaVersion.toVersion(11)
