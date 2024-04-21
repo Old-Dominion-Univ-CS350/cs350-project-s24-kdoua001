@@ -276,14 +276,17 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="edu/odu/cs/cs350/MachineTrainer.html" class="type-name-link" title="class in edu.odu.cs.cs350">MachineTrainer</a> - Class in <a href="edu/odu/cs/cs350/package-summary.html">edu.odu.cs.cs350</a></dt>
 <dd>
-<div class="block">This class provides methods for training and saving Support Vector Machine
- (SVM) models using WEKA.</div>
+<div class="block">Trains a machine learning model using the Weka library and saves the trained model.</div>
 </dd>
 <dt><a href="edu/odu/cs/cs350/MachineTrainer.html#%3Cinit%3E()" class="member-name-link">MachineTrainer()</a> - Constructor for class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Extractor.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Extractor.html" title="class in edu.odu.cs.cs350">Extractor</a></dt>
 <dd>
 <div class="block">Main function.</div>
+</dd>
+<dt><a href="edu/odu/cs/cs350/MachineTrainer.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
+<dd>
+<div class="block">The main method that runs the training process.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
@@ -339,10 +342,6 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="edu/odu/cs/cs350/MachineTrainer.html#saveModel(weka.classifiers.functions.SMO,java.lang.String)" class="member-name-link">saveModel(SMO, String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
-<dd>
-<div class="block">Saves the trained SVM model to a file.</div>
-</dd>
 <dt><a href="edu/odu/cs/cs350/Document.html#setDataFromFile(java.lang.String)" class="member-name-link">setDataFromFile(String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Document.html" title="class in edu.odu.cs.cs350">Document</a></dt>
 <dd>
 <div class="block">Setter for dataFromFile.</div>
@@ -431,9 +430,13 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="edu/odu/cs/cs350/Token.html#toString()" class="member-name-link">toString()</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/Token.html" title="class in edu.odu.cs.cs350">Token</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="edu/odu/cs/cs350/MachineTrainer.html#trainSupportVectorMachine(weka.core.Instances)" class="member-name-link">trainSupportVectorMachine(Instances)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
+<dt><a href="edu/odu/cs/cs350/MachineTrainer.html#trainAndSaveModel(java.lang.String,java.lang.String)" class="member-name-link">trainAndSaveModel(String, String)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
 <dd>
-<div class="block">Trains a Support Vector Machine (SVM) model.</div>
+<div class="block">Trains the SMO model using the specified data file and saves the trained model to the given path.</div>
+</dd>
+<dt><a href="edu/odu/cs/cs350/MachineTrainer.html#tuneParameters(weka.core.Instances)" class="member-name-link">tuneParameters(Instances)</a> - Method in class edu.odu.cs.cs350.<a href="edu/odu/cs/cs350/MachineTrainer.html" title="class in edu.odu.cs.cs350">MachineTrainer</a></dt>
+<dd>
+<div class="block">Tunes the SMO classifier by testing different configurations and selecting the one with the highest accuracy.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>

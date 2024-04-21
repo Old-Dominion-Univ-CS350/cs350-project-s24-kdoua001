@@ -1,84 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MachineTrainer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">MachineTrainer.java</span></div><h1>MachineTrainer.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
 
-import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
-import weka.classifiers.functions.supportVector.RBFKernel;
-import weka.core.Instance;
+import weka.classifiers.Evaluation;
 import weka.core.Instances;
-import weka.core.WekaPackageClassLoaderManager;
-
-import java.io.*;
-import java.lang.reflect.Method;
+import weka.core.SerializationHelper;
+import weka.core.Utils;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.List;
+import java.util.Random;
 
 /**
- * This class provides methods for training and saving Support Vector Machine
- * (SVM) models using WEKA.
+ * Trains a machine learning model using the Weka library and saves the trained model.
  */
-<span class="fc" id="L18">public class MachineTrainer {</span>
+<span class="fc" id="L17">public class MachineTrainer {</span>
 
     /**
-     * Trains a Support Vector Machine (SVM) model.
+     * Trains the SMO model using the specified data file and saves the trained model to the given path.
      *
-     * @param data The dataset to be used for training.
-     * @return The trained SVM model.
-     * @throws Exception If an error occurs during training.
+     * @param filePath The path to the training data file.
+     * @param modelPath The path where the trained model will be saved.
+     * @throws Exception if there is an error during the training or saving process.
      */
-    public SMO trainSupportVectorMachine(Instances data) throws Exception {
+    public void trainAndSaveModel(String filePath, String modelPath) throws Exception {
+<span class="nc" id="L27">        Document document = new Document(readFileContent(filePath));</span>
+<span class="nc" id="L28">        List&lt;TextBlock&gt; blocks = document.getBlocks();</span>
 
-<span class="nc" id="L29">        data.setClassIndex(data.numAttributes() - 1);</span>
-<span class="nc" id="L30">        String[] options = { &quot;-N&quot;, &quot;0&quot;, &quot;-V&quot;, &quot;-1&quot; };</span>
+<span class="nc" id="L30">        FeatureVector featureVector = new FeatureVector();</span>
+<span class="nc" id="L31">        Instances data = null;</span>
 
-        // Tuning hyperparameters gamma and C
-        /*
-         * double bestGamma = 0.01;
-         * double bestC = 8.0;
-         * double bestResult = 0.0;s
-         * 
-         * for (double gamma = 0.01; gamma &lt;= 0.1; gamma += 0.09 / 7) {
-         * for (double c = 8.0; c &lt;= 15.0; c += 7 / 7) {
-         * SMO svm = new SMO();
-         * svm.setOptions(options);
-         * svm.setKernel(new RBFKernel(data, 25007, gamma));
-         * svm.setC(c);
-         * 
-         * Evaluation eval = new Evaluation(data);
-         * eval.crossValidateModel(svm, data, 5, new java.util.Random(1));
-         * double score = eval.pctCorrect();
-         * 
-         * if (score &gt; bestResult) {
-         * bestResult = score;
-         * bestGamma = gamma;
-         * bestC = c;
-         * }
-         * }
-         * }
-         */
-        // Create SMO (Sequential Minimal Optimization) classifier with best parameters
-<span class="nc" id="L58">        SMO SupportVectorMachine = new SMO();</span>
-<span class="nc" id="L59">        SupportVectorMachine.setOptions(options);</span>
-        // svm.setKernel(new RBFKernel(data, 25007, bestGamma));
-        // svm.setC(bestC);
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (TextBlock block : blocks) {</span>
+<span class="nc" id="L34">            List&lt;Token&gt; tokens = block.getTokensList();</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (data == null) {</span>
+<span class="nc" id="L36">                data = featureVector.createVectors(tokens);</span>
+<span class="nc" id="L37">                data.setClassIndex(data.numAttributes() - 1);</span>
+            }
+<span class="nc" id="L39">            Instances newData = featureVector.createVectors(tokens);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            for (int i = 0; i &lt; newData.numInstances(); i++) {</span>
+<span class="nc" id="L41">                data.add(newData.instance(i));</span>
+            }
+<span class="nc" id="L43">        }</span>
 
-        // Train it
-<span class="nc" id="L64">        SupportVectorMachine.buildClassifier(data);</span>
+<span class="nc" id="L45">        SMO bestSmo = tuneParameters(data);</span>
+<span class="nc" id="L46">        saveModel(bestSmo, modelPath);</span>
+<span class="nc" id="L47">    }</span>
 
-<span class="nc" id="L66">        return SupportVectorMachine;</span>
+    /**
+     * Tunes the SMO classifier by testing different configurations and selecting the one with the highest accuracy.
+     *
+     * @param data The dataset to be used for tuning the model.
+     * @return The best tuned SMO model.
+     * @throws Exception if there is an error during the model evaluation.
+     */
+    public SMO tuneParameters(Instances data) throws Exception {
+<span class="fc" id="L57">        double bestC = 1.0;</span>
+<span class="fc" id="L58">        double bestResult = 0.0;</span>
+
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for (double c = 1.0; c &lt;= 10.0; c += 1.0) {</span>
+<span class="fc" id="L61">            SMO smo = new SMO();</span>
+<span class="fc" id="L62">            smo.setC(c);</span>
+<span class="fc" id="L63">            smo.setOptions(Utils.splitOptions(&quot;-L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1&quot;));</span>
+
+<span class="fc" id="L65">            Evaluation eval = new Evaluation(data);</span>
+<span class="fc" id="L66">            eval.crossValidateModel(smo, data, 5, new Random(1));</span>
+<span class="fc" id="L67">            double score = eval.pctCorrect();</span>
+
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            if (score &gt; bestResult) {</span>
+<span class="fc" id="L70">                bestResult = score;</span>
+<span class="fc" id="L71">                bestC = c;</span>
+            }
+        }
+
+<span class="fc" id="L75">        SMO smo = new SMO();</span>
+<span class="fc" id="L76">        smo.setC(bestC);</span>
+<span class="fc" id="L77">        smo.setOptions(Utils.splitOptions(&quot;-L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1&quot;));</span>
+<span class="fc" id="L78">        smo.buildClassifier(data);</span>
+<span class="fc" id="L79">        return smo;</span>
     }
 
     /**
-     * Saves the trained SVM model to a file.
+     * Reads the entire content of a file into a string.
      *
-     * @param SupportVectorMachine The trained SVM model to be saved.
-     * @param modelFile            The file path where the model will be saved.
-     * @throws Exception If an error occurs during model saving.
+     * @param filePath The path to the file to be read.
+     * @return The content of the file.
+     * @throws FileNotFoundException if the file cannot be found.
      */
-    public void saveModel(SMO SupportVectorMachine, String modelFile) throws Exception {
-        // Save the trained model to a file
-<span class="fc" id="L78">        ObjectOutputStream Output = new ObjectOutputStream(new FileOutputStream(modelFile));</span>
-<span class="fc" id="L79">        Output.writeObject(SupportVectorMachine);</span>
-<span class="fc" id="L80">        Output.close();</span>
-<span class="fc" id="L81">    }</span>
+    String readFileContent(String filePath) throws FileNotFoundException {
+<span class="nc" id="L90">        Scanner scanner = new Scanner(new File(filePath));</span>
+<span class="nc" id="L91">        scanner.useDelimiter(&quot;\\A&quot;);</span>
+<span class="nc" id="L92">        String content = scanner.next();</span>
+<span class="nc" id="L93">        scanner.close();</span>
+<span class="nc" id="L94">        return content;</span>
+    }
 
+    /**
+     * Saves the trained model to the specified file path.
+     *
+     * @param smo The SMO model to be saved.
+     * @param filePath The path where the model will be saved.
+     * @throws Exception if there is an error during the saving process.
+     */
+    void saveModel(SMO smo, String filePath) throws Exception {
+<span class="nc" id="L105">        File file = new File(filePath);</span>
+<span class="nc" id="L106">        file.getParentFile().mkdirs(); // Ensure the directory exists</span>
+<span class="nc" id="L107">        SerializationHelper.write(filePath, smo);</span>
+<span class="nc" id="L108">    }</span>
+
+    /**
+     * The main method that runs the training process.
+     *
+     * @param args Command-line arguments.
+     */
+    public static void main(String[] args) {
+        try {
+<span class="nc" id="L117">            String trainingDataPath = &quot;src/main/data/trainingData.txt&quot;;</span>
+<span class="nc" id="L118">            String modelPath = &quot;src/main/resources/model/smo.model&quot;;</span>
+<span class="nc" id="L119">            new MachineTrainer().trainAndSaveModel(trainingDataPath, modelPath);</span>
+<span class="nc" id="L120">            System.out.println(&quot;Model trained and saved successfully!&quot;);</span>
+<span class="nc" id="L121">        } catch (Exception e) {</span>
+<span class="nc" id="L122">            e.printStackTrace();</span>
+<span class="nc" id="L123">            System.out.println(&quot;Failed to train or save the model.&quot;);</span>
+<span class="nc" id="L124">        }</span>
+<span class="nc" id="L125">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
