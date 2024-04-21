@@ -6,12 +6,11 @@ import java.io.InputStream;
 <span class="nc" id="L6">public class ModelLoader {</span>
 
     public static Classifier loadModelFromJar() throws Exception {
-        // Note the path starts with '/' which refers to the root of the classpath (i.e., the resources directory in your project)
-<span class="nc" id="L10">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/smo.model&quot;)) {</span>
-<span class="nc bnc" id="L11" title="All 2 branches missed.">            if (modelStream == null) {</span>
-<span class="nc" id="L12">                throw new Exception(&quot;Model file not found in JAR.&quot;);</span>
+<span class="nc" id="L9">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/smo.model&quot;)) {</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">            if (modelStream == null) {</span>
+<span class="nc" id="L11">                throw new Exception(&quot;Model file not found in JAR.&quot;);</span>
             }
-<span class="nc" id="L14">            return (Classifier) SerializationHelper.read(modelStream);</span>
+<span class="nc" id="L13">            return (Classifier) SerializationHelper.read(modelStream);</span>
         }
     }
 }

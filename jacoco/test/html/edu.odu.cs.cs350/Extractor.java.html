@@ -1,117 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Extractor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350</a> &gt; <span class="el_source">Extractor.java</span></div><h1>Extractor.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350;
 
-import java.io.File;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Random;
-
-import weka.classifiers.functions.SMO;
-import weka.*;
+import weka.classifiers.Classifier;
 import weka.core.Instances;
-import weka.core.SerializationHelper;
-import weka.core.converters.ArffSaver;
-import weka.core.converters.ConverterUtils.DataSource;
-import weka.knowledgeflow.steps.Block;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  * Main class for calling other classes and functions.
  */
-<span class="nc" id="L25">public class Extractor {</span>
-    /*
-     * public static void main(String[] args) throws Exception {
-     * Scanner scanner = new Scanner(System.in);
-     * 
-     * System.out.print(&quot;Enter the path to the input file: &quot;);
-     * String inputFile = scanner.nextLine();
-     * 
-     * // Check if the input file exists
-     * File file = new File(inputFile);
-     * if (!file.exists()) {
-     * System.out.println(&quot;Error: Input file not found.&quot;);
-     * return;
-     * }
-     * 
-     * System.out.println(&quot;Input file: &quot; + inputFile);
-     * 
-     * scanner.close();
-     * 
-     * }
-     */
+<span class="nc" id="L11">public class Extractor {</span>
 
     /**
      * Main function.
      * 
-     * @param args args
-     * @throws Exception exception
+     * @param args command-line arguments
+     * @throws Exception if an error occurs during processing
      */
     public static void main(String[] args) throws Exception {
+        // Load the trained model
+<span class="nc" id="L21">        Classifier model = ModelLoader.loadModelFromJar();</span>
 
-<span class="nc" id="L55">        Scanner scanner = new Scanner(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
-<span class="nc" id="L56">        scanner.useDelimiter(&quot;\\A&quot;);</span>
-<span class="nc" id="L57">        String contentOfFile = scanner.next();</span>
-<span class="nc" id="L58">        scanner.close();</span>
+<span class="nc" id="L23">        Scanner scanner = new Scanner(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
+<span class="nc" id="L24">        scanner.useDelimiter(&quot;\\A&quot;); // Use beginning of input as delimiter to read entire input</span>
+<span class="nc" id="L25">        String contentOfFile = scanner.next();</span>
+<span class="nc" id="L26">        scanner.close();</span>
 
-<span class="nc" id="L60">        Document Document = new Document(contentOfFile);</span>
+<span class="nc" id="L28">        Document document = new Document(contentOfFile);</span>
 
-        // Output the extracted blocks
-        // System.out.println(&quot;Extracted Blocks:&quot;);
-<span class="nc" id="L64">        Document.printDocument();</span>
-<span class="nc" id="L65">    }</span>
-    /*
-     * try {
-     * // Load your data from wherever it is stored
-     * String dataFilePath = &quot;project/src/main/data/trainingData.txt&quot;;
-     * Scanner dataScanner = new Scanner(new File(dataFilePath));
-     * StringBuilder dataBuilder = new StringBuilder();
-     * while (dataScanner.hasNextLine()) {
-     * dataBuilder.append(dataScanner.nextLine()).append(&quot;\n&quot;);
-     * }
-     * String data = dataBuilder.toString();
-     * dataScanner.close();
-     * 
-     * // Create a Document object
-     * Document document = new Document(data);
-     * 
-     * // Get the list of text blocks from the document
-     * List&lt;TextBlock&gt; blocks = document.getBlocks();
-     * 
-     * // Create a FeatureVector object
-     * FeatureVector featureVector = new FeatureVector();
-     * 
-     * // Create an empty list to store all tokens
-     * List&lt;Token&gt; allTokens = new ArrayList&lt;&gt;();
-     * 
-     * // Iterate over each text block
-     * for (TextBlock block : blocks) {
-     * // Get the list of tokens from the current text block
-     * List&lt;Token&gt; tokens = block.getTokensList();
-     * // Add these tokens to the list of all tokens
-     * allTokens.addAll(tokens);
-     * }
-     * 
-     * // Create feature vectors from all tokens
-     * Instances instances = featureVector.createVectors(allTokens);
-     * 
-     * // Train the SVM classifier
-     * SVMtrainer svmtrainer = new SVMtrainer();
-     * SMO svm = svmtrainer.trainSVM(instances);
-     * 
-     * // Save the trained model
-     * String modelFilePath = &quot;project/src/resources/smo.model&quot;;
-     * svmtrainer.saveModel(svm, modelFilePath);
-     * 
-     * System.out.println(&quot;Training and saving the model completed successfully.&quot;);
-     * } catch (Exception e) {
-     * System.err.println(&quot;Error: &quot; + e.getMessage());
-     * e.printStackTrace();
-     * }
-     * }
-     */
+        // Process each TextBlock in the document
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (TextBlock block : document.getBlocks()) {</span>
+<span class="nc" id="L32">            FeatureVector featureVector = new FeatureVector();</span>
+<span class="nc" id="L33">            Instances instances = featureVector.createVectors(block.getTokensList());</span>
+            
+<span class="nc" id="L35">            instances.setClassIndex(instances.numAttributes() - 1);</span>
+
+            // Use the model to predict and tag personal names
+<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (int i = 0; i &lt; instances.numInstances(); i++) {</span>
+<span class="nc" id="L39">                double classLabel = model.classifyInstance(instances.instance(i));</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">                block.getTokensList().get(i).setIsName(classLabel == 1.0);</span>
+            }
+
+<span class="nc" id="L43">            System.out.println(block.toString());</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
