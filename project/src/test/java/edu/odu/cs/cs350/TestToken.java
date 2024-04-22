@@ -2,6 +2,7 @@ package edu.odu.cs.cs350;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -479,6 +480,11 @@ public class TestToken {
         Token test_token2 = new Token("words");
         assertTrue(test_token.isLocation());
         assertFalse(test_token2.isLocation());
+    }
+
+    @Test
+    public void testDetectKnownAuthor() {
+
     }
 
 }

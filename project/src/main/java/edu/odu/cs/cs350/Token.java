@@ -535,38 +535,4 @@ public class Token {
         return;
     }
 
-    public boolean detectKnownAuthor(List<Token> tokens, int currentIndex) {
-        // Check if the current token is an honorific
-        detectHonorific();
-
-        if (honorificFlag) {
-            // Check if there are at least two more tokens after current token
-            if (currentIndex + 2 < tokens.size()) {
-                String secondTokenString = tokens.get(currentIndex + 1).tokenString;
-                String thirdTokenString = tokens.get(currentIndex + 2).tokenString;
-
-                // check if the next token is a common first name
-                Token nextToken = new Token(secondTokenString);
-                nextToken.detectCommonFirstName();
-
-                if (nextToken.isCommonFirst()) {
-                    // check if the next token after the first name is a common last name
-
-                    Token lastToken = new Token(thirdTokenString);
-                    lastToken.detectCommonLastName();
-
-                    if (lastToken.isCommonLast()) {
-                        // if the token is a honorific followed by a common first name and last name
-                        // consider it
-                        // an author
-
-                        return true;
-                    }
-                }
-            }
-        }
-        // if conditions not met return false it is not a known author name
-        return false;
-    }
-
 }
