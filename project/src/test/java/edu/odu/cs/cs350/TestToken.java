@@ -458,9 +458,9 @@ public class TestToken {
         Token test_token = new Token("Virginia");
         Token test_token2 = new Token("Hampton");
         Token test_token3 = new Token("words");
-        assertTrue(test_token.isInLocation());
-        assertTrue(test_token2.isInLocation());
-        assertFalse(test_token3.isInLocation());
+        assertTrue(test_token.isLocation());
+        assertTrue(test_token2.isLocation());
+        assertFalse(test_token3.isLocation());
     }
 
     @Test
@@ -468,17 +468,17 @@ public class TestToken {
         Token test_token = new Token("Canada");
         Token test_token2 = new Token("Puerto Rico");
         Token test_token3 = new Token("words");
-        assertTrue(test_token.isInLocation());
-        assertTrue(test_token2.isInLocation());
-        assertFalse(test_token3.isInLocation());
+        assertTrue(test_token.isLocation());
+        assertTrue(test_token2.isLocation());
+        assertFalse(test_token3.isLocation());
     }
 
     @Test
     public void testDetectPlaces() {
         Token test_token = new Token("Old Dominion University");
         Token test_token2 = new Token("words");
-        assertTrue(test_token.isInLocation());
-        assertFalse(test_token2.isInLocation());
+        assertTrue(test_token.isLocation());
+        assertFalse(test_token2.isLocation());
     }
 
     @Test
