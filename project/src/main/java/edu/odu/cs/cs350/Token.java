@@ -516,6 +516,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for honorific
+     * 
+     * @return
+     */
     public void detectHonorific() {
         Iterable<String> Honorific = WordLists.honorifics();
         for (String honorific : Honorific) {
@@ -528,6 +533,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for prefix
+     * 
+     * @return
+     */
     public void detectPrefix() {
         Iterable<String> lastNamePrefixes = WordLists.lastNamePrefixes();
         for (String Prefix : lastNamePrefixes) {
@@ -540,6 +550,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for suffix.
+     * 
+     * @return
+     */
     public void detectSuffix() {
         Iterable<String> lastNameSuffix = WordLists.lastNameSuffixes();
         for (String Suffix : lastNameSuffix) {
