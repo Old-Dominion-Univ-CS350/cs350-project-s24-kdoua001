@@ -450,4 +450,13 @@ public class TestToken {
         assertFalse(test_token2.getIsEnglishWord());
     }
 
+    @Test
+    public void testKnownAuthor() {
+
+        Token authorToken = new Token("Mr.Mark tawian");
+        authorToken.detectKnownAuthor();
+
+        // assertTrue()
+    }
+
 }
