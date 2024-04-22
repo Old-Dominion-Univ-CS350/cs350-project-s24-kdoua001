@@ -127,38 +127,40 @@ public class Document {
 <span class="fc" id="L127">            System.out.println(string);</span>
 <span class="fc" id="L128">        }</span>
 <span class="fc" id="L129">    }</span>
-
+    /**
+     * print document with personal names tagged with PER
+     */
     public void printDocumentWithPersonalNamesTag() {
         // Create output list
         // List&lt;String&gt; output = new ArrayList&lt;&gt;();
 
-<span class="nc" id="L135">        blocks = getBlocks();</span>
+<span class="nc" id="L137">        blocks = getBlocks();</span>
 
-<span class="nc bnc" id="L137" title="All 2 branches missed.">        for (TextBlock block : blocks) {</span>
-<span class="nc" id="L138">            List&lt;Token&gt; tokens = block.getTokensList();</span>
-<span class="nc" id="L139">            StringBuilder output = new StringBuilder();</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        for (TextBlock block : blocks) {</span>
+<span class="nc" id="L140">            List&lt;Token&gt; tokens = block.getTokensList();</span>
+<span class="nc" id="L141">            StringBuilder output = new StringBuilder();</span>
 
-<span class="nc" id="L141">            boolean previousTokenWasPunctuation = false; // Track if the previous token was punctuation</span>
+<span class="nc" id="L143">            boolean previousTokenWasPunctuation = false; // Track if the previous token was punctuation</span>
 
-<span class="nc bnc" id="L143" title="All 2 branches missed.">            for (Token token : tokens) {</span>
-<span class="nc" id="L144">                String personalName = token.detectPersonalName();</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">            for (Token token : tokens) {</span>
+<span class="nc" id="L146">                String personalName = token.detectPersonalName();</span>
 
                 // Append a space if the previous token was not punctuation and the current
                 // token is not punctuation
-<span class="nc bnc" id="L148" title="All 4 branches missed.">                if (!previousTokenWasPunctuation &amp;&amp; !token.isPunctuation()) {</span>
-<span class="nc" id="L149">                    output.append(&quot; &quot;);</span>
+<span class="nc bnc" id="L150" title="All 4 branches missed.">                if (!previousTokenWasPunctuation &amp;&amp; !token.isPunctuation()) {</span>
+<span class="nc" id="L151">                    output.append(&quot; &quot;);</span>
                 }
 
-<span class="nc" id="L152">                output.append(personalName);</span>
+<span class="nc" id="L154">                output.append(personalName);</span>
 
                 // Update the flag for the next iteration
-<span class="nc" id="L155">                previousTokenWasPunctuation = token.isPunctuation();</span>
-<span class="nc" id="L156">            }</span>
+<span class="nc" id="L157">                previousTokenWasPunctuation = token.isPunctuation();</span>
+<span class="nc" id="L158">            }</span>
 
             // Trim the output string to remove any leading or trailing spaces
-<span class="nc" id="L159">            System.out.println(output.toString().trim());</span>
-<span class="nc" id="L160">        }</span>
+<span class="nc" id="L161">            System.out.println(output.toString().trim());</span>
+<span class="nc" id="L162">        }</span>
 
-<span class="nc" id="L162">    }</span>
+<span class="nc" id="L164">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

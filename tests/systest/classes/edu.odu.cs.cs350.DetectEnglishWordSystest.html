@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - LexicalFeaturesSystest</title>
+<title>Test results - DetectEnglishWordSystest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>LexicalFeaturesSystest</h1>
+<h1>DetectEnglishWordSystest</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/edu.odu.cs.cs350.html">edu.odu.cs.cs350</a> &gt; LexicalFeaturesSystest</div>
+<a href="../packages/edu.odu.cs.cs350.html">edu.odu.cs.cs350</a> &gt; DetectEnglishWordSystest</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.624s</div>
+<div class="counter">1.027s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,14 +73,13 @@
 <a name="systemTest()"></a>
 <h3 class="failures">systemTest()</h3>
 <span class="code">
-<pre>org.opentest4j.AssertionFailedError: expected: &lt;&lt;NER&gt;
-&lt;PER&gt;Matthew A Haydon&lt;/PER&gt; is a person, 8 is a number, and &lt;PER&gt;PETER&lt;/PER&gt; is also a person.&lt;/NER&gt;&gt; but was: &lt;Exception thrown: Src and Dest differ in # of attributes: 13 != 10&gt;
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;&lt;NER&gt;This is a &lt;PER&gt;sentence&lt;/PER&gt; with some &lt;PER&gt;English&lt;/PER&gt; words and &lt;PER&gt;non-English&lt;/PER&gt; words like &lt;PER&gt;rendezvous&lt;/PER&gt;.&lt;/NER&gt;&gt; but was: &lt;Exception thrown: Src and Dest differ in # of attributes: 13 != 10&gt;
 	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at app//org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
-	at app//edu.odu.cs.cs350.LexicalFeaturesSystest.systemTest(LexicalFeaturesSystest.java:52)
+	at app//edu.odu.cs.cs350.DetectEnglishWordSystest.systemTest(DetectEnglishWordSystest.java:51)
 	at java.base@17.0.10/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@17.0.10/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base@17.0.10/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -180,7 +179,7 @@
 </thead>
 <tr>
 <td class="failures">systemTest()</td>
-<td class="failures">0.624s</td>
+<td class="failures">1.027s</td>
 <td class="failures">failed</td>
 </tr>
 </table>

@@ -3,14 +3,23 @@ import weka.classifiers.Classifier;
 import weka.core.SerializationHelper;
 import java.io.InputStream;
 
-<span class="nc" id="L6">public class ModelLoader {</span>
+/**
+ * model loader
+ */
+<span class="nc" id="L9">public class ModelLoader {</span>
 
+    /**
+     * load model from jar
+     * 
+     * @return serialization helper
+     * @throws Exception exception
+     */
     public static Classifier loadModelFromJar() throws Exception {
-<span class="nc" id="L9">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/trainedMachine.model&quot;)) {</span>
-<span class="nc bnc" id="L10" title="All 2 branches missed.">            if (modelStream == null) {</span>
-<span class="nc" id="L11">                throw new Exception(&quot;Model file not found in JAR.&quot;);</span>
+<span class="nc" id="L18">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/trainedMachine.model&quot;)) {</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">            if (modelStream == null) {</span>
+<span class="nc" id="L20">                throw new Exception(&quot;Model file not found in JAR.&quot;);</span>
             }
-<span class="nc" id="L13">            return (Classifier) SerializationHelper.read(modelStream);</span>
+<span class="nc" id="L22">            return (Classifier) SerializationHelper.read(modelStream);</span>
         }
     }
 }
