@@ -19,4 +19,5 @@ public class testWorldLists {
         assertNotNull(resourceUrl, "Failed to load resource file");
         assertEquals(resourceUrl.iterator().next(), "smith");
     }
+
 }
