@@ -451,6 +451,34 @@ public class TestToken {
     }
 
     @Test
+    public void testDetectCitiesAndStates() {
+        Token test_token = new Token("Virginia");
+        Token test_token2 = new Token("Hampton");
+        Token test_token3 = new Token("words");
+        assertTrue(test_token.isInLocation());
+        assertTrue(test_token2.isInLocation());
+        assertFalse(test_token3.isInLocation());
+    }
+
+    @Test
+    public void testDetectCountriesAndTerritories() {
+        Token test_token = new Token("Canada");
+        Token test_token2 = new Token("Puerto Rico");
+        Token test_token3 = new Token("words");
+        assertTrue(test_token.isInLocation());
+        assertTrue(test_token2.isInLocation());
+        assertFalse(test_token3.isInLocation());
+    }
+
+    @Test
+    public void testDetectPlaces() {
+        Token test_token = new Token("Old Dominion University");
+        Token test_token2 = new Token("words");
+        assertTrue(test_token.isInLocation());
+        assertFalse(test_token2.isInLocation());
+    }
+
+    @Test
     public void testKnownAuthor() {
 
         Token authorToken = new Token("Mr.Mark tawian");
