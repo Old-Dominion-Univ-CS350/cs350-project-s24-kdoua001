@@ -26,18 +26,19 @@ public class FeatureVector {
      */
     public Instances createVectors(List<Token> tokenList) {
         ArrayList<Attribute> attributes = createAttributes();
-
+    
         // Create instances object with the defined attributes
         Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
-        data.setClassIndex(0);
+    
+        // Find index of 'isName' attribute
+        int classIndex = attributes.indexOf(new Attribute("isName"));
+        data.setClassIndex(classIndex);
         
         for (Token token : tokenList) {
             double[] values = createAttributeValues(token);
-
-            // Create DenseInstance and add to Instances object
             data.add(new DenseInstance(1.0, values));
         }
-
+    
         return data;
     }
 
@@ -93,7 +94,7 @@ public class FeatureVector {
      */
     private double[] createAttributeValues(Token token) {
         // Create an array of attribute values size depending on how many attributes we have
-        double[] values = new double[14];
+        double[] values = new double[13];
 
         values[0] = token.isName() ? 1.0 : 0.0;
         values[1] = token.isInDictionary() ? 1.0 : 0.0;
