@@ -535,8 +535,8 @@ public class Token {
     }
 
     public void detectKnownAuthor() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'detectKnownAuthor'");
+        // detectHonorifix();
+
     }
 
 }

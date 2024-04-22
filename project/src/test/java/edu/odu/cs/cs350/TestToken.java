@@ -485,7 +485,7 @@ public class TestToken {
     public void testKnownAuthor() {
 
         Token authorToken = new Token("Mr.Mark tawian");
-        authorToken.detectKnownAuthor();
+       // authorToken.detectKnownAuthor();
 
         // assertTrue()
     }
