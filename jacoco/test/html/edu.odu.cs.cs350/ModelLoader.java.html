@@ -6,7 +6,7 @@ import java.io.InputStream;
 <span class="nc" id="L6">public class ModelLoader {</span>
 
     public static Classifier loadModelFromJar() throws Exception {
-<span class="nc" id="L9">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/smo.model&quot;)) {</span>
+<span class="nc" id="L9">        try (InputStream modelStream = ModelLoader.class.getResourceAsStream(&quot;/model/trainedMachine.model&quot;)) {</span>
 <span class="nc bnc" id="L10" title="All 2 branches missed.">            if (modelStream == null) {</span>
 <span class="nc" id="L11">                throw new Exception(&quot;Model file not found in JAR.&quot;);</span>
             }
