@@ -452,7 +452,7 @@ public class Token {
 
     /**
      * Gets English Param. 
-     * @return
+     * @return true if english word
      */
     public boolean getIsEnglishWord() {
         return isEnglishWord;
@@ -460,7 +460,7 @@ public class Token {
 
     /**
      * Sets Englishword Param.
-     * @param isEqualTo
+     * @param isEqualTo compare to isEnglishWord
      */
     public void setIsEnglishWord(boolean isEqualTo) {
         isEnglishWord = isEqualTo;
@@ -483,8 +483,7 @@ public class Token {
 
     /**
      * Checks library for cities and states.
-     * 
-     * @return
+     *
      */
     public void detectCitiesAndStates() {
         Iterable<String> citiesAndStates = WordLists.citiesAndStatesUS();
@@ -501,7 +500,6 @@ public class Token {
     /**
      * Checks library for countries and territories.
      * 
-     * @return
      */
     public void detectCountriesAndTerritories() {
         Iterable<String> countriesAndTerritories = WordLists.countriesAndTerritories();
@@ -517,8 +515,7 @@ public class Token {
 
     /**
      * Checks library for geographical places.
-     * 
-     * @return
+     *
      */
     public void detectPlaces() {
         Iterable<String> places = WordLists.places();
@@ -596,7 +593,7 @@ public class Token {
 
     /**
      * Checks for a possible author. Returns bool
-     * @param tokenString
+     * @param tokenString string representation of token
      * @return bool isAuthor
      */
     public boolean isKnownAuthors(String tokenString) {

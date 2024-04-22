@@ -3,8 +3,17 @@ import weka.classifiers.Classifier;
 import weka.core.SerializationHelper;
 import java.io.InputStream;
 
+/**
+ * model loader
+ */
 public class ModelLoader {
 
+    /**
+     * load model from jar
+     * 
+     * @return serialization helper
+     * @throws Exception exception
+     */
     public static Classifier loadModelFromJar() throws Exception {
         try (InputStream modelStream = ModelLoader.class.getResourceAsStream("/model/trainedMachine.model")) {
             if (modelStream == null) {
