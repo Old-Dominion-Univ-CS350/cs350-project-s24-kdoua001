@@ -76,8 +76,7 @@ public class Token {
     private FeatureOfSpeech speechFeature;
 
     /**
-     * Flag indicating whether the assinged string is possibly part of the english
-     * language
+     * Flag indicating whether the assinged string is possibly part of the english language.
      * 
      */
     private boolean isEnglishWord;
@@ -423,6 +422,9 @@ public class Token {
 
     }
 
+    /**
+     * Detects Common First Name. 
+     */
     public void detectCommonFirstName() {
         Iterable<String> commonFirstNames = WordLists.commonFirstNames();
         for (String name : commonFirstNames) {
@@ -434,6 +436,9 @@ public class Token {
         commonFirst = false;
     }
 
+    /**
+     * Detects Common Last Name.
+     */
     public void detectCommonLastName() {
         Iterable<String> commonLastNames = WordLists.commonLastNames();
         for (String lastNames : commonLastNames) {
@@ -445,14 +450,25 @@ public class Token {
         commonLast = false;
     }
 
+    /**
+     * Gets English Param. 
+     * @return
+     */
     public boolean getIsEnglishWord() {
         return isEnglishWord;
     }
 
+    /**
+     * Sets Englishword Param.
+     * @param isEqualTo
+     */
     public void setIsEnglishWord(boolean isEqualTo) {
         isEnglishWord = isEqualTo;
     }
 
+    /**
+     * Detects English Words. 
+     */
     public void detectEnglishWord() {
         Iterable<String> englishDictionary = WordLists.englishDictionary();
         for (String dictionaryWord : englishDictionary) {
@@ -517,9 +533,7 @@ public class Token {
     }
 
     /**
-     * Checks library for honorific
-     * 
-     * @return
+     * Checks for Honorifics.
      */
     public void detectHonorific() {
         Iterable<String> Honorific = WordLists.honorifics();
@@ -534,9 +548,7 @@ public class Token {
     }
 
     /**
-     * Checks library for prefix
-     * 
-     * @return
+     *Detects Prefix.  
      */
     public void detectPrefix() {
         Iterable<String> lastNamePrefixes = WordLists.lastNamePrefixes();
@@ -551,9 +563,7 @@ public class Token {
     }
 
     /**
-     * Checks library for suffix.
-     * 
-     * @return
+     * Detects Suffix.
      */
     public void detectSuffix() {
         Iterable<String> lastNameSuffix = WordLists.lastNameSuffixes();
@@ -568,7 +578,7 @@ public class Token {
     }
 
     /**
-     * Compares tokenString with a list of known kill words
+     * Compares tokenString with a list of known kill words.
      */
     public void detectKillWord() {
         Iterable<String> notPeople = WordLists.nonPersonalIdentifierCues();
@@ -582,6 +592,13 @@ public class Token {
         return;
     }
 
+
+
+    /**
+     * Checks for a possible author. Returns bool
+     * @param tokenString
+     * @return bool isAuthor
+     */
     public boolean isKnownAuthors(String tokenString) {
         detectHonorific();
         detectCommonFirstName();

@@ -1,0 +1,1 @@
+<NER>This is a <PER>sentence</PER> with some <PER>English</PER> words and <PER>non-English</PER> words like <PER>rendezvous</PER>.</NER>
