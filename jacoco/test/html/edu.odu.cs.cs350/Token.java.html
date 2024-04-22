@@ -45,6 +45,16 @@ public class Token {
     private boolean honorificFlag;
 
     /**
+     * Flag indicating whether the token has an prefix (e.g., &quot;la, el, de&quot;).
+     */
+    private boolean prefixflag;
+
+    /**
+     * Flag indicating whether the token has an suffix (e.g., &quot;Jr, Sr, II&quot;).
+     */
+    private boolean suffixflag;
+
+    /**
      * Flag indicating whether the token is a &quot;kill word&quot; that should be ignored.
      */
     private boolean killWordFlag;
@@ -76,88 +86,104 @@ public class Token {
      * 
      * @param assignedString string to assign to token
      */
-<span class="fc" id="L79">    public Token(String assignedString) {</span>
-<span class="fc" id="L80">        this.tokenString = assignedString;</span>
-<span class="fc" id="L81">        this.inDictionary = false;</span>
-<span class="fc" id="L82">        this.locationFlag = false;</span>
-<span class="fc" id="L83">        this.commonFirst = false;</span>
-<span class="fc" id="L84">        this.commonLast = false;</span>
-<span class="fc" id="L85">        this.honorificFlag = false;</span>
-<span class="fc" id="L86">        this.killWordFlag = false;</span>
-<span class="fc" id="L87">        this.punctuationFlag = false;</span>
-<span class="fc" id="L88">        this.isEnglishWord = false;</span>
-<span class="fc" id="L89">        detectFeatureOfSpeech();</span>
-<span class="fc" id="L90">        detectLexicalFeature();</span>
-<span class="fc" id="L91">        detectCommonFirstName();</span>
-<span class="fc" id="L92">        detectEnglishWord();</span>
-<span class="fc" id="L93">        detectCommonLastName();</span>
-<span class="fc" id="L94">        detectCitiesAndStates();</span>
-<span class="fc" id="L95">        detectCountriesAndTerritories();</span>
-<span class="fc" id="L96">        detectPlaces();</span>
+<span class="fc" id="L89">    public Token(String assignedString) {</span>
+<span class="fc" id="L90">        this.tokenString = assignedString;</span>
+<span class="fc" id="L91">        this.inDictionary = false;</span>
+<span class="fc" id="L92">        this.locationFlag = false;</span>
+<span class="fc" id="L93">        this.commonFirst = false;</span>
+<span class="fc" id="L94">        this.commonLast = false;</span>
+<span class="fc" id="L95">        this.honorificFlag = false;</span>
+<span class="fc" id="L96">        this.prefixflag = false;</span>
+<span class="fc" id="L97">        this.suffixflag = false;</span>
+<span class="fc" id="L98">        this.killWordFlag = false;</span>
+<span class="fc" id="L99">        this.punctuationFlag = false;</span>
+<span class="fc" id="L100">        this.isEnglishWord = false;</span>
+<span class="fc" id="L101">        detectFeatureOfSpeech();</span>
+<span class="fc" id="L102">        detectLexicalFeature();</span>
+<span class="fc" id="L103">        detectCommonFirstName();</span>
+<span class="fc" id="L104">        detectEnglishWord();</span>
+<span class="fc" id="L105">        detectCommonLastName();</span>
+<span class="fc" id="L106">        detectCitiesAndStates();</span>
+<span class="fc" id="L107">        detectCountriesAndTerritories();</span>
+<span class="fc" id="L108">        detectPlaces();</span>
 
-<span class="fc" id="L98">    }</span>
+<span class="fc" id="L110">    }</span>
 
     /**
      * @return the string of the token
      */
     public String getTokenString() {
-<span class="fc" id="L104">        return this.tokenString;</span>
+<span class="fc" id="L116">        return this.tokenString;</span>
     }
 
     /**
      * @return true if is a name, false if else
      */
     public boolean isName() {
-<span class="fc" id="L111">        return this.nameFlag;</span>
+<span class="fc" id="L123">        return this.nameFlag;</span>
     }
 
     /**
      * @return true of dictionary, false if not
      */
     public boolean isInDictionary() {
-<span class="fc" id="L118">        return this.inDictionary;</span>
+<span class="fc" id="L130">        return this.inDictionary;</span>
     }
 
     /**
      * @return true if is a location, false if not
      */
     public boolean isLocation() {
-<span class="fc" id="L125">        return this.locationFlag;</span>
+<span class="fc" id="L137">        return this.locationFlag;</span>
     }
 
     /**
      * @return true if a common first name, false if not
      */
     public boolean isCommonFirst() {
-<span class="fc" id="L132">        return this.commonFirst;</span>
+<span class="fc" id="L144">        return this.commonFirst;</span>
     }
 
     /**
      * @return true if common last name, false if not
      */
     public boolean isCommonLast() {
-<span class="fc" id="L139">        return this.commonLast;</span>
+<span class="fc" id="L151">        return this.commonLast;</span>
     }
 
     /**
      * @return true if a honorific, false if not
      */
     public boolean isHonorific() {
-<span class="fc" id="L146">        return this.honorificFlag;</span>
+<span class="fc" id="L158">        return this.honorificFlag;</span>
+    }
+
+    /**
+     * @return true if a Prefix, false if not
+     */
+    public boolean isPrefix() {
+<span class="nc" id="L165">        return this.prefixflag;</span>
+    }
+
+    /**
+     * @return true if a suffix, false if not
+     */
+    public boolean isSuffix() {
+<span class="nc" id="L172">        return this.suffixflag;</span>
     }
 
     /**
      * @return true if a kill word, false if not
      */
     public boolean isKillWord() {
-<span class="fc" id="L153">        return this.killWordFlag;</span>
+<span class="fc" id="L179">        return this.killWordFlag;</span>
     }
 
     /**
      * @return true if a puncuation, false if not
      */
     public boolean isPunctuation() {
-<span class="fc" id="L160">        return this.punctuationFlag;</span>
+<span class="fc" id="L186">        return this.punctuationFlag;</span>
     }
 
     /**
@@ -166,8 +192,8 @@ public class Token {
      * @param string string representation of Token.
      */
     public void setTokenString(String string) {
-<span class="fc" id="L169">        this.tokenString = string;</span>
-<span class="fc" id="L170">    }</span>
+<span class="fc" id="L195">        this.tokenString = string;</span>
+<span class="fc" id="L196">    }</span>
 
     /**
      * Sets the Bool isName of a Token.
@@ -175,8 +201,8 @@ public class Token {
      * @param name boolean isName.
      */
     public void setIsName(boolean name) {
-<span class="fc" id="L178">        this.nameFlag = name;</span>
-<span class="fc" id="L179">    }</span>
+<span class="fc" id="L204">        this.nameFlag = name;</span>
+<span class="fc" id="L205">    }</span>
 
     /**
      * Sets the Bool inDictionary of Token.
@@ -184,8 +210,8 @@ public class Token {
      * @param dictionary is this token in the dictionary.
      */
     public void setIsInDictionary(boolean dictionary) {
-<span class="fc" id="L187">        this.inDictionary = dictionary;</span>
-<span class="fc" id="L188">    }</span>
+<span class="fc" id="L213">        this.inDictionary = dictionary;</span>
+<span class="fc" id="L214">    }</span>
 
     /**
      * Sets the Bool isLocation of Token.
@@ -193,8 +219,8 @@ public class Token {
      * @param location is this token a location.
      */
     public void setIsLocation(boolean location) {
-<span class="fc" id="L196">        this.locationFlag = location;</span>
-<span class="fc" id="L197">    }</span>
+<span class="fc" id="L222">        this.locationFlag = location;</span>
+<span class="fc" id="L223">    }</span>
 
     /**
      * Sets the Bool commonFirst of a Token.
@@ -202,8 +228,8 @@ public class Token {
      * @param first is this a common first name.
      */
     public void setIsCommonFirst(boolean first) {
-<span class="fc" id="L205">        this.commonFirst = first;</span>
-<span class="fc" id="L206">    }</span>
+<span class="fc" id="L231">        this.commonFirst = first;</span>
+<span class="fc" id="L232">    }</span>
 
     /**
      * Sets the Bool commonLast of a Token.
@@ -211,8 +237,8 @@ public class Token {
      * @param last is this a common last name.
      */
     public void setIsCommonLast(boolean last) {
-<span class="fc" id="L214">        this.commonLast = last;</span>
-<span class="fc" id="L215">    }</span>
+<span class="fc" id="L240">        this.commonLast = last;</span>
+<span class="fc" id="L241">    }</span>
 
     /**
      * Sets the Bool honorific of a Token.
@@ -220,8 +246,26 @@ public class Token {
      * @param honorific is this a honorific.
      */
     public void setIsHonorific(boolean honorific) {
-<span class="fc" id="L223">        this.honorificFlag = honorific;</span>
-<span class="fc" id="L224">    }</span>
+<span class="fc" id="L249">        this.honorificFlag = honorific;</span>
+<span class="fc" id="L250">    }</span>
+
+    /**
+     * Sets the Bool prefix of a Token.
+     * 
+     * @param prefix is this a prefix.
+     */
+    public void setIsPrefix(boolean prefix) {
+<span class="nc" id="L258">        this.prefixflag = prefix;</span>
+<span class="nc" id="L259">    }</span>
+
+    /**
+     * Sets the Bool suffix of a Token.
+     * 
+     * @param suffix is this a suffix.
+     */
+    public void setIsSufix(boolean suffix) {
+<span class="nc" id="L267">        this.suffixflag = suffix;</span>
+<span class="nc" id="L268">    }</span>
 
     /**
      * Sets the Bool killWord of a Token.
@@ -229,8 +273,8 @@ public class Token {
      * @param killWord is this a kill word.
      */
     public void setIsKillWord(boolean killWord) {
-<span class="fc" id="L232">        this.killWordFlag = killWord;</span>
-<span class="fc" id="L233">    }</span>
+<span class="fc" id="L276">        this.killWordFlag = killWord;</span>
+<span class="fc" id="L277">    }</span>
 
     /**
      * Sets the Bool isPunctuation of a Token.
@@ -238,15 +282,15 @@ public class Token {
      * @param punctuation is this punctuation.
      */
     public void setIsPunctuation(boolean punctuation) {
-<span class="fc" id="L241">        this.punctuationFlag = punctuation;</span>
-<span class="fc" id="L242">    }</span>
+<span class="fc" id="L285">        this.punctuationFlag = punctuation;</span>
+<span class="fc" id="L286">    }</span>
 
     /**
      * @return string representation of a Token.
      */
     @Override
     public String toString() {
-<span class="fc" id="L249">        return this.tokenString;</span>
+<span class="fc" id="L293">        return this.tokenString;</span>
     }
 
     // -------------------------------------------------------------------------------------------------------------------------------------
@@ -257,7 +301,7 @@ public class Token {
      * @return the lexical feature of this token.
      */
     public LexicalFeature getLexicalFeature() {
-<span class="fc" id="L260">        return lexicalFeature;</span>
+<span class="fc" id="L304">        return lexicalFeature;</span>
     }
 
     /**
@@ -266,32 +310,32 @@ public class Token {
      * @param lexicalFeature lexical feature.
      */
     public void setLexicalFeature(LexicalFeature lexicalFeature) {
-<span class="fc" id="L269">        this.lexicalFeature = lexicalFeature;</span>
-<span class="fc" id="L270">    }</span>
+<span class="fc" id="L313">        this.lexicalFeature = lexicalFeature;</span>
+<span class="fc" id="L314">    }</span>
 
     /**
      * Assigns a Lexical Feature Type to the Token.
      */
     public void detectLexicalFeature() {
-<span class="fc bfc" id="L276" title="All 2 branches covered.">        if (tokenString.matches(&quot;-?\\d+(\\.\\d+)?&quot;)) {</span>
-<span class="fc" id="L277">            lexicalFeature = LexicalFeature.NUMBER;</span>
-<span class="fc bfc" id="L278" title="All 4 branches covered.">        } else if (tokenString.length() == 1 &amp;&amp; Character.isUpperCase(tokenString.charAt(0))) {</span>
-<span class="fc" id="L279">            lexicalFeature = LexicalFeature.SINGLECAPLETTER;</span>
-<span class="fc bfc" id="L280" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z][a-z]*&quot;)) {</span>
-<span class="fc" id="L281">            lexicalFeature = LexicalFeature.CAPITALIZEDWORD;</span>
-<span class="fc bfc" id="L282" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z]+&quot;)) {</span>
-<span class="fc" id="L283">            lexicalFeature = LexicalFeature.ALLCAPS;</span>
-<span class="fc bfc" id="L284" title="All 2 branches covered.">        } else if (Pattern.matches(&quot;.*[.,?!]$&quot;, tokenString)) {</span>
-<span class="fc" id="L285">            lexicalFeature = LexicalFeature.PUNCTUATION;</span>
-<span class="fc bfc" id="L286" title="All 2 branches covered.">        } else if (tokenString.equals(&quot;\n&quot;)) {</span>
-<span class="fc" id="L287">            lexicalFeature = LexicalFeature.NEWLINE;</span>
-<span class="fc bfc" id="L288" title="All 2 branches covered.">        } else if (tokenString.isEmpty()) {</span>
-<span class="fc" id="L289">            lexicalFeature = LexicalFeature.NULLFEATURE;</span>
+<span class="fc bfc" id="L320" title="All 2 branches covered.">        if (tokenString.matches(&quot;-?\\d+(\\.\\d+)?&quot;)) {</span>
+<span class="fc" id="L321">            lexicalFeature = LexicalFeature.NUMBER;</span>
+<span class="fc bfc" id="L322" title="All 4 branches covered.">        } else if (tokenString.length() == 1 &amp;&amp; Character.isUpperCase(tokenString.charAt(0))) {</span>
+<span class="fc" id="L323">            lexicalFeature = LexicalFeature.SINGLECAPLETTER;</span>
+<span class="fc bfc" id="L324" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z][a-z]*&quot;)) {</span>
+<span class="fc" id="L325">            lexicalFeature = LexicalFeature.CAPITALIZEDWORD;</span>
+<span class="fc bfc" id="L326" title="All 2 branches covered.">        } else if (tokenString.matches(&quot;[A-Z]+&quot;)) {</span>
+<span class="fc" id="L327">            lexicalFeature = LexicalFeature.ALLCAPS;</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">        } else if (Pattern.matches(&quot;.*[.,?!]$&quot;, tokenString)) {</span>
+<span class="fc" id="L329">            lexicalFeature = LexicalFeature.PUNCTUATION;</span>
+<span class="fc bfc" id="L330" title="All 2 branches covered.">        } else if (tokenString.equals(&quot;\n&quot;)) {</span>
+<span class="fc" id="L331">            lexicalFeature = LexicalFeature.NEWLINE;</span>
+<span class="fc bfc" id="L332" title="All 2 branches covered.">        } else if (tokenString.isEmpty()) {</span>
+<span class="fc" id="L333">            lexicalFeature = LexicalFeature.NULLFEATURE;</span>
         } else {
-<span class="fc" id="L291">            lexicalFeature = LexicalFeature.OTHER;</span>
+<span class="fc" id="L335">            lexicalFeature = LexicalFeature.OTHER;</span>
         }
 
-<span class="fc" id="L294">    }</span>
+<span class="fc" id="L338">    }</span>
 
     /**
      * Sets the Feature Of Speech Attribute.
@@ -299,8 +343,8 @@ public class Token {
      * @param feature feature
      */
     public void setFeatureOfSpeech(FeatureOfSpeech feature) {
-<span class="fc" id="L302">        speechFeature = feature;</span>
-<span class="fc" id="L303">    }</span>
+<span class="fc" id="L346">        speechFeature = feature;</span>
+<span class="fc" id="L347">    }</span>
 
     /**
      * Gets the Feature of Speech Attribute.
@@ -308,7 +352,7 @@ public class Token {
      * @return FeatureOfSpeech speechFeature
      */
     public FeatureOfSpeech getFeatureOfSpeech() {
-<span class="fc" id="L311">        return speechFeature;</span>
+<span class="fc" id="L355">        return speechFeature;</span>
     }
 
     /**
@@ -316,22 +360,22 @@ public class Token {
      */
     public void detectFeatureOfSpeech() {
 
-<span class="fc" id="L319">        Tagger tagger = new Tagger();</span>
+<span class="fc" id="L363">        Tagger tagger = new Tagger();</span>
 
-<span class="fc bfc" id="L321" title="All 2 branches covered.">        if (tagger.IsArticle(tokenString)) {</span>
-<span class="fc" id="L322">            setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);</span>
-<span class="fc bfc" id="L323" title="All 2 branches covered.">        } else if (tagger.IsConjunction(tokenString)) {</span>
-<span class="fc" id="L324">            setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);</span>
-<span class="fc bfc" id="L325" title="All 2 branches covered.">        } else if (tagger.IsPeriod(tokenString)) {</span>
-<span class="fc" id="L326">            setFeatureOfSpeech(FeatureOfSpeech.PERIOD);</span>
-<span class="fc bfc" id="L327" title="All 2 branches covered.">        } else if (tagger.IsComma(tokenString)) {</span>
-<span class="fc" id="L328">            setFeatureOfSpeech(FeatureOfSpeech.COMMA);</span>
-<span class="fc bfc" id="L329" title="All 2 branches covered.">        } else if (tagger.IsHyphen(tokenString)) {</span>
-<span class="fc" id="L330">            setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);</span>
+<span class="fc bfc" id="L365" title="All 2 branches covered.">        if (tagger.IsArticle(tokenString)) {</span>
+<span class="fc" id="L366">            setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);</span>
+<span class="fc bfc" id="L367" title="All 2 branches covered.">        } else if (tagger.IsConjunction(tokenString)) {</span>
+<span class="fc" id="L368">            setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);</span>
+<span class="fc bfc" id="L369" title="All 2 branches covered.">        } else if (tagger.IsPeriod(tokenString)) {</span>
+<span class="fc" id="L370">            setFeatureOfSpeech(FeatureOfSpeech.PERIOD);</span>
+<span class="fc bfc" id="L371" title="All 2 branches covered.">        } else if (tagger.IsComma(tokenString)) {</span>
+<span class="fc" id="L372">            setFeatureOfSpeech(FeatureOfSpeech.COMMA);</span>
+<span class="fc bfc" id="L373" title="All 2 branches covered.">        } else if (tagger.IsHyphen(tokenString)) {</span>
+<span class="fc" id="L374">            setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);</span>
         } else {
-<span class="fc" id="L332">            setFeatureOfSpeech(FeatureOfSpeech.OTHER);</span>
+<span class="fc" id="L376">            setFeatureOfSpeech(FeatureOfSpeech.OTHER);</span>
         }
-<span class="fc" id="L334">    }</span>
+<span class="fc" id="L378">    }</span>
 
     /**
      * Detects if the token's lexical features suggest it represents a personal
@@ -342,13 +386,13 @@ public class Token {
      */
     public String detectPersonalName() {
         // Check lexical feature of the token
-<span class="fc" id="L345">        LexicalFeature lexicalFeature = this.getLexicalFeature();</span>
-<span class="fc" id="L346">        FeatureOfSpeech featureOfSpeech = this.getFeatureOfSpeech();</span>
+<span class="fc" id="L389">        LexicalFeature lexicalFeature = this.getLexicalFeature();</span>
+<span class="fc" id="L390">        FeatureOfSpeech featureOfSpeech = this.getFeatureOfSpeech();</span>
         // Check if the lexical feature suggests it is likely a personal name
-<span class="fc bfc" id="L348" title="All 2 branches covered.">        if (isLikelyPersonalName(lexicalFeature, featureOfSpeech)) {</span>
-<span class="fc" id="L349">            return &quot;&lt;PER&gt;&quot; + this.getTokenString() + &quot;&lt;/PER&gt;&quot; + &quot;&quot;;</span>
+<span class="fc bfc" id="L392" title="All 2 branches covered.">        if (isLikelyPersonalName(lexicalFeature, featureOfSpeech)) {</span>
+<span class="fc" id="L393">            return &quot;&lt;PER&gt;&quot; + this.getTokenString() + &quot;&lt;/PER&gt;&quot; + &quot;&quot;;</span>
         } else {
-<span class="fc" id="L351">            return this.getTokenString(); // else return the token without per tags</span>
+<span class="fc" id="L395">            return this.getTokenString(); // else return the token without per tags</span>
         }
 
     }
@@ -365,7 +409,7 @@ public class Token {
      *         article, conjunction, period, comma or hyphen.
      */
     public boolean isLikelyPersonalName(LexicalFeature lexicalFeature, FeatureOfSpeech featureOfSpeech) {
-<span class="pc bpc" id="L368" title="5 of 16 branches missed.">        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD</span>
+<span class="pc bpc" id="L412" title="5 of 16 branches missed.">        return lexicalFeature == LexicalFeature.CAPITALIZEDWORD</span>
                 || lexicalFeature == LexicalFeature.ALLCAPS
                 || lexicalFeature == LexicalFeature.SINGLECAPLETTER &amp;&amp;
                         (featureOfSpeech != FeatureOfSpeech.ARTICLES &amp;&amp;
@@ -377,82 +421,123 @@ public class Token {
     }
 
     public void detectCommonFirstName() {
-<span class="fc" id="L380">        Iterable&lt;String&gt; commonFirstNames = WordLists.commonFirstNames();</span>
-<span class="fc bfc" id="L381" title="All 2 branches covered.">        for (String name : commonFirstNames) {</span>
-<span class="fc bfc" id="L382" title="All 2 branches covered.">            if (tokenString.equalsIgnoreCase(name)) {</span>
-<span class="fc" id="L383">                commonFirst = true;</span>
-<span class="fc" id="L384">                return;</span>
+<span class="fc" id="L424">        Iterable&lt;String&gt; commonFirstNames = WordLists.commonFirstNames();</span>
+<span class="fc bfc" id="L425" title="All 2 branches covered.">        for (String name : commonFirstNames) {</span>
+<span class="fc bfc" id="L426" title="All 2 branches covered.">            if (tokenString.equalsIgnoreCase(name)) {</span>
+<span class="fc" id="L427">                commonFirst = true;</span>
+<span class="fc" id="L428">                return;</span>
             }
-<span class="fc" id="L386">        }</span>
-<span class="fc" id="L387">        commonFirst = false;</span>
-<span class="fc" id="L388">    }</span>
+<span class="fc" id="L430">        }</span>
+<span class="fc" id="L431">        commonFirst = false;</span>
+<span class="fc" id="L432">    }</span>
 
     public void detectCommonLastName() {
-<span class="fc" id="L391">        Iterable&lt;String&gt; commonLastNames = WordLists.commonLastNames();</span>
-<span class="fc bfc" id="L392" title="All 2 branches covered.">        for (String lastnames : commonLastNames) {</span>
-<span class="fc bfc" id="L393" title="All 2 branches covered.">            if (tokenString.equalsIgnoreCase(lastnames)) {</span>
-<span class="fc" id="L394">                commonLast = true;</span>
-<span class="fc" id="L395">                return;</span>
+<span class="fc" id="L435">        Iterable&lt;String&gt; commonLastNames = WordLists.commonLastNames();</span>
+<span class="fc bfc" id="L436" title="All 2 branches covered.">        for (String lastnames : commonLastNames) {</span>
+<span class="fc bfc" id="L437" title="All 2 branches covered.">            if (tokenString.equalsIgnoreCase(lastnames)) {</span>
+<span class="fc" id="L438">                commonLast = true;</span>
+<span class="fc" id="L439">                return;</span>
             }
-<span class="fc" id="L397">        }</span>
-<span class="fc" id="L398">        commonLast = false;</span>
-<span class="fc" id="L399">    }</span>
+<span class="fc" id="L441">        }</span>
+<span class="fc" id="L442">        commonLast = false;</span>
+<span class="fc" id="L443">    }</span>
 
     public boolean getIsEnglishWord() {
-<span class="fc" id="L402">        return isEnglishWord;</span>
+<span class="fc" id="L446">        return isEnglishWord;</span>
     }
 
     public void setIsEnglishWord(boolean isEqualTo) {
-<span class="fc" id="L406">        isEnglishWord = isEqualTo;</span>
-<span class="fc" id="L407">    }</span>
+<span class="fc" id="L450">        isEnglishWord = isEqualTo;</span>
+<span class="fc" id="L451">    }</span>
 
     public void detectEnglishWord() {
-<span class="fc" id="L410">        Iterable&lt;String&gt; englishDictionary = WordLists.englishDictionary();</span>
-<span class="fc bfc" id="L411" title="All 2 branches covered.">        for (String dictionaryWord : englishDictionary) {</span>
-<span class="fc bfc" id="L412" title="All 2 branches covered.">            if (dictionaryWord.equalsIgnoreCase(tokenString)) {</span>
-<span class="fc" id="L413">                setIsEnglishWord(true);</span>
-<span class="fc" id="L414">                return;</span>
+<span class="fc" id="L454">        Iterable&lt;String&gt; englishDictionary = WordLists.englishDictionary();</span>
+<span class="fc bfc" id="L455" title="All 2 branches covered.">        for (String dictionaryWord : englishDictionary) {</span>
+<span class="fc bfc" id="L456" title="All 2 branches covered.">            if (dictionaryWord.equalsIgnoreCase(tokenString)) {</span>
+<span class="fc" id="L457">                setIsEnglishWord(true);</span>
+<span class="fc" id="L458">                return;</span>
             }
-<span class="fc" id="L416">        }</span>
-<span class="fc" id="L417">        setIsEnglishWord(false);</span>
-<span class="fc" id="L418">        return;</span>
+<span class="fc" id="L460">        }</span>
+<span class="fc" id="L461">        setIsEnglishWord(false);</span>
+<span class="fc" id="L462">        return;</span>
     }
 
     public void detectCitiesAndStates() {
-<span class="fc" id="L422">        Iterable&lt;String&gt; citiesAndStates = WordLists.citiesAndStatesUS();</span>
-<span class="fc bfc" id="L423" title="All 2 branches covered.">        for (String cityOrState : citiesAndStates) {</span>
-<span class="fc bfc" id="L424" title="All 2 branches covered.">            if (cityOrState.equalsIgnoreCase(tokenString)) {</span>
-<span class="fc" id="L425">                setIsLocation(true);</span>
-<span class="fc" id="L426">                return;</span>
+<span class="fc" id="L466">        Iterable&lt;String&gt; citiesAndStates = WordLists.citiesAndStatesUS();</span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">        for (String cityOrState : citiesAndStates) {</span>
+<span class="fc bfc" id="L468" title="All 2 branches covered.">            if (cityOrState.equalsIgnoreCase(tokenString)) {</span>
+<span class="fc" id="L469">                setIsLocation(true);</span>
+<span class="fc" id="L470">                return;</span>
             }
-<span class="fc" id="L428">        }</span>
-<span class="fc" id="L429">        setIsLocation(false);</span>
-<span class="fc" id="L430">        return;</span>
+<span class="fc" id="L472">        }</span>
+<span class="fc" id="L473">        setIsLocation(false);</span>
+<span class="fc" id="L474">        return;</span>
     }
 
     public void detectCountriesAndTerritories() {
-<span class="fc" id="L434">        Iterable&lt;String&gt; countriesAndTerritories = WordLists.countriesAndTerritories();</span>
-<span class="fc bfc" id="L435" title="All 2 branches covered.">        for (String countryOrTerritory : countriesAndTerritories) {</span>
-<span class="pc bpc" id="L436" title="1 of 2 branches missed.">            if (countryOrTerritory.equalsIgnoreCase(tokenString)) {</span>
-<span class="nc" id="L437">                setIsLocation(true);</span>
-<span class="nc" id="L438">                return;</span>
+<span class="fc" id="L478">        Iterable&lt;String&gt; countriesAndTerritories = WordLists.countriesAndTerritories();</span>
+<span class="fc bfc" id="L479" title="All 2 branches covered.">        for (String countryOrTerritory : countriesAndTerritories) {</span>
+<span class="pc bpc" id="L480" title="1 of 2 branches missed.">            if (countryOrTerritory.equalsIgnoreCase(tokenString)) {</span>
+<span class="nc" id="L481">                setIsLocation(true);</span>
+<span class="nc" id="L482">                return;</span>
             }
-<span class="fc" id="L440">        }</span>
-<span class="fc" id="L441">        setIsLocation(false);</span>
-<span class="fc" id="L442">        return;</span>
+<span class="fc" id="L484">        }</span>
+<span class="fc" id="L485">        setIsLocation(false);</span>
+<span class="fc" id="L486">        return;</span>
     }
 
     public void detectPlaces() {
-<span class="fc" id="L446">        Iterable&lt;String&gt; places = WordLists.places();</span>
-<span class="fc bfc" id="L447" title="All 2 branches covered.">        for (String place : places) {</span>
-<span class="fc bfc" id="L448" title="All 2 branches covered.">            if (place.equalsIgnoreCase(tokenString)) {</span>
-<span class="fc" id="L449">                setIsLocation(true);</span>
-<span class="fc" id="L450">                return;</span>
+<span class="fc" id="L490">        Iterable&lt;String&gt; places = WordLists.places();</span>
+<span class="fc bfc" id="L491" title="All 2 branches covered.">        for (String place : places) {</span>
+<span class="fc bfc" id="L492" title="All 2 branches covered.">            if (place.equalsIgnoreCase(tokenString)) {</span>
+<span class="fc" id="L493">                setIsLocation(true);</span>
+<span class="fc" id="L494">                return;</span>
             }
-<span class="fc" id="L452">        }</span>
-<span class="fc" id="L453">        setIsLocation(false);</span>
-<span class="fc" id="L454">        return;</span>
+<span class="fc" id="L496">        }</span>
+<span class="fc" id="L497">        setIsLocation(false);</span>
+<span class="fc" id="L498">        return;</span>
     }
+
+    public void detectHonorifix() {
+<span class="nc" id="L502">        Iterable&lt;String&gt; Honorifix = WordLists.honorifics();</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">        for (String honorifix : Honorifix) {</span>
+<span class="nc bnc" id="L504" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(honorifix)) {</span>
+<span class="nc" id="L505">                honorificFlag = true;</span>
+<span class="nc" id="L506">                return;</span>
+            }
+<span class="nc" id="L508">        }</span>
+<span class="nc" id="L509">        honorificFlag = false;</span>
+<span class="nc" id="L510">        return;</span>
+    }
+
+    public void detectPrefix() {
+<span class="nc" id="L514">        Iterable&lt;String&gt; lastNamePrefixes = WordLists.lastNamePrefixes();</span>
+<span class="nc bnc" id="L515" title="All 2 branches missed.">        for (String Prefix : lastNamePrefixes) {</span>
+<span class="nc bnc" id="L516" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(Prefix)) {</span>
+<span class="nc" id="L517">                prefixflag = true;</span>
+<span class="nc" id="L518">                return;</span>
+            }
+<span class="nc" id="L520">        }</span>
+<span class="nc" id="L521">        prefixflag = false;</span>
+<span class="nc" id="L522">        return;</span>
+    }
+
+    public void detectSuffix() {
+<span class="nc" id="L526">        Iterable&lt;String&gt; lastNameSuffix = WordLists.lastNameSuffixes();</span>
+<span class="nc bnc" id="L527" title="All 2 branches missed.">        for (String Suffix : lastNameSuffix) {</span>
+<span class="nc bnc" id="L528" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(Suffix)) {</span>
+<span class="nc" id="L529">                suffixflag = true;</span>
+<span class="nc" id="L530">                return;</span>
+            }
+<span class="nc" id="L532">        }</span>
+<span class="nc" id="L533">        suffixflag = false;</span>
+<span class="nc" id="L534">        return;</span>
+    }
+
+    public void detectKnownAuthor() {
+        // detectHonorifix();
+
+<span class="nc" id="L540">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

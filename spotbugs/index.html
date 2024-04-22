@@ -880,14 +880,17 @@
          ]);
 
          var categories = new Array(
+               {id: "STYLE", label: "Dodgy code"},
                {id: "I18N", label: "Internationalization"}
          );
 
          var codes = new Array(
+               {id: "DLS", label: "Dead local store"},
                {id: "Dm", label: "Dubious method used"}
          );
 
          var patterns = new Array(
+               {category: "STYLE", code: "DLS", id: "DLS_DEAD_LOCAL_STORE", label: "Dead store to local variable"},
                {category: "I18N", code: "Dm", id: "DM_DEFAULT_ENCODING", label: "Reliance on default encoding"}
          );
 
@@ -897,12 +900,12 @@
                {className: "edu.odu.cs.cs350.TestMachineTrainer", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.TestTagger", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.TestTextBlock", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
-               {className: "edu.odu.cs.cs350.TestToken", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
+               {className: "edu.odu.cs.cs350.TestToken", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "1", bugsP1: "1", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.testWorldLists", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
          );
 
          var packageStats = new Array(
-               {packageName: "edu.odu.cs.cs350", totalBugs: "4", bugsP1: "4", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
+               {packageName: "edu.odu.cs.cs350", totalBugs: "5", bugsP1: "5", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
          );
 
          var bugs = new Array(
@@ -944,6 +947,16 @@
                   priority: 1,
                   firstVersion: 0,
                   className: "edu.odu.cs.cs350.TestDocument",
+                  packageName: "edu.odu.cs.cs350"
+               },
+               {
+                  id: "197550c39bd8d52cfd5aae3a20670552-0",
+                  category: "STYLE",
+                  code: "DLS",
+                  pattern: "DLS_DEAD_LOCAL_STORE",
+                  priority: 1,
+                  firstVersion: 0,
+                  className: "edu.odu.cs.cs350.TestToken",
                   packageName: "edu.odu.cs.cs350"
                }
          );
@@ -1038,18 +1051,18 @@
                </tr>
                <tr>
                   <td class="summary-name">Overall (1 packages, 7 classes)</td>
-                  <td class="summary-size">649</td>
-                  <td class="summary-priority-all">4</td>
-                  <td class="summary-priority-1">4</td>
+                  <td class="summary-size">677</td>
+                  <td class="summary-priority-all">5</td>
+                  <td class="summary-priority-1">5</td>
                   <td class="summary-priority-2">0</td>
                   <td class="summary-priority-3">0</td>
                   <td class="summary-priority-4">0</td>
                </tr>
                <tr>
                   <td class="summary-name">edu.odu.cs.cs350</td>
-                  <td class="summary-size">649</td>
-                  <td class="summary-priority-all">4</td>
-                  <td class="summary-priority-1">4</td>
+                  <td class="summary-size">677</td>
+                  <td class="summary-priority-all">5</td>
+                  <td class="summary-priority-1">5</td>
                   <td class="summary-priority-2">0</td>
                   <td class="summary-priority-3">0</td>
                   <td class="summary-priority-4">0</td>
@@ -1177,20 +1190,28 @@
             <div class="b-r">At TestDocument.java:[line 97]</div>
             <div class="b-d">Found reliance on default encoding in edu.odu.cs.cs350.TestDocument.testPrintDocument(): new java.io.PrintStream(OutputStream)</div>
          </div>
+         <div id="b-uid-197550c39bd8d52cfd5aae3a20670552-0" class="bug">
+            <div class="b-r">In class edu.odu.cs.cs350.TestToken</div>
+            <div class="b-r">In method edu.odu.cs.cs350.TestToken.testKnownAuthor()</div>
+            <div class="b-r">Local variable named authorToken</div>
+            <div class="b-r">At TestToken.java:[line 487]</div>
+            <div class="b-d">Dead store to authorToken in edu.odu.cs.cs350.TestToken.testKnownAuthor()</div>
+         </div>
+         <div id="tip-DLS_DEAD_LOCAL_STORE" class="tip">
+            <p>
+            This instruction assigns a value to a local variable,
+            but the value is not read or used in any subsequent instruction.
+            Often, this indicates an error, because the value computed is never
+            used.
+            </p>
+            <p>
+            Note that Sun's javac compiler often generates dead stores for
+            final local variables.  Because SpotBugs is a bytecode-based tool,
+            there is no easy way to eliminate these false positives.
+            </p>
+         </div>
          <div id="tip-DM_DEFAULT_ENCODING" class="tip">
             <p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
-         </div>
-      </div>
-   </body>
-</html>
-bject explicitly.  </p>
-         </div>
-         <div id="tip-ES_COMPARING_PARAMETER_STRING_WITH_EQ" class="tip">
-            <p>This code compares a <code>java.lang.String</code> parameter for reference
-            equality using the == or != operators. Requiring callers to
-            pass only String constants or interned strings to a method is unnecessarily
-            fragile, and rarely leads to measurable performance gains. Consider
-            using the <code>equals(Object)</code> method instead.</p>
          </div>
       </div>
    </body>

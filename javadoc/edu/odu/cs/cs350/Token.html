@@ -129,6 +129,12 @@ loadScripts(document, 'script');</script>
 <div class="block">Assigns the Token a Feature of Speech Type.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectHonorifix()" class="member-name-link">detectHonorifix</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectKnownAuthor()" class="member-name-link">detectKnownAuthor</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectLexicalFeature()" class="member-name-link">detectLexicalFeature</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Assigns a Lexical Feature Type to the Token.</div>
@@ -141,6 +147,12 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectPlaces()" class="member-name-link">detectPlaces</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectPrefix()" class="member-name-link">detectPrefix</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detectSuffix()" class="member-name-link">detectSuffix</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFeatureOfSpeech()" class="member-name-link">getFeatureOfSpeech</a>()</code></div>
@@ -186,7 +198,13 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isName()" class="member-name-link">isName</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPunctuation()" class="member-name-link">isPunctuation</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPrefix()" class="member-name-link">isPrefix</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPunctuation()" class="member-name-link">isPunctuation</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isSuffix()" class="member-name-link">isSuffix</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setFeatureOfSpeech(edu.odu.cs.cs350.FeatureOfSpeech)" class="member-name-link">setFeatureOfSpeech</a><wbr>(<a href="FeatureOfSpeech.html" title="enum class in edu.odu.cs.cs350">FeatureOfSpeech</a>&nbsp;feature)</code></div>
@@ -232,9 +250,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Sets the Bool isName of a Token.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setIsPunctuation(boolean)" class="member-name-link">setIsPunctuation</a><wbr>(boolean&nbsp;punctuation)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setIsPrefix(boolean)" class="member-name-link">setIsPrefix</a><wbr>(boolean&nbsp;prefix)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the Bool prefix of a Token.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setIsPunctuation(boolean)" class="member-name-link">setIsPunctuation</a><wbr>(boolean&nbsp;punctuation)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the Bool isPunctuation of a Token.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setIsSufix(boolean)" class="member-name-link">setIsSufix</a><wbr>(boolean&nbsp;suffix)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the Bool suffix of a Token.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLexicalFeature(edu.odu.cs.cs350.LexicalFeature)" class="member-name-link">setLexicalFeature</a><wbr>(<a href="LexicalFeature.html" title="enum class in edu.odu.cs.cs350">LexicalFeature</a>&nbsp;lexicalFeature)</code></div>
@@ -356,6 +384,26 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="isPrefix()">
+<h3>isPrefix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPrefix</span>()</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if a Prefix, false if not</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isSuffix()">
+<h3>isSuffix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isSuffix</span>()</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if a suffix, false if not</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="isKillWord()">
 <h3>isKillWord</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isKillWord</span>()</div>
@@ -449,6 +497,28 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>honorific</code> - is this a honorific.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setIsPrefix(boolean)">
+<h3>setIsPrefix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setIsPrefix</span><wbr><span class="parameters">(boolean&nbsp;prefix)</span></div>
+<div class="block">Sets the Bool prefix of a Token.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>prefix</code> - is this a prefix.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setIsSufix(boolean)">
+<h3>setIsSufix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setIsSufix</span><wbr><span class="parameters">(boolean&nbsp;suffix)</span></div>
+<div class="block">Sets the Bool suffix of a Token.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>suffix</code> - is this a suffix.</dd>
 </dl>
 </section>
 </li>
@@ -622,6 +692,30 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="detectPlaces()">
 <h3>detectPlaces</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectPlaces</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="detectHonorifix()">
+<h3>detectHonorifix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectHonorifix</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="detectPrefix()">
+<h3>detectPrefix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectPrefix</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="detectSuffix()">
+<h3>detectSuffix</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectSuffix</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="detectKnownAuthor()">
+<h3>detectKnownAuthor</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">detectKnownAuthor</span>()</div>
 </section>
 </li>
 </ul>
