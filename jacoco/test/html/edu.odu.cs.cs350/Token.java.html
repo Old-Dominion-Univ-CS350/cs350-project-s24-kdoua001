@@ -47,12 +47,12 @@ public class Token {
     /**
      * Flag indicating whether the token has an prefix (e.g., &quot;la, el, de&quot;).
      */
-    private boolean prefixflag;
+    private boolean prefixFlag;
 
     /**
      * Flag indicating whether the token has an suffix (e.g., &quot;Jr, Sr, II&quot;).
      */
-    private boolean suffixflag;
+    private boolean suffixFlag;
 
     /**
      * Flag indicating whether the token is a &quot;kill word&quot; that should be ignored.
@@ -93,8 +93,8 @@ public class Token {
 <span class="fc" id="L93">        this.commonFirst = false;</span>
 <span class="fc" id="L94">        this.commonLast = false;</span>
 <span class="fc" id="L95">        this.honorificFlag = false;</span>
-<span class="fc" id="L96">        this.prefixflag = false;</span>
-<span class="fc" id="L97">        this.suffixflag = false;</span>
+<span class="fc" id="L96">        this.prefixFlag = false;</span>
+<span class="fc" id="L97">        this.suffixFlag = false;</span>
 <span class="fc" id="L98">        this.killWordFlag = false;</span>
 <span class="fc" id="L99">        this.punctuationFlag = false;</span>
 <span class="fc" id="L100">        this.isEnglishWord = false;</span>
@@ -162,14 +162,14 @@ public class Token {
      * @return true if a Prefix, false if not
      */
     public boolean isPrefix() {
-<span class="nc" id="L165">        return this.prefixflag;</span>
+<span class="nc" id="L165">        return this.prefixFlag;</span>
     }
 
     /**
      * @return true if a suffix, false if not
      */
     public boolean isSuffix() {
-<span class="nc" id="L172">        return this.suffixflag;</span>
+<span class="nc" id="L172">        return this.suffixFlag;</span>
     }
 
     /**
@@ -255,7 +255,7 @@ public class Token {
      * @param prefix is this a prefix.
      */
     public void setIsPrefix(boolean prefix) {
-<span class="nc" id="L258">        this.prefixflag = prefix;</span>
+<span class="nc" id="L258">        this.prefixFlag = prefix;</span>
 <span class="nc" id="L259">    }</span>
 
     /**
@@ -263,8 +263,8 @@ public class Token {
      * 
      * @param suffix is this a suffix.
      */
-    public void setIsSufix(boolean suffix) {
-<span class="nc" id="L267">        this.suffixflag = suffix;</span>
+    public void setIsSuffix(boolean suffix) {
+<span class="nc" id="L267">        this.suffixFlag = suffix;</span>
 <span class="nc" id="L268">    }</span>
 
     /**
@@ -498,10 +498,10 @@ public class Token {
 <span class="fc" id="L498">        return;</span>
     }
 
-    public void detectHonorifix() {
-<span class="nc" id="L502">        Iterable&lt;String&gt; Honorifix = WordLists.honorifics();</span>
-<span class="nc bnc" id="L503" title="All 2 branches missed.">        for (String honorifix : Honorifix) {</span>
-<span class="nc bnc" id="L504" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(honorifix)) {</span>
+    public void detectHonorific() {
+<span class="nc" id="L502">        Iterable&lt;String&gt; Honorific = WordLists.honorifics();</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">        for (String honorific : Honorific) {</span>
+<span class="nc bnc" id="L504" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(honorific)) {</span>
 <span class="nc" id="L505">                honorificFlag = true;</span>
 <span class="nc" id="L506">                return;</span>
             }
@@ -514,11 +514,11 @@ public class Token {
 <span class="nc" id="L514">        Iterable&lt;String&gt; lastNamePrefixes = WordLists.lastNamePrefixes();</span>
 <span class="nc bnc" id="L515" title="All 2 branches missed.">        for (String Prefix : lastNamePrefixes) {</span>
 <span class="nc bnc" id="L516" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(Prefix)) {</span>
-<span class="nc" id="L517">                prefixflag = true;</span>
+<span class="nc" id="L517">                prefixFlag = true;</span>
 <span class="nc" id="L518">                return;</span>
             }
 <span class="nc" id="L520">        }</span>
-<span class="nc" id="L521">        prefixflag = false;</span>
+<span class="nc" id="L521">        prefixFlag = false;</span>
 <span class="nc" id="L522">        return;</span>
     }
 
@@ -526,11 +526,11 @@ public class Token {
 <span class="nc" id="L526">        Iterable&lt;String&gt; lastNameSuffix = WordLists.lastNameSuffixes();</span>
 <span class="nc bnc" id="L527" title="All 2 branches missed.">        for (String Suffix : lastNameSuffix) {</span>
 <span class="nc bnc" id="L528" title="All 2 branches missed.">            if (tokenString.equalsIgnoreCase(Suffix)) {</span>
-<span class="nc" id="L529">                suffixflag = true;</span>
+<span class="nc" id="L529">                suffixFlag = true;</span>
 <span class="nc" id="L530">                return;</span>
             }
 <span class="nc" id="L532">        }</span>
-<span class="nc" id="L533">        suffixflag = false;</span>
+<span class="nc" id="L533">        suffixFlag = false;</span>
 <span class="nc" id="L534">        return;</span>
     }
 
