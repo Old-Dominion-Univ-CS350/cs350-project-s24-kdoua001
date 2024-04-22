@@ -464,6 +464,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for cities and states.
+     * 
+     * @return
+     */
     public void detectCitiesAndStates() {
         Iterable<String> citiesAndStates = WordLists.citiesAndStatesUS();
         for (String cityOrState : citiesAndStates) {
@@ -476,6 +481,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for countries and territories.
+     * 
+     * @return
+     */
     public void detectCountriesAndTerritories() {
         Iterable<String> countriesAndTerritories = WordLists.countriesAndTerritories();
         for (String countryOrTerritory : countriesAndTerritories) {
@@ -488,6 +498,11 @@ public class Token {
         return;
     }
 
+    /**
+     * Checks library for geographical places.
+     * 
+     * @return
+     */
     public void detectPlaces() {
         Iterable<String> places = WordLists.places();
         for (String place : places) {
