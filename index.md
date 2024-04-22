@@ -5,5 +5,5 @@ Personal Name Extractor
 * [Tests](./tests/test/)
 * [SystemTests](./tests/systest/)
 * [TestCoverage](./jacoco/test/html/)
-* [SpotBugs](./spotbugs/)
+* [StaticAnalysis](./spotbugs/)
 * [JavaDoc](./javadoc/)
