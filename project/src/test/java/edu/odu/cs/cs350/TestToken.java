@@ -475,7 +475,7 @@ public class TestToken {
 
     @Test
     public void testDetectPlaces() {
-        Token test_token = new Token("Old Dominion University");
+        Token test_token = new Token("Aajker Creek");
         Token test_token2 = new Token("words");
         assertTrue(test_token.isLocation());
         assertFalse(test_token2.isLocation());
