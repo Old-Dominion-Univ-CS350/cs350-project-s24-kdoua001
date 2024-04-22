@@ -537,7 +537,7 @@ public class Token {
 
     public boolean detectKnownAuthor(List<Token> tokens, int currentIndex) {
         // Check if the current token is an honorific
-        detectHonorifix();
+        detectHonorific();
 
         if (honorificFlag) {
             // Check if there are at least two more tokens after current token
