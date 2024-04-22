@@ -487,4 +487,14 @@ public class TestToken {
 
     }
 
+    @Test 
+    public void testKillWord(){
+        Token test_token = new Token("John");
+        Token test_token2 = new Token("Grumman");
+        Token test_token3 = new Token("Student");
+        assertFalse(test_token.isKillWord());
+        assertTrue(test_token2.isKillWord());
+        assertTrue(test_token3.isKillWord());
+    }
+
 }

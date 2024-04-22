@@ -107,6 +107,7 @@ public class Token {
         detectCitiesAndStates();
         detectCountriesAndTerritories();
         detectPlaces();
+        detectKillWord();
 
     }
 
@@ -534,5 +535,21 @@ public class Token {
         suffixFlag = false;
         return;
     }
+
+    /**
+     * Compares tokenString with a list of known kill words
+     */
+    public void detectKillWord() {
+        Iterable<String> notPeople = WordLists.nonPersonalIdentifierCues();
+        for (String notPerson : notPeople) {
+            if (notPerson.equalsIgnoreCase(tokenString)) {
+                setIsKillWord(true);
+                return;
+            }
+        }
+        setIsKillWord(false);
+        return;
+    }
+
 
 }
