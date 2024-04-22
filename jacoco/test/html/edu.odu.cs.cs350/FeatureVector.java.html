@@ -26,19 +26,20 @@ public class FeatureVector {
      */
     public Instances createVectors(List&lt;Token&gt; tokenList) {
 <span class="fc" id="L28">        ArrayList&lt;Attribute&gt; attributes = createAttributes();</span>
-
+    
         // Create instances object with the defined attributes
 <span class="fc" id="L31">        Instances data = new Instances(&quot;FeatureVectors&quot;, attributes, tokenList.size());</span>
-<span class="fc" id="L32">        data.setClassIndex(0);</span>
+    
+        // Find index of 'isName' attribute
+<span class="fc" id="L34">        int classIndex = attributes.indexOf(new Attribute(&quot;isName&quot;));</span>
+<span class="fc" id="L35">        data.setClassIndex(classIndex);</span>
         
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        for (Token token : tokenList) {</span>
-<span class="fc" id="L35">            double[] values = createAttributeValues(token);</span>
-
-            // Create DenseInstance and add to Instances object
-<span class="fc" id="L38">            data.add(new DenseInstance(1.0, values));</span>
-<span class="fc" id="L39">        }</span>
-
-<span class="fc" id="L41">        return data;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (Token token : tokenList) {</span>
+<span class="fc" id="L38">            double[] values = createAttributeValues(token);</span>
+<span class="fc" id="L39">            data.add(new DenseInstance(1.0, values));</span>
+<span class="fc" id="L40">        }</span>
+    
+<span class="fc" id="L42">        return data;</span>
     }
 
     /**
@@ -46,44 +47,44 @@ public class FeatureVector {
      * @return List of attributes.
      */
     private ArrayList&lt;Attribute&gt; createAttributes() {
-<span class="fc" id="L49">        ArrayList&lt;Attribute&gt; attributes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L50">        ArrayList&lt;Attribute&gt; attributes = new ArrayList&lt;&gt;();</span>
 
         // Boolean attributes from Token class
-<span class="fc" id="L52">        attributes.add(new Attribute(&quot;isName&quot;));</span>
-<span class="fc" id="L53">        attributes.add(new Attribute(&quot;isInDictionary&quot;));</span>
-<span class="fc" id="L54">        attributes.add(new Attribute(&quot;isLocation&quot;));</span>
-<span class="fc" id="L55">        attributes.add(new Attribute(&quot;isCommonFirst&quot;));</span>
-<span class="fc" id="L56">        attributes.add(new Attribute(&quot;isCommonLast&quot;));</span>
-<span class="fc" id="L57">        attributes.add(new Attribute(&quot;isHonorific&quot;));</span>
-<span class="fc" id="L58">        attributes.add(new Attribute(&quot;isPrefix&quot;));</span>
-<span class="fc" id="L59">        attributes.add(new Attribute(&quot;isSuffix&quot;));</span>
-<span class="fc" id="L60">        attributes.add(new Attribute(&quot;isEnglishWord&quot;));</span>
-<span class="fc" id="L61">        attributes.add(new Attribute(&quot;isKillWord&quot;));</span>
-<span class="fc" id="L62">        attributes.add(new Attribute(&quot;isPunctuation&quot;));</span>
+<span class="fc" id="L53">        attributes.add(new Attribute(&quot;isName&quot;));</span>
+<span class="fc" id="L54">        attributes.add(new Attribute(&quot;isInDictionary&quot;));</span>
+<span class="fc" id="L55">        attributes.add(new Attribute(&quot;isLocation&quot;));</span>
+<span class="fc" id="L56">        attributes.add(new Attribute(&quot;isCommonFirst&quot;));</span>
+<span class="fc" id="L57">        attributes.add(new Attribute(&quot;isCommonLast&quot;));</span>
+<span class="fc" id="L58">        attributes.add(new Attribute(&quot;isHonorific&quot;));</span>
+<span class="fc" id="L59">        attributes.add(new Attribute(&quot;isPrefix&quot;));</span>
+<span class="fc" id="L60">        attributes.add(new Attribute(&quot;isSuffix&quot;));</span>
+<span class="fc" id="L61">        attributes.add(new Attribute(&quot;isEnglishWord&quot;));</span>
+<span class="fc" id="L62">        attributes.add(new Attribute(&quot;isKillWord&quot;));</span>
+<span class="fc" id="L63">        attributes.add(new Attribute(&quot;isPunctuation&quot;));</span>
 
         // Lexical feature attribute
-<span class="fc" id="L65">        ArrayList&lt;String&gt; lexicalFeatureValues = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L66">        lexicalFeatureValues.add(&quot;NUMBER&quot;);</span>
-<span class="fc" id="L67">        lexicalFeatureValues.add(&quot;SINGLECAPLETTER&quot;);</span>
-<span class="fc" id="L68">        lexicalFeatureValues.add(&quot;CAPITALIZEDWORD&quot;);</span>
-<span class="fc" id="L69">        lexicalFeatureValues.add(&quot;ALLCAPS&quot;);</span>
-<span class="fc" id="L70">        lexicalFeatureValues.add(&quot;PUNCTUATION&quot;);</span>
-<span class="fc" id="L71">        lexicalFeatureValues.add(&quot;NEWLINE&quot;);</span>
-<span class="fc" id="L72">        lexicalFeatureValues.add(&quot;NULLFEATURE&quot;);</span>
-<span class="fc" id="L73">        lexicalFeatureValues.add(&quot;OTHER&quot;);</span>
-<span class="fc" id="L74">        attributes.add(new Attribute(&quot;lexicalFeature&quot;, lexicalFeatureValues));</span>
+<span class="fc" id="L66">        ArrayList&lt;String&gt; lexicalFeatureValues = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L67">        lexicalFeatureValues.add(&quot;NUMBER&quot;);</span>
+<span class="fc" id="L68">        lexicalFeatureValues.add(&quot;SINGLECAPLETTER&quot;);</span>
+<span class="fc" id="L69">        lexicalFeatureValues.add(&quot;CAPITALIZEDWORD&quot;);</span>
+<span class="fc" id="L70">        lexicalFeatureValues.add(&quot;ALLCAPS&quot;);</span>
+<span class="fc" id="L71">        lexicalFeatureValues.add(&quot;PUNCTUATION&quot;);</span>
+<span class="fc" id="L72">        lexicalFeatureValues.add(&quot;NEWLINE&quot;);</span>
+<span class="fc" id="L73">        lexicalFeatureValues.add(&quot;NULLFEATURE&quot;);</span>
+<span class="fc" id="L74">        lexicalFeatureValues.add(&quot;OTHER&quot;);</span>
+<span class="fc" id="L75">        attributes.add(new Attribute(&quot;lexicalFeature&quot;, lexicalFeatureValues));</span>
 
         // Part of speech feature attribute
-<span class="fc" id="L77">        ArrayList&lt;String&gt; speechFeatureValue = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L78">        speechFeatureValue.add(&quot;ARTICLES&quot;);</span>
-<span class="fc" id="L79">        speechFeatureValue.add(&quot;CONJUNCTION&quot;);</span>
-<span class="fc" id="L80">        speechFeatureValue.add(&quot;PERIOD&quot;);</span>
-<span class="fc" id="L81">        speechFeatureValue.add(&quot;COMMA&quot;);</span>
-<span class="fc" id="L82">        speechFeatureValue.add(&quot;HYPHEN&quot;);</span>
-<span class="fc" id="L83">        speechFeatureValue.add(&quot;OTHER&quot;);</span>
-<span class="fc" id="L84">        attributes.add(new Attribute(&quot;speechFeature&quot;, speechFeatureValue));</span>
+<span class="fc" id="L78">        ArrayList&lt;String&gt; speechFeatureValue = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L79">        speechFeatureValue.add(&quot;ARTICLES&quot;);</span>
+<span class="fc" id="L80">        speechFeatureValue.add(&quot;CONJUNCTION&quot;);</span>
+<span class="fc" id="L81">        speechFeatureValue.add(&quot;PERIOD&quot;);</span>
+<span class="fc" id="L82">        speechFeatureValue.add(&quot;COMMA&quot;);</span>
+<span class="fc" id="L83">        speechFeatureValue.add(&quot;HYPHEN&quot;);</span>
+<span class="fc" id="L84">        speechFeatureValue.add(&quot;OTHER&quot;);</span>
+<span class="fc" id="L85">        attributes.add(new Attribute(&quot;speechFeature&quot;, speechFeatureValue));</span>
 
-<span class="fc" id="L86">        return attributes;</span>
+<span class="fc" id="L87">        return attributes;</span>
     }
 
     /**
@@ -93,23 +94,23 @@ public class FeatureVector {
      */
     private double[] createAttributeValues(Token token) {
         // Create an array of attribute values size depending on how many attributes we have
-<span class="fc" id="L96">        double[] values = new double[14];</span>
+<span class="fc" id="L97">        double[] values = new double[13];</span>
 
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        values[0] = token.isName() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L99" title="All 2 branches covered.">        values[1] = token.isInDictionary() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L100" title="All 2 branches covered.">        values[2] = token.isLocation() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L101" title="All 2 branches covered.">        values[3] = token.isCommonFirst() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">        values[4] = token.isCommonLast() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">        values[5] = token.isHonorific() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L104" title="All 2 branches covered.">        values[6] = token.isPrefix() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L105" title="All 2 branches covered.">        values[7] = token.isSuffix() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">        values[8] = token.getIsEnglishWord() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L107" title="All 2 branches covered.">        values[9] = token.isKillWord() ? 1.0 : 0.0;</span>
-<span class="fc bfc" id="L108" title="All 2 branches covered.">        values[10] = token.isPunctuation() ? 1.0 : 0.0;</span>
-<span class="fc" id="L109">        values[11] = token.getLexicalFeature().ordinal();</span>
-<span class="fc" id="L110">        values[12] = token.getFeatureOfSpeech().ordinal();</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        values[0] = token.isName() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        values[1] = token.isInDictionary() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        values[2] = token.isLocation() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        values[3] = token.isCommonFirst() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        values[4] = token.isCommonLast() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        values[5] = token.isHonorific() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        values[6] = token.isPrefix() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        values[7] = token.isSuffix() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        values[8] = token.getIsEnglishWord() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        values[9] = token.isKillWord() ? 1.0 : 0.0;</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">        values[10] = token.isPunctuation() ? 1.0 : 0.0;</span>
+<span class="fc" id="L110">        values[11] = token.getLexicalFeature().ordinal();</span>
+<span class="fc" id="L111">        values[12] = token.getFeatureOfSpeech().ordinal();</span>
 
-<span class="fc" id="L112">        return values;</span>
+<span class="fc" id="L113">        return values;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
