@@ -535,39 +535,5 @@ public class Token {
 <span class="nc" id="L535">        return;</span>
     }
 
-    public boolean detectKnownAuthor(List&lt;Token&gt; tokens, int currentIndex) {
-        // Check if the current token is an honorific
-<span class="nc" id="L540">        detectHonorific();</span>
-
-<span class="nc bnc" id="L542" title="All 2 branches missed.">        if (honorificFlag) {</span>
-            // Check if there are at least two more tokens after current token
-<span class="nc bnc" id="L544" title="All 2 branches missed.">            if (currentIndex + 2 &lt; tokens.size()) {</span>
-<span class="nc" id="L545">                String secondTokenString = tokens.get(currentIndex + 1).tokenString;</span>
-<span class="nc" id="L546">                String thirdTokenString = tokens.get(currentIndex + 2).tokenString;</span>
-
-                // check if the next token is a common first name
-<span class="nc" id="L549">                Token nextToken = new Token(secondTokenString);</span>
-<span class="nc" id="L550">                nextToken.detectCommonFirstName();</span>
-
-<span class="nc bnc" id="L552" title="All 2 branches missed.">                if (nextToken.isCommonFirst()) {</span>
-                    // check if the next token after the first name is a common last name
-
-<span class="nc" id="L555">                    Token lastToken = new Token(thirdTokenString);</span>
-<span class="nc" id="L556">                    lastToken.detectCommonLastName();</span>
-
-<span class="nc bnc" id="L558" title="All 2 branches missed.">                    if (lastToken.isCommonLast()) {</span>
-                        // if the token is a honorific followed by a common first name and last name
-                        // consider it
-                        // an author
-
-<span class="nc" id="L563">                        return true;</span>
-                    }
-                }
-            }
-        }
-        // if conditions not met return false it is not a known author name
-<span class="nc" id="L569">        return false;</span>
-    }
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
