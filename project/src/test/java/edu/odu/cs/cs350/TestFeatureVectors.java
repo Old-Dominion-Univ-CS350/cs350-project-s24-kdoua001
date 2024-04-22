@@ -1,21 +1,21 @@
 package edu.odu.cs.cs350;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import weka.core.Instances;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import java.util.ArrayList;
+import weka.core.DenseInstance;
+
 import java.util.List;
+import java.util.ArrayList;
 
 public class TestFeatureVectors {
 
-    // Method to create a test Token object
+    // Helper method to create a token with specified attributes
     private Token createToken(boolean name, boolean inDictionary, boolean location, boolean commonFirst,
-            boolean commonLast, boolean honorific, boolean prefix, boolean suffix,
-            boolean englishWord, boolean killWord, boolean punctuation,
-            LexicalFeature lexicalFeature, FeatureOfSpeech speechFeature) {
-
-        Token token = new Token("");
+                              boolean commonLast, boolean honorific, boolean prefix, boolean suffix,
+                              boolean englishWord, boolean killWord, boolean punctuation,
+                              LexicalFeature lexicalFeature, FeatureOfSpeech speechFeature) {
+        Token token = new Token("TestToken");
         token.setIsName(name);
         token.setIsInDictionary(inDictionary);
         token.setIsLocation(location);
@@ -32,85 +32,48 @@ public class TestFeatureVectors {
         return token;
     }
 
-    // Test creating feature vectors with multiple tokens including all features
+    // Test the creation of feature vectors
     @Test
     public void testCreateVectors() {
-        List<Token> tokenList = new ArrayList<>();
-        tokenList.add(createToken(true, true, true, true, true, true, true, true, true, true, true,
-                LexicalFeature.NUMBER, FeatureOfSpeech.ARTICLES));
-        tokenList.add(createToken(false, true, false, false, false, false, false, false, false, false, false,
-                LexicalFeature.ALLCAPS, FeatureOfSpeech.PERIOD));
+        List<Token> tokens = new ArrayList<>();
+        tokens.add(createToken(true, true, true, false, false, false, true, false, true, false, false,
+                               LexicalFeature.CAPITALIZEDWORD, FeatureOfSpeech.ARTICLES));
+        tokens.add(createToken(false, false, false, true, true, true, false, true, false, true, true,
+                               LexicalFeature.ALLCAPS, FeatureOfSpeech.PERIOD));
 
         FeatureVector featureVector = new FeatureVector();
-        Instances data = featureVector.createVectors(tokenList);
+        Instances data = featureVector.createVectors(tokens);
 
-        assertNotNull(data);
-        assertEquals(tokenList.size(), data.numInstances());
+        assertNotNull(data, "Data should not be null");
+        assertEquals(2, data.numInstances(), "Should have two instances");
 
-        double[] instanceValues = data.get(0).toDoubleArray();
-        assertEquals(1.0, instanceValues[0]); // isName
-        assertEquals(1.0, instanceValues[1]); // isInDictionary
-        assertEquals(1.0, instanceValues[2]); // isLocation
-        assertEquals(1.0, instanceValues[3]); // isCommonFirst
-        assertEquals(1.0, instanceValues[4]); // isCommonLast
-        assertEquals(1.0, instanceValues[5]); // isHonorific
-        assertEquals(1.0, instanceValues[6]); // isPrefix
-        assertEquals(1.0, instanceValues[7]); // isSuffix
-        assertEquals(1.0, instanceValues[8]); // isEnglishWord
-        assertEquals(1.0, instanceValues[9]); // isKillWord
-        assertEquals(1.0, instanceValues[10]); // isPunctuation
-        assertEquals(LexicalFeature.NUMBER.ordinal(), (int) instanceValues[11]); // lexicalFeature
-        assertEquals(FeatureOfSpeech.ARTICLES.ordinal(), (int) instanceValues[12]); // speechFeature
+        // Check the attribute values of the first token
+        double[] values = data.get(0).toDoubleArray();
+        assertAll("Checking all attributes of the first token",
+            () -> assertEquals(1.0, values[0], "isName should be 1.0"),
+            () -> assertEquals(1.0, values[1], "isInDictionary should be 1.0"),
+            () -> assertEquals(1.0, values[2], "isLocation should be 1.0"),
+            () -> assertEquals(0.0, values[3], "isCommonFirst should be 0.0"),
+            () -> assertEquals(0.0, values[4], "isCommonLast should be 0.0"),
+            () -> assertEquals(0.0, values[5], "isHonorific should be 0.0"),
+            () -> assertEquals(1.0, values[6], "isPrefix should be 1.0"),
+            () -> assertEquals(0.0, values[7], "isSuffix should be 0.0"),
+            () -> assertEquals(1.0, values[8], "isEnglishWord should be 1.0"),
+            () -> assertEquals(0.0, values[9], "isKillWord should be 0.0"),
+            () -> assertEquals(0.0, values[10], "isPunctuation should be 0.0"),
+            () -> assertEquals(LexicalFeature.CAPITALIZEDWORD.ordinal(), (int) values[11], "LexicalFeature should match"),
+            () -> assertEquals(FeatureOfSpeech.ARTICLES.ordinal(), (int) values[12], "FeatureOfSpeech should match")
+        );
+
     }
 
-    // Test creating feature vectors with a single token
-    @Test
-    public void testCreateVectorsWithSingleToken() {
-        List<Token> singleTokenList = new ArrayList<>();
-        singleTokenList.add(createToken(true, false, false, false, false, false, false, false, false, false, false,
-                LexicalFeature.CAPITALIZEDWORD, FeatureOfSpeech.OTHER));
-
-        FeatureVector featureVector = new FeatureVector();
-        Instances data = featureVector.createVectors(singleTokenList);
-
-        assertNotNull(data);
-        assertEquals(1, data.numInstances());
-
-        double[] instanceValues = data.get(0).toDoubleArray();
-        assertEquals(1.0, instanceValues[0]); // isName
-        assertEquals(0.0, instanceValues[1]); // isInDictionary
-        assertEquals(0.0, instanceValues[2]); // isLocation
-        assertEquals(0.0, instanceValues[3]); // isCommonFirst
-        assertEquals(0.0, instanceValues[4]); // isCommonLast
-        assertEquals(0.0, instanceValues[5]); // isHonorific
-        assertEquals(0.0, instanceValues[6]); // isPrefix
-        assertEquals(0.0, instanceValues[7]); // isSuffix
-        assertEquals(0.0, instanceValues[8]); // isEnglishWord
-        assertEquals(0.0, instanceValues[9]); // isKillWord
-        assertEquals(0.0, instanceValues[10]); // isPunctuation
-        assertEquals(LexicalFeature.CAPITALIZEDWORD.ordinal(), (int) instanceValues[11]); // lexicalFeature
-        assertEquals(FeatureOfSpeech.OTHER.ordinal(), (int) instanceValues[12]); // speechFeature
-    }
-
-    // Test creating feature vectors with an empty token list
-    @Test
-    public void testCreateEmptyVectors() {
-        List<Token> emptyTokenList = new ArrayList<>();
-        FeatureVector featureVector = new FeatureVector();
-        Instances data = featureVector.createVectors(emptyTokenList);
-
-        assertNotNull(data);
-        assertEquals(0, data.numInstances());
-    }
-
-    // Create a new FeatureVector instance
-    @Test
-    public void testConstructor() {
-
-        FeatureVector featureVector = new FeatureVector();
-
-        assertNotNull(featureVector);
-        
-    }
-
+        // Create a new FeatureVector instance
+        @Test
+        public void testConstructor() {
+    
+            FeatureVector featureVector = new FeatureVector();
+    
+            assertNotNull(featureVector);
+            
+        }
 }

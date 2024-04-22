@@ -7,30 +7,34 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * This class creates feature vectors based on token attributes and other features using Weka's Instances class.
+ * This class creates feature vectors based on token attributes/other 
+ * features using Weka's Instances class. 
  */
 public class FeatureVector {
 
     /**
      * Default constructor.
      */
-    public FeatureVector() {
+    public FeatureVector(){
+
     }
 
     /**
      * Method to create feature vectors based on Token attributes.
-     * @param tokenList A list of Token objects
-     * @return Instances object containing feature vectors for each token
+     * @param tokenList tokenList
+     * @return data
      */
     public Instances createVectors(List<Token> tokenList) {
         ArrayList<Attribute> attributes = createAttributes();
 
         // Create instances object with the defined attributes
         Instances data = new Instances("FeatureVectors", attributes, tokenList.size());
-        data.setClassIndex(data.numAttributes() - 1);
-
+        data.setClassIndex(0);
+        
         for (Token token : tokenList) {
             double[] values = createAttributeValues(token);
+
+            // Create DenseInstance and add to Instances object
             data.add(new DenseInstance(1.0, values));
         }
 
@@ -39,7 +43,7 @@ public class FeatureVector {
 
     /**
      * Creates the attributes for the feature vectors.
-     * @return A list of attributes.
+     * @return List of attributes.
      */
     private ArrayList<Attribute> createAttributes() {
         ArrayList<Attribute> attributes = new ArrayList<>();
@@ -59,16 +63,24 @@ public class FeatureVector {
 
         // Lexical feature attribute
         ArrayList<String> lexicalFeatureValues = new ArrayList<>();
-        for (LexicalFeature lf : LexicalFeature.values()) {
-            lexicalFeatureValues.add(lf.name());
-        }
+        lexicalFeatureValues.add("NUMBER");
+        lexicalFeatureValues.add("SINGLECAPLETTER");
+        lexicalFeatureValues.add("CAPITALIZEDWORD");
+        lexicalFeatureValues.add("ALLCAPS");
+        lexicalFeatureValues.add("PUNCTUATION");
+        lexicalFeatureValues.add("NEWLINE");
+        lexicalFeatureValues.add("NULLFEATURE");
+        lexicalFeatureValues.add("OTHER");
         attributes.add(new Attribute("lexicalFeature", lexicalFeatureValues));
 
         // Part of speech feature attribute
         ArrayList<String> speechFeatureValue = new ArrayList<>();
-        for (FeatureOfSpeech fs : FeatureOfSpeech.values()) {
-            speechFeatureValue.add(fs.name());
-        }
+        speechFeatureValue.add("ARTICLES");
+        speechFeatureValue.add("CONJUNCTION");
+        speechFeatureValue.add("PERIOD");
+        speechFeatureValue.add("COMMA");
+        speechFeatureValue.add("HYPHEN");
+        speechFeatureValue.add("OTHER");
         attributes.add(new Attribute("speechFeature", speechFeatureValue));
 
         return attributes;
