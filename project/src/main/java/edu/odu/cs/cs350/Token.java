@@ -47,12 +47,12 @@ public class Token {
     /**
      * Flag indicating whether the token has an prefix (e.g., "la, el, de").
      */
-    private boolean prefixflag;
+    private boolean prefixFlag;
 
     /**
      * Flag indicating whether the token has an suffix (e.g., "Jr, Sr, II").
      */
-    private boolean suffixflag;
+    private boolean suffixFlag;
 
     /**
      * Flag indicating whether the token is a "kill word" that should be ignored.
@@ -93,8 +93,8 @@ public class Token {
         this.commonFirst = false;
         this.commonLast = false;
         this.honorificFlag = false;
-        this.prefixflag = false;
-        this.suffixflag = false;
+        this.prefixFlag = false;
+        this.suffixFlag = false;
         this.killWordFlag = false;
         this.punctuationFlag = false;
         this.isEnglishWord = false;
@@ -162,14 +162,14 @@ public class Token {
      * @return true if a Prefix, false if not
      */
     public boolean isPrefix() {
-        return this.prefixflag;
+        return this.prefixFlag;
     }
 
     /**
      * @return true if a suffix, false if not
      */
     public boolean isSuffix() {
-        return this.suffixflag;
+        return this.suffixFlag;
     }
 
     /**
@@ -255,7 +255,7 @@ public class Token {
      * @param prefix is this a prefix.
      */
     public void setIsPrefix(boolean prefix) {
-        this.prefixflag = prefix;
+        this.prefixFlag = prefix;
     }
 
     /**
@@ -263,8 +263,8 @@ public class Token {
      * 
      * @param suffix is this a suffix.
      */
-    public void setIsSufix(boolean suffix) {
-        this.suffixflag = suffix;
+    public void setIsSuffix(boolean suffix) {
+        this.suffixFlag = suffix;
     }
 
     /**
@@ -498,10 +498,10 @@ public class Token {
         return;
     }
 
-    public void detectHonorifix() {
-        Iterable<String> Honorifix = WordLists.honorifics();
-        for (String honorifix : Honorifix) {
-            if (tokenString.equalsIgnoreCase(honorifix)) {
+    public void detectHonorific() {
+        Iterable<String> Honorific = WordLists.honorifics();
+        for (String honorific : Honorific) {
+            if (tokenString.equalsIgnoreCase(honorific)) {
                 honorificFlag = true;
                 return;
             }
@@ -514,11 +514,11 @@ public class Token {
         Iterable<String> lastNamePrefixes = WordLists.lastNamePrefixes();
         for (String Prefix : lastNamePrefixes) {
             if (tokenString.equalsIgnoreCase(Prefix)) {
-                prefixflag = true;
+                prefixFlag = true;
                 return;
             }
         }
-        prefixflag = false;
+        prefixFlag = false;
         return;
     }
 
@@ -526,11 +526,11 @@ public class Token {
         Iterable<String> lastNameSuffix = WordLists.lastNameSuffixes();
         for (String Suffix : lastNameSuffix) {
             if (tokenString.equalsIgnoreCase(Suffix)) {
-                suffixflag = true;
+                suffixFlag = true;
                 return;
             }
         }
-        suffixflag = false;
+        suffixFlag = false;
         return;
     }
 
