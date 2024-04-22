@@ -481,8 +481,4 @@ public class TestToken {
         assertFalse(test_token2.isLocation());
     }
 
-
 }
-
-
-    
