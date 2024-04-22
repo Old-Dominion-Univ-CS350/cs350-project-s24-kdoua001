@@ -115,7 +115,7 @@ public class MachineTrainer {
     public static void main(String[] args) {
         try {
             String trainingDataPath = "src/main/data/trainingData.txt";
-            String modelPath = "src/main/resources/model/smo.model";
+            String modelPath = "src/main/resources/model/trainedMachine.model";
             new MachineTrainer().trainAndSaveModel(trainingDataPath, modelPath);
             System.out.println("Model trained and saved successfully!");
         } catch (Exception e) {

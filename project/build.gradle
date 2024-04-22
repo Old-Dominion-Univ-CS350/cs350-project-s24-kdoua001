@@ -40,7 +40,7 @@ task customFatJar(type: Jar) {
 task trainModel(type: JavaExec) {
     main = 'edu.odu.cs.cs350.MachineTrainer'
     classpath = sourceSets.main.runtimeClasspath
-    args 'src/main/resources/trainingData.txt', 'src/main/resources/model/smo.model'
+    args 'src/main/data/trainingData.txt', 'src/main/resources/model/trainedMachine.model'
 }
 
 java {
