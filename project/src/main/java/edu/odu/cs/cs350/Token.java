@@ -1,5 +1,6 @@
 package edu.odu.cs.cs350;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -433,8 +434,8 @@ public class Token {
 
     public void detectCommonLastName() {
         Iterable<String> commonLastNames = WordLists.commonLastNames();
-        for (String lastnames : commonLastNames) {
-            if (tokenString.equalsIgnoreCase(lastnames)) {
+        for (String lastNames : commonLastNames) {
+            if (tokenString.equalsIgnoreCase(lastNames)) {
                 commonLast = true;
                 return;
             }
@@ -534,9 +535,38 @@ public class Token {
         return;
     }
 
-    public void detectKnownAuthor() {
-        // detectHonorifix();
+    public boolean detectKnownAuthor(List<Token> tokens, int currentIndex) {
+        // Check if the current token is an honorific
+        detectHonorifix();
 
+        if (honorificFlag) {
+            // Check if there are at least two more tokens after current token
+            if (currentIndex + 2 < tokens.size()) {
+                String secondTokenString = tokens.get(currentIndex + 1).tokenString;
+                String thirdTokenString = tokens.get(currentIndex + 2).tokenString;
+
+                // check if the next token is a common first name
+                Token nextToken = new Token(secondTokenString);
+                nextToken.detectCommonFirstName();
+
+                if (nextToken.isCommonFirst()) {
+                    // check if the next token after the first name is a common last name
+
+                    Token lastToken = new Token(thirdTokenString);
+                    lastToken.detectCommonLastName();
+
+                    if (lastToken.isCommonLast()) {
+                        // if the token is a honorific followed by a common first name and last name
+                        // consider it
+                        // an author
+
+                        return true;
+                    }
+                }
+            }
+        }
+        // if conditions not met return false it is not a known author name
+        return false;
     }
 
 }
