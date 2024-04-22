@@ -498,8 +498,6 @@ public class Token {
         return;
     }
 
-    <<<<<<<HEAD
-
     public void detectHonorifix() {
         Iterable<String> Honorifix = WordLists.honorifics();
         for (String honorifix : Honorifix) {
