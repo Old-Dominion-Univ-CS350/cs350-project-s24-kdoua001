@@ -108,6 +108,7 @@ public class Token {
         detectCountriesAndTerritories();
         detectPlaces();
         detectKillWord();
+        detectHonorific();
 
     }
 
@@ -495,7 +496,7 @@ public class Token {
             }
         }
         setIsLocation(false);
-        return;
+
     }
 
     /**
@@ -518,12 +519,12 @@ public class Token {
     public void detectHonorific() {
         Iterable<String> Honorific = WordLists.honorifics();
         for (String honorific : Honorific) {
-            if (tokenString.equalsIgnoreCase(honorific)) {
-                honorificFlag = true;
+            if (honorific.equalsIgnoreCase(tokenString)) {
+                setIsHonorific(true);
                 return;
             }
         }
-        honorificFlag = false;
+        setIsHonorific(false);
         return;
     }
 
@@ -566,5 +567,12 @@ public class Token {
         return;
     }
 
+    public boolean isKnownAuthors(String tokenString) {
+        detectHonorific();
+        detectCommonFirstName();
+        detectCommonLastName();
+
+        return honorificFlag || commonFirst || commonLast;
+    }
 
 }

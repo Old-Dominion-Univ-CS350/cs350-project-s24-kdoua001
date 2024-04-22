@@ -483,12 +483,20 @@ public class TestToken {
     }
 
     @Test
-    public void testDetectKnownAuthor() {
+    public void testIsKnownAuthor() {
+        String knownAuthor = "Mr. John Washington";
+        String testHonorific = "Dr.";
+        Token tokenAuthor = new Token(knownAuthor);
+        Token tokenHonorific = new Token(testHonorific);
 
+        String result = tokenAuthor.getTokenString();
+        tokenHonorific.detectHonorific();
+        // assertTrue(tokenHonorific.isHonorific());
+        // assertTrue(tokenAuthor.isKnownAuthors(result));
     }
 
-    @Test 
-    public void testKillWord(){
+    @Test
+    public void testKillWord() {
         Token test_token = new Token("John");
         Token test_token2 = new Token("Grumman");
         Token test_token3 = new Token("Student");
