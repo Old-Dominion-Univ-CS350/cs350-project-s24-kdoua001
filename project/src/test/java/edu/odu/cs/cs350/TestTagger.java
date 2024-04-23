@@ -20,7 +20,7 @@ public class TestTagger {
         Token testToken2 = new Token("the");
 
 
-        Tagger tagger = new Tagger();
+        FeatureTag tagger = new FeatureTag();
         assertTrue(tagger.IsArticle(testToken0.getTokenString()));
         assertTrue(tagger.IsArticle(testToken1.getTokenString()));
         assertTrue(tagger.IsArticle(testToken2.getTokenString()));
@@ -32,7 +32,7 @@ public class TestTagger {
         Token testToken0 = new Token("and");
 
 
-        Tagger tagger = new Tagger();
+        FeatureTag tagger = new FeatureTag();
         assertTrue(tagger.IsConjunction(testToken0.getTokenString()));
     }
 
@@ -42,7 +42,7 @@ public class TestTagger {
         Token testToken0 = new Token(".");
 
 
-        Tagger tagger = new Tagger();
+        FeatureTag tagger = new FeatureTag();
         assertTrue(tagger.IsPeriod(testToken0.getTokenString()));
     }
 
@@ -52,7 +52,7 @@ public class TestTagger {
         Token testToken0 = new Token(",");
 
 
-        Tagger tagger = new Tagger();
+        FeatureTag tagger = new FeatureTag();
         assertTrue(tagger.IsComma(testToken0.getTokenString()));
     }
 
@@ -62,7 +62,7 @@ public class TestTagger {
         Token testToken0 = new Token("-");
 
 
-        Tagger tagger = new Tagger();
+        FeatureTag tagger = new FeatureTag();
         assertTrue(tagger.IsHyphen(testToken0.getTokenString()));
     }
     

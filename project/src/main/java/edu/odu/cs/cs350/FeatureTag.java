@@ -7,11 +7,11 @@ import java.util.Arrays;
  * The Tagger class provides methods to detect the part of speech or lexical feature
  * of a given word or token.
  */
-public class Tagger {
+public class FeatureTag {
     /**
      * Constructs a new Tagger object.
      */
-    public Tagger() {
+    public FeatureTag() {
     }
 
     /**

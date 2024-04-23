@@ -62,9 +62,9 @@ public class MachineTrainer {
             smo.setC(c);
             smo.setOptions(Utils.splitOptions("-L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1"));
 
-            Evaluation eval = new Evaluation(data);
-            eval.crossValidateModel(smo, data, 5, new Random(1));
-            double score = eval.pctCorrect();
+            Evaluation evaluation = new Evaluation(data);
+            evaluation.crossValidateModel(smo, data, 5, new Random(1));
+            double score = evaluation.pctCorrect();
 
             if (score > bestResult) {
                 bestResult = score;
@@ -110,9 +110,9 @@ public class MachineTrainer {
     /**
      * The main method that runs the training process.
      *
-     * @param args Command-line arguments.
+     * @param argument Command-line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String[] argument) {
         try {
             String trainingDataPath = "src/main/data/trainingData.txt";
             String modelPath = "src/main/resources/model/trainedMachine.model";

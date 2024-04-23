@@ -83,7 +83,7 @@ public class Token {
     private boolean isEnglishWord;
 
     /**
-     * Flag indicating whether the assinged string is possibly an known author
+     * Flag indicating whether the assinged string is possibly an known author.
      * 
      * 
      */
@@ -378,17 +378,17 @@ public class Token {
      */
     public void detectFeatureOfSpeech() {
 
-        Tagger tagger = new Tagger();
+        FeatureTag tag = new FeatureTag();
 
-        if (tagger.IsArticle(tokenString)) {
+        if (tag.IsArticle(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);
-        } else if (tagger.IsConjunction(tokenString)) {
+        } else if (tag.IsConjunction(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);
-        } else if (tagger.IsPeriod(tokenString)) {
+        } else if (tag.IsPeriod(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.PERIOD);
-        } else if (tagger.IsComma(tokenString)) {
+        } else if (tag.IsComma(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.COMMA);
-        } else if (tagger.IsHyphen(tokenString)) {
+        } else if (tag.IsHyphen(tokenString)) {
             setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);
         } else {
             setFeatureOfSpeech(FeatureOfSpeech.OTHER);
