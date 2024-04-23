@@ -21,7 +21,7 @@ public class Extractor {
         Classifier model = ModelLoader.loadModelFromJar();
 
         Scanner scanner = new Scanner(new InputStreamReader(System.in, "UTF-8"));
-        scanner.useDelimiter("\\A"); // Use beginning of input as delimiter to read entire input
+        scanner.useDelimiter("\\A"); 
         String contentOfFile = scanner.next();
         scanner.close();
 
