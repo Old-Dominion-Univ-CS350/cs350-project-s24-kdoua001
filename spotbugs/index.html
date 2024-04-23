@@ -892,6 +892,7 @@
          );
 
          var classStats = new Array(
+               {className: "edu.bogusTest", packageName: "edu", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.TestDocument", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "4", bugsP1: "4", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.TestFeatureVectors", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {className: "edu.odu.cs.cs350.TestMachineTrainer", packageName: "edu.odu.cs.cs350", isInterface: "false", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
@@ -903,6 +904,7 @@
          );
 
          var packageStats = new Array(
+               {packageName: "edu", totalBugs: "0", bugsP1: "0", bugsP2: "0", bugsP3: "0", bugsP4: "0"},
                {packageName: "edu.odu.cs.cs350", totalBugs: "4", bugsP1: "4", bugsP2: "0", bugsP3: "0", bugsP4: "0"}
          );
 
@@ -1038,8 +1040,8 @@
                   <th>Bugs Experimental</th>
                </tr>
                <tr>
-                  <td class="summary-name">Overall (1 packages, 8 classes)</td>
-                  <td class="summary-size">708</td>
+                  <td class="summary-name">Overall (2 packages, 9 classes)</td>
+                  <td class="summary-size">714</td>
                   <td class="summary-priority-all">4</td>
                   <td class="summary-priority-1">4</td>
                   <td class="summary-priority-2">0</td>
@@ -1061,6 +1063,7 @@
             <div id="analyzed-files">
                <h3>Analyzed Files:</h3>
                <ul>
+                  <li>/home/zeil/net/zeil/courses/cs350/AutoGrading/s24/WorkArea/project/grades/stage/WE3/project/build/classes/java/test/edu/bogusTest.class</li>
                   <li>/home/zeil/net/zeil/courses/cs350/AutoGrading/s24/WorkArea/project/grades/stage/WE3/project/build/classes/java/test/edu/odu/cs/cs350/TestDocument.class</li>
                   <li>/home/zeil/net/zeil/courses/cs350/AutoGrading/s24/WorkArea/project/grades/stage/WE3/project/build/classes/java/test/edu/odu/cs/cs350/TestFeatureVectors.class</li>
                   <li>/home/zeil/net/zeil/courses/cs350/AutoGrading/s24/WorkArea/project/grades/stage/WE3/project/build/classes/java/test/edu/odu/cs/cs350/TestMachineTrainer.class</li>
@@ -1185,7 +1188,7 @@
       </div>
    </body>
 </html>
-using the == or != operators. Requiring callers to
+y using the == or != operators. Requiring callers to
             pass only String constants or interned strings to a method is unnecessarily
             fragile, and rarely leads to measurable performance gains. Consider
             using the <code>equals(Object)</code> method instead.</p>
