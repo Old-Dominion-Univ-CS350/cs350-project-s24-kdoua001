@@ -83,7 +83,7 @@ public class Token {
     private boolean isEnglishWord;
 
     /**
-     * Flag indicating whether the assinged string is possibly an known author
+     * Flag indicating whether the assinged string is possibly an known author.
      * 
      * 
      */
