@@ -15,33 +15,34 @@ import weka.core.Instances;
      * 
      * @param args command-line arguments
      * @throws Exception if an error occurs during processing
+     * 
      */
     public static void main(String[] args) throws Exception {
         // Load the trained model
-<span class="nc" id="L21">        Classifier model = ModelLoader.loadModelFromJar();</span>
+<span class="nc" id="L22">        Classifier model = ModelLoader.loadModelFromJar();</span>
 
-<span class="nc" id="L23">        Scanner scanner = new Scanner(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
-<span class="nc" id="L24">        scanner.useDelimiter(&quot;\\A&quot;); </span>
-<span class="nc" id="L25">        String contentOfFile = scanner.next();</span>
-<span class="nc" id="L26">        scanner.close();</span>
+<span class="nc" id="L24">        Scanner scanner = new Scanner(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
+<span class="nc" id="L25">        scanner.useDelimiter(&quot;\\A&quot;); </span>
+<span class="nc" id="L26">        String contentOfFile = scanner.next();</span>
+<span class="nc" id="L27">        scanner.close();</span>
 
-<span class="nc" id="L28">        Document document = new Document(contentOfFile);</span>
+<span class="nc" id="L29">        Document document = new Document(contentOfFile);</span>
 
         // Process each TextBlock in the document
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        for (TextBlock block : document.getBlocks()) {</span>
-<span class="nc" id="L32">            FeatureVector featureVector = new FeatureVector();</span>
-<span class="nc" id="L33">            Instances instances = featureVector.createVectors(block.getTokensList());</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        for (TextBlock block : document.getBlocks()) {</span>
+<span class="nc" id="L33">            FeatureVector featureVector = new FeatureVector();</span>
+<span class="nc" id="L34">            Instances instances = featureVector.createVectors(block.getTokensList());</span>
             
-<span class="nc" id="L35">            instances.setClassIndex(instances.numAttributes() - 1);</span>
+<span class="nc" id="L36">            instances.setClassIndex(instances.numAttributes() - 1);</span>
 
             // Use the model to predict and tag personal names
-<span class="nc bnc" id="L38" title="All 2 branches missed.">            for (int i = 0; i &lt; instances.numInstances(); i++) {</span>
-<span class="nc" id="L39">                double classLabel = model.classifyInstance(instances.instance(i));</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">                block.getTokensList().get(i).setIsName(classLabel == 1.0);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            for (int i = 0; i &lt; instances.numInstances(); i++) {</span>
+<span class="nc" id="L40">                double classLabel = model.classifyInstance(instances.instance(i));</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                block.getTokensList().get(i).setIsName(classLabel == 1.0);</span>
             }
 
-<span class="nc" id="L43">            System.out.println(block.toString());</span>
-<span class="nc" id="L44">        }</span>
-<span class="nc" id="L45">    }</span>
+<span class="nc" id="L44">            System.out.println(block.toString());</span>
+<span class="nc" id="L45">        }</span>
+<span class="nc" id="L46">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
