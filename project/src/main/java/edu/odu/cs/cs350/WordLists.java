@@ -205,7 +205,7 @@ class InputStreamIterator implements Iterator<String> {
 
         try {
             this.buffer = this.in.readLine();
-        } catch (IOException var3) {
+        } catch (IOException variableThree) {
             this.buffer = null;
         }
 
@@ -236,7 +236,7 @@ class InputStreamIterator implements Iterator<String> {
 
             try {
                 this.buffer = this.in.readLine();
-            } catch (IOException var3) {
+            } catch (IOException variableThree) {
                 this.buffer = null;
             }
 
