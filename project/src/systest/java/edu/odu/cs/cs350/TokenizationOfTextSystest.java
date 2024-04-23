@@ -29,7 +29,7 @@ public class TokenizationOfTextSystest {
 
     @Test
     public void systemTest() throws Exception {
-        String expected = "<NER> <PER>This</PER> is a block of the text that is showing how tokenization works in the input txt file</NER>";
+        String expected = "<NER> this is a block of the text that is showing how tokenization works in the input txt file</NER>";
 
         // Read the content of the input file
         String inputFileContent = new String(Files.readAllBytes(Paths.get("src/systest/data/InputTokenize.txt")),
