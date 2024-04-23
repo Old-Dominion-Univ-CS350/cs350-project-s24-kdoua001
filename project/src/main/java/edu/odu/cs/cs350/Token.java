@@ -467,14 +467,8 @@ public class Token {
     }
 
     /**
-<<<<<<< Updated upstream
      * Gets English Param. 
      * @return true if english word
-=======
-     * Gets English Param.
-     * 
-     * @return
->>>>>>> Stashed changes
      */
     public boolean getIsEnglishWord() {
         return isEnglishWord;
@@ -482,12 +476,7 @@ public class Token {
 
     /**
      * Sets Englishword Param.
-<<<<<<< Updated upstream
      * @param isEqualTo compare to isEnglishWord
-=======
-     * 
-     * @param isEqualTo
->>>>>>> Stashed changes
      */
     public void setIsEnglishWord(boolean isEqualTo) {
         isEnglishWord = isEqualTo;
@@ -617,16 +606,7 @@ public class Token {
     }
 
     /**
-<<<<<<< Updated upstream
      * Checks for a possible author. Returns bool
-     * @param tokenString string representation of token
-     * @return bool isAuthor
-=======
-     * Checks for a possible author.
-     * 
-     * 
-     * 
->>>>>>> Stashed changes
      */
     public void detectKnownAuthor() {
 
