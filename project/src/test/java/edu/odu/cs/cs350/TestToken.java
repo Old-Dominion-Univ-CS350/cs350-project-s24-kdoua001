@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import weka.core.pmml.jaxbbindings.True;
@@ -484,15 +485,18 @@ public class TestToken {
 
     @Test
     public void testIsKnownAuthor() {
-        String knownAuthor = "Mr. John Washington";
-        String testHonorific = "Dr.";
-        Token tokenAuthor = new Token(knownAuthor);
-        Token tokenHonorific = new Token(testHonorific);
 
-        String result = tokenAuthor.getTokenString();
-        tokenHonorific.detectHonorific();
-        // assertTrue(tokenHonorific.isHonorific());
-        // assertTrue(tokenAuthor.isKnownAuthors(result));
+        String authorName = "Dr. John Smith";
+        String secondAuthorName = "Mr. Jack London";
+
+        Token token = new Token(authorName);
+        Token secondAuthor = new Token(secondAuthorName);
+        token.detectKnownAuthor();
+        secondAuthor.detectKnownAuthor();
+
+        assertTrue(token.isKnownAuthor());
+        assertTrue(secondAuthor.isKnownAuthor());
+
     }
 
     @Test

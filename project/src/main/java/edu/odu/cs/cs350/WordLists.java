@@ -13,8 +13,8 @@ import java.util.Scanner;
  * This class provides utility methods to access various word lists.
  */
 public final class WordLists {
-    /*
-     * Package path to contain word lists
+    /**
+     * Package path contains word lists.
      */
     private static String packagePath = "/";
 
@@ -157,8 +157,8 @@ public final class WordLists {
  * This class provides an iterable for an input stream of strings.
  */
 class StreamInput implements Iterable<String> {
-    /*
-     * InputStream variable
+    /**
+     * InputStream variable.
      */
     private InputStream inputStream;
 
@@ -186,12 +186,12 @@ class StreamInput implements Iterable<String> {
  * This class provides an iterator over an input stream of strings.
  */
 class InputStreamIterator implements Iterator<String> {
-    /*
-     * BufferReader variable
+    /**
+     * BufferReader variable.
      */
     private BufferedReader in;
-    /*
-     * String variable
+    /**
+     * String variable.
      */
     private String buffer;
 
