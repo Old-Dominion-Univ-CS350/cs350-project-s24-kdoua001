@@ -1,6 +1,3 @@
-public class HonorificPrefixSuffixSysTest {
-    
-}
 package edu.odu.cs.cs350;
 
 import org.junit.jupiter.api.AfterEach;
@@ -17,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class HonoroficSuffixPrefixSysTest {
+public class HonorificPrefixSuffixSysTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
