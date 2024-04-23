@@ -3,7 +3,7 @@ package edu.odu.cs.cs350;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class testWorldLists {
+public class testWordLists {
     @Test
     public void testSetIsCommonFirstNamesFileLoading() {
         // String fileName = "/Dictionary.commonFirstNames.txt";
