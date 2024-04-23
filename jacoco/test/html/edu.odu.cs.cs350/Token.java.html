@@ -378,17 +378,17 @@ public class Token {
      */
     public void detectFeatureOfSpeech() {
 
-<span class="fc" id="L381">        Tagger tagger = new Tagger();</span>
+<span class="fc" id="L381">        FeatureTag tag = new FeatureTag();</span>
 
-<span class="fc bfc" id="L383" title="All 2 branches covered.">        if (tagger.IsArticle(tokenString)) {</span>
+<span class="fc bfc" id="L383" title="All 2 branches covered.">        if (tag.IsArticle(tokenString)) {</span>
 <span class="fc" id="L384">            setFeatureOfSpeech(FeatureOfSpeech.ARTICLES);</span>
-<span class="fc bfc" id="L385" title="All 2 branches covered.">        } else if (tagger.IsConjunction(tokenString)) {</span>
+<span class="fc bfc" id="L385" title="All 2 branches covered.">        } else if (tag.IsConjunction(tokenString)) {</span>
 <span class="fc" id="L386">            setFeatureOfSpeech(FeatureOfSpeech.CONJUNCTION);</span>
-<span class="fc bfc" id="L387" title="All 2 branches covered.">        } else if (tagger.IsPeriod(tokenString)) {</span>
+<span class="fc bfc" id="L387" title="All 2 branches covered.">        } else if (tag.IsPeriod(tokenString)) {</span>
 <span class="fc" id="L388">            setFeatureOfSpeech(FeatureOfSpeech.PERIOD);</span>
-<span class="fc bfc" id="L389" title="All 2 branches covered.">        } else if (tagger.IsComma(tokenString)) {</span>
+<span class="fc bfc" id="L389" title="All 2 branches covered.">        } else if (tag.IsComma(tokenString)) {</span>
 <span class="fc" id="L390">            setFeatureOfSpeech(FeatureOfSpeech.COMMA);</span>
-<span class="fc bfc" id="L391" title="All 2 branches covered.">        } else if (tagger.IsHyphen(tokenString)) {</span>
+<span class="fc bfc" id="L391" title="All 2 branches covered.">        } else if (tag.IsHyphen(tokenString)) {</span>
 <span class="fc" id="L392">            setFeatureOfSpeech(FeatureOfSpeech.HYPHEN);</span>
         } else {
 <span class="fc" id="L394">            setFeatureOfSpeech(FeatureOfSpeech.OTHER);</span>

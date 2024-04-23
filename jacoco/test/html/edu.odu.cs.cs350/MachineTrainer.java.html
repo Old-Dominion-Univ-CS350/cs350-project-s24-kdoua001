@@ -62,9 +62,9 @@ import java.util.Random;
 <span class="fc" id="L62">            smo.setC(c);</span>
 <span class="fc" id="L63">            smo.setOptions(Utils.splitOptions(&quot;-L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1&quot;));</span>
 
-<span class="fc" id="L65">            Evaluation eval = new Evaluation(data);</span>
-<span class="fc" id="L66">            eval.crossValidateModel(smo, data, 5, new Random(1));</span>
-<span class="fc" id="L67">            double score = eval.pctCorrect();</span>
+<span class="fc" id="L65">            Evaluation evaluation = new Evaluation(data);</span>
+<span class="fc" id="L66">            evaluation.crossValidateModel(smo, data, 5, new Random(1));</span>
+<span class="fc" id="L67">            double score = evaluation.pctCorrect();</span>
 
 <span class="fc bfc" id="L69" title="All 2 branches covered.">            if (score &gt; bestResult) {</span>
 <span class="fc" id="L70">                bestResult = score;</span>
@@ -110,9 +110,9 @@ import java.util.Random;
     /**
      * The main method that runs the training process.
      *
-     * @param args Command-line arguments.
+     * @param argument Command-line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String[] argument) {
         try {
 <span class="nc" id="L117">            String trainingDataPath = &quot;src/main/data/trainingData.txt&quot;;</span>
 <span class="nc" id="L118">            String modelPath = &quot;src/main/resources/model/trainedMachine.model&quot;;</span>
