@@ -127,8 +127,9 @@ public class Document {
             System.out.println(string);
         }
     }
+
     /**
-     * print document with personal names tagged with PER
+     * Print document with personal names tagged with PER.
      */
     public void printDocumentWithPersonalNamesTag() {
         // Create output list
