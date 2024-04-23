@@ -76,10 +76,18 @@ public class Token {
     private FeatureOfSpeech speechFeature;
 
     /**
-     * Flag indicating whether the assinged string is possibly part of the english language.
+     * Flag indicating whether the assinged string is possibly part of the english
+     * language.
      * 
      */
     private boolean isEnglishWord;
+
+    /**
+     * Flag indicating whether the assinged string is possibly an known author
+     * 
+     * 
+     */
+    private boolean knownAuthorFlag;
 
     /**
      * Constructor for Token.
@@ -98,6 +106,7 @@ public class Token {
         this.killWordFlag = false;
         this.punctuationFlag = false;
         this.isEnglishWord = false;
+        this.knownAuthorFlag = false;
         detectFeatureOfSpeech();
         detectLexicalFeature();
         detectCommonFirstName();
@@ -186,6 +195,13 @@ public class Token {
      */
     public boolean isPunctuation() {
         return this.punctuationFlag;
+    }
+
+    /**
+     * @return true if a known author, false if not
+     */
+    public boolean isKnownAuthor() {
+        return this.knownAuthorFlag;
     }
 
     /**
@@ -423,7 +439,7 @@ public class Token {
     }
 
     /**
-     * Detects Common First Name. 
+     * Detects Common First Name.
      */
     public void detectCommonFirstName() {
         Iterable<String> commonFirstNames = WordLists.commonFirstNames();
@@ -451,8 +467,14 @@ public class Token {
     }
 
     /**
+<<<<<<< Updated upstream
      * Gets English Param. 
      * @return true if english word
+=======
+     * Gets English Param.
+     * 
+     * @return
+>>>>>>> Stashed changes
      */
     public boolean getIsEnglishWord() {
         return isEnglishWord;
@@ -460,14 +482,19 @@ public class Token {
 
     /**
      * Sets Englishword Param.
+<<<<<<< Updated upstream
      * @param isEqualTo compare to isEnglishWord
+=======
+     * 
+     * @param isEqualTo
+>>>>>>> Stashed changes
      */
     public void setIsEnglishWord(boolean isEqualTo) {
         isEnglishWord = isEqualTo;
     }
 
     /**
-     * Detects English Words. 
+     * Detects English Words.
      */
     public void detectEnglishWord() {
         Iterable<String> englishDictionary = WordLists.englishDictionary();
@@ -545,7 +572,7 @@ public class Token {
     }
 
     /**
-     *Detects Prefix.  
+     * Detects Prefix.
      */
     public void detectPrefix() {
         Iterable<String> lastNamePrefixes = WordLists.lastNamePrefixes();
@@ -589,19 +616,59 @@ public class Token {
         return;
     }
 
-
-
     /**
+<<<<<<< Updated upstream
      * Checks for a possible author. Returns bool
      * @param tokenString string representation of token
      * @return bool isAuthor
+=======
+     * Checks for a possible author.
+     * 
+     * 
+     * 
+>>>>>>> Stashed changes
      */
-    public boolean isKnownAuthors(String tokenString) {
-        detectHonorific();
-        detectCommonFirstName();
-        detectCommonLastName();
+    public void detectKnownAuthor() {
 
-        return honorificFlag || commonFirst || commonLast;
+        String[] tokens = tokenString.split("\\s+");
+        boolean hasHonorific = false;
+        boolean hasFirstName = false;
+        boolean hasLastName = false;
+
+        // check if any token is an honorific
+        for (String token : tokens) {
+            for (String honorific : WordLists.honorifics()) {
+                if (token.equalsIgnoreCase(honorific)) {
+                    hasHonorific = true;
+                    break;
+                }
+            }
+        }
+
+        // check if any token is a common first name
+        for (String token : tokens) {
+            for (String firstName : WordLists.firstNames()) {
+                if (token.equalsIgnoreCase(firstName)) {
+                    hasFirstName = true;
+                    break;
+                }
+            }
+        }
+
+        // Check if any token is a common last name
+        for (String token : tokens) {
+            for (String lastName : WordLists.lastNames()) {
+                if (token.equalsIgnoreCase(lastName)) {
+                    hasLastName = true;
+                    break;
+                }
+            }
+        }
+
+        // set knownAuthorFlag if token contains an honorific, common first name, and
+        // common last name.
+        knownAuthorFlag = hasHonorific && hasFirstName && hasLastName;
+
     }
 
 }
