@@ -1,15 +1,16 @@
 package edu.odu.cs.cs350;
+
 import weka.classifiers.Classifier;
 import weka.core.SerializationHelper;
 import java.io.InputStream;
 
 /**
- * model loader
+ * Model loader.
  */
 public class ModelLoader {
 
     /**
-     * load model from jar
+     * Load model from jar.
      * 
      * @return serialization helper
      * @throws Exception exception
