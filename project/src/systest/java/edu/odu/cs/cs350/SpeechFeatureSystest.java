@@ -3,6 +3,7 @@ package edu.odu.cs.cs350;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
@@ -13,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class DetectEnglishWordSystest {
+public class SpeechFeatureSystest{
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -29,10 +30,10 @@ public class DetectEnglishWordSystest {
 
     @Test
     public void systemTest() throws Exception {
-        String expected = "<NER>This is a sentence with some English words and non-English words like rendezvous.</NER>";
-
+        String expected = "<NER>A <PER>good</PER> way to run an <PER>system-test.</PER></NER>";
+        
         // Read the content of the input file
-        String inputFileContent = new String(Files.readAllBytes(Paths.get("src/systest/data/DetectEnglishWord.txt")), StandardCharsets.UTF_8);
+        String inputFileContent = new String(Files.readAllBytes(Paths.get("src/systest/data/SpeechFeature.txt")), StandardCharsets.UTF_8);
 
         // Redirect System.in to read from the input file content
         InputStream originalIn = System.in;
@@ -49,5 +50,7 @@ public class DetectEnglishWordSystest {
         }
         String output = outContent.toString();
         assertEquals(expected.trim(), output.trim());
+        
     }
+    
 }
