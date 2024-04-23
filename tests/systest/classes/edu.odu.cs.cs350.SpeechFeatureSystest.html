@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - GeographicalFeaturesSystest</title>
+<title>Test results - SpeechFeatureSystest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>GeographicalFeaturesSystest</h1>
+<h1>SpeechFeatureSystest</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/edu.odu.cs.cs350.html">edu.odu.cs.cs350</a> &gt; GeographicalFeaturesSystest</div>
+<a href="../packages/edu.odu.cs.cs350.html">edu.odu.cs.cs350</a> &gt; SpeechFeatureSystest</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.606s</div>
+<div class="counter">0.391s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,13 +73,13 @@
 <a name="systemTest()"></a>
 <h3 class="failures">systemTest()</h3>
 <span class="code">
-<pre>org.opentest4j.AssertionFailedError: expected: &lt;&lt;NER&gt;It should not mark Puerto Rico, Aajker Creek, Hampton, Maryland, and Canada with PER tags.&lt;/NER&gt;&gt; but was: &lt;&lt;NER&gt; &lt;PER&gt;It&lt;/PER&gt; should not mark &lt;PER&gt;Puerto&lt;/PER&gt; &lt;PER&gt;Rico&lt;/PER&gt;,&lt;PER&gt;Aajker&lt;/PER&gt; &lt;PER&gt;Creek&lt;/PER&gt;,&lt;PER&gt;Hampton&lt;/PER&gt;,&lt;PER&gt;Maryland&lt;/PER&gt;,and &lt;PER&gt;Canada&lt;/PER&gt; with &lt;PER&gt;PER&lt;/PER&gt; tags.&lt;/NER&gt;&gt;
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;&lt;NER&gt;A &lt;PER&gt;good&lt;/PER&gt; way to run an &lt;PER&gt;system-test.&lt;/PER&gt;&lt;/NER&gt;&gt; but was: &lt;&lt;NER&gt; A good way to find run a system-test.&lt;/NER&gt;&gt;
 	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at app//org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
-	at app//edu.odu.cs.cs350.GeographicalFeaturesSystest.systemTest(GeographicalFeaturesSystest.java:53)
+	at app//edu.odu.cs.cs350.SpeechFeatureSystest.systemTest(SpeechFeatureSystest.java:52)
 	at java.base@17.0.10/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@17.0.10/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base@17.0.10/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -179,7 +179,7 @@
 </thead>
 <tr>
 <td class="failures">systemTest()</td>
-<td class="failures">0.606s</td>
+<td class="failures">0.391s</td>
 <td class="failures">failed</td>
 </tr>
 </table>

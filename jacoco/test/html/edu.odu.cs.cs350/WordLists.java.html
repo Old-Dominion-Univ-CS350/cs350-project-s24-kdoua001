@@ -13,8 +13,8 @@ import java.util.Scanner;
  * This class provides utility methods to access various word lists.
  */
 public final class WordLists {
-    /*
-     * Package path to contain word lists
+    /**
+     * Package path contains word lists.
      */
 <span class="fc" id="L19">    private static String packagePath = &quot;/&quot;;</span>
 
@@ -77,8 +77,8 @@ public final class WordLists {
      * @return An iterable for the list of first names.
      */
     public static Iterable&lt;String&gt; firstNames() {
-<span class="nc" id="L80">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.firstNames.txt&quot;);</span>
-<span class="nc" id="L81">        return new StreamInput(list);</span>
+<span class="fc" id="L80">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.firstNames.txt&quot;);</span>
+<span class="fc" id="L81">        return new StreamInput(list);</span>
     }
 
     /**
@@ -87,8 +87,8 @@ public final class WordLists {
      * @return An iterable for the list of last names.
      */
     public static Iterable&lt;String&gt; lastNames() {
-<span class="nc" id="L90">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.lastNames.txt&quot;);</span>
-<span class="nc" id="L91">        return new StreamInput(list);</span>
+<span class="fc" id="L90">        InputStream list = WordLists.class.getResourceAsStream(packagePath + &quot;Dictionary.lastNames.txt&quot;);</span>
+<span class="fc" id="L91">        return new StreamInput(list);</span>
     }
 
     /**
@@ -157,8 +157,8 @@ public final class WordLists {
  * This class provides an iterable for an input stream of strings.
  */
 class StreamInput implements Iterable&lt;String&gt; {
-    /*
-     * InputStream variable
+    /**
+     * InputStream variable.
      */
     private InputStream inputStream;
 
@@ -186,12 +186,12 @@ class StreamInput implements Iterable&lt;String&gt; {
  * This class provides an iterator over an input stream of strings.
  */
 class InputStreamIterator implements Iterator&lt;String&gt; {
-    /*
-     * BufferReader variable
+    /**
+     * BufferReader variable.
      */
     private BufferedReader in;
-    /*
-     * String variable
+    /**
+     * String variable.
      */
     private String buffer;
 
