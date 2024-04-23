@@ -15,7 +15,6 @@ public class Extractor {
      * 
      * @param args command-line arguments
      * @throws Exception if an error occurs during processing
-     * 
      */
     public static void main(String[] args) throws Exception {
         // Load the trained model
